@@ -1,0 +1,51 @@
+@import "tailwindcss";
+
+:root {
+    --font-primary: "Averia Serif Libre", serif;
+    --font-secondary: "Public Sans", sans-serif;
+
+    --clr-primary: #326262;
+    --clr-button: #7fcfa8;
+    --clr-text-black: #1a1617;
+    --clr-text-white: #fbfbfb;
+    --clr-accent: #e3f0e0;
+    --clr-dark: #1a1617;
+    --clr-white: #ffffff;
+}
+
+@layer utilities {
+    .font-primary { font-family: var(--font-primary); }
+    .font-secondary { font-family: var(--font-secondary); }
+
+    .text-primary { color: var(--clr-primary); }
+    .bg-primary { background-color: var(--clr-primary); }
+    .border-primary { border-color: var(--clr-primary); }
+
+    .text-button { color: var(--clr-button); }
+    .bg-button { background-color: var(--clr-button); }
+    .border-button { border-color: var(--clr-button); }
+
+    .text-text-black { color: var(--clr-text-black); }
+    .bg-text-black { background-color: var(--clr-text-black); }
+    .border-text-black { border-color: var(--clr-text-black); }
+
+    .text-levein-white { color: var(--clr-text-white); }
+    .bg-levein-white { background-color: var(--clr-text-white); }
+    .border-levein-white { border-color: var(--clr-text-white); }
+
+    .text-accent { color: var(--clr-accent); }
+    .bg-accent { background-color: var(--clr-accent); }
+    .border-accent { border-color: var(--clr-accent); }
+
+    .text-dark { color: var(--clr-dark); }
+    .bg-dark { background-color: var(--clr-dark); }
+    .border-dark { border-color: var(--clr-dark); }
+
+    .text-white-brand { color: var(--clr-white); }
+    .bg-white-brand { background-color: var(--clr-white); }
+    .border-white-brand { border-color: var(--clr-white); }
+}
+
+body{
+    font-family: var(--font-secondary);
+}

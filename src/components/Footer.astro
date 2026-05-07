@@ -1,0 +1,194 @@
+---
+import "@styles/Footer.scss";
+
+const companyLinks = [
+  { label: "Home", href: "/" },
+  { label: "Life at Levein", href: "/life-at-levein" },
+  { label: "About us", href: "/about-us" },
+  { label: "Careers", href: "/careers" },
+];
+
+const resourceLinks = [
+  { label: "Blogs", href: "/blogs" },
+  { label: "Events", href: "/events" },
+];
+
+const legalLinks = [
+  { label: "Terms and conditions", href: "/terms-and-conditions" },
+  { label: "Privacy policy", href: "/privacy-policy" },
+];
+---
+
+<footer class="relative overflow-hidden bg-[#E3F0E0] text-[#1A1617]">
+  <!-- Container 01: Footer main content -->
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 w-full pt-12 max-md:pt-10">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-10 lg:gap-8">
+      
+      <!-- Brand -->
+    <div class="sm:col-span-2 lg:col-span-2 pr-4">
+        <a href="/" class="block text-[42px] font-black italic leading-none tracking-[-1.5px] text-[#1A1617] no-underline">
+          LEVEIN
+        </a>
+
+        <p class="mt-4 max-w-full text-[13px] leading-[1.35] text-[#1A1617]/80">
+          We’re constantly seeking talented individuals who are passionate about working on innovative projects.
+        </p>
+
+        <p class="mt-2 max-w-full text-[13px] leading-[1.35] text-[#1A1617]/80">
+          If you have a knack for creativity and a drive to make an impact, we’d love to collaborate with you.
+        </p>
+
+        <div class="mt-5 inline-flex items-center gap-4 rounded-full border border-[#1A1617] px-5 py-2">
+          <a href="#" aria-label="TikTok" class="footer-social-link">
+            <span class="text-[12px] font-bold">♪</span>
+          </a>
+
+          <a href="#" aria-label="Instagram" class="footer-social-link">
+            <span class="text-[12px] font-bold">◎</span>
+          </a>
+
+          <a href="#" aria-label="LinkedIn" class="footer-social-link">
+            <span class="text-[12px] font-bold">in</span>
+          </a>
+
+          <a href="#" aria-label="Facebook" class="footer-social-link">
+            <span class="text-[12px] font-bold">f</span>
+          </a>
+
+          <a href="#" aria-label="X" class="footer-social-link">
+            <span class="text-[12px] font-bold">𝕏</span>
+          </a>
+        </div>
+      </div>
+
+        <div class="lg:col-span-1">
+          <h3 class="text-[13px] font-bold leading-none text-[#1A1617]">
+            Company
+          </h3>
+
+          <ul class="mt-6 space-y-5">
+            {
+              companyLinks.map((item) => (
+                <li>
+                  <a
+                    href={item.href}
+                    class="text-[12px] leading-none text-[#1A1617]/80 no-underline transition-colors duration-300 hover:text-[#326262]"
+                  >
+                    {item.label}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+
+        <div class="lg:col-span-1">
+          <h3 class="text-[13px] font-bold leading-none text-[#1A1617]">
+            Resources
+          </h3>
+
+          <ul class="mt-6 space-y-5">
+            {
+              resourceLinks.map((item) => (
+                <li>
+                  <a
+                    href={item.href}
+                    class="text-[12px] leading-none text-[#1A1617]/80 no-underline transition-colors duration-300 hover:text-[#326262]"
+                  >
+                    {item.label}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+
+        <div class="lg:col-span-1">
+          <h3 class="text-[13px] font-bold leading-none text-[#1A1617]">
+            Legal
+          </h3>
+
+          <ul class="mt-6 space-y-5">
+            {
+              legalLinks.map((item) => (
+                <li>
+                  <a
+                    href={item.href}
+                    class="text-[12px] leading-none text-[#1A1617]/80 no-underline transition-colors duration-300 hover:text-[#326262]"
+                  >
+                    {item.label}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+
+      <!-- Contact -->
+      <div class="lg:col-span-1 flex flex-col items-start lg:items-end text-left lg:text-right">
+        <a
+          href="/contact"
+          class="inline-flex h-10 items-center justify-center rounded-full bg-[#326262] px-7 text-[12px] font-bold text-[#FBFBFB] no-underline transition-all duration-300 hover:bg-[#1a1617]"
+        >
+          Request a call
+        </a>
+
+        <div class="mt-4 space-y-2">
+          <a
+            href="tel:3122551153"
+            class="block text-[16px] font-medium leading-none text-[#1A1617] underline underline-offset-4"
+          >
+            (312) 255-1153
+          </a>
+
+          <a
+            href="mailto:hello@Levein.com"
+            class="block text-[16px] font-medium leading-none text-[#1A1617] underline underline-offset-4"
+          >
+            hello@Levein.com
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Email row -->
+    <div class="mt-16 grid grid-cols-[1fr_400px] items-center gap-10 max-md:mt-12 max-md:grid-cols-1">
+      <h2 class="max-w-full text-[28px] font-normal leading-[1.1] tracking-[-0.5px] text-[#1A1617] max-md:text-[24px]">
+        Just send us your contact email and we will contact you.
+      </h2>
+
+      <form class="relative w-full">
+        <label for="footer-email" class="sr-only">Email address</label>
+
+        <input
+          id="footer-email"
+          type="email"
+          placeholder="Email address"
+          class="h-9 w-full rounded-full border-0 bg-[#FBFBFB] px-5 pr-12 text-[12px] text-[#1A1617] outline-none placeholder:text-[#1A1617]/45 focus:ring-2 focus:ring-[#326262]/30"
+        />
+
+        <button
+          type="submit"
+          aria-label="Submit email"
+          class="absolute right-2 top-1/2 flex size-5 -translate-y-1/2 items-center justify-center rounded-full text-[#1A1617] transition-colors duration-300 hover:bg-[#e3f0e0]"
+        >
+          <span class="text-[15px] leading-none">⊙</span>
+        </button>
+      </form>
+    </div>
+
+  </div>
+
+  <!-- Container 02: Copyright + large wordmark -->
+  <div class="mx-auto mt-14 w-[min(100%-48px,1044px)] border-t border-[#1A1617]/10 pb-0 pt-6 max-md:w-[calc(100%-32px)]">
+    <p class="text-center text-[11px] font-medium text-[#1A1617]">
+      © 2026 LEVEIN. All rights reserved.
+    </p>
+
+    <div class="relative mt-8 h-[160px] overflow-hidden max-md:h-[100px] max-sm:h-[70px]">
+      <span class="footer-large-wordmark absolute left-1/2 top-0 -translate-x-1/2 select-none whitespace-nowrap text-[#FBFBFB]">
+        LEVEIN
+      </span>
+    </div>
+  </div>
+</footer>

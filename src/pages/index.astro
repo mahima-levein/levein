@@ -1,0 +1,905 @@
+---
+import Layout from "../layouts/Layout.astro";
+import "@styles/Home.scss";
+import { Image } from "astro:assets";
+import Team_Memb_1 from "@assets/team/IMG1@2x.jpg";
+import Team_Memb_2 from "@assets/team/IMG2@2x.jpg";
+import Team_Memb_3 from "@assets/team/IMG3@2x.jpg";
+import Team_Memb_4 from "@assets/team/IMG4@2x.jpg";
+import Team_Memb_5 from "@assets/team/IMG5@2x.jpg";
+import Team_Memb_6 from "@assets/team/IMG6@2x.jpg";
+import Team_Memb_7 from "@assets/team/IMG3@2x-1.jpg";
+import techStackImage from "@assets/Tech-Stack-Logos.png";
+import CurrentOpenings from "@components/CurrentOpenings.tsx";
+
+import Logo1 from "@assets/logos/Logo-1.png";
+import Logo2 from "@assets/logos/Logo-2.png";
+import Logo3 from "@assets/logos/Logo-3.png";
+import Logo4 from "@assets/logos/Logo-4.png";
+import Logo5 from "@assets/logos/Logo-5.png";
+import Logo6 from "@assets/logos/Logo-6.png";
+import Logo7 from "@assets/logos/Logo-7.png";
+import Logo8 from "@assets/logos/Logo-8.png";
+import Logo9 from "@assets/logos/Logo-9.png";
+
+import teamSliderOne from "@assets/team/slider/chanaka.png";
+import teamSliderTwo from "@assets/team/slider/dilki.png";
+import teamSliderThree from "@assets/team/slider/hr-1.png";
+import teamSliderFour from "@assets/team/slider/kalpa.png";
+import teamSliderFive from "@assets/team/slider/pasandi.png";
+import teamSliderSix from "@assets/team/slider/peruka.png";
+import teamSliderSeven from "@assets/team/slider/proushth.png";
+import teamSliderEight from "@assets/team/slider/shalini.png";
+
+import FAQs from "@components/Faqs.tsx";
+import LeveinCTA from "@components/CareerCtaSection.astro";
+const opportunities = [
+  {
+    title: "Software Engineering & Tech",
+    description:
+      "Work on live products used by real customers across the world. Work with modern stacks (MERN, Python, Cloud) in high-trust environments.",
+  },
+  {
+    title: "Accounting, Finance & Operations",
+    description:
+      "Manage financial ecosystems for UK and US firms. A path for ACCA/CIMA/CFA professionals to practice at a global standard.",
+  },
+  {
+    title: "HR & Recruitment",
+    description:
+      "Shape teams and culture for fast-growing UK businesses. If you understand people and what makes them stay, there is a career here that grows with you.",
+  },
+];
+
+const logos = [Logo1, Logo2, Logo3, Logo4, Logo5, Logo6, Logo7, Logo8, Logo9];
+
+const rowOne = [
+  {
+    name: "Chanaka Ayya",
+    role: "Senior Backend Engineer",
+    message:
+      "Integrating Levein's analytics transformed our workflow, boosting efficiency by 25%.",
+    image: teamSliderOne,
+  },
+  {
+    name: "Dilki Perera",
+    role: "Senior Backend Engineer",
+    message:
+      "Integrating Levein's analytics transformed our workflow, boosting efficiency by 25%.",
+    image: teamSliderTwo,
+  },
+  {
+    name: "HR Kella",
+    role: "Senior Backend Engineer",
+    message:
+      "Integrating Levein's analytics transformed our workflow, boosting efficiency by 25%.",
+    image: teamSliderThree,
+  },
+  {
+    name: "Proushth QA",
+    role: "Senior Backend Engineer",
+    message:
+      "Integrating Levein's analytics transformed our workflow, boosting efficiency by 25%.",
+    image: teamSliderSeven,
+  },
+];
+
+const rowOneLoop = [...rowOne, ...rowOne];
+
+const rowTwo = [
+  {
+    name: "Kalpa Chamod",
+    role: "Senior Backend Engineer",
+    message:
+      "Integrating Levein's analytics transformed our workflow, boosting efficiency by 25%.",
+    image: teamSliderFour,
+  },
+  {
+    name: "Pasandi Weerasinghe",
+    role: "Senior Backend Engineer",
+    message:
+      "Integrating Levein's analytics transformed our workflow, boosting efficiency by 25%.",
+    image: teamSliderFive,
+  },
+  {
+    name: "Peruka Gunesekera",
+    role: "Senior Backend Engineer",
+    message:
+      "Integrating Levein's analytics transformed our workflow, boosting efficiency by 25%.",
+    image: teamSliderSix,
+  },
+  {
+    name: "Shalini Wijesinghe",
+    role: "Senior Backend Engineer",
+    message:
+      "Integrating Levein's analytics transformed our workflow, boosting efficiency by 25%.",
+    image: teamSliderEight,
+  },
+];
+
+const rowTwoLoop = [...rowTwo, ...rowTwo];
+
+const services = [
+  "Software Development",
+  "UI/UX Design",
+  "Finance & Accounting",
+  "Web Apps",
+  "HR Consulting",
+  "Webflow Development",
+  "Mobile Development",
+  "AI Engineering",
+  "Quality Engineering",
+];
+
+const stats = [
+  {
+    value: "30+",
+    label: "UK companies hiring now",
+  },
+  {
+    value: "150+",
+    label: "Professionals placed",
+  },
+  {
+    value: "8+",
+    label: "Years placing Sri Lankan talent",
+  },
+];
+
+const lifeImageClass =
+  "w-40 h-46 object-cover rounded-[2rem] transition-all duration-500 ease-out will-change-transform motion-reduce:transition-none motion-reduce:transform-none group-hover:scale-105 group-hover:-translate-y-2 group-hover:brightness-110 group-hover:shadow-[0_24px_60px_rgba(0,0,0,0.18)] hover:scale-105 hover:-translate-y-2 hover:rotate-1 hover:shadow-[0_24px_60px_rgba(0,0,0,0.18)] hover:brightness-110 life-image";
+import "swiper/css";
+import "swiper/css/navigation";
+---
+
+<Layout>
+  <!-- Hero Section -->
+  <section
+    class="relative w-full min-h-screen flex items-end justify-center overflow-hidden bg-dark-theme"
+  >
+    <!-- Content -->
+    <div
+      class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20 text-center text-[#FBFBFB] md:py-20"
+    >
+      <div class="mx-auto max-w-4xl text-center">
+        <h1
+          class="font-primary text-[18px] font-normal leading-tight tracking-tight md:text-6xl"
+        >
+          Where Sri Lankan Talent <br class="hidden md:block" />
+          Meets Global Opportunities
+        </h1>
+
+        <p
+          class="mx-auto mt-5 max-w-md text-[18px] font-normal leading-relaxed text-[#FBFBFB]/85 md:text-base"
+        >
+          Join a community of Sri Lankan professionals working remotely with
+          leading global companies.
+        </p>
+
+        <a
+          href="/careers"
+          class="mt-10 inline-flex items-center gap-2 rounded-[150px] capitalize bg-[#7fcfa8] px-6 py-3 text-[18px] font-semibold text-[#1A1617] transition hover:bg-[#FBFBFB]"
+        >
+          Explore open roles
+          <span class="flex items-center justify-center">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 20 20"
+              fill="none"
+            >
+              <path
+                d="M10.0003 18.3346C14.6027 18.3346 18.3337 14.6037 18.3337 10.0013C18.3337 5.39893 14.6027 1.66797 10.0003 1.66797C5.39795 1.66797 1.66699 5.39893 1.66699 10.0013C1.66699 14.6037 5.39795 18.3346 10.0003 18.3346Z"
+                stroke="#1A1617"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"></path>
+              <path
+                d="M7.08301 10H12.083"
+                stroke="#1A1617"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"></path>
+              <path
+                d="M10.417 12.5L12.917 10L10.417 7.5"
+                stroke="#1A1617"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"></path>
+            </svg>
+          </span>
+        </a>
+      </div>
+    </div>
+    <!-- <div
+      class="absolute top-[-10%] left-[10%] w-[600px] h-[600px] bg-[#22574d] rounded-full blur-[120px] opacity-50 pointer-events-none"
+    >
+    </div> -->
+
+    <!-- Team Cards -->
+    <div
+      class="relative z-10 flex items-end gap-4 w-full justify-center px-0 sm:px-4 lg:px-2 full-bleed-row overflow-hidden"
+    >
+      <!-- Column 1 -->
+      <div
+        class="flex flex-col gap-4 flex-[1_1_0] min-w-[140px] max-w-[210px] translate-y-12 -translate-x-8"
+      >
+        <div class="h-68 rounded-4xl border-2 border-[#34806f] empty-box">
+          <span> </span>
+          <span> </span>
+          <span> </span>
+          <span> </span>
+        </div>
+        <div class="h-68 rounded-4xl overflow-hidden bg-[#419688] image-box">
+          <Image
+            src={Team_Memb_4}
+            alt="Team member"
+            class="w-full h-full object-cover"
+          />
+        </div>
+        <div
+          class="h-20 rounded-4xl border-2 border-[radial-gradient(circle_at_30%_20%,#7fcfa8_0%,#326262_60%)] bg-[radial-gradient(circle_at_30%_20%,#7fcfa8_0%,#326262_60%)] fill-box"
+        >
+        </div>
+      </div>
+
+      <!-- Column 2 -->
+      <div
+        class="flex flex-col gap-4 flex-[1_1_0] min-w-[140px] max-w-[210px] translate-y-22 -translate-x-4"
+      >
+        <div class="h-68 rounded-4xl overflow-hidden bg-[#419688] image-box">
+          <Image
+            src={Team_Memb_1}
+            alt="Team member"
+            class="w-full h-full object-cover"
+          />
+        </div>
+        <div class="h-64 rounded-4xl border-2 border-[#34806f] empty-box">
+          <span> </span>
+          <span> </span>
+          <span> </span>
+          <span> </span>
+        </div>
+      </div>
+
+      <!-- Column 3 -->
+      <div
+        class="flex flex-col gap-4 flex-[1_1_0] min-w-[140px] max-w-[210px] translate-y-20"
+      >
+        <div class="h-68 rounded-4xl overflow-hidden bg-[#419688] image-box">
+          <Image
+            src={Team_Memb_5}
+            alt="Team member"
+            class="w-full h-full object-cover"
+          />
+        </div>
+        <div
+          class="h-32 rounded-4xl border-2 border-[#34806f] bg-[#34806f] fill-box"
+        >
+        </div>
+      </div>
+
+      <!-- Column 4 (Center - Wide) -->
+      <div class="flex flex-col gap-4 flex-[1.6_1_0] w-full translate-y-8 px-4">
+        <div class="h-58 rounded-4xl overflow-hidden bg-[#419688] image-box">
+          <Image
+            src={Team_Memb_3}
+            alt="Team group"
+            class="w-full h-full object-cover object-top"
+          />
+        </div>
+      </div>
+
+      <!-- Column 5 -->
+      <div
+        class="flex flex-col gap-4 flex-[1_1_0] min-w-[140px] max-w-[210px] translate-y-20"
+      >
+        <div class="h-68 rounded-4xl overflow-hidden bg-[#419688] image-box">
+          <Image
+            src={Team_Memb_6}
+            alt="Team member"
+            class="w-full h-full object-cover"
+          />
+        </div>
+        <div
+          class="h-32 rounded-4xl border-2 border-[#34806f] bg-[#34806f] fill-box"
+        >
+        </div>
+      </div>
+
+      <!-- Column 6 -->
+      <div
+        class="flex flex-col gap-4 flex-[1_1_0] min-w-[140px] max-w-[210px] translate-y-22 translate-x-4"
+      >
+        <div class="h-68 rounded-4xl overflow-hidden bg-[#419688] image-box">
+          <Image
+            src={Team_Memb_7}
+            alt="Team member"
+            class="w-full h-full object-cover"
+          />
+        </div>
+        <div class="h-64 rounded-4xl border-2 border-[#34806f] empty-box">
+          <span> </span>
+          <span> </span>
+          <span> </span>
+          <span> </span>
+        </div>
+      </div>
+
+      <!-- Column 7 -->
+      <div
+        class="flex flex-col gap-4 flex-[1_1_0] min-w-[140px] max-w-[210px] translate-y-12 translate-x-8"
+      >
+        <div class="h-68 rounded-4xl border-2 border-[#34806f] empty-box">
+          <span> </span>
+          <span> </span>
+          <span> </span>
+          <span> </span>
+        </div>
+        <div class="h-68 rounded-4xl overflow-hidden bg-[#419688] image-box">
+          <Image
+            src={Team_Memb_2}
+            alt="Team member"
+            class="w-full h-full object-cover"
+          />
+        </div>
+        <div
+          class="h-20 rounded-4xl border-2 border-[#34806f] fill-box empty-box"
+        >
+          <span> </span>
+          <span> </span>
+          <span> </span>
+          <span> </span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="/scripts/life-parallax.js" defer></script>
+
+  <!-- Opportunity Section -->
+  <section class="bg-[#061414] px-6 py-16 text-[#FBFBFB] md:px-10 lg:px-16">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <!-- Heading -->
+      <div class="mb-12">
+        <h2
+          class="font-primary text-[48px] leading-tight tracking-tight md:text-5xl"
+        >
+          Opportunities for everyone
+        </h2>
+
+        <p class="mt-3 max-w-4xl text-[16px] leading-relaxed text-[#FBFBFB]/80">
+          We Don't just find you a job; we place you in a role where your
+          specific skills are valued on a global scale.
+        </p>
+      </div>
+
+      <!-- Opportunity rows -->
+      <div class="space-y-0">
+        {
+          opportunities.map((item) => (
+            <div class="grid gap-5 border-b border-[#FBFBFB]/25 py-8 md:grid-cols-2 md:gap-10">
+              <h3 class="text-[32px] font-medium leading-tight tracking-wide md:text-3xl">
+                {item.title}
+              </h3>
+
+              <p class="max-w-xl text-[16px] leading-relaxed font-normal text-[#FBFBFB]/85">
+                {item.description}
+              </p>
+            </div>
+          ))
+        }
+      </div>
+
+      <!-- Bottom company slider area -->
+      <div class="mt-20 grid items-center gap-10 lg:grid-cols-[450px_1fr]">
+        <!-- Left text -->
+        <div>
+          <p
+            class="max-w-3xl text-[16px] font-medium uppercase leading-relaxed tracking-[0.22em] text-[#FBFBFB]"
+          >
+            Thousands of companies worldwide rely on our services
+          </p>
+        </div>
+
+        <!-- Slider placeholder with corner SVG marks -->
+        <div class="relative px-0 py-6">
+          <!-- Corner SVG placeholders -->
+          <div class="pointer-events-none absolute left-0 top-0 h-4 w-4">
+            <!-- Replace with top-left corner SVG -->
+            <span
+              class="block h-full w-full border-l border-t border-[#FBFBFB]/70"
+            ></span>
+          </div>
+
+          <div class="pointer-events-none absolute right-0 top-0 h-4 w-4">
+            <!-- Replace with top-right corner SVG -->
+            <span
+              class="block h-full w-full border-r border-t border-[#FBFBFB]/70"
+            ></span>
+          </div>
+
+          <div class="pointer-events-none absolute bottom-0 left-0 h-4 w-4">
+            <!-- Replace with bottom-left corner SVG -->
+            <span
+              class="block h-full w-full border-b border-l border-[#FBFBFB]/70"
+            ></span>
+          </div>
+
+          <div class="pointer-events-none absolute bottom-0 right-0 h-4 w-4">
+            <!-- Replace with bottom-right corner SVG -->
+            <span
+              class="block h-full w-full border-b border-r border-[#FBFBFB]/70"
+            ></span>
+          </div>
+
+          <!-- Slider content placeholder -->
+          <div class="overflow-hidden">
+            <div class="swiper swiperLogo">
+              <div class="swiper-wrapper">
+                {
+                  logos.map((logo, i) => (
+                    <div class="swiper-slide flex w-auto! items-center justify-center opacity-100 hover:opacity-100">
+                      <Image
+                        src={logo}
+                        alt={`Partner ${i}`}
+                        class="h-10 w-auto select-none object-contain"
+                      />
+                    </div>
+                  ))
+                }
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script>
+    import Swiper from "swiper";
+    import { Autoplay } from "swiper/modules";
+
+    const swiper = new Swiper(".swiperLogo", {
+      modules: [Autoplay],
+      loop: true,
+      slidesPerView: "auto",
+      spaceBetween: 60,
+      speed: 6000,
+      allowTouchMove: false,
+      freeMode: {
+        enabled: true,
+        momentum: false,
+        sticky: false,
+      },
+      autoplay: {
+        delay: 0,
+        disableOnInteraction: false,
+        pauseOnMouseEnter: false,
+      },
+      breakpoints: {
+        0: { slidesPerView: 2, spaceBetween: 10 },
+        640: { slidesPerView: 4, spaceBetween: 30 },
+        1024: { slidesPerView: 5 },
+      },
+    });
+  </script>
+
+  <!-- Testimonials -->
+  <section
+    class="bg-[#326262] py-16 text-[#FBFBFB] md:py-20 employee-stories-fade"
+  >
+    <div class="w-full">
+      <!-- Top -->
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 w-full">
+        <div class="mb-10 grid gap-6 md:mb-12 md:grid-cols-2 md:items-start">
+          <div>
+            <h2
+              class="font-primary font-normal text-[48px] leading-tight md:text-5xl"
+            >
+              Employee Stories
+            </h2>
+          </div>
+
+          <div class="md:pl-10">
+            <p class="max-w-xl text-[16px] leading-relaxed text-[#FBFBFB]/90">
+              Over 150 Sri Lankan professionals have built careers through
+              Levein. Here is what some of them found on the other side of the
+              application.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cards / story slider area -->
+      <div class="space-y-10">
+        <!-- Row 1 (marquee left) -->
+        <div class="story-marquee story-marquee-left">
+          <div class="story-marquee-track">
+            {
+              rowOneLoop.map((item, index) => (
+                <article
+                  class="story-card flex w-xl shrink-0 items-center gap-3 overflow-hidden rounded-3xl bg-[#F3F1EF] text-[#1A1617]"
+                  aria-hidden={index >= rowOne.length}
+                >
+                  <div class="flex shrink-0 items-end self-end">
+                    <Image
+                      src={item.image}
+                      alt={item.name}
+                      class="h-[110px] w-[90px] object-contain md:h-55 md:w-50"
+                    />
+                  </div>
+
+                  <div class="flex-1">
+                    <p class="mb-4 pr-7 text-[16px] leading-relaxed text-[#1A1617]/85">
+                      {item.message}
+                    </p>
+
+                    <h3 class="text-base font-semibold text-[#326262] md:text-[18px]">
+                      {item.name}
+                    </h3>
+
+                    <p class="mt-1 text-xs text-[#3A3B33]/50 md:text-sm">
+                      {item.role}
+                    </p>
+                  </div>
+                </article>
+              ))
+            }
+          </div>
+        </div>
+
+        <!-- Row 2 (marquee right) -->
+        <div class="story-marquee story-marquee-right md:pl-12">
+          <div class="story-marquee-track">
+            {
+              rowTwoLoop.map((item, index) => (
+                <article
+                  class="story-card flex w-xl shrink-0 items-center gap-5 overflow-hidden rounded-3xl bg-[#F3F1EF] text-[#1A1617]"
+                  aria-hidden={index >= rowTwo.length}
+                >
+                  <div class="flex shrink-0 items-end self-end">
+                    <Image
+                      src={item.image}
+                      alt={item.name}
+                      class="h-[110px] w-[90px] object-contain md:h-55 md:w-50"
+                    />
+                  </div>
+
+                  <div class="flex-1">
+                    <p class="mb-4 pr-7 text-[16px] leading-relaxed text-[#1A1617]/85">
+                      {item.message}
+                    </p>
+
+                    <h3 class="text-base font-semibold text-[#326262] md:text-[18px]">
+                      {item.name}
+                    </h3>
+
+                    <p class="mt-1 text-xs text-[#3A3B33]/50 md:text-sm">
+                      {item.role}
+                    </p>
+                  </div>
+                </article>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Levein Section -->
+
+  <section class="bg-[#e3f0e0] px-6 py-16 text-[#1A1617] md:py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Heading -->
+      <div class="mx-auto max-w-3xl text-center">
+        <h2
+          class="font-primary text-4xl font-normal leading-tight tracking-tight md:text-5xl"
+        >
+          Why Levein
+        </h2>
+
+        <p
+          class="mx-auto mt-4 max-w-3xl text-[16px] leading-relaxed text-[#1A1617]/80 md:text-base"
+        >
+          We take care of your employment contract, equipment, EPF and ETF
+          contributions, and professional development, so you can focus entirely
+          on doing great work for the companies that need it most.
+        </p>
+      </div>
+
+      <!-- Service tags -->
+      <div class="mx-auto mt-8 flex max-w-6xl flex-wrap justify-center gap-3">
+        {
+          services.map((service) => (
+            <span class="rounded-full border text-[16px] border-[#326262]/70 px-4 py-4 text-[#3A3B33]">
+              {service}
+            </span>
+          ))
+        }
+      </div>
+
+      <!-- Stats cards -->
+      <div
+        class="mx-auto mt-17 flex flex-col items-center justify-center gap-5 md:flex-row md:items-end"
+      >
+        {
+          stats.map((stat, index) => (
+            <div
+              class:list={[
+                "flex min-h-[130px] w-full max-w-[250px] flex-col items-center justify-center rounded-3xl bg-[#FBFBFB] px-8 py-7 text-center",
+                index === 1 && "md:-translate-y-10",
+              ]}
+            >
+              <h3 class="text-5xl font-medium leading-none tracking-tight text-[#1A1617]">
+                {stat.value}
+              </h3>
+
+              <p class="mt-5 max-w-3xl text-[18px] leading-snug text-[#326262]">
+                {stat.label}
+              </p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+  <!-- Tech Stack -->
+
+  <section
+    class="overflow-hidden bg-[#061514] px-6 py-16 text-[#FBFBFB] md:py-20"
+  >
+    <div class="container mx-auto">
+      <!-- Content -->
+      <div class="mx-auto max-w-2xl text-center">
+        <h2
+          class="font-primary text-4xl font-normal leading-tight tracking-tight md:text-5xl"
+        >
+          Our Tech Stack
+        </h2>
+
+        <p
+          class="mx-auto mt-5 max-w-3xl text-[16px] leading-relaxed text-[#FBFBFB]/85 md:text-base"
+        >
+          Levein teams work with industry-standard tools used by some of the
+          UK’s most ambitious companies. Whether you are already proficient or
+          building toward it, you will be working in environments that sharpen
+          your skills every day.
+        </p>
+
+        <a
+          href="/careers"
+          class="mt-10 inline-flex items-center gap-2 rounded-[150px] capitalize bg-[#7fcfa8] px-6 py-3 text-[18px] font-semibold text-[#1A1617] transition hover:bg-[#FBFBFB]"
+        >
+          View open roles
+          <span class="flex items-center justify-center">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 20 20"
+              fill="none"
+            >
+              <path
+                d="M10.0003 18.3346C14.6027 18.3346 18.3337 14.6037 18.3337 10.0013C18.3337 5.39893 14.6027 1.66797 10.0003 1.66797C5.39795 1.66797 1.66699 5.39893 1.66699 10.0013C1.66699 14.6037 5.39795 18.3346 10.0003 18.3346Z"
+                stroke="#1A1617"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"></path>
+              <path
+                d="M7.08301 10H12.083"
+                stroke="#1A1617"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"></path>
+              <path
+                d="M10.417 12.5L12.917 10L10.417 7.5"
+                stroke="#1A1617"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"></path>
+            </svg>
+          </span>
+        </a>
+      </div>
+
+      <!-- Single tech stack image -->
+      <div class="mt-10 flex justify-center md:-mt-20">
+        <Image
+          src={techStackImage}
+          alt="Levein technology stack tools and platforms"
+          class="w-full max-w-7xl object-contain"
+          loading="lazy"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- Life @ levein -->
+  <section
+    class="life_at_levein relative w-full bg-[linear-gradient(180deg,#FBFBFB_90.24%,#959595_199.71%)] py-30 overflow-hidden"
+  >
+    <!-- Main Wrapper: Flex row to hold the three sections side-by-side -->
+    <div
+      class="flex flex-nowrap items-stretch justify-center gap-4 md:gap-4 w-full max-w-full mx-auto px-4"
+    >
+      <!-- ================= LEFT WING ================= -->
+      <div class="flex gap-4 md:gap-4 shrink-0">
+        <!-- Column 1 (Far Left) - Hidden on smaller screens -->
+        <div class="hidden xl:flex flex-col gap-4 md:gap-6 -mt-8">
+          <img
+            src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400&h=400&fit=crop"
+            alt="Team event"
+            class={lifeImageClass}
+          />
+          <img
+            src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=400&h=500&fit=crop"
+            alt="Team event"
+            class={lifeImageClass}
+          />
+        </div>
+        <!-- Column 2 (Far Left) - Hidden on smaller screens -->
+        <div class="hidden xl:flex flex-col gap-4 md:gap-6 mt-12">
+          <img
+            src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400&h=400&fit=crop"
+            alt="Team event"
+            class={lifeImageClass}
+          />
+          <img
+            src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=400&h=500&fit=crop"
+            alt="Team event"
+            class={lifeImageClass}
+          />
+        </div>
+
+        <!-- Column 3 - Shifted UP -->
+        <div class="hidden lg:flex flex-col gap-4 md:gap-6 -mt-8">
+          <img
+            src="https://images.unsplash.com/photo-1543269865-cbf427effbad?w=400&h=450&fit=crop"
+            alt="Team event"
+            class={lifeImageClass}
+          />
+          <img
+            src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=400&h=400&fit=crop"
+            alt="Team event"
+            class={lifeImageClass}
+          />
+        </div>
+
+        <!-- Column 4 - Shifted DOWN -->
+        <div class="hidden md:flex flex-col gap-4 md:gap-6 mt-16">
+          <img
+            src="https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=400&h=400&fit=crop"
+            alt="Team event"
+            class={lifeImageClass}
+          />
+          <!-- <img src="https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=400&h=400&fit=crop" alt="Team event" class="w-44 h-52 object-cover rounded-[2rem]" /> -->
+        </div>
+      </div>
+
+      <!-- ================= CENTER BLOCK ================= -->
+      <div
+        class="flex flex-col items-center justify-between shrink-0 max-w-2xl mx-2 md:mx-4 z-10"
+      >
+        <!-- Top Images above the text -->
+        <div class="flex gap-4 md:gap-6 mb-14 w-full justify-center">
+          <img
+            src="https://images.unsplash.com/photo-1522071901873-411886a10004?w=400&h=400&fit=crop"
+            alt="Team event"
+            class={`-mt-6 ${lifeImageClass}`}
+          />
+          <img
+            src="https://images.unsplash.com/photo-1515162816999-a0c47dc192f7?w=400&h=450&fit=crop"
+            alt="Team event"
+            class={`mt-6 ${lifeImageClass}`}
+          />
+          <img
+            src="https://images.unsplash.com/photo-1522071901873-411886a10004?w=400&h=400&fit=crop"
+            alt="Team event"
+            class={`-mt-6 ${lifeImageClass}`}
+          />
+        </div>
+
+        <!-- Main Text Content -->
+        <div class="text-center flex flex-col items-center pb-8">
+          <h2
+            class="text-4xl md:text-5xl lg:text-[56px] font-primary font-normal text-[#1A1617] mb-4 md:mb-6 tracking-tight"
+          >
+            Life At Levein
+          </h2>
+          <p
+            class="text-[#3A3B33] text-base md:text-[16px] mb-8 max-w-xl mx-auto leading-relaxed"
+          >
+            Remote work does not mean working alone. Experience a culture that
+            makes work feel enjoyable.
+          </p>
+
+          <!-- Button -->
+          <button
+            class="bg-[#93D7B0] hover:bg-[#82C89F] text-gray-900 font-medium px-8 py-3.5 rounded-full flex items-center justify-center gap-2 transition-colors duration-300 shadow-sm"
+          >
+            View all events
+            <!-- Arrow Circle Icon -->
+            <svg
+              class="w-5 h-5 ml-1"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.5"
+                d="M13 9l3 3m0 0l-3 3m3-3H8m13 0a9 9 0 11-18 0 9 9 0 0118 0z"
+              ></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- ================= RIGHT WING ================= -->
+      <div class="flex gap-4 md:gap-4 shrink-0">
+        <div class="hidden md:flex flex-col gap-4 md:gap-6 mt-16">
+          <img
+            src="https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=400&h=400&fit=crop"
+            alt="Team event"
+            class={lifeImageClass}
+          />
+        </div>
+
+        <!-- Column 4 - Shifted UP -->
+        <div class="hidden md:flex flex-col gap-4 md:gap-6 -mt-4">
+          <img
+            src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=400&h=500&fit=crop"
+            alt="Team event"
+            class={lifeImageClass}
+          />
+          <img
+            src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=400&h=400&fit=crop"
+            alt="Team event"
+            class={lifeImageClass}
+          />
+        </div>
+
+        <!-- Column 5 - Shifted DOWN -->
+        <div class="hidden lg:flex flex-col gap-4 md:gap-6 mt-10">
+          <img
+            src="https://images.unsplash.com/photo-1491438590914-bc09fcaaf77a?w=400&h=450&fit=crop"
+            alt="Team event"
+            class={lifeImageClass}
+          />
+          <img
+            src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=400&h=550&fit=crop"
+            alt="Team event"
+            class={lifeImageClass}
+          />
+        </div>
+
+        <!-- Column 6 (Far Right) - Hidden on smaller screens -->
+        <div class="hidden xl:flex flex-col gap-4 md:gap-6 -mt-6">
+          <img
+            src="https://images.unsplash.com/photo-1531497865144-0464ef8fb9a9?w=400&h=400&fit=crop"
+            alt="Team event"
+            class={lifeImageClass}
+          />
+          <img
+            src="https://images.unsplash.com/photo-1552581234-26160f608093?w=400&h=450&fit=crop"
+            alt="Team event"
+            class={lifeImageClass}
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Jobs Section -->
+  <CurrentOpenings client:load />
+
+  <!-- FAQs Section -->
+  <FAQs client:load />
+
+  <!-- CTA Section -->
+  <LeveinCTA />
+</Layout>

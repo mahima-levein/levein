@@ -1,0 +1,196 @@
+// Custom variables matching the design
+$bg-main: #0c1816;
+$border-accent: #34806f;
+$card-bg: #419688;
+
+.bg-dark-theme {
+  background-image: url('/Hero-Gradient.webp');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  //  background-image: radial-gradient(circle at 30% 20%, #16362f 0%, $bg-main 60%);
+}
+
+.image-box {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
+  cursor: pointer;
+
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+    
+    img {
+      transform: scale(1.05);
+    }
+  }
+
+  img {
+    transition: transform 0.5s ease;
+  }
+}
+
+.empty-box {
+  position: relative;
+  border-color: $border-accent;
+  background: transparent;
+  overflow: hidden;
+  border-width: 6px;
+}
+
+.empty-box span:nth-child(1) {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 100%;
+	height: 3px;
+	background: linear-gradient(to right, #171618, #326262);
+	animation: animate1 2s linear infinite;
+}
+
+@keyframes animate1 {
+	0% {
+		transform: translateX(-100%);
+	}
+	100% {
+		transform: translateX(100%);
+	}
+}
+
+.empty-box span:nth-child(2) {
+	position: absolute;
+	top: 0;
+	right: 0;
+	height: 100%;
+	width: 3px;
+	background: linear-gradient(to bottom, #171618, #326262);
+	animation: animate2 2s linear infinite;
+	animation-delay: 1s;
+}
+@keyframes animate2 {
+	0% {
+		transform: translateY(-100%);
+	}
+	100% {
+		transform: translateY(100%);
+	}
+}
+
+.empty-box span:nth-child(3) {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	width: 100%;
+	height: 3px;
+	background: linear-gradient(to left, #171618, #326262);
+	animation: animate3 2s linear infinite;
+}
+
+@keyframes animate3 {
+	0% {
+		transform: translateX(100%);
+	}
+	100% {
+		transform: translateX(-100%);
+	}
+}
+
+.empty-box span:nth-child(4) {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 3px;
+	background: linear-gradient(to top, #171618, #326262);
+	animation: animate4 2s linear infinite;
+	animation-delay: 1s;
+}
+
+@keyframes animate4 {
+	0% {
+		transform: translateY(100%);
+	}
+	100% {
+		transform: translateY(-100%);
+	}
+}
+
+.story-marquee {
+	overflow: hidden;
+	width: 100%;
+}
+
+.story-marquee-track {
+	display: flex;
+	width: max-content;
+	gap: 1.5rem;
+	will-change: transform;
+	animation: story-marquee-left 44s linear infinite;
+}
+
+.story-marquee-right .story-marquee-track {
+	animation-name: story-marquee-right;
+}
+
+.story-card {
+	width: min(100vw - 2rem, 44rem);
+	flex: 0 0 auto;
+}
+
+@keyframes story-marquee-left {
+	from {
+		transform: translateX(0);
+	}
+	to {
+		transform: translateX(-50%);
+	}
+}
+
+@keyframes story-marquee-right {
+	from {
+		transform: translateX(-50%);
+	}
+	to {
+		transform: translateX(0);
+	}
+}
+
+@media (max-width: 767px) {
+	.story-card {
+		width: min(88vw, 32rem);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.story-marquee-track {
+		animation: none;
+		transform: none;
+	}
+}
+
+// .empty-box::before {
+//   content: "";
+//   position: absolute;
+//   width: 100%;
+//   height: 100%;
+//   background: conic-gradient(
+//     transparent 60%, 
+//     #419688 80%, 
+//     #E3F0E0 100%
+//   );
+//   animation: rotateGlow 3s linear infinite;
+// }
+// .empty-box::after {
+//   content: "";
+//   position: absolute;
+//   inset: 3px;
+//   background-color: #0a0a0a;
+// ;
+// }
+// @keyframes rotateGlow {
+//   0% {
+//     transform: rotate(0deg);
+//   }
+//   100% {
+//     transform: rotate(360deg);
+//   }
+// }
