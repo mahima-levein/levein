@@ -58,3 +58,57 @@ body{
     background-repeat: no-repeat;
     background-position: top center;
 }
+
+/* Client Stories Marquee Styles */
+.story-marquee {
+	overflow: hidden;
+	width: 100%;
+}
+
+.story-marquee-track {
+	display: flex;
+	width: max-content;
+	gap: 1.5rem;
+	will-change: transform;
+	animation: story-marquee-left 44s linear infinite;
+}
+
+.story-marquee-right .story-marquee-track {
+	animation-name: story-marquee-right;
+}
+
+.story-card {
+	width: min(100vw - 2rem, 44rem);
+	flex: 0 0 auto;
+}
+
+@keyframes story-marquee-left {
+	from {
+		transform: translateX(0);
+	}
+	to {
+		transform: translateX(-50%);
+	}
+}
+
+@keyframes story-marquee-right {
+	from {
+		transform: translateX(-50%);
+	}
+	to {
+		transform: translateX(0);
+	}
+}
+
+@media (max-width: 767px) {
+	.story-card {
+		width: min(88vw, 32rem);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.story-marquee-track {
+		animation: none;
+		transform: none;
+	}
+}

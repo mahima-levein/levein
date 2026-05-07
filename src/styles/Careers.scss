@@ -1,0 +1,14 @@
+@use './mixins/_mixins' as *;
+@use './variables/_colors' as *;
+@use './variables/_typography' as *;
+
+#site-header {
+    color: #000;
+    .site-header__link{
+        color: #000;
+    }
+    .site-header__cta{
+        border-color: #000;
+        color: #000;
+    }
+}

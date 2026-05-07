@@ -1,0 +1,74 @@
+---
+import '@styles/Careers.scss'
+import Layout from "../layouts/Layout.astro";
+import FlexibleApproachSection from "@components/Flexible.tsx";
+import CurrentOpenings from "@components/CurrentOpenings.tsx";
+import Stories from "@components/Stories.astro";
+import FAQs from "@components/Faqs.tsx";
+import LeveinCTA from "@components/CareerCtaSection.astro";
+---
+
+<Layout title="Careers - Levein Group" description="Explore exciting career opportunities at Levein Group. Join our dynamic team and be part of a company that values innovation, growth, and making a positive impact in the tech and healthcare industries. Discover your potential with us!" >
+    <!-- Career Hero Section -->
+    <section class="max-w-7xl mx-auto min-h-screen px-4 sm:px-6 lg:px-8 pt-20 bg-white">
+    <div class="grid grid-cols-1 lg:grid-cols-5 gap-16 lg:gap-12 items-center mt-16">
+
+        <div class="max-w-lg lg:col-span-2">
+        <h2 class="text-5xl md:text-[54px] font-primary font-medium text-levein-black mb-6 tracking-tight">
+            Careers at Levein.
+        </h2>
+        <p class="text-levein-secondary text-base md:text-[16px] mb-8 leading-relaxed pr-4">
+            Join over 150 Sri Lankan professionals who chose a remote-hybrid global career. Find a role that fits you. We will find you.
+        </p>
+        
+        <a href="#roles" class="inline-flex items-center gap-2 bg-[#93D7B0] hover:bg-[#82C89F] text-gray-900 font-medium px-6 py-3 rounded-full transition-colors duration-300">
+            Explore open roles
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 9l3 3m0 0l-3 3m3-3H8m13 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+        </a>
+        </div>
+
+        <div class="flex gap-4 sm:gap-6 w-full lg:col-span-3">
+        
+        <div class="flex flex-col gap-4 sm:gap-6 w-1/2 mt-12 sm:mt-16">
+            <img 
+            src="https://images.unsplash.com/photo-1543269865-cbf427effbad?w=600&h=450&fit=crop" 
+            alt="Team celebration" 
+            class="w-full h-40 sm:h-[220px] lg:h-[240px] object-cover rounded-[1.5rem] sm:rounded-[2rem] shadow-sm" 
+            />
+            <img 
+            src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&h=500&fit=crop" 
+            alt="Team outdoor event" 
+            class="w-full h-48 sm:h-[260px] lg:h-[280px] object-cover rounded-[1.5rem] sm:rounded-[2rem] shadow-sm" 
+            />
+        </div>
+
+        <div class="flex flex-col gap-4 sm:gap-6 w-1/2 mb-12 sm:mb-16">
+            <img 
+            src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=600&h=600&fit=crop" 
+            alt="Team event" 
+            class="w-full h-48 sm:h-[280px] lg:h-[300px] object-cover rounded-[1.5rem] sm:rounded-[2rem] shadow-sm" 
+            />
+            <img 
+            src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=600&h=700&fit=crop" 
+            alt="Team laughing" 
+            class="w-full h-56 sm:h-[320px] lg:h-[360px] object-cover rounded-[1.5rem] sm:rounded-[2rem] shadow-sm" 
+            />
+        </div>
+
+        </div>
+
+    </div>
+    </section>
+    <!-- Flexible Approach Section -->
+    <FlexibleApproachSection client:idle />
+    <!-- Jobs Section -->
+    <CurrentOpenings client:load />
+    <!-- Employee Stories Section -->
+    <Stories />
+    <!-- FAQs Section -->
+    <FAQs client:idle />
+    <!-- CTA Section -->
+    <LeveinCTA />
+</Layout>
