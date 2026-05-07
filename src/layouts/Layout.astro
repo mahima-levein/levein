@@ -2,6 +2,12 @@
 import Header from "@components/Header.astro"
 import Footer from "@components/Footer.astro"
 import "@styles/global.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+const { title = "Levein Group", description = "Levein Group is a UK-based company with a Global Capacity Center in Colombo, Sri Lanka, specializing in supporting startups and hypergrowth firms, particularly in the tech and healthcare industries." } : Props = Astro.props;
 ---
 
 <!doctype html>
@@ -16,7 +22,8 @@ import "@styles/global.css";
 		<link href="https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<title>{title}</title>
+		<meta name="description" content={description} />
 	</head>
 	<body>
 		<Header />

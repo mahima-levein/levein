@@ -1,0 +1,205 @@
+---
+import '@styles/Contact.scss'
+import Layout from "../layouts/Layout.astro";
+import Form from "@components/ContactForm.tsx";
+import MainImg from "@assets/events/event-1.webp";
+---
+<Layout title="Contact Us - Levein Group" description="Get in touch with Levein Group. We're here to answer your questions and provide the information you need about our company and career opportunities. Contact us today!" >
+    <section id="contact" class="relative w-full py-24 px-4 sm:px-6 lg:px-8 overflow-hidden"> 
+      {/* Background Glow Effect */}
+      <div class="mt-25 relative z-10 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-12 items-start">
+        
+        {/* Left Column: Text Content */}
+        <div class="flex flex-col max-w-lg">
+          <h2 class="text-[64px] md:text-6xl font-primary text-levein-white mb-6 tracking-tight">
+            Have a question<br />
+            about working<br />
+            with us?
+          </h2>
+          
+          <p class="text-levein-white text-base md:text-lg mb-12 leading-relaxed pr-8">
+            Whether you're applying, exploring roles, or just curious, we're here to help.
+          </p>
+
+          <hr class="border-t border-[#31423B] mb-6 w-full max-w-md" />
+
+          <p class="text-[16px] text-levein-white">
+            Are you looking for a job?{' '}
+            <a href="#jobs" class="text-levein-white underline underline-offset-4 decoration-gray-400 hover:decoration-white transition-colors">
+              Join our team.
+            </a>
+          </p>
+        </div>
+            <Form client:load />
+      </div>
+    </section>
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 bg-white">
+      
+      {/* ================= TOP SECTION: Contact Rows ================= */}
+      <div class="flex flex-col mb-16">
+        
+        {/* Email Row */}
+        <a 
+          href="mailto:hello@leveingroup.com" 
+          class="group flex flex-col md:flex-row items-start md:items-center justify-between py-8 md:py-10 border-b border-gray-200 transition-colors hover:bg-gray-50 gap-4 cursor-pointer"
+        >
+          <div class="w-full md:w-2/4">
+            <h3 class="text-3xl md:text-[48px] font-medium text-gray-900 tracking-tight">
+              hello@leveingroup.com
+            </h3>
+          </div>
+          <div class="w-full md:w-1/4 flex md:justify-start">
+            <p class="text-[20px] md:text-base text-levein-black">
+              Reach out to us with your questions
+            </p>
+          </div>
+          <div class="w-full md:w-1/4 flex justify-start md:justify-end">
+            <div class="bg-[#93D7B0] text-[#111715] rounded-full p-2.5 transition-transform duration-300 group-hover:scale-110">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+  <path d="M10.0003 18.3346C14.6027 18.3346 18.3337 14.6037 18.3337 10.0013C18.3337 5.39893 14.6027 1.66797 10.0003 1.66797C5.39795 1.66797 1.66699 5.39893 1.66699 10.0013C1.66699 14.6037 5.39795 18.3346 10.0003 18.3346Z" stroke="#1A1617" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M7.08301 10H12.083" stroke="#1A1617" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M10.417 12.5L12.917 10L10.417 7.5" stroke="#1A1617" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+            </div>
+          </div>
+        </a>
+
+        {/* Phone Row */}
+        <a 
+          href="tel:+13122551153" 
+          class="group flex flex-col md:flex-row items-start md:items-center justify-between py-8 md:py-10 border-b border-gray-200 transition-colors hover:bg-gray-50 gap-4 cursor-pointer"
+        >
+          <div class="w-full md:w-2/4">
+            <h3 class="text-3xl md:text-[48px] font-medium text-gray-900 tracking-tight">
+              (312) 255-1153
+            </h3>
+          </div>
+          <div class="w-full md:w-1/4 flex md:justify-start">
+            <p class="text-[20px] md:text-base text-levein-black">
+              Call us anytime
+            </p>
+          </div>
+          <div class="w-full md:w-1/4 flex justify-start md:justify-end">
+            <div class="bg-[#93D7B0] text-[#111715] rounded-full p-2.5 transition-transform duration-300 group-hover:scale-110">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M10.0003 18.3346C14.6027 18.3346 18.3337 14.6037 18.3337 10.0013C18.3337 5.39893 14.6027 1.66797 10.0003 1.66797C5.39795 1.66797 1.66699 5.39893 1.66699 10.0013C1.66699 14.6037 5.39795 18.3346 10.0003 18.3346Z" stroke="#1A1617" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M7.08301 10H12.083" stroke="#1A1617" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M10.417 12.5L12.917 10L10.417 7.5" stroke="#1A1617" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </div>
+        </a>
+
+      </div>
+
+      <div class="bg-[#3B574F] rounded-[48px] p-6 sm:p-10 lg:p-12 flex flex-col lg:flex-row gap-10 lg:gap-16 items-center overflow-hidden">
+        
+        {/* Left Side: Text Content */}
+        <div class="w-full lg:w-1/2 flex flex-col justify-center">
+          <h2 class="text-3xl sm:text-4xl lg:text-[42px] font-medium text-white mb-12 lg:mb-16 leading-15.75">
+            We value every connection.
+            Doing right by you is the only
+            way we know.
+          </h2>
+          
+          <div>
+            <p class="text-[16px] text-[#D2D2D2] mb-1.5 capitalize tracking-wide">
+              Address
+            </p>
+            <a href="https://maps.app.goo.gl/D9wssCLbgbQiaebGA" target="_blank" class="text-[24px                                                                   ] text-white font-light hover:underline transition-colors">
+              1st Floor, 40 Poorwarama Rd, Colombo 00500
+            </a>
+          </div>
+        </div>
+
+        {/* Right Side: Image */}
+        <div class="w-full lg:w-1/2 h-full min-h-75 lg:min-h-100 relative rounded-3xl overflow-hidden">
+          <button
+            type="button"
+            id="open-contact-image"
+            class="group absolute inset-0 block h-full w-full cursor-zoom-in"
+            aria-label="Open full image"
+            aria-haspopup="dialog"
+            aria-controls="contact-image-modal"
+          >
+            <img
+              src={MainImg.src}
+              alt="Levein team gathering"
+              class="absolute inset-0 h-full w-full object-cover"
+            />
+            <span
+              aria-hidden="true"
+              class="pointer-events-none absolute inset-0 -translate-x-[140%] bg-linear-to-r from-transparent via-white/35 to-transparent transition-transform duration-700 ease-out group-hover:translate-x-[140%]"
+            ></span>
+          </button>
+        </div>
+
+      </div>
+
+    </section>
+
+    <div
+      id="contact-image-modal"
+      class="fixed inset-0 z-120 hidden items-center justify-center p-4 sm:p-8"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="contact-image-title"
+    >
+      <button
+        type="button"
+        class="absolute inset-0 h-full w-full cursor-default bg-black/70"
+        aria-label="Close full image"
+        id="contact-image-overlay"
+      ></button>
+
+      <div class="relative z-10 w-full max-w-5xl">
+        <h2 id="contact-image-title" class="sr-only">Levein team gathering image preview</h2>
+        <button
+          type="button"
+          id="close-contact-image"
+          class="absolute right-3 top-3 z-20 rounded-full bg-white/90 px-3 py-1 text-sm font-semibold text-[#1A1617] shadow hover:bg-white"
+          aria-label="Close image preview"
+        >
+          Close
+        </button>
+
+        <img
+          src={MainImg.src}
+          alt="Levein team gathering full preview"
+          class="max-h-[85vh] w-full rounded-2xl object-contain"
+        />
+      </div>
+    </div>
+
+</Layout>
+
+<script is:inline>
+  const openButton = document.getElementById("open-contact-image");
+  const modal = document.getElementById("contact-image-modal");
+  const closeButton = document.getElementById("close-contact-image");
+  const overlay = document.getElementById("contact-image-overlay");
+
+  if (openButton && modal && closeButton && overlay) {
+    const openModal = () => {
+      modal.classList.remove("hidden");
+      modal.classList.add("flex");
+      document.body.style.overflow = "hidden";
+    };
+
+    const closeModal = () => {
+      modal.classList.add("hidden");
+      modal.classList.remove("flex");
+      document.body.style.overflow = "";
+    };
+
+    openButton.addEventListener("click", openModal);
+    closeButton.addEventListener("click", closeModal);
+    overlay.addEventListener("click", closeModal);
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && !modal.classList.contains("hidden")) {
+        closeModal();
+      }
+    });
+  }
+</script>

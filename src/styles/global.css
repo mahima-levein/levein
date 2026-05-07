@@ -9,8 +9,9 @@
     --clr-text-black: #1a1617;
     --clr-text-white: #fbfbfb;
     --clr-accent: #e3f0e0;
-    --clr-dark: #1a1617;
+    --clr-dark: #4c4b4b;
     --clr-white: #ffffff;
+    --clr-text-secondary: #3A3B33;
 }
 
 @layer utilities {
@@ -25,7 +26,8 @@
     .bg-button { background-color: var(--clr-button); }
     .border-button { border-color: var(--clr-button); }
 
-    .text-text-black { color: var(--clr-text-black); }
+    .text-levein-black { color: var(--clr-text-black); }
+    .text-levein-secondary { color: var(--clr-text-secondary); }
     .bg-text-black { background-color: var(--clr-text-black); }
     .border-text-black { border-color: var(--clr-text-black); }
 
@@ -48,4 +50,11 @@
 
 body{
     font-family: var(--font-secondary);
+}
+
+.levein-cta-card{
+    background: url('/Gradient.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top center;
 }
