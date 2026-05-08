@@ -1,0 +1,25 @@
+---
+const { title, description } = Astro.props;
+import SearchBar from "@components/SearchBar";
+const pathname = Astro.url.pathname;
+---
+<section class={`relative w-full bg-[#0d1311] flex flex-col items-center justify-center overflow-hidden pt-45 px-4 sm:px-6} lg:px-8 ${pathname === "/jobs" ? 'pb-16' : 'pb-25'}`}>
+  
+  {/* 2. The Grain/Noise Overlay (The secret sauce for this texture) */}
+  <div 
+    class="absolute inset-0 z-0 opacity-[1] pointer-events-none" 
+    style="background-image: url('/Hero-Levein.jpg'); background-size: cover; background-repeat: no-repeat; background-position: center;"
+  ></div>
+
+  {/* 3. Text Content */}
+  <div class="relative z-10 flex flex-col items-center justify-center text-center max-w-2xl mx-auto">
+    <h2 class="text-4xl lg:text-5xl lg:text-[56px] font-primary text-white mb-2 md:mb-2 tracking-wide leading-21 font-medium">
+        {title}
+    </h2>
+    
+    <p class="text-levein-white text-[16px] md:text-base leading-relaxed max-w-2xl mx-auto font-normal">
+        {description}
+    </p>
+  </div>
+    {pathname === "/jobs" && <SearchBar client:load />}
+</section>

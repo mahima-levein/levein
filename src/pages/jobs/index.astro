@@ -1,0 +1,20 @@
+---
+import '@styles/Jobs.scss'
+import Layout from "@layouts/Layout.astro";
+import Hero from "@components/HeroSection.astro";
+import Jobs from "@components/Jobs.tsx";
+import Opportunities from "@components/Opportunities.astro";
+import Stories from "@components/Stories.astro";
+---
+
+<Layout title="Jobs - Levein Group" description="Discover exciting job opportunities at Levein Group. Join our dynamic team and contribute to innovative projects in the tech and healthcare industries. Explore our current openings and find the perfect role for you!" >
+    <Hero 
+        title="Careers" 
+        description="Find the job you deserve, grow your skills, and enjoy the perfect mix of work and life."
+    />
+    <Jobs client:load />
+    <!-- Opportunities section -->
+    <Opportunities title="Your next chapter starts here" />
+    <!-- Employee Stories Section -->
+    <Stories />
+</Layout>
