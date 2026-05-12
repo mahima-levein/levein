@@ -1,10 +1,10 @@
 ---
-import '@styles/Jobs.scss'
 import Layout from "@layouts/Layout.astro";
 import Hero from "@components/HeroSection.astro";
 import Jobs from "@components/Jobs.tsx";
 import Opportunities from "@components/Opportunities.astro";
 import Stories from "@components/Stories.astro";
+import ApplicationForm from "@components/ApplicationForm.tsx";
 ---
 
 <Layout title="Jobs - Levein Group" description="Discover exciting job opportunities at Levein Group. Join our dynamic team and contribute to innovative projects in the tech and healthcare industries. Explore our current openings and find the perfect role for you!" >
@@ -13,8 +13,21 @@ import Stories from "@components/Stories.astro";
         description="Find the job you deserve, grow your skills, and enjoy the perfect mix of work and life."
     />
     <Jobs client:load />
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 mb-16 font-sans">
+        <div class="flex flex-col justify-center items-center gap-2 mb-12">
+            <h2 class="text-[48px] font-primary font-medium text-levein-black tracking-tight">
+                Stay Connected with Vacancy Alerts
+            </h2>
+            <p class="text-[#3A3B33] text-center md:text-[16px] mb-8 leading-relaxed max-w-3xl">
+                We are always hiring talented professionals. Browse what is open below and if you do not see your exact role listed, email us your cv! </p>
+        </div>
+            <!-- Application Form Section -->
+            <ApplicationForm client:idle />
+    </section>
+
     <!-- Opportunities section -->
     <Opportunities title="Your next chapter starts here" />
     <!-- Employee Stories Section -->
     <Stories />
+
 </Layout>

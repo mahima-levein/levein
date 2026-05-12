@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
+import jobsData from '../data/jobs.json';
+import type { JobData } from '../types/jobs';
 
 // --- Types ---
 interface Job {
@@ -7,8 +9,7 @@ interface Job {
   department: string;
   location: string;
   type: string;
-  // Used just to replicate the specific green highlighted card from your design
-  isFeatured?: boolean; 
+  permalink?: string;
 }
 
 interface SearchTerms {
@@ -17,22 +18,20 @@ interface SearchTerms {
 }
 
 
-const generateDummyJobs = (): Job[] => {
-  const departments = ['FINANCIAL ADVISORY', 'ANALYTICS', 'CUSTOMER SERVICE', 'HUMAN RESOURCES', 'DESIGN', 'INFORMATION TECHNOLOGY', 'TECHNOLOGY', 'MARKETING'];
-  const locations = ['Remote / Hybrid', 'Remote', 'Hybrid', 'Remote / On-site', 'New York, NY', 'San Francisco, CA', 'On-site'];
-  const types = ['Full Time', 'Part Time', 'Contract', 'Full-time', 'Part-time'];
+const allJobs: Job[] = (jobsData as JobData[]).map((job, index) => {
+  const department = job.job_industries?.[0] || job.job_category?.[0] || job.job_level?.[0] || 'General';
+  const location = job.location || 'Remote';
+  const type = job.job_listing_type?.[0] || 'Full Time';
 
-  return Array.from({ length: 36 }).map((_, index) => ({
-    id: `job-${index + 1}`,
-    title: index === 0 ? "Senior Accountant - Maltese VAT & Tax" : `Position Title ${index + 1}`,
-    department: index === 0 ? "FINANCIAL ADVISORY" : departments[Math.floor(Math.random() * departments.length)],
-    location: index === 0 ? "Remote / Hybrid" : locations[Math.floor(Math.random() * locations.length)],
-    type: index === 0 ? "Full Time" : types[Math.floor(Math.random() * types.length)],
-    isFeatured: index === 0,
-  }));
-};
-
-const allJobs = generateDummyJobs();
+  return {
+    id: String(job.id),
+    title: job.title,
+    department,
+    location,
+    type,
+    permalink: job.slug ? `/jobs/${job.slug}` : undefined,
+  };
+});
 
 // --- Icons ---
 const MonitorIcon = () => (
@@ -181,7 +180,7 @@ export default function JobBoard() {
               </div>
             </div>
 
-            <a href="#"
+            <a href={job.permalink}
               className="w-full py-3 rounded-full flex items-center justify-center font-bold text-[18px] transition-colors bg-[#E3F0E0] hover:bg-[#7FCFA8] text-levein-black gap-2 duration-300"
             >
               Apply now

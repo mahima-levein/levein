@@ -1,0 +1,130 @@
+---
+import Layout from "@layouts/Layout.astro";
+import jobs from "../../data/jobs.json";
+import type { JobData } from "../../types/jobs";
+import '@styles/Jobs.scss'
+export async function getStaticPaths() {
+  const posts = jobs as JobData[];
+
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+// Access the slug and post data
+const { slug } = Astro.params;
+const { post }: { post: JobData } = Astro.props;
+
+// If no post is found, return 404
+if (!post) {
+  return new Response(null, {
+    status: 404,
+    statusText: "Not found",
+  });
+}
+
+---
+
+<Layout
+  title={post.title}
+  description="Join Levein Group as an Account Manager for Sales in France. Drive subscription renewals, manage customer relationships, and contribute to our growth in the SaaS industry. Apply now to be part of our dynamic team!"
+>
+  <!-- Section 01: Job hero -->
+  <section class="bg-[#e3f0e0] text-[#1A1617] md:pt-45 md:pb-14">
+      <div class="max-w-7xl mx-auto">
+        <!-- Breadcrumb -->
+        <p class="text-xs text-[#1A1617]/80">Home / Hire / Job Description</p>
+
+        <!-- Title -->
+        <h1
+          class="mt-4 font-primary text-[64px] font-semibold leading-tight tracking-tight md:text-5xl"
+        >
+            {post.title}
+        </h1>
+
+        <!-- Badge -->
+        <div
+          class="mt-5 inline-flex items-center gap-2 rounded-sm bg-[#7FCFA8]/30 px-3 py-1 text-[16px] font-medium text-[#1A1617]"
+        >
+          <span><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+  <path d="M16.5249 7.25114L12.7499 3.47614C11.9582 2.68447 10.8666 2.25947 9.7499 2.31781L5.58323 2.51781C3.91656 2.59281 2.59156 3.91781 2.50823 5.57614L2.30823 9.74281C2.25823 10.8595 2.6749 11.9511 3.46656 12.7428L7.24156 16.5178C8.79156 18.0678 11.3082 18.0678 12.8666 16.5178L16.5249 12.8595C18.0832 11.3178 18.0832 8.80114 16.5249 7.25114ZM7.91656 10.3178C6.59156 10.3178 5.51656 9.24281 5.51656 7.91781C5.51656 6.59281 6.59156 5.51781 7.91656 5.51781C9.24156 5.51781 10.3166 6.59281 10.3166 7.91781C10.3166 9.24281 9.24156 10.3178 7.91656 10.3178Z" fill="#1A1617"/>
+</svg></span>
+          Levein job
+        </div>
+
+        <!-- Job meta -->
+        <div class="mt-8 space-y-2 text-[16px] leading-relaxed text-[#1A1617]">
+          <p>
+            <span class="font-semibold">Location:</span>
+            Remote (Latin America; Central or Eastern Time hours preferred)
+          </p>
+
+          <p>
+            <span class="font-semibold">Reports to:</span>
+            Vice President of Marketing
+          </p>
+
+          <p>
+            <span class="font-semibold">Department:</span>
+            Marketing
+          </p>
+
+          <p>
+            <span class="font-semibold">Status:</span>
+            Full-time
+          </p>
+        </div>
+
+        <!-- CTA -->
+        <a
+          href="/careers/apply"
+          class="mt-8 inline-flex rounded-full bg-[#7fcfa8] px-16 py-3 text-[18px] font-bold text-[#1A1617] transition hover:bg-[#326262] hover:text-[#FBFBFB]"
+        >
+          Apply now
+        </a>
+      </div>
+  </section>
+
+  <!-- Section 02: Job details -->
+  <section class="bg-[#FBFBFB] max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-[#1A1617] md:py-16">
+    <div class="container mx-auto">
+      <div class="max-w-full space-y-8">
+
+        <section id="about-us" class="rounded-2xl bg-[#f4f8f3] p-6 md:p-8">
+          <h3 class="mb-2 text-[24px] font-medium text-levein-black">About Us</h3>
+          <p>At Levein Group, we’re driving digital innovation across UK’s most dynamic sectors – from healthcare and fintech to hospitality and tech startups, all from our vibrant hub in Colombo, Sri Lanka. Join our passionate team of technologists where your creativity and skills can transform multiple industries. We offer more than just a job – we provide an environment where innovation meets purpose, where your growth matters, and where your solutions impact leading UK businesses. Ready to work on diverse, cutting-edge projects?</p>
+        </section>
+        <!-- Responsibilities -->
+        <div class="rounded-2xl bg-[#f4f8f3] p-6 md:p-8">
+          <h2 class="text-[24px] font-medium text-levein-black">
+            Your Key Responsibilities
+          </h2>
+            <div id="description" class="section">
+                <div set:html={post.job_description} />
+            </div>
+        </div>
+
+        <!-- Qualifications -->
+        <div class="rounded-2xl bg-[#f4f8f3] p-6 md:p-8">
+          <h2 class="text-[24px] font-medium text-levein-black">
+            Required Skill and Qualifications
+          </h2>
+
+            <div id="requirements" class="section">
+                <div set:html={post.job_requirements} />
+            </div>
+        </div>
+
+        <!-- Benefits -->
+        <div class="rounded-2xl bg-[#f4f8f3] p-6 md:p-8">
+          <h2 class="text-[24px] font-medium text-levein-black">Benefits</h2>
+
+          <div id="benefits" class="section">
+                <div set:html={post.job_benefits} />
+            </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

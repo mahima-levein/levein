@@ -1,0 +1,46 @@
+.timeline-area .timeline-card {
+  opacity: 0;
+  transform: translateX(40px);
+  animation: timelineCardIn 0.8s ease forwards;
+}
+
+.timeline-area .timeline-card:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.timeline-area .timeline-card:nth-child(2) {
+  animation-delay: 0.25s;
+}
+
+.timeline-area .timeline-card:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+.timeline-area .timeline-card:nth-child(4) {
+  animation-delay: 0.55s;
+}
+
+.timeline-area .card-line{
+  transform: translateX(40px);
+  animation: timelineCardIn 0.8s ease forwards;
+}
+
+@keyframes timelineCardIn {
+  from {
+    opacity: 0;
+    transform: translateX(40px) scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+#founder-levein{
+    background-image: url("/founder.webp");
+    background-size: cover;
+    background-position: top;
+    object-fit: cover;
+    background-repeat: no-repeat;
+}
+

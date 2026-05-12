@@ -1,0 +1,594 @@
+---
+import Layout from "@layouts/Layout.astro";
+import Hero from "@components/HeroSection.astro";
+import "@styles/About.scss";
+import timelineImg_1 from "@assets/timeline-1.jpg";
+import timelineImg_2 from "@assets/timeline-2.jpg";
+import timelineImg_3 from "@assets/timeline-3.png";
+import timelineImg_4 from "@assets/timeline-4.jpg";
+import Nirmani from "@assets/nirmani-full.jpg";
+import { Image } from "astro:assets";
+import "swiper/css";
+import Logo1 from "@assets/logos/Logo-1.png";
+import Logo2 from "@assets/logos/Logo-2.png";
+import Logo3 from "@assets/logos/Logo-3.png";
+import Logo4 from "@assets/logos/Logo-4.png";
+import Logo5 from "@assets/logos/Logo-5.png";
+import Logo6 from "@assets/logos/Logo-6.png";
+import Logo7 from "@assets/logos/Logo-7.png";
+import Logo8 from "@assets/logos/Logo-8.png";
+import Logo9 from "@assets/logos/Logo-9.png";
+
+import Member_1 from "@assets/team/about/member-1.png";
+import Member_2 from "@assets/team/about/member-2.png";
+import Member_3 from "@assets/team/about/member-3.png";
+import Member_4 from "@assets/team/about/member-4.png";
+import Member_5 from "@assets/team/about/member-5.png";
+import Member_6 from "@assets/team/about/member-6.png";
+import Member_7 from "@assets/team/about/member-7.png";
+import Member_8 from "@assets/team/about/member-8.png";
+import Member_9 from "@assets/team/about/member-9.png";
+import Member_10 from "@assets/team/about/member-10.png";
+import Member_11 from "@assets/team/about/member-11.png";
+import Member_12 from "@assets/team/about/member-12.png";
+
+import CareerCtaSection from "@components/CareerCtaSection.astro";
+
+const logos = [Logo1, Logo2, Logo3, Logo4, Logo5, Logo6, Logo7, Logo8, Logo9];
+
+const teamMembers = [
+    {
+      name: "Nirmani De Alwis",
+      position: "CEO",
+      image: Member_1,
+      linkedin: "https://linkedin.com"
+    },
+    {
+      name: "Kasun Perera",
+      position: "CTO",
+      image: Member_2,
+      linkedin: "https://linkedin.com"
+    },
+    {
+      name: "Saman Kumara",
+      position: "Head of Operations",
+      image: Member_3,
+      linkedin: "https://linkedin.com"
+    },
+    {
+      name: "Amila Silva",
+      position: "Lead Designer",
+      image: Member_4,
+      linkedin: "https://linkedin.com"
+    },
+    {
+      name: "Dilshan Fernando",
+      position: "Backend Lead",
+      image: Member_5,
+      linkedin: "https://linkedin.com"
+    },
+    {
+      name: "Natasha Perera",
+      position: "HR Manager",
+      image: Member_6,
+      linkedin: "https://linkedin.com"
+    },
+    {
+      name: "Kavindi Silva",
+      position: "Frontend Dev",
+      image: Member_7,
+      linkedin: "https://linkedin.com"
+    },
+    {
+      name: "Ruwani Fernando",
+      position: "QA Engineer",
+      image: Member_8,
+      linkedin: "https://linkedin.com"
+    },
+    {
+      name: "Hasini Bandara",
+      position: "Marketing Lead",
+      image: Member_9,
+      linkedin: "https://linkedin.com"
+    },
+    {
+      name: "Chamara Rathnayake",
+      position: "Accountant",
+      image: Member_10,
+      linkedin: "https://linkedin.com"
+    },
+    {
+      name: "Nuwan Pradeep",
+      position: "Project Manager",
+      image: Member_11,
+      linkedin: "https://linkedin.com"
+    },
+    {
+      name: "Asela Gunaratne",
+      position: "DevOps Engineer",
+      image: Member_12,
+      linkedin: "https://linkedin.com"
+    }
+  ];
+
+---
+
+<Layout
+  title="About Us - Levein Group"
+  description="Learn more about Levein Group, our mission, values, and the team behind our success. Discover how we are making a positive impact in the tech and healthcare industries and why we're a great place to work."
+>
+  <Hero
+    title="A place to grow and pursue your passions."
+    description="Flexibility is a strategic advantage. Adopting a remote-first mindset boosted productivity and expanded our global talent pool."
+  />
+
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 bg-white">
+    <!-- Bottom company slider area -->
+    <div class="grid items-center gap-10 lg:grid-cols-[450px_1fr]">
+      <!-- Left text -->
+      <div>
+        <p
+          class="max-w-3xl text-[16px] font-medium uppercase leading-relaxed tracking-[0.22em] text-[#061414]"
+        >
+          Thousands of companies worldwide rely on our services
+        </p>
+      </div>
+
+      <!-- Slider placeholder with corner SVG marks -->
+      <div class="relative px-0 py-6">
+        <!-- Corner SVG placeholders -->
+        <div class="pointer-events-none absolute left-0 top-0 h-4 w-4">
+          <!-- Replace with top-left corner SVG -->
+          <span class="block h-full w-full border-l border-t border-[#061414]"
+          ></span>
+        </div>
+
+        <div class="pointer-events-none absolute right-0 top-0 h-4 w-4">
+          <!-- Replace with top-right corner SVG -->
+          <span class="block h-full w-full border-r border-t border-[#061414]"
+          ></span>
+        </div>
+
+        <div class="pointer-events-none absolute bottom-0 left-0 h-4 w-4">
+          <!-- Replace with bottom-left corner SVG -->
+          <span class="block h-full w-full border-b border-l border-[#061414]"
+          ></span>
+        </div>
+
+        <div class="pointer-events-none absolute bottom-0 right-0 h-4 w-4">
+          <!-- Replace with bottom-right corner SVG -->
+          <span class="block h-full w-full border-b border-r border-[#061414]"
+          ></span>
+        </div>
+
+        <!-- Slider content placeholder -->
+        <div class="overflow-hidden">
+          <div class="swiper swiperLogo">
+            <div class="swiper-wrapper">
+              {
+                logos.map((logo, i) => (
+                  <div class="swiper-slide flex w-auto! items-center justify-center opacity-100 hover:opacity-100">
+                    <Image
+                      src={logo}
+                      alt={`Partner ${i}`}
+                      class="h-10 w-auto select-none object-contain"
+                    />
+                  </div>
+                ))
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      import Swiper from "swiper";
+      import { Autoplay } from "swiper/modules";
+
+      const swiper = new Swiper(".swiperLogo", {
+        modules: [Autoplay],
+        loop: true,
+        slidesPerView: "auto",
+        spaceBetween: 60,
+        speed: 6000,
+        allowTouchMove: false,
+        freeMode: {
+          enabled: true,
+          momentum: false,
+          sticky: false,
+        },
+        autoplay: {
+          delay: 0,
+          disableOnInteraction: false,
+          pauseOnMouseEnter: false,
+        },
+        breakpoints: {
+          0: { slidesPerView: 2, spaceBetween: 10 },
+          640: { slidesPerView: 4, spaceBetween: 30 },
+          1024: { slidesPerView: 5 },
+        },
+      });
+    </script>
+  </section>
+  <section
+    class="bg-[#061514] relative w-full py-24 px-4 sm:px-6 lg:px-8 font-sans overflow-hidden"
+  >
+    <div class="mx-auto">
+      <div
+        class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-12 items-start"
+      >
+        <!-- Left Content -->
+        <div class="max-w-full flex flex-col gap-2">
+          <h2
+            class="font-primary text-[48px] font-normal text-white leading-[1.15] tracking-tight md:text-5xl lg:text-6xl"
+          >
+            9 Years of building <br />
+            expertise and growing <br />
+            with our clients.
+          </h2>
+
+          <p
+            class="mt-6 max-w-md text-[16px] leading-relaxed text-[#FBFBFB]/85 md:text-base"
+          >
+            We’ve spent the last nine years scaling businesses and empowering
+            professionals, proving that with the right talent and strategy,
+            global growth has no borders.
+          </p>
+        </div>
+
+        <!-- Right Timeline -->
+        <div class="relative timeline-area z-10">
+          <!-- Center line -->
+          <div
+            class="card-line absolute opacity-0 left-1/2 top-0 h-full w-px -translate-x-1/2 bg-[#F5F4F0] inline-block z-5"
+          >
+          </div>
+
+          <div class="space-y-10 z-10">
+            <!-- Item 01 -->
+            <div
+              class="timeline-card relative z-10 ml-auto flex max-w-xl items-center gap-5 rounded-3xl border p-4 border-[#FBFBFB]/70 bg-[#061514] pr-6 transition duration-500 hover:-translate-y-1 hover:border-[#7fcfa8] hover:shadow-[0_0_35px_rgba(127,207,168,0.18)]"
+            >
+              <div
+                class="h-20 w-36 shrink-0 overflow-hidden rounded-lg bg-[#FBFBFB]/10"
+              >
+                <img
+                  src={timelineImg_1.src}
+                  alt="Levein team in 2014"
+                  class="h-full w-full object-cover"
+                />
+              </div>
+
+              <div>
+                <h3 class="text-[20px] font-medium leading-none text-[#FBFBFB]">
+                  2014
+                </h3>
+
+                <p class="mt-2 text-[16px] leading-relaxed text-[#F5F4F0]">
+                  Founded in the UK, YTJA worked with care homes to develop the
+                  MVP of Care Hiring, enabling affordable overseas support.
+                </p>
+              </div>
+            </div>
+
+            <!-- Item 02 -->
+            <div
+              class="timeline-card relative z-10 ml-auto flex max-w-xl items-center gap-5 rounded-3xl border p-4 border-[#FBFBFB]/70 bg-[#061514] pr-6 transition duration-500 hover:-translate-y-1 hover:border-[#7fcfa8] hover:shadow-[0_0_35px_rgba(127,207,168,0.18)]"
+            >
+              <div
+                class="h-20 w-36 shrink-0 overflow-hidden rounded-lg bg-[#FBFBFB]/10"
+              >
+                <img
+                  src={timelineImg_2.src}
+                  alt="Levein team in 2020"
+                  class="h-full w-full object-cover"
+                />
+              </div>
+
+              <div>
+                <h3 class="text-[20px] font-medium leading-none text-[#FBFBFB]">
+                  2020
+                </h3>
+
+                <p class="mt-2 text-[16px] leading-relaxed text-[#F5F4F0]/85">
+                  Grew operations across multiple roles including HR,
+                  accounting, and virtual assistants.
+                </p>
+              </div>
+            </div>
+
+            <!-- Item 03 -->
+            <div
+              class="timeline-card relative z-10 ml-auto flex max-w-xl items-center gap-5 rounded-3xl border p-4 border-[#FBFBFB]/70 bg-[#061514] pr-6 transition duration-500 hover:-translate-y-1 hover:border-[#7fcfa8] hover:shadow-[0_0_35px_rgba(127,207,168,0.18)]"
+            >
+              <div
+                class="h-20 w-36 shrink-0 overflow-hidden rounded-lg bg-[#FBFBFB]/10"
+              >
+                <img
+                  src={timelineImg_3.src}
+                  alt="Levein workspace in 2022"
+                  class="h-full w-full object-cover"
+                />
+              </div>
+
+              <div>
+                <h3 class="text-[20px] font-medium leading-none text-[#FBFBFB]">
+                  2022
+                </h3>
+
+                <p class="mt-2 text-[16px] leading-relaxed text-[#F5F4F0]/85">
+                  Expanded services to include marketing, account management,
+                  customer support, technology, and more.
+                </p>
+              </div>
+            </div>
+
+            <!-- Item 04 -->
+            <div
+              class="timeline-card relative z-10 ml-auto flex max-w-xl items-center gap-5 rounded-3xl border p-4 border-[#FBFBFB]/70 bg-[#061514] pr-6 transition duration-500 hover:-translate-y-1 hover:border-[#7fcfa8] hover:shadow-[0_0_35px_rgba(127,207,168,0.18)]"
+            >
+              <div
+                class="h-20 w-36 shrink-0 overflow-hidden rounded-lg bg-[#FBFBFB]/10"
+              >
+                <img
+                  src={timelineImg_4.src}
+                  alt="Levein team today"
+                  class="h-full w-full object-cover"
+                />
+              </div>
+
+              <div>
+                <h3 class="text-[20px] font-medium leading-none text-[#FBFBFB]">
+                  Today
+                </h3>
+
+                <p class="mt-2 text-[16px] leading-relaxed text-[#F5F4F0]/85">
+                  Supporting more than 250 professionals globally, helping SMEs,
+                  startups, and large organizations scale sustainably.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section
+    id="founder-levein"
+    class="relative overflow-hidden px-6 py-16 text-[#FBFBFB] md:px-10 lg:px-16"
+  >
+    <!-- Background image placeholder -->
+    <div class="absolute inset-0">
+      <img src="/founder.webp" alt="" class="h-full w-full object-cover" />
+    </div>
+
+    <div class="relative z-10 mx-auto py-40">
+      <div class="grid items-center gap-10 lg:grid-cols-2">
+        <!-- Left column intentionally empty because background image handles founder image -->
+        <div class="hidden lg:block"></div>
+
+        <!-- Right content -->
+        <div class="max-w-md lg:ml-12">
+          <h2
+            class="font-primary text-[48px] font-normal leading-tight tracking-tight md:text-5xl"
+          >
+            Our Late Founder
+          </h2>
+
+          <div
+            class="mt-6 space-y-4 text-[16px] leading-relaxed text-[#FBFBFB]"
+          >
+            <p>
+              With over a decade of experience bridging UK businesses and South
+              Asian talent, he founded Levein Group in 2017 with a simple yet
+              powerful belief, that world-class work should never be limited by
+              geography. His strategic insight and hands-on leadership helped
+              scale Levein from a small development partner into a trusted
+              offshore staffing provider serving leading organizations across
+              social care, healthcare, technology, and finance.
+            </p>
+
+            <p>
+              Passionate about the innovation, culture, and people development,
+              Tharaka led Levein's mission to help Sri Lankan professionals grow
+              their careers globally.
+            </p>
+          </div>
+
+          <div class="mt-7">
+            <h3 class="text-[20px] font-bold text-[#FBFBFB]">
+              Tharaka De Alwis
+            </h3>
+
+            <p class="mt-1 text-[16px] text-[#FBFBFB]">Our Late Founder</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 bg-white font-sans">
+  
+  <div class="text-center max-w-4xl mx-auto mb-16">
+    <h2 class="text-4xl md:text-[48px] font-primary font-normal text-levein-black mb-2 tracking-tight">
+      Group of Companies
+    </h2>
+    <p class="text-levein-secondary text-base md:text-[16px] leading-relaxed">
+      Through our specialized verticals, we build innovative products, connect world-class talent with global firms, and invest back into the communities that power our success.
+    </p>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    
+    <div class="group relative overflow-hidden rounded-3xl p-6 shadow-sm cursor-pointer flex flex-col justify-center">
+      <img 
+        src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&h=600&fit=crop" 
+        alt="Levein Tech background" 
+        class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+      />
+      <div class="absolute inset-0 rounded-3xl border border-[#D2E0E0] bg-[linear-gradient(180deg,rgba(36,36,36,0.75)_0%,#326262_100%)]"></div>
+
+      <div class="relative inset-0 p-0 flex flex-col justify-center z-10 ">
+        <h3 class="text-white text-xl sm:text-2xl font-medium mb-4">Levein Tech</h3>
+
+        <div class="w-full border-t-[1.5px] border-dotted border-[#FBFBFB] mb-4"></div>
+        
+        <p class="text-gray-200 text-[16px] sm:text-base leading-relaxed min-h-[130px]">
+          From developing proprietary SaaS products to delivering high-end AI integration and software services.
+        </p>
+      </div>
+    </div>
+
+    <div class="group relative overflow-hidden rounded-3xl shadow-sm cursor-pointer p-6 flex flex-col justify-center">
+      <img 
+        src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop" 
+        alt="Levein Talent background" 
+        class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+      />
+      <div class="absolute inset-0 rounded-3xl border border-[#D2E0E0] bg-[linear-gradient(180deg,rgba(36,36,36,0.55)_0%,#7FCFA8_100%)]"></div>
+
+      <div class="relative inset-0 p-0 flex flex-col justify-center z-10">
+        <h3 class="text-white text-xl sm:text-2xl font-medium mb-4">Levein Talent</h3>
+        
+        <div class="w-full border-t-[1.5px] border-dotted border-[#FBFBFB] mb-4"></div>
+        
+        <p class="text-gray-200 text-[16px] sm:text-base leading-relaxed min-h-[130px]">
+          Connecting Sri Lanka's premier professionals with the world. Providing global companies with dedicated remote offshored teams.
+        </p>
+      </div>
+    </div>
+
+    <div class="group relative overflow-hidden rounded-3xl shadow-sm cursor-pointer p-6 flex flex-col justify-center">
+      <img 
+        src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=800&h=600&fit=crop" 
+        alt="De Alwis Foundation background" 
+        class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+      />
+      <div class="absolute inset-0 rounded-3xl border border-[#D2E0E0] bg-[linear-gradient(180deg,rgba(36,36,36,0.50)_0%,#326262_100%)]"></div>
+
+      <div class="relative inset-0 p-0 flex flex-col justify-center z-10">
+        <h3 class="text-white text-xl sm:text-2xl font-medium mb-4">De Alwis Foundation</h3>
+        
+        <div class="w-full border-t-[1.5px] border-dotted border-[#FBFBFB] mb-4"></div>
+        
+        <p class="text-gray-200 text-[16px] sm:text-base leading-relaxed min-h-[130px]">
+          Our dedicated philanthropic arm, focused on empowering local communities through education, skill-building initiatives, and sustainable development projects that create lasting social value.
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>
+<section
+    class="px-4 sm:px-6 lg:px-8 py-16 bg-[#E3F0E0]"
+  >
+    <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-6 items-stretch">
+      <div class="nirmani-img">
+        <Image
+          src={Nirmani}
+          alt="Nirmani, Levein's CEO"
+          class="rounded-3xl object-cover w-full h-full shadow-lg"
+        />
+      </div>
+      <div class="flex flex-col justify-center gap-4 text-[16px] border border-[#FFF] rounded-3xl p-10 bg-white">
+        <p>“Sri Lanka has always had world-class talent. What it hasn't always had is access to global opportunity. Levein was built to bridge that gap, connecting Sri Lankan professionals with leading organisations across the world, and giving them the opportunity to build global careers, from within Sri Lanka.</p>
+        <p>We focus on building real careers, not short-term roles, with structured employment, global exposure, and an environment where talent can grow and be recognised at an international standard. Our vision is to enable 1,000 Sri Lankan professionals to build meaningful global careers from home, and to position Sri Lanka as a trusted hub for high-quality talent. The future of work is borderless and Levein is here to make sure Sri Lanka is part of it. </p>
+        <p>As the nature of work evolves, we are also actively integrating AI into how our teams operate, from working alongside AI tools to building AI agents and supporting global companies in embedding AI into their day-to-day operations ”</p>
+        <div>
+          <h3 class="text-[20px] font-semibold text-[#061414]">Nirmani De Alwis</h3>
+          <p class="text-[16px] text-[#437D7D]">CEO, Levein Group</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 bg-white font-sans">
+  
+    <!-- Section Header -->
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <h2 class="text-4xl md:text-[48px] font-primary font-medium text-levein-black mb-2 tracking-tight">
+        Meet the team
+      </h2>
+      <p class="text-levein-secondary text-[16px] md:text-base leading-relaxed">
+        Meet the dedicated team that powers global operations and delivers world-class results for our partners every day.
+      </p>
+    </div>
+
+    <!-- The Grid Container (Empty, will be populated by the JS loop below) -->
+    <div id="team-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 md:gap-5">
+      {teamMembers.slice(0, 6).map((member, index) => (
+      <a href={member.linkedin} target="_blank" rel="noopener noreferrer" class="group relative overflow-hidden rounded-[20px] aspect-[4/5] block cursor-pointer">
+      
+        <div class={` ${index % 2 === 0 ? 'bg-[#326262]' : 'bg-[#36836F]'} p-0 flex flex-col justify-center items-center h-full w-full transition-transform duration-700 group-hover:scale-105`}>
+          <Image 
+            src={member.image} 
+            alt={member.name}
+            class="w-full h-full object-cover transition-transform duration-700 ease-in-out group-hover:scale-110" 
+          />
+        </div>
+
+
+        <div 
+          class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out flex flex-col justify-end p-4 sm:p-5"
+          style="background: linear-gradient(180deg, rgba(29, 99, 99, 0.00) 0%, rgba(29, 99, 99, 0.85) 100%); backdrop-filter: blur(1px);"
+        >
+          
+          <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">
+            
+            <div class="flex items-center gap-2 mb-1">
+              <svg class="w-4 h-4 text-white fill-current shrink-0" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+              </svg>
+              <h3 class="text-white font-medium text-sm sm:text-base leading-tight truncate">
+                {member.name}
+              </h3>
+            </div>
+            
+            <!-- Position Title (Indented slightly to align with name, past the icon) -->
+            <p class="text-white/80 text-xs sm:text-sm pl-6">
+              {member.position}
+            </p>
+            
+          </div>
+        </div>
+    </a>
+      ))}
+      {teamMembers.slice(6, 12).map((member, index) => (
+      <a href={member.linkedin} target="_blank" rel="noopener noreferrer" class="group relative overflow-hidden rounded-[20px] aspect-[4/5] block cursor-pointer">
+      
+        <div class={` ${index % 2 === 0 ? 'bg-[#36836F]' : 'bg-[#326262]'} p-0 flex flex-col justify-center items-center h-full w-full transition-transform duration-700 group-hover:scale-105`}>
+          <Image 
+            src={member.image} 
+            alt={member.name}
+            class="w-full h-full object-cover transition-transform duration-700 ease-in-out group-hover:scale-110" 
+          />
+        </div>
+
+
+        <div 
+          class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out flex flex-col justify-end p-4 sm:p-5"
+          style="background: linear-gradient(180deg, rgba(29, 99, 99, 0.00) 0%, rgba(29, 99, 99, 0.85) 100%); backdrop-filter: blur(1px);"
+        >
+          
+          <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">
+            
+            <div class="flex items-center gap-2 mb-1">
+              <svg class="w-4 h-4 text-white fill-current shrink-0" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+              </svg>
+              <h3 class="text-white font-medium text-sm sm:text-base leading-tight truncate">
+                {member.name}
+              </h3>
+            </div>
+            
+            <!-- Position Title (Indented slightly to align with name, past the icon) -->
+            <p class="text-white/80 text-xs sm:text-sm pl-6">
+              {member.position}
+            </p>
+            
+          </div>
+        </div>
+    </a>
+      ))}
+    </div>
+  </section>
+  <CareerCtaSection />
+</Layout>

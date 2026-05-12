@@ -51,6 +51,9 @@
 body{
     font-family: var(--font-secondary);
 }
+#site-header{
+    top: unset;
+}
 
 .levein-cta-card{
     background: url('/Gradient.svg');
@@ -78,7 +81,7 @@ body{
 }
 
 .story-card {
-	width: min(100vw - 2rem, 44rem);
+	width: min(100vw - 2rem, 34rem);
 	flex: 0 0 auto;
 }
 

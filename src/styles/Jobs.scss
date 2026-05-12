@@ -1,3 +1,63 @@
 @use './mixins/_mixins' as *;
 @use './variables/_colors' as *;
 @use './variables/_typography' as *;
+
+#site-header {
+    background-color: hsl(0, 0%, 100%);
+    color: #000;
+    .site-header__link{
+        color: #000;
+    }
+    .site-header__cta{
+        border-color: #000;
+        color: #000;
+    }
+}
+#description{
+    b{
+        margin-bottom: 10px;
+    }
+}
+
+#benefits, #requirements, #description, #about-us {
+  p,h1,h2,h3,h4,h5,h6,span,b {
+    font-family: $font-secondary;
+  }
+  p,span{
+    font-size: 16px;
+    line-height: 21px;
+    margin-bottom: 1rem;
+  }
+  b{
+    margin-top: 15px;
+    display: block;
+  }
+  ul > li{
+    font-family: $font-secondary;
+    margin-bottom: 0.5rem;
+    font-size: 16px;
+    color: #1f2937;
+    margin-left: 25px;
+    list-style: disc;
+
+    strong{
+        color: #384047;
+    }
+  }
+   u > b{
+    margin-top: 15px;
+    display: block;
+    color: #384047;
+    margin-bottom: 10px;
+    }
+  u > span b{
+    margin-top: 15px;
+    display: block;
+    color: #384047;
+    margin-bottom: 10px;
+    }
+
+    b:empty {
+        display: none;
+    }
+}

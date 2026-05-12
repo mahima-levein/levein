@@ -15,6 +15,8 @@ import G_10 from "@assets/gallery/g10.jpg";
 import G_11 from "@assets/gallery/g11.jpg";
 import G_12 from "@assets/gallery/g12.jpg";
 
+import CareerCtaSection from "@components/CareerCtaSection.astro";
+
 ---
 <Layout title="Life at Levein - Levein Group" description="Discover what it's like to work at Levein Group. Explore our company culture, employee stories, and the vibrant work environment that makes us a great place to build your career. Join us and be part of a team that values innovation, growth, and making a positive impact in the tech and healthcare industries." >
 
@@ -139,8 +141,8 @@ import G_12 from "@assets/gallery/g12.jpg";
   </div>
 </section>
 <Flexible client:idle />
-<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 font-sans">
-  <div class="bg-[#EAF2EB] rounded-[32px] p-8 sm:p-12 flex flex-col items-center">
+<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 font-sans">
+  <div class="bg-[#EAF2EB] rounded-3xl p-8 sm:p-12 flex flex-col items-center">
     
     <div class="w-full flex items-center gap-4 mb-10 pl-2">
       <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 60 60" fill="none">
@@ -214,10 +216,11 @@ import G_12 from "@assets/gallery/g12.jpg";
 
     </div>
 
-    <a href="https://tiktok.com/@leveingroup" target="_blank" rel="noopener noreferrer" class="bg-[#93D7B0] hover:bg-[#82C89F] text-[#111715] font-medium px-8 py-3.5 rounded-full transition-colors duration-300">
+    <a href="https://tiktok.com/@leveingroup" target="_blank" rel="noopener noreferrer" class="bg-[#7FCFA8] hover:bg-[#82C89F] text-[#111715] text-[18px] font-bold px-8 py-4 whitespace-nowrap rounded-full transition-colors duration-300">
       View more videos
     </a>
 
   </div>
 </section>
+<CareerCtaSection />
 </Layout>

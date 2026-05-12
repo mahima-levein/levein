@@ -1,17 +1,18 @@
 ---
 import "@styles/Header.scss";
-
+const pathname = Astro.url.pathname;
 const navItems = [
-  { label: "Home", href: "/", active: true },
-  { label: "About us", href: "/about-us", active: false },
-  { label: "Life @ Levein", href: "/life-at-levein", active: false },
-  { label: "Careers", href: "/careers", active: false },
+  { label: "Home", href: "/", active: pathname === "/" },
+  { label: "Jobs", href: "/jobs", active: pathname.startsWith("/jobs") },
+  { label: "About us", href: "/about-us", active: pathname === "/about-us" },
+  { label: "Life @ Levein", href: "/life-at-levein", active: pathname === "/life-at-levein" },
+  { label: "Careers", href: "/careers", active: pathname === "/careers" },
 ];
 ---
 
 <header
   id="site-header"
-  class="site-header levein-header-bg fixed left-0 top-3 z-100 w-full py-7 transition-[top] duration-300"
+  class="site-header levein-header-bg fixed left-0 z-100 w-full py-7 transition-[top] duration-300"
 >
   <div
     class="site-header__inner grid grid-cols-[1fr_auto_1fr] items-center gap-8 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 w-full max-md:grid-cols-[1fr_auto] max-md:gap-5"
