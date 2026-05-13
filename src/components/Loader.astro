@@ -1,0 +1,20 @@
+<div class="loader"></div>
+<style is:global>
+    .loader {
+    width: fit-content;
+    font-size: 50px;
+    font-family: inherit;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #0000;
+    -webkit-text-stroke: 1px #000;
+    background: conic-gradient(#1A1617 0 0) 50%/0 100% no-repeat text;
+    animation: l4 1.5s linear infinite;
+    }
+    .loader:before {
+    content: "LEVEIN";
+    }
+    @keyframes l4 {
+    to{background-size: 120% 100%}
+    }
+</style>

@@ -5,6 +5,7 @@ import type { JobData } from "../../types/jobs";
 import '@styles/Jobs.scss'
 import FlexibleApproachSection from "@components/Flexible";
 import CurrentOpenings from "@components/CurrentOpenings.tsx";
+import ApplyForm from "@components/ApplicationModal";
 export async function getStaticPaths() {
   const posts = jobs as JobData[];
 
@@ -42,12 +43,13 @@ const jobOpenings = (jobs as JobData[]).filter((job) => job.job_industries[0] ==
         >
             {post.title}
         </p>
-        <a
-          href="/careers/apply"
-          class="mt-0 lg:mt-8 inline-flex rounded-full bg-[#7fcfa8] px-16 py-3 text-md lg:text-[18px] font-bold text-[#1A1617] transition hover:bg-[#326262] hover:text-[#FBFBFB]"
-        >
-          Apply now
-        </a>
+        <ApplyForm
+          client:load
+          jobTitle={post.title}
+          jobId={post.airtable_resume_id}
+          triggerLabel="Apply now"
+          triggerClassName="cursor-pointer mt-0 lg:mt-8 inline-flex rounded-full bg-[#7fcfa8] px-16 py-3 text-md lg:text-[18px] font-bold text-[#1A1617] transition hover:bg-[#326262] hover:text-[#FBFBFB]"
+        />
       </div>
     
   </section>
@@ -99,12 +101,13 @@ const jobOpenings = (jobs as JobData[]).filter((job) => job.job_industries[0] ==
         </div>
 
         <!-- CTA -->
-        <a
-          href="/careers/apply"
-          class="mt-8 inline-flex rounded-full bg-[#7fcfa8] px-16 py-3 text-[18px] font-bold text-[#1A1617] transition hover:bg-[#326262] hover:text-[#FBFBFB]"
-        >
-          Apply now
-        </a>
+        <ApplyForm
+          client:load
+          jobTitle={post.title}
+          triggerLabel="Apply now"
+          triggerClassName="cursor-pointer mt-8 inline-flex rounded-full bg-[#7fcfa8] px-16 py-3 text-[18px] font-bold text-[#1A1617] transition hover:bg-[#326262] hover:text-[#FBFBFB]"
+          jobId={post.airtable_resume_id}
+        />
       </div>
   </section>
 
@@ -154,7 +157,7 @@ const jobOpenings = (jobs as JobData[]).filter((job) => job.job_industries[0] ==
 <!-- Section 04: Current Openings -->
   <CurrentOpenings title="Similar Openings" description="Check out these similar opportunities and apply today!" btnText="Visit Our Job Platform" jobs={jobOpenings} client:visible />
 
-  <script>
+  <script is:inline>
     const handleStickyHeader = () => {
       const stickyHeader = document.getElementById('sticky-header');
       if (!stickyHeader) return;

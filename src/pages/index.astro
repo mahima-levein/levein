@@ -15,6 +15,7 @@ import techStackImage from "@assets/Tech-Stack-Logos.png";
 import CurrentOpenings from "@components/CurrentOpenings.tsx";
 import Stories from "@components/Stories.astro";
 import Opportunities from "@components/Opportunities.astro";
+import Loader from "@components/Loader.astro";
 
 import FAQs from "@components/Faqs.tsx";
 import LeveinCTA from "@components/CareerCtaSection.astro";
@@ -53,6 +54,16 @@ const lifeImageClass =
 ---
 
 <Layout>
+<div
+  id="home-loader"
+  class="fixed inset-0 z-9999 flex items-center justify-center 
+         bg-[#E3F0E0]/75
+         backdrop-blur-md
+         transition-opacity duration-500"
+>
+  <Loader />
+</div>
+
   <!-- Hero Section -->
   <section
     class="relative w-full min-h-screen flex items-end justify-center overflow-hidden bg-dark-theme"
@@ -624,11 +635,35 @@ const lifeImageClass =
   </section>
 
   <!-- Jobs Section -->
-  <CurrentOpenings title="Current Openings" description="We are always hiring talented professionals. Browse what is open below and if you do not see your exact role listed, email us your cv!" btnText="Visit Our Job Platform" jobs={jobOpenings} client:visible />
+  <CurrentOpenings
+    title="Current Openings"
+    description="We are always hiring talented professionals. Browse what is open below and if you do not see your exact role listed, email us your cv!"
+    btnText="Visit Our Job Platform"
+    jobs={jobOpenings}
+    client:visible
+  />
 
   <!-- FAQs Section -->
   <FAQs client:idle />
 
   <!-- CTA Section -->
   <LeveinCTA />
+
+  <script>
+    const hideHomeLoader = () => {
+      const loader = document.getElementById("home-loader");
+
+      if (!loader) return;
+
+      window.setTimeout(() => {
+        loader.classList.add("opacity-0", "pointer-events-none");
+      }, 2000);
+    };
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", hideHomeLoader);
+    } else {
+      hideHomeLoader();
+    }
+  </script>
 </Layout>
