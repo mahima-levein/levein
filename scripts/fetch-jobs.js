@@ -50,11 +50,6 @@ async function fetchAll() {
         title: typeof p.title === "string" ? p.title : (p.title?.rendered ?? ""),
         company: p.company || p.meta?.company || "Levein Group",
         image_url: p.image_url,
-        slug: p.slug,
-        date: p.job_expires ?? "",
-        level: p.job_level ?? p.meta?.job_level ?? "",
-        type: p.job_listing_type ?? p.meta?.job_listing_type ?? "",
-        experience: p.job_experience ?? p.meta?.job_experience ?? "",
       }))
     );
 

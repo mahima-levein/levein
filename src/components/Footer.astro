@@ -13,6 +13,7 @@ const companyLinks = [
 const resourceLinks = [
   { label: "Blogs", href: "/blogs" },
   { label: "Events", href: "/events" },
+  { label: "My Application", href: "/my-application" },
 ];
 
 const legalLinks = [
@@ -23,7 +24,7 @@ const legalLinks = [
 
 <footer class="relative overflow-hidden bg-[#E3F0E0] text-[#1A1617]">
   <!-- Container 01: Footer main content -->
-  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 w-full pt-12 max-md:pt-10">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 w-full pt-14 max-md:pt-10">
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-10 lg:gap-8">
       <!-- Brand -->
       <div class="sm:col-span-2 lg:col-span-2 pr-4">
@@ -41,7 +42,7 @@ const legalLinks = [
         </p>
 
         <div
-          class="mt-5 inline-flex items-center gap-4 rounded-full border border-[#1A1617] px-5 py-2"
+          class="mt-5 inline-flex items-center gap-4 rounded-full border border-[#326262] px-5 py-3"
         >
           <a href="#" aria-label="TikTok" class="footer-social-link">
             <svg
@@ -147,7 +148,7 @@ const legalLinks = [
                 <li>
                   <a
                     href={item.href}
-                    class="text-[16px] leading-none text-primary no-underline transition-colors duration-300 hover:text-[#326262]/80"
+                    class="text-[16px] leading-none text-[#326262] text-primary no-underline transition-colors duration-300 hover:text-[#326262]/80"
                   >
                     {item.label}
                   </a>
@@ -168,7 +169,7 @@ const legalLinks = [
                 <li>
                   <a
                     href={item.href}
-                    class="text-[16px] leading-none text-primary no-underline transition-colors duration-300 hover:text-[#326262]/80"
+                    class="text-[16px] leading-none text-[#326262] text-primary no-underline transition-colors duration-300 hover:text-[#326262]/80"
                   >
                     {item.label}
                   </a>
@@ -189,7 +190,7 @@ const legalLinks = [
                 <li>
                   <a
                     href={item.href}
-                    class="text-[16px] leading-none text-primary no-underline transition-colors duration-300 hover:text-[#326262]/80"
+                    class="text-[16px] leading-none text-primary text-[#326262] no-underline transition-colors duration-300 hover:text-[#326262]/80"
                   >
                     {item.label}
                   </a>
@@ -234,7 +235,7 @@ const legalLinks = [
       class="mt-16 grid grid-cols-[1fr_400px] items-center gap-10 max-md:mt-12 max-md:grid-cols-1"
     >
       <h2
-        class="max-w-full text-[28px] font-normal leading-[1.1] tracking-[-0.5px] text-[#1A1617] max-md:text-[24px]"
+        class="max-w-xl text-[28px] font-medium leading-[1.1] tracking-[-0.5px] text-[#1A1617] max-md:text-[24px]"
       >
         Just send us your contact email and we will contact you.
       </h2>
@@ -246,7 +247,7 @@ const legalLinks = [
           id="footer-email"
           type="email"
           placeholder="Email address"
-          class="h-10 w-full rounded-full border-0 bg-[#FBFBFB] px-4 pr-12 text-[12px] text-[#1A1617] outline-none placeholder:text-[#1A1617]/45 focus:ring-2 focus:ring-[#326262]/30"
+          class="h-10 w-full rounded-full border-0 bg-[#FBFBFB] px-4 pr-12 py-3 text-[16px] text-[#1A1617] outline-none placeholder:text-[#646464] focus:ring-2 focus:ring-[#326262]/30 border-[#000000]/10 transition-colors duration-300 focus:border-[#326262] focus:ring-offset-0 max-md:mb-4"
         />
 
         <button

@@ -1,53 +1,95 @@
 export const prerender = false;
 import type { APIRoute } from "astro";
 
-const API_URL = "https://api.airtable.com/v0/appbMeEb43JwYvPie/Application/";
+const AIRTABLE_BASE = import.meta.env.AIRTABLE_BASE;
+const AIRTABLE_TOKEN = import.meta.env.AIRTABLE_TOKEN;
+
+const buildResult = (data: any) => ({
+  id: data.id,
+  name: data.fields?.candidate_name ?? null,
+  jobTitle: data.fields?.job_title ?? null,
+  applyDate: data.createdTime ?? null,
+  status: data.fields?.["Application Status"] ?? null,
+  candidateId: data.id,
+});
 
 export const POST: APIRoute = async ({ request }) => {
   try {
-    const { id } = (await request.json()) as { id?: string };
-    console.log(id);
+    const body = (await request.json()) as { id?: string };
+    const { id } = body;
+
     if (!id || typeof id !== "string") {
-      return new Response(JSON.stringify({ error: "Missing or invalid id" }), {
-        status: 400,
-      });
+      return new Response(
+        JSON.stringify({
+          error: "Missing or invalid id",
+          received: { id, type: typeof id },
+        }),
+        {
+          status: 400,
+        },
+      );
     }
 
-    const API = import.meta.env.API_TOKEN;
-    if (!API) {
+    if (!AIRTABLE_TOKEN) {
       return new Response(
-        JSON.stringify({ error: "Server misconfiguration: API_TOKEN missing" }),
+        JSON.stringify({
+          error: "Server misconfiguration: AIRTABLE_TOKEN missing",
+        }),
         { status: 500 },
       );
     }
 
-    const upstream = await fetch(`${API_URL}${encodeURIComponent(id)}`, {
-      headers: { Authorization: `Bearer ${API}` },
+    if (!AIRTABLE_BASE) {
+      return new Response(
+        JSON.stringify({
+          error: "Server misconfiguration: AIRTABLE_BASE missing",
+        }),
+        { status: 500 },
+      );
+    }
+    if (id){
+      console.log(`[API] Fetching application status for ID: ${id}`);
+    }
+
+    const recordUrl = `${AIRTABLE_BASE}Applications/${encodeURIComponent(id)}`;
+
+    const response = await fetch(recordUrl, {
+      method: "GET",
+      headers: { Authorization: `Bearer ${AIRTABLE_TOKEN}` },
     });
 
-    if (!upstream.ok) {
-      const detail = await upstream.text();
+    if (!response.ok) {
+      console.error(`[Airtable API Error] Status: ${response.status} ${response.statusText}`);
+      const detail = await response.text();
+      if (response.status === 404) {
+        return new Response(
+          JSON.stringify({ error: "Application not found", detail }),
+          { status: 404 },
+        );
+      }
       return new Response(
         JSON.stringify({ error: "Airtable request failed", detail }),
         { status: 502 },
       );
     }
 
-    const data = await upstream.json();
+    const data = await response.json();
 
+    return new Response(JSON.stringify(buildResult(data)), {
+      status: 200,
+      headers: { "Content-Type": "application/json" },
+    });
+  } catch (err) {
+    const error = err instanceof Error ? err.message : String(err);
+    console.error("[API Error]", error);
     return new Response(
       JSON.stringify({
-        id: data.id,
-        name: data.fields?.candidate_name ?? null,
-        jobTitle: data.fields?.job_title ?? null,
-        applyDate: data.createdTime ?? null,
-        status: data.fields?.["Application Status"] ?? null,
+        error: "Invalid request body",
+        details: error,
       }),
-      { status: 200, headers: { "Content-Type": "application/json" } },
+      {
+        status: 400,
+      },
     );
-  } catch (err) {
-    return new Response(JSON.stringify({ error: "Invalid JSON body" }), {
-      status: 400,
-    });
   }
 };

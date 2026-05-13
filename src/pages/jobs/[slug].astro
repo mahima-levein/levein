@@ -3,6 +3,8 @@ import Layout from "@layouts/Layout.astro";
 import jobs from "../../data/jobs.json";
 import type { JobData } from "../../types/jobs";
 import '@styles/Jobs.scss'
+import FlexibleApproachSection from "@components/Flexible";
+import CurrentOpenings from "@components/CurrentOpenings.tsx";
 export async function getStaticPaths() {
   const posts = jobs as JobData[];
 
@@ -24,21 +26,41 @@ if (!post) {
   });
 }
 
+//find Similar Openings
+const jobOpenings = (jobs as JobData[]).filter((job) => job.job_industries[0] === post.job_industries[0] && job.slug !== post.slug);
+
 ---
 
 <Layout
   title={post.title}
   description="Join Levein Group as an Account Manager for Sales in France. Drive subscription renewals, manage customer relationships, and contribute to our growth in the SaaS industry. Apply now to be part of our dynamic team!"
 >
+  <section id="sticky-header" class="fixed bg-[#e3f0e0] text-[#1A1617] px-4 py-4 lg:py-4 top-18 left-0 right-0 z-10 opacity-0 pointer-events-none transition-opacity duration-300 w-full">
+    <div class="max-w-7xl mx-auto flex flex-col lg:flex-row justify-between items-center gap-6">
+      <p
+          class="mt-0 lg:mt-8 text-center lg:text-left font-primary max-w-5xl text-2xl md:text-4xl font-semibold leading-tight tracking-tight"
+        >
+            {post.title}
+        </p>
+        <a
+          href="/careers/apply"
+          class="mt-0 lg:mt-8 inline-flex rounded-full bg-[#7fcfa8] px-16 py-3 text-md lg:text-[18px] font-bold text-[#1A1617] transition hover:bg-[#326262] hover:text-[#FBFBFB]"
+        >
+          Apply now
+        </a>
+      </div>
+    
+  </section>
+
   <!-- Section 01: Job hero -->
-  <section class="bg-[#e3f0e0] text-[#1A1617] md:pt-45 md:pb-14">
+  <section class="bg-[#e3f0e0] text-[#1A1617] px-4 pt-35 pb-15 md:pt-45 md:pb-14">
       <div class="max-w-7xl mx-auto">
         <!-- Breadcrumb -->
-        <p class="text-xs text-[#1A1617]/80">Home / Hire / Job Description</p>
+        <p class="text-[16px] text-[#061414]">Home / Jobs / {post.title}</p>
 
         <!-- Title -->
         <h1
-          class="mt-4 font-primary text-[64px] font-semibold leading-tight tracking-tight md:text-5xl"
+          class="mt-4 font-primary max-w-5xl text-3xl md:text-[64px] font-semibold leading-tight tracking-tight md:text-5xl"
         >
             {post.title}
         </h1>
@@ -57,22 +79,22 @@ if (!post) {
         <div class="mt-8 space-y-2 text-[16px] leading-relaxed text-[#1A1617]">
           <p>
             <span class="font-semibold">Location:</span>
-            Remote (Latin America; Central or Eastern Time hours preferred)
+            {post.job_category[0]} ({post.location} Sri Lanka ) 
           </p>
 
           <p>
-            <span class="font-semibold">Reports to:</span>
-            Vice President of Marketing
+            <span class="font-semibold">Experience Level:</span>
+            {post.job_experience[0]}
           </p>
 
           <p>
-            <span class="font-semibold">Department:</span>
-            Marketing
+            <span class="font-semibold">Department/ Specialism:</span>
+            {post.job_industries[0]}
           </p>
 
           <p>
-            <span class="font-semibold">Status:</span>
-            Full-time
+            <span class="font-semibold">Contract Type:</span>
+            {post.job_listing_type[0]}
           </p>
         </div>
 
@@ -87,7 +109,7 @@ if (!post) {
   </section>
 
   <!-- Section 02: Job details -->
-  <section class="bg-[#FBFBFB] max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-[#1A1617] md:py-16">
+  <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-[#1A1617] md:py-16">
     <div class="container mx-auto">
       <div class="max-w-full space-y-8">
 
@@ -127,4 +149,34 @@ if (!post) {
       </div>
     </div>
   </section>
+<!-- Section 03: Flexible Approach -->
+  <FlexibleApproachSection client:idle />
+<!-- Section 04: Current Openings -->
+  <CurrentOpenings title="Similar Openings" description="Check out these similar opportunities and apply today!" btnText="Visit Our Job Platform" jobs={jobOpenings} client:visible />
+
+  <script>
+    const handleStickyHeader = () => {
+      const stickyHeader = document.getElementById('sticky-header');
+      if (!stickyHeader) return;
+
+      const toggleVisibility = () => {
+        if (window.scrollY > 400) {
+          stickyHeader.classList.add('opacity-100', 'pointer-events-auto');
+          stickyHeader.classList.remove('opacity-0', 'pointer-events-none');
+        } else {
+          stickyHeader.classList.remove('opacity-100', 'pointer-events-auto');
+          stickyHeader.classList.add('opacity-0', 'pointer-events-none');
+        }
+      };
+
+      window.addEventListener('scroll', toggleVisibility, { passive: true });
+      toggleVisibility(); // Initial check
+    };
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', handleStickyHeader);
+    } else {
+      handleStickyHeader();
+    }
+  </script>
 </Layout>

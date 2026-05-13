@@ -2,6 +2,8 @@
 import Layout from "../layouts/Layout.astro";
 import "@styles/Home.scss";
 import { Image } from "astro:assets";
+import Data from "../data/jobs.json";
+import type { JobData } from "../types/jobs";
 import Team_Memb_1 from "@assets/team/IMG1@2x.jpg";
 import Team_Memb_2 from "@assets/team/IMG2@2x.jpg";
 import Team_Memb_3 from "@assets/team/IMG3@2x.jpg";
@@ -16,6 +18,8 @@ import Opportunities from "@components/Opportunities.astro";
 
 import FAQs from "@components/Faqs.tsx";
 import LeveinCTA from "@components/CareerCtaSection.astro";
+
+const jobOpenings = Data as JobData[];
 
 const services = [
   "Software Development",
@@ -119,7 +123,7 @@ const lifeImageClass =
     >
       <!-- Column 1 -->
       <div
-        class="flex flex-col gap-4 flex-[1_1_0] min-w-[140px] max-w-[210px] translate-y-12 -translate-x-8"
+        class="flex flex-col gap-4 flex-[1_1_0] min-w-35 max-w-52.5 translate-y-12 -translate-x-8"
       >
         <div class="h-68 rounded-4xl border-2 border-[#34806f] empty-box">
           <span> </span>
@@ -142,7 +146,7 @@ const lifeImageClass =
 
       <!-- Column 2 -->
       <div
-        class="flex flex-col gap-4 flex-[1_1_0] min-w-[140px] max-w-[210px] translate-y-22 -translate-x-4"
+        class="flex flex-col gap-4 flex-[1_1_0] min-w-35 max-w-52.5 translate-y-22 -translate-x-4"
       >
         <div class="h-68 rounded-4xl overflow-hidden bg-[#419688] image-box">
           <Image
@@ -161,7 +165,7 @@ const lifeImageClass =
 
       <!-- Column 3 -->
       <div
-        class="flex flex-col gap-4 flex-[1_1_0] min-w-[140px] max-w-[210px] translate-y-20"
+        class="flex flex-col gap-4 flex-[1_1_0] min-w-35 max-w-52.5 translate-y-20"
       >
         <div class="h-68 rounded-4xl overflow-hidden bg-[#419688] image-box">
           <Image
@@ -189,7 +193,7 @@ const lifeImageClass =
 
       <!-- Column 5 -->
       <div
-        class="flex flex-col gap-4 flex-[1_1_0] min-w-[140px] max-w-[210px] translate-y-20"
+        class="flex flex-col gap-4 flex-[1_1_0] min-w-35 max-w-52.5 translate-y-20"
       >
         <div class="h-68 rounded-4xl overflow-hidden bg-[#419688] image-box">
           <Image
@@ -206,7 +210,7 @@ const lifeImageClass =
 
       <!-- Column 6 -->
       <div
-        class="flex flex-col gap-4 flex-[1_1_0] min-w-[140px] max-w-[210px] translate-y-22 translate-x-4"
+        class="flex flex-col gap-4 flex-[1_1_0] min-w-35 max-w-52.5 translate-y-22 translate-x-4"
       >
         <div class="h-68 rounded-4xl overflow-hidden bg-[#419688] image-box">
           <Image
@@ -225,7 +229,7 @@ const lifeImageClass =
 
       <!-- Column 7 -->
       <div
-        class="flex flex-col gap-4 flex-[1_1_0] min-w-[140px] max-w-[210px] translate-y-12 translate-x-8"
+        class="flex flex-col gap-4 flex-[1_1_0] min-w-35 max-w-52.5 translate-y-12 translate-x-8"
       >
         <div class="h-68 rounded-4xl border-2 border-[#34806f] empty-box">
           <span> </span>
@@ -301,7 +305,7 @@ const lifeImageClass =
             return (
               <div
                 class:list={[
-                  "flex min-h-[130px] w-full max-w-63 flex-col items-center justify-center rounded-3xl bg-[#FBFBFB] px-8 py-7 text-center transition-all duration-300 ease-out cursor-pointer hover:scale-110",
+                  "flex min-h-32.5 w-full max-w-63 flex-col items-center justify-center rounded-3xl bg-[#FBFBFB] px-8 py-7 text-center transition-all duration-300 ease-out cursor-pointer hover:scale-110",
                   index === 1 && "md:-translate-y-10",
                 ]}
                 data-stat-count={numericValue}
@@ -620,7 +624,7 @@ const lifeImageClass =
   </section>
 
   <!-- Jobs Section -->
-  <CurrentOpenings client:load />
+  <CurrentOpenings title="Current Openings" description="We are always hiring talented professionals. Browse what is open below and if you do not see your exact role listed, email us your cv!" btnText="Visit Our Job Platform" jobs={jobOpenings} client:visible />
 
   <!-- FAQs Section -->
   <FAQs client:idle />

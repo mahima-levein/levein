@@ -6,6 +6,10 @@ import CurrentOpenings from "@components/CurrentOpenings.tsx";
 import Stories from "@components/Stories.astro";
 import FAQs from "@components/Faqs.tsx";
 import LeveinCTA from "@components/CareerCtaSection.astro";
+import Data from "../data/jobs.json";
+import type { JobData } from "../types/jobs";
+
+const jobOpenings = Data as JobData[];
 ---
 
 <Layout title="Careers - Levein Group" description="Explore exciting career opportunities at Levein Group. Join our dynamic team and be part of a company that values innovation, growth, and making a positive impact in the tech and healthcare industries. Discover your potential with us!" >
@@ -63,8 +67,10 @@ import LeveinCTA from "@components/CareerCtaSection.astro";
     </section>
     <!-- Flexible Approach Section -->
     <FlexibleApproachSection client:idle />
+
     <!-- Jobs Section -->
-    <CurrentOpenings client:load />
+    <CurrentOpenings title="Current Openings" description="We are always hiring talented professionals. Browse what is open below and if you do not see your exact role listed, email us your cv!" btnText="Visit Our Job Platform" jobs={jobOpenings} client:visible />
+
     <!-- Employee Stories Section -->
     <Stories />
     <!-- FAQs Section -->
