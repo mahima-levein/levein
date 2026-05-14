@@ -2,15 +2,7 @@
 import Layout from "@layouts/Layout.astro";
 import "@styles/BlogsSection.scss";
 import BlogData from "../../data/posts.json";
-import IBC from "@assets/logos/real/tur.png";
-import CARE from "@assets/logos/real/care.png";
-import GP from "@assets/logos/real/gp.png";
-import Charc from "@assets/logos/real/charc.png";
-import GLE from "@assets/logos/real/gle.png";
-import Sofi from "@assets/logos/real/sofi.png";
-import Taxin from "@assets/logos/real/taxin.png";
-import Arth from "@assets/logos/real/arth.png";
-
+import CareerCtaSection from "@components/CareerCtaSection.astro";
 export async function getStaticPaths() {
   //   const response = await fetch('../../data/posts.json');
   //   const data = await response.json();
@@ -82,23 +74,13 @@ const linkedInShare = `https://www.linkedin.com/sharing/share-offsite/?url=${e(u
 // Facebook
 const facebookShare = `https://www.facebook.com/sharer/sharer.php?u=${e(url)}`;
 
-const Boxclients = [
-  { name: "iBC", logo: IBC.src, alt: "iBC Logo" },
-  { name: "BLANC", logo: GP.src, alt: "Blanc Logo" },
-  { name: "Carehires", logo: CARE.src, alt: "Carehires Logo" },
-  { name: "Charc", logo: Charc.src, alt: "Charc Logo" },
-  { name: "GLE", logo: GLE.src, alt: "GLE Logo" },
-  { name: "Sofi", logo: Sofi.src, alt: "Sofi Logo" },
-  { name: "Taxin", logo: Taxin.src, alt: "Taxin Logo" },
-  { name: "Arth", logo: Arth.src, alt: "Arth Logo" },
-];
 ---
 
 <Layout
   title={post.title + " - Your Team In Asia"}
   description={cleanText(post.excerpt)}
 >
-  <section class="blog-post-section py-20 px-6 md:px-20">
+  <section class="blog-post-section pt-45 px-6 md:px-20">
     <div
       class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-[4fr_2fr] gap-16"
     >
@@ -122,7 +104,7 @@ const Boxclients = [
               stroke-linecap="round"
               stroke-linejoin="round"></path>
           </svg>
-          <span class="ml-1">{post.title}</span>
+          <span class="ml-1 text-[16px]">{post.title}</span>
         </nav>
 
         <!-- Title -->
@@ -132,7 +114,14 @@ const Boxclients = [
         <p class="font-secondary text-[#0C1715]/70 mb-6 max-w-2xl">
           {cleanText(post.excerpt)}
         </p>
+        <div class="featured-image-wrapper my-10 relative">
+          <img
+            src={post.image}
+            alt={post.title}
+            class="w-full h-auto rounded-lg shadow-md"
+          />
 
+        </div>
         <!-- Blog Content -->
         <div class="leading-relaxed space-y-8 text-[15px]">
           {
@@ -236,25 +225,29 @@ const Boxclients = [
               <!-- Logo -->
               <div class="flex items-center gap-3 mb-6">
                 <div
-                  class="w-10 h-10 rounded-md bg-[#3B3BE3] flex items-center justify-center"
+                  class="flex items-center justify-center"
                 >
+                <a
+                  href="/"
+                  class="block text-lg font-black italic leading-none tracking-[-1.5px] text-[#1A1617] no-underline"
+                >
+                  LEVEIN
+                </a>
                 </div>
               </div>
 
               <!-- Content -->
               <div>
                 <h3
-                  class="font-primary text-[#0C1715] text-lg font-semibold mb-2"
+                  class="text-[#0C1715] text-lg font-semibold mb-2"
                 >
-                  About us | <span class="font-semibold">Your team in Asia</span
+                  About us | <span class="font-semibold">Levein Group</span
                   >
                 </h3>
                 <p
                   class="font-secondary text-[#0C1715]/70 text-sm leading-relaxed mb-6"
                 >
-                  Save up to 70% by offshoring. Hire professionals across Tech,
-                  Accounting, Admin, Customer Support, Finance, and more with
-                  guaranteed savings.
+                  Levein Group is a leading provider of offshore staffing solutions, connecting businesses with top-tier talent across Asia. With a focus on quality, reliability, and cultural alignment, we help companies build high-performing remote teams that drive growth and innovation in the digital age.
                 </p>
               </div>
 
@@ -285,43 +278,6 @@ const Boxclients = [
                   >
                     Global Brands
                   </p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="box-wrapper">
-            <div class="clients-card text-left">
-              <!-- Heading -->
-              <h3
-                class="font-primary text-[#0C1715] text-lg font-semibold mb-3"
-              >
-                Our clients
-              </h3>
-
-              <!-- Description -->
-              <p
-                class="font-secondary text-[#0C1715]/70 text-sm leading-relaxed mb-8"
-              >
-                Commitment to excellence and deep understanding of a wide range
-                of sectors showcased. Clients across the UK, UAE, Tanzania, and
-                more.
-              </p>
-
-              <!-- Logos -->
-
-              <div class="swiper client-logo">
-                <div class="swiper-wrapper">
-                  {
-                    Boxclients.map((client) => (
-                      <div class="swiper-slide">
-                        <img
-                          src={client.logo}
-                          alt={client.alt}
-                          class="w-32 h-16 grayscale hover:grayscale-0 transition-all duration-300"
-                        />
-                      </div>
-                    ))
-                  }
                 </div>
               </div>
             </div>
@@ -381,4 +337,5 @@ const Boxclients = [
 
     sections.forEach((section) => observer.observe(section));
   </script>
+  <CareerCtaSection />
 </Layout>

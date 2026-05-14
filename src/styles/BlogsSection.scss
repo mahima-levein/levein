@@ -1,5 +1,19 @@
 @use './mixins/_mixins' as *;
-$ink:   #111827;   
+@use './variables/_colors' as *;
+@use './variables/_typography' as *;
+$ink:   #111827;
+
+#site-header {
+    color: #000;
+    .site-header__link{
+        color: #000;
+    }
+    .site-header__cta{
+        border-color: #000;
+        color: #000;
+    }
+}
+
 .blogs-section {
   background-image: url("/Hero-Gradient.webp");
   background-size: contain;
@@ -10,7 +24,7 @@ $ink:   #111827;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     .blog-card-title{
         color: #0F204B;
-        font-family: "Inter Tight";
+        font-family: $font-secondary;
         font-size: 20px;
         font-style: normal;
         font-weight: 500;
@@ -18,14 +32,14 @@ $ink:   #111827;
     }
     .blog-card-desc{
         color: #0F204B;
-        font-family: "Inter Tight";
+        font-family: $font-secondary;
         font-size: 16px;
         font-style: normal;
         font-weight: 500;
         line-height: 21px; /* 131.25% */
         span{
             color: #0F204B;
-            font-family: "Inter Tight";
+            font-family: $font-secondary;
             font-size: 16px;
             font-style: normal;
             font-weight: 400;
@@ -41,17 +55,8 @@ $ink:   #111827;
 
 .latest-posts-section {
   background-color: #ffffff;
-
-  .font-nohemi {
-    font-family: "Nohemi", sans-serif;
-  }
-
-  .font-intertight {
-    font-family: "Inter Tight", sans-serif;
-  }
-
   .category-btn {
-    font-family: "Inter Tight", sans-serif;
+    font-family: $font-secondary;
     border-radius: 8px;
     border: 1px solid #C5D0FF;
     background: #FBFBFB;
@@ -81,14 +86,14 @@ $ink:   #111827;
 }
   .blog-stats{
     color: #0F204B !important;
-    font-family: "Inter Tight";
+    font-family: $font-secondary;
     font-size: 16px;
     font-style: normal;
     font-weight: 500;
     line-height: 21px; /* 131.25% */
     .date{
       color: #0F204B;
-      font-family: "Inter Tight";
+      font-family: $font-secondary;
       font-size: 16px;
       font-style: normal;
       font-weight: 400;
@@ -96,7 +101,7 @@ $ink:   #111827;
     }
     .read-time{
       color: #464646;
-      font-family: "Inter Tight";
+      font-family: $font-secondary;
       font-size: 16px;
       font-style: normal;
       font-weight: 400;
@@ -127,7 +132,7 @@ $ink:   #111827;
         }
 
         .font-nohemi {
-          font-family: "Nohemi", sans-serif;
+          font-family: $font-secondary;
         }
 
         svg {
@@ -142,7 +147,7 @@ $ink:   #111827;
         }
 
         .font-nohemi {
-          font-family: "Nohemi", sans-serif;
+          font-family: $font-primary;
         }
         .client-logo{
           width: 300px;
@@ -231,7 +236,6 @@ $ink:   #111827;
 /* Blog Single SCSS */
 
 .blog-post-section {
-  background: #EEF1FF;
   .wp-block-list{
     list-style-type: disc;
     padding-left: 20px;
@@ -298,15 +302,14 @@ $ink:   #111827;
   }
 
   .breadcumb{
-    color: #334155;
-    font-family: "Inter Tight";
+    color: #326262;
     font-size: 14px;
     font-style: normal;
     font-weight: 400;
     line-height: 19px; /* 135.714% */
     span{
         color: #0F204B;
-        font-family: "Inter Tight";
+        font-family: $font-secondary;
         font-size: 14px;
         font-style: normal;
         font-weight: 500;
@@ -315,14 +318,6 @@ $ink:   #111827;
     svg{
         margin: 0 8px;
     }
-  }
-
-  .font-nohemi {
-    font-family: "Nohemi", sans-serif;
-  }
-
-  .font-intertight {
-    font-family: "Inter Tight", sans-serif;
   }
 
   article p {
@@ -337,7 +332,7 @@ $ink:   #111827;
   }
   h1{
     color: #0F204B;
-    font-family: "Inter Tight";
+    font-family: $font-primary;
     font-size: 32px;
     font-style: normal;
     font-weight: 500;
@@ -346,7 +341,7 @@ $ink:   #111827;
 
   h2 {
     color: #0F204B;
-    font-family: "Inter Tight";
+    font-family: $font-secondary;
     font-size: 20px;
     font-style: normal;
     font-weight: 500;
@@ -355,7 +350,7 @@ $ink:   #111827;
   }
   h3{
     color: #0F204B;
-    font-family: "Inter Tight";
+    font-family: $font-secondary;
     font-size: 16px;
     font-style: normal;
     font-weight: 500;
@@ -363,7 +358,7 @@ $ink:   #111827;
   }
   h4{
     color: #0F204B;
-    font-family: "Inter Tight";
+    font-family: $font-secondary;
     font-size: 14px;
     font-style: normal;
     font-weight: 500;
@@ -372,7 +367,7 @@ $ink:   #111827;
   }
   h6{
     color: #0F204B;
-    font-family: "Inter Tight";
+    font-family: $font-secondary;
     font-size: 12px;
     font-style: normal;
     font-weight: 500;
@@ -380,13 +375,13 @@ $ink:   #111827;
      margin-bottom: 5px;
   }
   .side-bar-title{
-    font-family: "Inter Tight";
+    font-family: $font-secondary;
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
     line-height: 21px; /* 131.25% */
     .active{
-        color: #5271FF;
+        color: #326262;
     }
   }
 
@@ -419,7 +414,7 @@ $ink:   #111827;
 
 .watch-link {
   color: #0F204B;
-  font-family: "Inter Tight";
+  font-family: $font-secondary;
   font-size: 16px;
   font-style: normal;
   font-weight: 500;
