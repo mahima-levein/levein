@@ -29,6 +29,56 @@ $card-bg: #419688;
   }
 }
 
+
+.hero-card-type-1 {
+  opacity: 0;
+  transform: translateY(30px) scale(0.92) rotate(var(--rotation, 0deg));
+  will-change: transform, opacity;
+  animation: cardReveal 1200ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: 250ms;
+}
+
+.hero-card-type-middle {
+  opacity: 0;
+  transform: translateY(30px) scale(0.92) rotate(var(--rotation, 0deg));
+  will-change: transform, opacity;
+  animation: cardReveal 1200ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: 100ms;
+}
+
+.hero-card-type-edge {
+  opacity: 0;
+  transform: translateY(30px) scale(0.92) rotate(var(--rotation, 0deg));
+  will-change: transform, opacity;
+  animation: cardReveal 1200ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: 550ms;
+}
+
+.hero-card-type-outer {
+  opacity: 0;
+  transform: translateY(30px) scale(0.92) rotate(var(--rotation, 0deg));
+  will-change: transform, opacity;
+  animation: cardReveal 1200ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: 400ms;
+}
+
+@keyframes cardReveal {
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1) rotate(0deg);
+  }
+}
+
+.hero-card-inner {
+  animation: float 6s ease-in-out infinite;
+  animation-delay: calc(var(--delay) + 1s);
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
 .empty-box {
   position: relative;
   border-color: $border-accent;

@@ -4,18 +4,17 @@ import "@styles/Home.scss";
 import { Image } from "astro:assets";
 import Data from "../data/jobs.json";
 import type { JobData } from "../types/jobs";
-import Team_Memb_1 from "@assets/team/IMG1@2x.jpg";
-import Team_Memb_2 from "@assets/team/IMG2@2x.jpg";
-import Team_Memb_3 from "@assets/team/IMG3@2x.jpg";
-import Team_Memb_4 from "@assets/team/IMG4@2x.jpg";
-import Team_Memb_5 from "@assets/team/IMG5@2x.jpg";
-import Team_Memb_6 from "@assets/team/IMG6@2x.jpg";
-import Team_Memb_7 from "@assets/team/IMG3@2x-1.jpg";
+import Team_Memb_1 from "@assets/team/IMG1@2x.webp";
+import Team_Memb_2 from "@assets/team/IMG2@2x.webp";
+import Team_Memb_3 from "@assets/team/IMG3@2x.webp";
+import Team_Memb_4 from "@assets/team/IMG4@2x.webp";
+import Team_Memb_5 from "@assets/team/IMG5@2x.webp";
+import Team_Memb_6 from "@assets/team/IMG6@2x.webp";
+import Team_Memb_7 from "@assets/team/IMG3@2x-1.webp";
 import techStackImage from "@assets/Tech-Stack-Logos.png";
 import CurrentOpenings from "@components/CurrentOpenings.tsx";
 import Stories from "@components/Stories.astro";
 import Opportunities from "@components/Opportunities.astro";
-import Loader from "@components/Loader.astro";
 
 import FAQs from "@components/Faqs.tsx";
 import LeveinCTA from "@components/CareerCtaSection.astro";
@@ -54,15 +53,6 @@ const lifeImageClass =
 ---
 
 <Layout>
-<div
-  id="home-loader"
-  class="fixed inset-0 z-9999 flex items-center justify-center 
-         bg-[#E3F0E0]/75
-         backdrop-blur-md
-         transition-opacity duration-500"
->
-  <Loader />
-</div>
 
   <!-- Hero Section -->
   <section
@@ -142,7 +132,7 @@ const lifeImageClass =
           <span> </span>
           <span> </span>
         </div>
-        <div class="h-68 rounded-4xl overflow-hidden bg-[#419688] image-box">
+        <div class="hero-card-type-edge h-68 rounded-4xl overflow-hidden bg-[#419688] image-box">
           <Image
             src={Team_Memb_4}
             alt="Team member"
@@ -159,7 +149,7 @@ const lifeImageClass =
       <div
         class="flex flex-col gap-4 flex-[1_1_0] min-w-35 max-w-52.5 translate-y-22 -translate-x-4"
       >
-        <div class="h-68 rounded-4xl overflow-hidden bg-[#419688] image-box">
+        <div class="hero-card-type-outer h-68 rounded-4xl overflow-hidden bg-[#419688] image-box">
           <Image
             src={Team_Memb_1}
             alt="Team member"
@@ -178,7 +168,7 @@ const lifeImageClass =
       <div
         class="flex flex-col gap-4 flex-[1_1_0] min-w-35 max-w-52.5 translate-y-20"
       >
-        <div class="h-68 rounded-4xl overflow-hidden bg-[#419688] image-box">
+        <div class="hero-card-type-1 h-68 rounded-4xl overflow-hidden bg-[#419688] image-box">
           <Image
             src={Team_Memb_5}
             alt="Team member"
@@ -193,7 +183,7 @@ const lifeImageClass =
 
       <!-- Column 4 (Center - Wide) -->
       <div class="flex flex-col gap-4 flex-[1.6_1_0] w-full translate-y-8 px-4">
-        <div class="h-58 rounded-4xl overflow-hidden bg-[#419688] image-box">
+        <div class="hero-card-type-middle h-58 rounded-4xl overflow-hidden bg-[#419688] image-box">
           <Image
             src={Team_Memb_3}
             alt="Team group"
@@ -206,7 +196,7 @@ const lifeImageClass =
       <div
         class="flex flex-col gap-4 flex-[1_1_0] min-w-35 max-w-52.5 translate-y-20"
       >
-        <div class="h-68 rounded-4xl overflow-hidden bg-[#419688] image-box">
+        <div class="hero-card-type-1 h-68 rounded-4xl overflow-hidden bg-[#419688] image-box">
           <Image
             src={Team_Memb_6}
             alt="Team member"
@@ -223,7 +213,7 @@ const lifeImageClass =
       <div
         class="flex flex-col gap-4 flex-[1_1_0] min-w-35 max-w-52.5 translate-y-22 translate-x-4"
       >
-        <div class="h-68 rounded-4xl overflow-hidden bg-[#419688] image-box">
+        <div class="hero-card-type-outer h-68 rounded-4xl overflow-hidden bg-[#419688] image-box">
           <Image
             src={Team_Memb_7}
             alt="Team member"
@@ -248,7 +238,7 @@ const lifeImageClass =
           <span> </span>
           <span> </span>
         </div>
-        <div class="h-68 rounded-4xl overflow-hidden bg-[#419688] image-box">
+        <div class="hero-card-type-edge h-68 rounded-4xl overflow-hidden bg-[#419688] image-box">
           <Image
             src={Team_Memb_2}
             alt="Team member"
@@ -648,22 +638,4 @@ const lifeImageClass =
 
   <!-- CTA Section -->
   <LeveinCTA />
-
-  <script>
-    const hideHomeLoader = () => {
-      const loader = document.getElementById("home-loader");
-
-      if (!loader) return;
-
-      window.setTimeout(() => {
-        loader.classList.add("opacity-0", "pointer-events-none");
-      }, 2000);
-    };
-
-    if (document.readyState === "loading") {
-      document.addEventListener("DOMContentLoaded", hideHomeLoader);
-    } else {
-      hideHomeLoader();
-    }
-  </script>
 </Layout>

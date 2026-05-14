@@ -94,6 +94,15 @@ export default function ApplicationForm() {
           </div>
 
         </div>
+          <div className="flex flex-col gap-2">
+            <label className="text-[16px] font-medium text-gray-800">Enter URL (Drive Link or Portfolio Website)</label>
+            <input 
+              type="url" 
+              id="cv-url"
+              placeholder="Enter your CV/Portfolio URL" 
+              className="w-full px-4 py-3 rounded-lg border border-transparent focus:border-[#93D7B0] focus:ring-1 focus:ring-[#93D7B0] bg-levein-white outline-none text-gray-700 text-sm placeholder-gray-400"
+            />
+          </div>
         {/* <div className="flex flex-col gap-2 mt-2">
           <label className="text-[16px] font-medium text-gray-800">Upload your CV</label>
           <div className="w-full border border-dashed border-[#85A99C] rounded-xl bg-white/50 py-10 flex flex-col items-center justify-center cursor-pointer hover:bg-white/80 transition-colors">
@@ -116,7 +125,7 @@ export default function ApplicationForm() {
             id="consent" 
             className="mt-1 w-4 h-4 rounded border-gray-300 text-[#3B574F] focus:ring-[#93D7B0] cursor-pointer"
           />
-          <label htmlFor="consent" className="text-[16px] text-gray-600 cursor-pointer select-none">
+          <label htmlFor="consent" className="text-[14px] text-gray-600 cursor-pointer select-none">
             Yes, I give Levein permission to use my personal data for recruitment purposes only.
           </label>
         </div>
@@ -130,12 +139,12 @@ export default function ApplicationForm() {
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
               <path d="M10.517 17.3404C10.2337 17.4404 9.76699 17.4404 9.48366 17.3404C7.06699 16.5154 1.66699 13.0737 1.66699 7.24036C1.66699 4.66536 3.74199 2.58203 6.30033 2.58203C7.81699 2.58203 9.15866 3.31536 10.0003 4.4487C10.842 3.31536 12.192 2.58203 13.7003 2.58203C16.2587 2.58203 18.3337 4.66536 18.3337 7.24036C18.3337 13.0737 12.9337 16.5154 10.517 17.3404Z" stroke="#1A1617" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
-            <span className="text-sm font-medium">Help us match your profile by telling us a bit more about yourself.</span>
+            <span className="text-[16px] font-medium">Help us match your profile by telling us a bit more about yourself.</span>
           </div>
 
           <button 
             type="submit" 
-            className="w-full sm:w-auto bg-[#93D7B0] hover:bg-[#82C89F] text-[#111715] font-medium px-8 py-3 rounded-full flex items-center justify-center gap-2 transition-colors duration-300 text-sm"
+            className="w-full sm:w-auto bg-[#93D7B0] hover:bg-[#82C89F] text-[#111715] font-semibold px-8 py-3 rounded-full flex items-center justify-center gap-2 transition-colors duration-300 text-[16px]"
           >
             Submit
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

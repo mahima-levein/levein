@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import jobsData from '../data/jobs.json';
 import type { JobData } from '../types/jobs';
+import No_result from '@assets/no-result.svg'
 
 // --- Types ---
 interface Job {
@@ -160,11 +161,11 @@ export default function JobBoard() {
         {displayedJobs.map((job) => (
           <div 
             key={job.id} 
-            className="p-4 rounded-3xl border border-gray-300 transition-colors duration-300 flex flex-col justify-between bg-[#FBFBFB] "
+            className="p-4 rounded-3xl border border-gray-300 transition-colors duration-300 flex flex-col justify-between bg-[#FBFBFB] group hover:bg-[#E3F0E0] cursor-pointer"
           >
             <div>
               <h3 className="text-[#061414] font-medium text-[16px] mb-2">{job.title}</h3>
-              <p className="text-xs text-primary uppercase tracking-wider mb-6 font-medium">
+              <p className="text-[12px] text-primary uppercase tracking-wider mb-6 font-medium">
                 {job.department}
               </p>
 
@@ -181,7 +182,7 @@ export default function JobBoard() {
             </div>
 
             <a href={job.permalink}
-              className="w-full py-3 rounded-full flex items-center justify-center font-bold text-[18px] transition-colors bg-[#E3F0E0] hover:bg-[#7FCFA8] text-levein-black gap-2 duration-300"
+              className="w-full py-3 rounded-full flex items-center justify-center font-bold text-[18px] transition-colors bg-[#E3F0E0] group-hover:bg-[#7FCFA8] text-levein-black gap-2 duration-300"
             >
               Apply now
               <ArrowCircleIcon />
@@ -190,13 +191,8 @@ export default function JobBoard() {
         ))}
       </div>
 
-      {displayedJobs.length === 0 && !isAnimating && (
-        <p className="mt-8 text-center text-[16px] text-[#696969]">
-          No jobs found for your current search.
-        </p>
-      )}
-
       {/* --- Pagination Controls --- */}
+      {totalOpenings > 0 && (
       <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-6 text-sm">
         
         <div className="flex items-center gap-2">
@@ -246,6 +242,17 @@ export default function JobBoard() {
           Showing {displayedJobs.length} of {totalOpenings} openings
         </span>
       </div>
+      )}
+
+      {/* --- No Jobs Found --- */}
+      {totalOpenings === 0 && !isAnimating && (
+      <div className="w-2xl mx-auto flex flex-col items-center text-center mt-12 py-6 border border-dashed border-[#E3F0E0] rounded-3xl">
+        <img src={No_result.src} alt="No results found" className="w-20 h-auto object-cover" />
+        <p className="text-[#696969] my-3 text-[18px] sm:text-base">
+          No jobs match your current criteria.
+        </p>
+      </div>
+      )}
 
       {/* --- Footer CTA --- */}
       <div className="mt-6 border-t border-gray-200 flex flex-col items-center text-center">
