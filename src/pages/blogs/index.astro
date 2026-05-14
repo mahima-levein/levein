@@ -1,0 +1,142 @@
+---
+import Layout from "@layouts/Layout.astro";
+import "@styles/BlogsSection.scss";
+import CareerCtaSection from "@components/CareerCtaSection.astro";
+import PostData from "../../data/posts.json";
+import Hero from "@components/HeroSection.astro";
+export interface BlogPost {
+  id: number;
+  slug: string;
+  title: string;
+  link: string;
+  is_featured: boolean;
+  excerpt: string;
+  content: string;
+  date: string;
+  author: string;
+  site: string;
+  category: string;
+  readTime: string;
+  image: string;
+}
+
+const blogs = PostData.map((post: any) => ({
+  id: post.id,
+  slug: post.slug,
+  title: post.title,
+  link: post.link,
+  is_featured: post.is_featured,
+  excerpt: post.excerpt,
+  content: post.content,
+  author: post.author,
+  date: post.date,
+  site: post.site,
+  category: post.cat_name,
+  readTime: post.readTime,
+  image: post.image
+}));
+
+const featuredBlogs = blogs.filter((blog) => blog.is_featured).slice(0, 2);
+
+
+const categories = [
+  "All",
+  "Community",
+  "Company"
+];
+let activeCategory = "All";
+---
+
+<Layout
+  title="Levein Group Blogs"
+  description="Explore the Levein Group blog for expert insights on offshore teams, remote work, and business growth in Asia. Stay updated with industry trends, best practices, and success stories to help your business thrive in the digital age."
+>
+  <Hero
+    title="Levein Group Blogs"
+    description="Explore the Levein Group blog for expert insights on offshore teams, remote work, and business growth in Asia. Stay updated with industry trends, best practices, and success stories to help your business thrive in the digital age."
+  />
+  <section class="latest-posts-section pt-20 px-6 md:px-20">
+    <div class="max-w-7xl mx-auto">
+      <div
+        class="flex flex-col md:flex-row md:items-center md:justify-between mb-8"
+      >
+        <h2 class="font-primary text-3xl md:text-[48px] text-[#0C1715] font-bold">
+          Latest <span class="text-[#1A1617]">Posts</span>
+        </h2>
+        <p class="text-levein-black text-[16px] md:text-base max-w-md leading-relaxed lg:text-left">
+     
+        Stay updated with our latest insights, trends, and success stories in the world of offshore teams and remote work. Explore our blog for expert advice and industry news to help your business thrive in the digital age.
+    </p>
+      </div>
+
+      <!-- Category Filter -->
+      <div class="flex flex-wrap gap-3 mb-10">
+        {
+          categories.map((cat) => (
+            <button
+              class={`category-btn cursor-pointer ${cat === activeCategory ? "active" : ""}`}
+              data-category={cat}
+            >
+              {cat}
+            </button>
+          ))
+        }
+      </div>
+
+      <!-- Posts Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {
+          blogs
+            .filter(
+              (p) => activeCategory === "All" || p.category === activeCategory,
+            )
+            .map((post) => (
+              <article class="post-card" data-category={post.category}>
+                <img
+                  src={post.image}
+                  alt={post.title}
+                  class="rounded-2xl w-full h-60 object-cover mb-4"
+                />
+                <a href={`/blogs/${post.slug}`}>
+                  <h3 class="font-secondary text-[#061414] font-medium text-[20px] mb-2">
+                    {post.title}
+                  </h3>
+                </a>
+                <p class="font-secondary text-[#3A3B33] text-[16px] mb-4">
+                  {post.excerpt.length > 100
+                    ? post.excerpt.substring(0, 100) + "..."
+                    : post.excerpt}
+                </p>
+              </article>
+            ))
+        }
+      </div>
+    </div>
+  </section>
+<CareerCtaSection />
+  <script is:inline>
+    document.addEventListener("DOMContentLoaded", () => {
+      const buttons = document.querySelectorAll(".category-btn");
+      buttons.forEach((button) => {
+        button.addEventListener("click", (event) => {
+          const category = event.target.getAttribute("data-category");
+          document
+            .querySelectorAll(".category-btn")
+            .forEach((btn) => btn.classList.remove("active"));
+          event.target.classList.add("active");
+          activeCategory = category;
+          console.log(activeCategory);
+          const posts = document.querySelectorAll(".post-card");
+          posts.forEach((post) => {
+            const postCategory = post.getAttribute("data-category");
+            if (activeCategory === "All" || postCategory === activeCategory) {
+              post.style.display = "block";
+            } else {
+              post.style.display = "none";
+            }
+          });
+        });
+      });
+    });
+  </script>
+</Layout>

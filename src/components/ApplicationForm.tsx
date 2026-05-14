@@ -54,17 +54,18 @@ export default function ApplicationForm() {
 
           {/* Country Dropdown */}
           <div className="flex flex-col gap-2 relative">
-            <label htmlFor="country" className="text-[16px] font-medium text-gray-800">Country</label>
+            <label htmlFor="country" className="text-[16px] font-medium text-gray-800">Level</label>
             <div className="relative">
               <select 
                 id="country"
                 className="w-full px-4 py-3 rounded-lg border border-transparent focus:border-[#93D7B0] focus:ring-1 focus:ring-[#93D7B0] outline-none text-gray-500 text-sm appearance-none bg-white cursor-pointer"
                 defaultValue=""
               >
-                <option value="" disabled hidden>Select a country</option>
-                <option value="lk">Sri Lanka</option>
-                <option value="us">United States</option>
-                <option value="uk">United Kingdom</option>
+                <option value="" disabled hidden>Select a level</option>
+                <option value="lk">Senior</option>
+                <option value="us">Junior</option>
+                <option value="uk">Associate</option>
+                <option value="tech-leader">Tech Lead</option>
               </select>
               <div className="absolute inset-y-0 right-4 flex items-center pointer-events-none text-gray-500">
                 <svg width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L7 7L13 1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
@@ -120,12 +121,14 @@ export default function ApplicationForm() {
           </label>
         </div>
 
+        <hr className='w-full bg-[#D2E0E0] h-px' />
+
         {/* --- Footer Area --- */}
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mt-6 pt-4 gap-4">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           
           <div className="flex items-center gap-2 text-gray-700">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M10.517 17.3404C10.2337 17.4404 9.76699 17.4404 9.48366 17.3404C7.06699 16.5154 1.66699 13.0737 1.66699 7.24036C1.66699 4.66536 3.74199 2.58203 6.30033 2.58203C7.81699 2.58203 9.15866 3.31536 10.0003 4.4487C10.842 3.31536 12.192 2.58203 13.7003 2.58203C16.2587 2.58203 18.3337 4.66536 18.3337 7.24036C18.3337 13.0737 12.9337 16.5154 10.517 17.3404Z" stroke="#1A1617" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
             <span className="text-sm font-medium">Help us match your profile by telling us a bit more about yourself.</span>
           </div>
