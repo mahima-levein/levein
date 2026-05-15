@@ -40,7 +40,7 @@ const stats = [
   },
   {
     value: "150+",
-    label: "Professionals placed",
+    label: "Professionals placed in global roles",
   },
   {
     value: "8+",
@@ -53,7 +53,6 @@ const lifeImageClass =
 ---
 
 <Layout>
-
   <!-- Hero Section -->
   <section
     class="relative w-full min-h-screen flex items-end justify-center overflow-hidden bg-dark-theme"
@@ -62,8 +61,13 @@ const lifeImageClass =
     <div
       class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20 text-center text-[#FBFBFB] md:py-20"
     >
-      <div class="mx-auto max-w-4xl text-center">
+      <div
+        class="mx-auto max-w-4xl text-center"
+        data-reveal-group
+        data-reveal-start="top 95%"
+      >
         <h1
+          data-reveal-heading
           class="font-primary text-[18px] font-normal leading-tight tracking-tight md:text-6xl"
         >
           Where Sri Lankan Talent <br class="hidden md:block" />
@@ -71,6 +75,7 @@ const lifeImageClass =
         </h1>
 
         <p
+          data-reveal-body
           class="mx-auto mt-5 max-w-md text-[18px] font-normal leading-relaxed text-[#FBFBFB]/85 md:text-base"
         >
           Join a community of Sri Lankan professionals working remotely with
@@ -132,7 +137,9 @@ const lifeImageClass =
           <span> </span>
           <span> </span>
         </div>
-        <div class="hero-card-type-edge h-68 rounded-4xl overflow-hidden bg-[#419688] image-box">
+        <div
+          class="hero-card-type-edge h-68 rounded-4xl overflow-hidden bg-[#419688] image-box"
+        >
           <Image
             src={Team_Memb_4}
             alt="Team member"
@@ -149,7 +156,9 @@ const lifeImageClass =
       <div
         class="flex flex-col gap-4 flex-[1_1_0] min-w-35 max-w-52.5 translate-y-22 -translate-x-4"
       >
-        <div class="hero-card-type-outer h-68 rounded-4xl overflow-hidden bg-[#419688] image-box">
+        <div
+          class="hero-card-type-outer h-68 rounded-4xl overflow-hidden bg-[#419688] image-box"
+        >
           <Image
             src={Team_Memb_1}
             alt="Team member"
@@ -168,7 +177,9 @@ const lifeImageClass =
       <div
         class="flex flex-col gap-4 flex-[1_1_0] min-w-35 max-w-52.5 translate-y-20"
       >
-        <div class="hero-card-type-1 h-68 rounded-4xl overflow-hidden bg-[#419688] image-box">
+        <div
+          class="hero-card-type-1 h-68 rounded-4xl overflow-hidden bg-[#419688] image-box"
+        >
           <Image
             src={Team_Memb_5}
             alt="Team member"
@@ -183,7 +194,9 @@ const lifeImageClass =
 
       <!-- Column 4 (Center - Wide) -->
       <div class="flex flex-col gap-4 flex-[1.6_1_0] w-full translate-y-8 px-4">
-        <div class="hero-card-type-middle h-58 rounded-4xl overflow-hidden bg-[#419688] image-box">
+        <div
+          class="hero-card-type-middle h-58 rounded-4xl overflow-hidden bg-[#419688] image-box"
+        >
           <Image
             src={Team_Memb_3}
             alt="Team group"
@@ -196,7 +209,9 @@ const lifeImageClass =
       <div
         class="flex flex-col gap-4 flex-[1_1_0] min-w-35 max-w-52.5 translate-y-20"
       >
-        <div class="hero-card-type-1 h-68 rounded-4xl overflow-hidden bg-[#419688] image-box">
+        <div
+          class="hero-card-type-1 h-68 rounded-4xl overflow-hidden bg-[#419688] image-box"
+        >
           <Image
             src={Team_Memb_6}
             alt="Team member"
@@ -213,7 +228,9 @@ const lifeImageClass =
       <div
         class="flex flex-col gap-4 flex-[1_1_0] min-w-35 max-w-52.5 translate-y-22 translate-x-4"
       >
-        <div class="hero-card-type-outer h-68 rounded-4xl overflow-hidden bg-[#419688] image-box">
+        <div
+          class="hero-card-type-outer h-68 rounded-4xl overflow-hidden bg-[#419688] image-box"
+        >
           <Image
             src={Team_Memb_7}
             alt="Team member"
@@ -238,7 +255,9 @@ const lifeImageClass =
           <span> </span>
           <span> </span>
         </div>
-        <div class="hero-card-type-edge h-68 rounded-4xl overflow-hidden bg-[#419688] image-box">
+        <div
+          class="hero-card-type-edge h-68 rounded-4xl overflow-hidden bg-[#419688] image-box"
+        >
           <Image
             src={Team_Memb_2}
             alt="Team member"
@@ -268,14 +287,20 @@ const lifeImageClass =
   <section class="bg-[#e3f0e0] px-6 py-16 text-[#1A1617] md:py-20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <!-- Heading -->
-      <div class="mx-auto max-w-3xl text-center">
+      <div
+        class="mx-auto max-w-3xl text-center"
+        data-reveal-group
+        data-reveal-start="top 95%"
+      >
         <h2
+          data-reveal-heading
           class="font-primary text-4xl font-normal leading-tight tracking-tight md:text-5xl"
         >
           Why Levein
         </h2>
 
         <p
+          data-reveal-body
           class="mx-auto mt-4 max-w-3xl text-[16px] leading-relaxed text-[#1A1617]/80 md:text-base"
         >
           We take care of your employment contract, equipment, EPF and ETF
@@ -382,21 +407,24 @@ const lifeImageClass =
     <div class="container mx-auto">
       <!-- Content -->
       <div class="mx-auto max-w-2xl text-center relative z-10">
-        <h2
-          class="font-primary text-4xl font-normal leading-tight tracking-tight md:text-5xl"
-        >
-          Our Tech Stack
-        </h2>
+        <div data-reveal-group data-reveal-start="top 95%">
+          <h2
+            data-reveal-heading
+            class="font-primary text-4xl font-normal leading-tight tracking-tight md:text-5xl"
+          >
+            Our Tech Stack
+          </h2>
 
-        <p
-          class="mx-auto mt-5 max-w-3xl text-[16px] leading-relaxed text-[#FBFBFB]/85 md:text-base"
-        >
-          Levein teams work with industry-standard tools used by some of the
-          UK’s most ambitious companies. Whether you are already proficient or
-          building toward it, you will be working in environments that sharpen
-          your skills every day.
-        </p>
-
+          <p
+            data-reveal-body
+            class="mx-auto mt-5 max-w-3xl text-[16px] leading-relaxed text-[#FBFBFB]/85 md:text-base"
+          >
+            Levein teams work with industry-standard tools used by some of the
+            UK’s most ambitious companies. Whether you are already proficient or
+            building toward it, you will be working in environments that sharpen
+            your skills every day.
+          </p>
+        </div>
         <a
           href="/careers"
           class="mt-10 inline-flex items-center gap-2 rounded-[150px] capitalize bg-[#7fcfa8] px-6 py-3 text-[18px] font-bold text-[#1A1617] transition hover:bg-[#FBFBFB]"
@@ -435,12 +463,33 @@ const lifeImageClass =
 
       <!-- Single tech stack image -->
       <div class="mt-10 flex justify-center md:-mt-20">
-        <Image
-          src={techStackImage}
-          alt="Levein technology stack tools and platforms"
-          class="w-full max-w-7xl object-contain"
-          loading="lazy"
-        />
+        <div
+          data-tech-stack-scene
+          class="group relative w-full max-w-7xl px-3 sm:px-6"
+        >
+          <div
+            data-tech-stack-frame
+            class="relative overflow-hidden"
+          >
+            <div
+              data-tech-stack-glow
+              class="pointer-events-none absolute -inset-10 blur-3xl"
+            >
+            </div>
+            <div
+              data-tech-stack-sheen
+              class="pointer-events-none absolute inset-0 opacity-0"
+            >
+            </div>
+            <Image
+              src={techStackImage}
+              alt="Levein technology stack tools and platforms"
+              data-tech-stack-image
+              class="relative z-10 w-full object-contain will-change-transform"
+              loading="lazy"
+            />
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -532,18 +581,21 @@ const lifeImageClass =
 
         <!-- Main Text Content -->
         <div class="text-center flex flex-col items-center pb-8">
-          <h2
-            class="text-4xl md:text-5xl lg:text-[56px] font-primary font-normal text-[#1A1617] mb-4 md:mb-6 tracking-tight"
-          >
-            Life At Levein
-          </h2>
-          <p
-            class="text-levein-secondary text-base md:text-[16px] mb-8 max-w-xl mx-auto leading-relaxed"
-          >
-            Remote work does not mean working alone. Experience a culture that
-            makes work feel enjoyable.
-          </p>
-
+          <div data-reveal-group data-reveal-start="top 95%">
+            <h2
+              data-reveal-heading
+              class="text-4xl md:text-5xl lg:text-[56px] font-primary font-normal text-[#1A1617] mb-4 md:mb-6 tracking-tight"
+            >
+              Life At Levein
+            </h2>
+            <p
+              data-reveal-body
+              class="text-levein-secondary text-base md:text-[16px] mb-8 max-w-xl mx-auto leading-relaxed"
+            >
+              Remote work does not mean working alone. Experience a culture that
+              makes work feel enjoyable.
+            </p>
+        </div>
           <!-- Button -->
           <a
             href="/events"

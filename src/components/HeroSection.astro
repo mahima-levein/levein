@@ -12,12 +12,12 @@ const pathname = Astro.url.pathname;
   ></div>
 
   {/* 3. Text Content */}
-  <div class="relative z-10 flex flex-col items-center justify-center text-center max-w-2xl mx-auto">
-    <h2 class="text-4xl lg:text-5xl lg:text-[56px] font-primary text-white mb-2 md:mb-2 tracking-wide leading-21 font-medium">
+  <div data-reveal-group data-reveal-start="top 95%" class="relative z-10 flex flex-col items-center justify-center text-center max-w-2xl mx-auto">
+    <h2 data-reveal-heading class="text-4xl lg:text-5xl lg:text-[56px] font-primary text-white mb-2 md:mb-2 tracking-wide leading-21 font-medium">
         {title}
     </h2>
     
-    <p class="text-levein-white text-[16px] md:text-base leading-relaxed max-w-2xl mx-auto font-normal">
+    <p data-reveal-body class="text-levein-white text-[16px] md:text-base leading-relaxed max-w-2xl mx-auto font-normal">
         {description}
     </p>
   </div>

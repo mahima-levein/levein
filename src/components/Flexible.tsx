@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-
+import { useEffect, useRef, useState } from 'react';
+import { initTextReveal } from '../scripts/text-reveal';
 const remoteFeatures = [
   {
     id: 1,
@@ -80,10 +80,16 @@ const OfficeIcon = () => (
 );
 
 export default function FlexibleApproachSection() {
- 
+  const sectionRef = useRef<HTMLElement | null>(null);
   const [isRemote, setIsRemote] = useState(true);
   const [isAnimating, setIsAnimating] = useState(false);
   const [displayedFeatures, setDisplayedFeatures] = useState(remoteFeatures);
+
+  useEffect(() => {
+    if (sectionRef.current) {
+      initTextReveal(sectionRef.current);
+    }
+  }, []);
 
   const handleToggle = () => {
     setIsAnimating(true);
@@ -99,11 +105,12 @@ export default function FlexibleApproachSection() {
   };
 
   return (
-    <section className="bg-[#061414] py-24 px-4 sm:px-6 lg:px-8 font-sans overflow-hidden">
+    <section ref={sectionRef} className="bg-[#061414] py-24 px-4 sm:px-6 lg:px-8 font-sans overflow-hidden">
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-8 items-start">
         
-        <div className="lg:col-span-5 flex flex-col">
-          <h2 className="text-4xl sm:text-5xl lg:text-[56px] font-primary text-white leading-[1.1] tracking-tight mb-8">
+        <div className="lg:col-span-5 flex flex-col" data-reveal-group
+        data-reveal-start="top 95%">
+          <h2 data-reveal-heading className="text-4xl sm:text-5xl lg:text-[56px] font-primary text-white leading-[1.1] tracking-tight mb-8">
             A Flexible Approach<br />to Work
           </h2>
           

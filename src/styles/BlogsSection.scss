@@ -53,37 +53,6 @@ $ink:   #111827;
   }
 }
 
-.latest-posts-section {
-  background-color: #ffffff;
-  .category-btn {
-    font-family: $font-secondary;
-    border-radius: 8px;
-    border: 1px solid #C5D0FF;
-    background: #FBFBFB;
-    color: #0c1715;
-    padding: 6px 16px;
-    transition: all 0.2s ease;
-
-    &:hover {
-      border-color: #1A1617;
-      color: #1A1617;
-    }
-
-    &.active {
-      background-color: #7FCFA8;
-      color: #ffffff;
-      border-color: #7FCFA8;
-    }
-  }
-
-  .post-card {
-    transition: all 0.3s ease;
-    &:hover {
-      transform: translateY(-6px);
-      //box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-    }
-  }
-}
   .blog-stats{
     color: #0F204B !important;
     font-family: $font-secondary;

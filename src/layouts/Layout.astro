@@ -41,3 +41,21 @@ const { title = "Levein Group", description = "Levein Group is a UK-based compan
 		scroll-behavior: smooth;
 	}
 </style>
+  <script>
+    import { initDmReveal, initTextReveal } from "../scripts/text-reveal";
+    import { initTechStackDepth } from "../scripts/tech-stack-depth";
+
+    const boot = () => {
+      initTextReveal(document);
+      initDmReveal(document);
+      initTechStackDepth(document);
+    };
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", boot, { once: true });
+    } else {
+      boot();
+    }
+
+    document.addEventListener("astro:page-load", boot);
+  </script>
