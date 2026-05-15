@@ -16,6 +16,24 @@ import CurrentOpenings from "@components/CurrentOpenings.tsx";
 import Stories from "@components/Stories.astro";
 import Opportunities from "@components/Opportunities.astro";
 
+import event_1 from "@assets/events/event-1.jpg";
+import event_2 from "@assets/events/event-2.jpg";
+import event_3 from "@assets/events/event-3.jpg";
+import event_4 from "@assets/events/event-4.jpg";
+import event_5 from "@assets/events/event-5.jpg";
+import event_6 from "@assets/events/event-6.jpg";
+import event_7 from "@assets/events/event-7.jpg";
+import event_8 from "@assets/events/event-8.jpg";
+import event_9 from "@assets/events/event-9.jpg";
+import event_10 from "@assets/events/event-10.jpg";
+import event_11 from "@assets/events/event-11.jpg";
+import event_12 from "@assets/events/event-12.jpg";
+import event_13 from "@assets/events/event-13.jpg";
+import event_14 from "@assets/events/event-14.jpg";
+import event_15 from "@assets/events/event-15.jpg";
+import event_16 from "@assets/events/event-16.jpg";
+import event_17 from "@assets/events/event-17.jpg";
+
 import FAQs from "@components/Faqs.tsx";
 import LeveinCTA from "@components/CareerCtaSection.astro";
 
@@ -275,7 +293,7 @@ const lifeImageClass =
       </div>
     </div>
   </section>
-  <script src="/scripts/life-parallax.js" defer></script>
+
 
   <!-- Opportunity Section -->
   <Opportunities title="Opportunities for everyone" />
@@ -467,10 +485,7 @@ const lifeImageClass =
           data-tech-stack-scene
           class="group relative w-full max-w-7xl px-3 sm:px-6"
         >
-          <div
-            data-tech-stack-frame
-            class="relative overflow-hidden"
-          >
+          <div data-tech-stack-frame class="relative overflow-hidden">
             <div
               data-tech-stack-glow
               class="pointer-events-none absolute -inset-10 blur-3xl"
@@ -506,53 +521,25 @@ const lifeImageClass =
       <div class="flex gap-4 md:gap-4 shrink-0">
         <!-- Column 1 (Far Left) - Hidden on smaller screens -->
         <div class="hidden xl:flex flex-col gap-4 md:gap-6 -mt-8">
-          <img
-            src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400&h=400&fit=crop"
-            alt="Team event"
-            class={lifeImageClass}
-          />
-          <img
-            src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=400&h=500&fit=crop"
-            alt="Team event"
-            class={lifeImageClass}
-          />
+          <Image src={event_3} alt="Team event" class={lifeImageClass} />
+          <Image src={event_2} alt="Team event" class={lifeImageClass} />
         </div>
         <!-- Column 2 (Far Left) - Hidden on smaller screens -->
         <div class="hidden xl:flex flex-col gap-4 md:gap-6 mt-12">
-          <img
-            src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400&h=400&fit=crop"
-            alt="Team event"
-            class={lifeImageClass}
-          />
-          <img
-            src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=400&h=500&fit=crop"
-            alt="Team event"
-            class={lifeImageClass}
-          />
+          <Image src={event_1} alt="Team event" class={lifeImageClass} />
+          <Image src={event_4} alt="Team event" class={lifeImageClass} />
         </div>
 
         <!-- Column 3 - Shifted UP -->
         <div class="hidden lg:flex flex-col gap-4 md:gap-6 -mt-8">
-          <img
-            src="https://images.unsplash.com/photo-1543269865-cbf427effbad?w=400&h=450&fit=crop"
-            alt="Team event"
-            class={lifeImageClass}
-          />
-          <img
-            src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=400&h=400&fit=crop"
-            alt="Team event"
-            class={lifeImageClass}
-          />
+          <Image src={event_5} alt="Team event" class={lifeImageClass} />
+          <Image src={event_6} alt="Team event" class={lifeImageClass} />
         </div>
 
         <!-- Column 4 - Shifted DOWN -->
         <div class="hidden md:flex flex-col gap-4 md:gap-6 mt-16">
-          <img
-            src="https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=400&h=400&fit=crop"
-            alt="Team event"
-            class={lifeImageClass}
-          />
-          <!-- <img src="https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=400&h=400&fit=crop" alt="Team event" class="w-44 h-52 object-cover rounded-[2rem]" /> -->
+          <Image src={event_7} alt="Team event" class={lifeImageClass} />
+          <!-- <Image src="https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=400&h=400&fit=crop" alt="Team event" class="w-44 h-52 object-cover rounded-[2rem]" /> -->
         </div>
       </div>
 
@@ -562,18 +549,18 @@ const lifeImageClass =
       >
         <!-- Top Images above the text -->
         <div class="flex gap-4 md:gap-6 mb-14 w-full justify-center">
-          <img
-            src="https://images.unsplash.com/photo-1522071901873-411886a10004?w=400&h=400&fit=crop"
+          <Image
+            src={event_8}
             alt="Team event"
             class={`-mt-6 ${lifeImageClass}`}
           />
-          <img
-            src="https://images.unsplash.com/photo-1515162816999-a0c47dc192f7?w=400&h=450&fit=crop"
+          <Image
+            src={event_9}
             alt="Team event"
             class={`mt-6 ${lifeImageClass}`}
           />
-          <img
-            src="https://images.unsplash.com/photo-1522071901873-411886a10004?w=400&h=400&fit=crop"
+          <Image
+            src={event_10}
             alt="Team event"
             class={`-mt-6 ${lifeImageClass}`}
           />
@@ -595,10 +582,10 @@ const lifeImageClass =
               Remote work does not mean working alone. Experience a culture that
               makes work feel enjoyable.
             </p>
-        </div>
+          </div>
           <!-- Button -->
           <a
-            href="/events"
+            href="/life-at-levein"
             class="bg-[#93D7B0] border border-transparent hover:bg-white hover:border-[#1A1617] text-levein-black font-bold px-8 py-3.5 rounded-full flex items-center justify-center gap-2 transition-colors duration-300 shadow-sm text-[18px]"
           >
             View all events
@@ -624,57 +611,30 @@ const lifeImageClass =
       <!-- ================= RIGHT WING ================= -->
       <div class="flex gap-4 md:gap-4 shrink-0">
         <div class="hidden md:flex flex-col gap-4 md:gap-6 mt-16">
-          <img
-            src="https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=400&h=400&fit=crop"
-            alt="Team event"
-            class={lifeImageClass}
-          />
+          <Image src={event_11} alt="Team event" class={lifeImageClass} />
         </div>
 
         <!-- Column 4 - Shifted UP -->
         <div class="hidden md:flex flex-col gap-4 md:gap-6 -mt-4">
-          <img
-            src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=400&h=500&fit=crop"
-            alt="Team event"
-            class={lifeImageClass}
-          />
-          <img
-            src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=400&h=400&fit=crop"
-            alt="Team event"
-            class={lifeImageClass}
-          />
+          <Image src={event_12} alt="Team event" class={lifeImageClass} />
+          <Image src={event_13} alt="Team event" class={lifeImageClass} />
         </div>
 
         <!-- Column 5 - Shifted DOWN -->
         <div class="hidden lg:flex flex-col gap-4 md:gap-6 mt-10">
-          <img
-            src="https://images.unsplash.com/photo-1491438590914-bc09fcaaf77a?w=400&h=450&fit=crop"
-            alt="Team event"
-            class={lifeImageClass}
-          />
-          <img
-            src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=400&h=550&fit=crop"
-            alt="Team event"
-            class={lifeImageClass}
-          />
+          <Image src={event_14} alt="Team event" class={lifeImageClass} />
+          <Image src={event_15} alt="Team event" class={lifeImageClass} />
         </div>
 
         <!-- Column 6 (Far Right) - Hidden on smaller screens -->
         <div class="hidden xl:flex flex-col gap-4 md:gap-6 -mt-6">
-          <img
-            src="https://images.unsplash.com/photo-1531497865144-0464ef8fb9a9?w=400&h=400&fit=crop"
-            alt="Team event"
-            class={lifeImageClass}
-          />
-          <img
-            src="https://images.unsplash.com/photo-1552581234-26160f608093?w=400&h=450&fit=crop"
-            alt="Team event"
-            class={lifeImageClass}
-          />
+          <Image src={event_16} alt="Team event" class={lifeImageClass} />
+          <Image src={event_17} alt="Team event" class={lifeImageClass} />
         </div>
       </div>
     </div>
   </section>
+  <script src="/scripts/life-parallax.js" defer></script>
 
   <!-- Jobs Section -->
   <CurrentOpenings
