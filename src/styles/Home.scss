@@ -1,8 +1,15 @@
-// Custom variables matching the design
+@use './mixins/_mixins' as *;
+@use './variables/_colors' as *;
+@use './variables/_typography' as *;
+
 $bg-main: #0c1816;
 $border-accent: #34806f;
 $card-bg: #419688;
-
+#levein-home-hero{
+	@include mobile {
+		min-height: 75dvh;
+	}
+}
 .bg-dark-theme {
   background-image: url('/Hero-Gradient.webp');
   background-size: cover;

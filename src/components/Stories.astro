@@ -89,7 +89,7 @@ const rowTwoLoop = [...rowTwo, ...rowTwo];
           <div>
             <h2
             data-reveal-heading
-              class="font-primary font-normal text-[48px] leading-tight md:text-5xl"
+              class="font-primary font-normal text-4xl leading-tight md:text-5xl"
             >
               Employee Stories
             </h2>
@@ -106,26 +106,26 @@ const rowTwoLoop = [...rowTwo, ...rowTwo];
       </div>
 
       <!-- Cards / story slider area -->
-      <div class="space-y-10">
+      <div class="lg:space-y-10">
         <!-- Row 1 (marquee left) -->
         <div class="story-marquee story-marquee-left">
           <div class="story-marquee-track">
             {
               rowOneLoop.map((item, index) => (
                 <article
-                  class="story-card flex w-xl shrink-0 items-center gap-3 overflow-hidden rounded-3xl bg-[#F3F1EF] text-[#1A1617]"
+                  class="story-card flex shrink-0 items-center gap-3 overflow-hidden rounded-3xl bg-[#F3F1EF] text-[#1A1617]"
                   aria-hidden={index >= rowOne.length}
                 >
                   <div class="flex shrink-0 items-end self-end">
                     <Image
                       src={item.image}
                       alt={item.name}
-                      class="h-[110px] w-[90px] object-contain md:h-55 md:w-50"
+                      class="h-[160px] w-[150px] object-cover md:h-55 md:w-50"
                     />
                   </div>
 
                   <div class="flex-1">
-                    <p class="mb-4 pr-7 text-[16px] leading-relaxed text-[#1A1617]/85">
+                    <p class="mb-1 lg:mb-4 pr-7 text-sm lg:text-[16px] leading-relaxed text-[#1A1617]/85">
                         {item.message}
                     </p>
 
@@ -144,24 +144,24 @@ const rowTwoLoop = [...rowTwo, ...rowTwo];
         </div>
 
         <!-- Row 2 (marquee right) -->
-        <div class="story-marquee story-marquee-right md:pl-12">
+        <div class="hidden lg:block story-marquee story-marquee-right md:pl-12">
           <div class="story-marquee-track">
             {
               rowTwoLoop.map((item, index) => (
                 <article
-                  class="story-card flex w-xl shrink-0 items-center gap-5 overflow-hidden rounded-3xl bg-[#F3F1EF] text-[#1A1617]"
+                  class="story-card flex shrink-0 items-center gap-5 overflow-hidden rounded-3xl bg-[#F3F1EF] text-[#1A1617]"
                   aria-hidden={index >= rowTwo.length}
                 >
                   <div class="flex shrink-0 items-end self-end">
                     <Image
                       src={item.image}
                       alt={item.name}
-                      class="h-[110px] w-[90px] object-contain md:h-55 md:w-50"
+                      class="h-[160px] w-[150px] object-cover md:h-55 md:w-50"
                     />
                   </div>
 
                   <div class="flex-1">
-                    <p class="mb-4 pr-7 text-[16px] leading-relaxed text-[#1A1617]/85">
+                    <p class="mb-1 lg:mb-4 pr-7 text-sm lg:text-[16px] leading-relaxed text-[#1A1617]/85">
                       {item.message}
                     </p>
 

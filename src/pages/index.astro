@@ -34,6 +34,15 @@ import event_15 from "@assets/events/event-15.jpg";
 import event_16 from "@assets/events/event-16.jpg";
 import event_17 from "@assets/events/event-17.jpg";
 
+import mobileTeam_1 from "@assets/team/slider/chanaka.png";
+import mobileTeam_2 from "@assets/team/slider/hr-1.png";
+import mobileTeam_3 from "@assets/team/slider/dilki.png";
+import mobileTeam_4 from "@assets/team/slider/kalpa.png";
+import mobileTeam_5 from "@assets/team/slider/pasandi.png";
+import mobileTeam_6 from "@assets/team/slider/peruka.png";
+import mobileTeam_7 from "@assets/team/slider/proushth.png";
+import mobileTeam_8 from "@assets/team/slider/shalini.png";
+
 import FAQs from "@components/Faqs.tsx";
 import LeveinCTA from "@components/CareerCtaSection.astro";
 
@@ -73,20 +82,21 @@ const lifeImageClass =
 <Layout>
   <!-- Hero Section -->
   <section
-    class="relative w-full min-h-screen flex items-end justify-center overflow-hidden bg-dark-theme"
+    id="levein-home-hero"
+    class="relative w-full min-h-dvh flex items-end justify-center overflow-hidden bg-dark-theme"
   >
     <!-- Content -->
     <div
-      class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20 text-center text-[#FBFBFB] md:py-20"
+      class="w-full px-4 absolute left-1/2 top-[30dvh] lg:top-1/2 -translate-x-1/2 -translate-y-1/2 z-20 text-center text-[#FBFBFB] md:py-20"
     >
       <div
-        class="mx-auto max-w-4xl text-center"
+        class="mx-auto w-full lg:max-w-4xl text-center"
         data-reveal-group
         data-reveal-start="top 95%"
       >
         <h1
           data-reveal-heading
-          class="font-primary text-[18px] font-normal leading-tight tracking-tight md:text-6xl"
+          class="font-primary text-4xl font-normal leading-tight tracking-tight lg:text-[64px]"
         >
           Where Sri Lankan Talent <br class="hidden md:block" />
           Meets Global Opportunities
@@ -102,7 +112,7 @@ const lifeImageClass =
 
         <a
           href="/careers"
-          class="mt-10 inline-flex items-center gap-2 rounded-[150px] capitalize bg-[#7fcfa8] px-6 py-3 text-[18px] font-bold text-[#1A1617] transition hover:bg-[#FBFBFB]"
+          class="mt-10 inline-flex items-center gap-2 rounded-[150px] capitalize bg-[#7fcfa8] px-6 py-3 text-sm lg:text-[18px] font-bold text-[#1A1617] transition hover:bg-[#FBFBFB]"
         >
           Explore open roles
           <span class="flex items-center justify-center">
@@ -143,7 +153,7 @@ const lifeImageClass =
 
     <!-- Team Cards -->
     <div
-      class="relative z-10 flex items-end gap-4 w-full justify-center px-0 sm:px-4 lg:px-2 full-bleed-row overflow-hidden"
+      class="relative z-10 hidden lg:flex items-end gap-4 w-full justify-center px-0 sm:px-4 lg:px-2 full-bleed-row overflow-hidden"
     >
       <!-- Column 1 -->
       <div
@@ -292,8 +302,80 @@ const lifeImageClass =
         </div>
       </div>
     </div>
+    <!-- Team Cards Mobile -->
+    <div
+      class="block lg:hidden relative w-full max-w-7xl aspect-video mx-auto"
+      data-carousel-container
+    >
+      <Image
+        class="carousel-image absolute inset-0 w-full h-full object-contain transition-all duration-1000 ease-in-out opacity-100 scale-100"
+        src={mobileTeam_1}
+        alt="Levein Team Member 1"
+      />
+      <Image
+        class="carousel-image absolute inset-0 w-full h-full object-contain transition-all duration-1000 ease-in-out opacity-0 scale-95"
+        src={mobileTeam_2}
+        alt="Levein Team Member 2"
+      />
+      <Image
+        class="carousel-image absolute inset-0 w-full h-full object-contain transition-all duration-1000 ease-in-out opacity-0 scale-95"
+        src={mobileTeam_3}
+        alt="Levein Team Member 3"
+      />
+      <Image
+        class="carousel-image absolute inset-0 w-full h-full object-contain transition-all duration-1000 ease-in-out opacity-0 scale-95"
+        src={mobileTeam_4}
+        alt="Levein Team Member 4"
+      />
+      <Image
+        class="carousel-image absolute inset-0 w-full h-full object-contain transition-all duration-1000 ease-in-out opacity-0 scale-95"
+        src={mobileTeam_5}
+        alt="Levein Team Member 5"
+      />
+      <Image
+        class="carousel-image absolute inset-0 w-full h-full object-contain transition-all duration-1000 ease-in-out opacity-0 scale-95"
+        src={mobileTeam_6}
+        alt="Levein Team Member 6"
+      />
+      <Image
+        class="carousel-image absolute inset-0 w-full h-full object-contain transition-all duration-1000 ease-in-out opacity-0 scale-95"
+        src={mobileTeam_7}
+        alt="Levein Team Member 7"
+      />
+      <Image
+        class="carousel-image absolute inset-0 w-full h-full object-contain transition-all duration-1000 ease-in-out opacity-0 scale-95"
+        src={mobileTeam_8}
+        alt="Levein Team Member 8"
+      />
+    </div>
   </section>
+  <script is:inline>
+    (function () {
+      const container = document.querySelector("[data-carousel-container]");
+      if (!container) return;
 
+      const images = Array.from(container.querySelectorAll(".carousel-image"));
+      if (images.length === 0) return;
+
+      let currentIndex = 0;
+
+      setInterval(() => {
+        const previousIndex = currentIndex;
+        currentIndex = (currentIndex + 1) % images.length;
+
+        const prevImage = images[previousIndex];
+        const nextImage = images[currentIndex];
+
+        // Hide previous image
+        prevImage.classList.replace("opacity-100", "opacity-0");
+        prevImage.classList.replace("scale-100", "scale-95");
+
+        // Show next image
+        nextImage.classList.replace("opacity-0", "opacity-100");
+        nextImage.classList.replace("scale-95", "scale-100");
+      }, 4000);
+    })();
+  </script>
 
   <!-- Opportunity Section -->
   <Opportunities title="Opportunities for everyone" />
@@ -302,7 +384,7 @@ const lifeImageClass =
   <Stories />
 
   <!-- Why Levein Section -->
-  <section class="bg-[#e3f0e0] px-6 py-16 text-[#1A1617] md:py-20">
+  <section class="bg-[#e3f0e0] py-16 text-[#1A1617] md:py-20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <!-- Heading -->
       <div
@@ -328,7 +410,7 @@ const lifeImageClass =
       </div>
 
       <!-- Service tags -->
-      <div class="mx-auto mt-8 flex max-w-6xl flex-wrap justify-center gap-4">
+      <div class="mx-auto mt-8 hidden md:flex max-w-6xl flex-nowrap overflow-scroll md:overflow-hidden lg:flex-wrap justify-center gap-4">
         {
           services.map((service) => (
             <span class="rounded-3xl border text-[16px] border-[#326262]/70 px-4 py-4 text-[#3A3B33]/90">
@@ -336,6 +418,15 @@ const lifeImageClass =
             </span>
           ))
         }
+      </div>
+      <div class="overflow-hidden block md:hidden mt-8">
+        <div class="flex gap-4 w-max animate-marquee">
+          {[...services, ...services].map((service) => (
+            <span class="shrink-0 rounded-3xl border text-[16px] border-[#326262]/70 px-4 py-4 text-[#3A3B33]/90">
+              {service}
+            </span>
+          ))}
+        </div>
       </div>
 
       <!-- Stats cards -->
@@ -349,7 +440,7 @@ const lifeImageClass =
             return (
               <div
                 class:list={[
-                  "flex min-h-32.5 w-full max-w-63 flex-col items-center justify-center rounded-3xl bg-[#FBFBFB] px-8 py-7 text-center transition-all duration-300 ease-out cursor-pointer hover:scale-110",
+                  "flex min-h-32.5 w-full lg:max-w-63 flex-col items-center justify-center rounded-3xl bg-[#FBFBFB] px-8 py-7 text-center transition-all duration-300 ease-out cursor-pointer hover:scale-110",
                   index === 1 && "md:-translate-y-10",
                 ]}
                 data-stat-count={numericValue}
@@ -420,7 +511,7 @@ const lifeImageClass =
 
   <!-- Tech Stack -->
   <section
-    class="overflow-hidden bg-[#061514] px-6 py-16 text-[#FBFBFB] md:py-20"
+    class="overflow-hidden bg-[#061514] px-4 py-16 text-[#FBFBFB] md:py-20"
   >
     <div class="container mx-auto">
       <!-- Content -->
@@ -428,7 +519,7 @@ const lifeImageClass =
         <div data-reveal-group data-reveal-start="top 95%">
           <h2
             data-reveal-heading
-            class="font-primary text-4xl font-normal leading-tight tracking-tight md:text-5xl"
+            class="font-primary text-4xl md:text-5xl font-normal leading-tight tracking-tight"
           >
             Our Tech Stack
           </h2>
@@ -445,7 +536,7 @@ const lifeImageClass =
         </div>
         <a
           href="/careers"
-          class="mt-10 inline-flex items-center gap-2 rounded-[150px] capitalize bg-[#7fcfa8] px-6 py-3 text-[18px] font-bold text-[#1A1617] transition hover:bg-[#FBFBFB]"
+          class="mt-10 inline-flex items-center gap-2 rounded-[150px] capitalize bg-[#7fcfa8] px-6 py-3 text-sm lg:text-[18px] font-bold text-[#1A1617] transition hover:bg-[#FBFBFB]"
         >
           View open roles
           <span class="flex items-center justify-center">
@@ -480,10 +571,10 @@ const lifeImageClass =
       </div>
 
       <!-- Single tech stack image -->
-      <div class="mt-10 flex justify-center md:-mt-20">
+      <div class="mt-10 md:flex justify-center md:-mt-20 hidden">
         <div
           data-tech-stack-scene
-          class="group relative w-full max-w-7xl px-3 sm:px-6"
+          class="group relative w-full max-w-7xl lg:px-3 sm:px-6"
         >
           <div data-tech-stack-frame class="relative overflow-hidden">
             <div
@@ -511,7 +602,7 @@ const lifeImageClass =
 
   <!-- Life @ levein -->
   <section
-    class="life_at_levein relative w-full bg-[linear-gradient(180deg,#FBFBFB_90.24%,#959595_199.71%)] py-30 overflow-hidden"
+    class="life_at_levein relative w-full bg-[linear-gradient(180deg,#FBFBFB_90.24%,#959595_199.71%)] pt-22 pb-10 lg:py-30 overflow-hidden"
   >
     <!-- Main Wrapper: Flex row to hold the three sections side-by-side -->
     <div
@@ -577,7 +668,7 @@ const lifeImageClass =
             </h2>
             <p
               data-reveal-body
-              class="text-levein-secondary text-base md:text-[16px] mb-8 max-w-xl mx-auto leading-relaxed"
+              class="text-levein-secondary text-base md:text-[16px] mb-8 w-90 md:max-w-xl mx-auto leading-relaxed"
             >
               Remote work does not mean working alone. Experience a culture that
               makes work feel enjoyable.
@@ -586,7 +677,7 @@ const lifeImageClass =
           <!-- Button -->
           <a
             href="/life-at-levein"
-            class="bg-[#93D7B0] border border-transparent hover:bg-white hover:border-[#1A1617] text-levein-black font-bold px-8 py-3.5 rounded-full flex items-center justify-center gap-2 transition-colors duration-300 shadow-sm text-[18px]"
+            class="bg-[#93D7B0] border border-transparent hover:bg-white hover:border-[#1A1617] text-levein-black font-bold px-8 py-3.5 rounded-full flex items-center justify-center gap-2 transition-colors duration-300 shadow-sm text-sm lg:text-[18px]"
           >
             View all events
             <!-- Arrow Circle Icon -->

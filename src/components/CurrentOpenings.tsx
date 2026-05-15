@@ -30,7 +30,7 @@ export default function CurrentOpenings({ title, description, btnText, jobs }: C
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-12">
         <div data-reveal-group
         data-reveal-start="top 95%" className="max-w-2xl">
-          <h2 data-reveal-heading className="text-[48px] md:text-5xl font-primary font-normal text-levein-black mb-3 tracking-tight">
+          <h2 data-reveal-heading className="text-4xl md:text-5xl font-primary font-normal text-levein-black mb-3 tracking-tight">
             {title}
           </h2>
           <p data-reveal-body className="text-levein-secondary text-[16px] md:text-base leading-relaxed">
@@ -38,7 +38,7 @@ export default function CurrentOpenings({ title, description, btnText, jobs }: C
           </p>
         </div>
         
-        <a href='/jobs' className="bg-[#41645B] border border-transparent hover:bg-white hover:border-[#1A1617] hover:text-black text-white px-6 py-3 rounded-full flex items-center gap-2 transition-colors duration-300 shrink-0 text-[16px] font-medium">
+        <a href='/jobs' className="bg-[#41645B] border border-transparent hover:bg-white hover:border-[#1A1617] hover:text-black text-white px-6 py-3 rounded-full flex items-center gap-2 transition-colors duration-300 shrink-0 text-sm lg:text-[16px] font-medium">
           {btnText}
           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
@@ -62,7 +62,7 @@ export default function CurrentOpenings({ title, description, btnText, jobs }: C
                 onClick={() => toggleJob(job.id)}
               >
                 <div className="flex items-center gap-4">
-                  <h3 className="text-[#1A1617] font-medium text-[20px]">{job.title}</h3>
+                  <h3 className="text-[#1A1617] font-medium text-[18px] lg:text-[20px]">{job.title}</h3>
                   {/* {job.isNew && (
                     <span className="bg-[#326262] text-white text-[14px] font-medium px-3 py-1 rounded-full capitalize tracking-wider">
                       New
@@ -110,7 +110,7 @@ export default function CurrentOpenings({ title, description, btnText, jobs }: C
                 }`}
               >
                 <div className="overflow-hidden">
-                  <div className="flex flex-wrap items-center gap-x-6 gap-y-3 text-[16px] text-[#326262] pb-1">
+                  <div className="grid grid-cols-2 md:flex md:flex-wrap items-center gap-x-4 md:gap-x-6 gap-y-3 text-[12px] lg:text-[16px] text-[#326262] pb-1">
                     
                     <span className="flex items-center gap-2 leading-none">
                       <svg className="relative -top-px" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -143,22 +143,30 @@ export default function CurrentOpenings({ title, description, btnText, jobs }: C
                       {job.job_listing_type.join(' / ')}
                     </span>
 
-                    <span className="flex items-center gap-2 leading-none">
+                    <span className="hidden md:flex items-center gap-2 leading-none">
                       <svg className="relative -top-px" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                         <path d="M18.3337 10.0013C18.3337 14.6013 14.6003 18.3346 10.0003 18.3346C5.40033 18.3346 1.66699 14.6013 1.66699 10.0013C1.66699 5.4013 5.40033 1.66797 10.0003 1.66797C14.6003 1.66797 18.3337 5.4013 18.3337 10.0013Z" stroke="#326262" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                         <path d="M13.0914 12.6495L10.5081 11.1078C10.0581 10.8411 9.69141 10.1995 9.69141 9.67448V6.25781" stroke="#326262" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                       </svg>
                       Closing date: {job.job_expires}
                     </span>
-
-                    {/* Mobile Only 'Apply Now' Link - Shows up under the details on small screens */}
-                    <a 
-                      href={`/jobs/${job.slug}`} 
-                      className="sm:hidden w-full mt-2 text-[#41645B] text-sm font-semibold underline underline-offset-4 decoration-[#41645B]"
-                    >
-                      Apply now
-                    </a>
                   </div>
+                   {/* Mobile Only 'Apply Now' Link - Shows up under the details on small screens */}
+                    <div className="flex md:hidden items-end justify-between w-full mt-4">
+                      <a 
+                        href={`/jobs/${job.slug}`} 
+                        className="sm:hidden mt-2 text-[#41645B] text-sm font-semibold underline underline-offset-4 decoration-[#41645B]"
+                      >
+                        Apply now
+                      </a>
+                      <span className="flex items-center gap-2 leading-none text-[12px] lg:text-[16px] text-[#326262]">
+                        <svg className="relative -top-px" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                          <path d="M18.3337 10.0013C18.3337 14.6013 14.6003 18.3346 10.0003 18.3346C5.40033 18.3346 1.66699 14.6013 1.66699 10.0013C1.66699 5.4013 5.40033 1.66797 10.0003 1.66797C14.6003 1.66797 18.3337 5.4013 18.3337 10.0013Z" stroke="#326262" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                          <path d="M13.0914 12.6495L10.5081 11.1078C10.0581 10.8411 9.69141 10.1995 9.69141 9.67448V6.25781" stroke="#326262" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        Closing date: {job.job_expires}
+                      </span>
+                    </div>
                 </div>
               </div>
 
@@ -171,7 +179,7 @@ export default function CurrentOpenings({ title, description, btnText, jobs }: C
         <div className='flex justify-center '>
           <a
             href="/jobs"
-            className="mt-10 bg-button text-[18px] border border-transparent hover:bg-white hover:border-[#1A1617] text-levein-black font-medium px-8 py-3 rounded-full items-center gap-2 transition-colors duration-300 inline-flex"
+            className="mt-10 bg-button text-sm lg:text-[18px] border border-transparent hover:bg-white hover:border-[#1A1617] text-levein-black font-semibold px-8 py-3 rounded-full items-center gap-2 transition-colors duration-300 inline-flex"
           >
           view more roles
           <span className="flex items-center justify-center">
