@@ -41,12 +41,13 @@ const { title = "Levein Group", description = "Levein Group is a UK-based compan
 		scroll-behavior: smooth;
 	}
 </style>
-<script>
-    import { initTextReveal } from "../scripts/text-reveal";
+  <script>
+    import { initDmReveal, initTextReveal } from "../scripts/text-reveal";
     import { initTechStackDepth } from "../scripts/tech-stack-depth";
 
     const boot = () => {
       initTextReveal(document);
+      initDmReveal(document);
       initTechStackDepth(document);
     };
 
@@ -57,4 +58,4 @@ const { title = "Levein Group", description = "Levein Group is a UK-based compan
     }
 
     document.addEventListener("astro:page-load", boot);
-</script>
+  </script>
