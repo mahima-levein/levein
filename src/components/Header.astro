@@ -3,7 +3,6 @@ import "@styles/Header.scss";
 const pathname = Astro.url.pathname;
 const navItems = [
   { label: "Home", href: "/", active: pathname === "/" },
-  { label: "Jobs", href: "/jobs", active: pathname.startsWith("/jobs") },
   { label: "About us", href: "/about-us", active: pathname === "/about-us" },
   { label: "Life @ Levein", href: "/life-at-levein", active: pathname === "/life-at-levein" },
   { label: "Careers", href: "/careers", active: pathname === "/careers" },

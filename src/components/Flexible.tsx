@@ -73,10 +73,12 @@ const FeatureIcon = () => (
 
 const OfficeIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-    <path d="M18 11H2V17H18V11Z" fill="#FBFBFB"/>
-    <path d="M18 5H2V9H18V5Z" fill="#FBFBFB"/>
-    <path d="M16 3H4V7H16V3Z" fill="#FBFBFB"/>
-  </svg>
+  <path d="M6.6666 18.3333H13.3333C16.6833 18.3333 17.2833 16.9917 17.4583 15.3583L18.0833 8.69167C18.3083 6.65833 17.7249 5 14.1666 5H5.83327C2.27494 5 1.6916 6.65833 1.9166 8.69167L2.5416 15.3583C2.7166 16.9917 3.3166 18.3333 6.6666 18.3333Z" stroke="#1A1617" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M6.66675 4.99996V4.33329C6.66675 2.85829 6.66675 1.66663 9.33341 1.66663H10.6667C13.3334 1.66663 13.3334 2.85829 13.3334 4.33329V4.99996" stroke="#1A1617" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M11.6666 10.8333V11.6667C11.6666 11.675 11.6666 11.675 11.6666 11.6833C11.6666 12.5917 11.6583 13.3333 9.99992 13.3333C8.34992 13.3333 8.33325 12.6 8.33325 11.6917V10.8333C8.33325 10 8.33325 10 9.16659 10H10.8333C11.6666 10 11.6666 10 11.6666 10.8333Z" stroke="#1A1617" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M18.0417 9.16663C16.1167 10.5666 13.9167 11.4 11.6667 11.6833" stroke="#1A1617" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M2.18335 9.39172C4.05835 10.6751 6.17502 11.4501 8.33335 11.6917" stroke="#1A1617" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
 );
 
 export default function FlexibleApproachSection() {
@@ -105,17 +107,17 @@ export default function FlexibleApproachSection() {
   };
 
   return (
-    <section ref={sectionRef} className="bg-[#061414] py-24 px-4 sm:px-6 lg:px-8 font-sans overflow-hidden">
+    <section ref={sectionRef} className={` ${isRemote ? 'bg-[#061414]' : 'bg-[#E3F0E0]'} transition-colors duration-300 py-24 px-4 sm:px-6 lg:px-8 font-sans overflow-hidden`}>
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-8 items-start">
         
         <div className="lg:col-span-5 flex flex-col" data-reveal-group
         data-reveal-start="top 95%">
-          <h2 data-reveal-heading className="text-4xl sm:text-5xl lg:text-[56px] font-primary text-white leading-[1.1] tracking-tight mb-8">
+          <h2 data-reveal-heading className={`text-4xl sm:text-5xl lg:text-[56px] font-primary ${isRemote ? 'text-white' : 'text-levein-black'} transition-colors duration-300 leading-[1.1] tracking-tight mb-8`}>
             A Flexible Approach<br />to Work
           </h2>
           
           <div className="flex items-center gap-4 mb-12 select-none">
-            <span className={`text-[16px] font-medium transition-colors duration-300 ${!isRemote ? 'text-white' : 'text-gray-400'}`}>
+            <span className={`text-[16px] font-medium transition-colors duration-300 ${!isRemote ? 'text-levein-black' : 'text-gray-400'}`}>
               Office
             </span>
             
@@ -174,10 +176,10 @@ export default function FlexibleApproachSection() {
               >
 
                 {isRemote ? <FeatureIcon /> : <OfficeIcon />}
-                <h3 className="text-[20px] max-w-75 font-medium text-[#FBFBFB] mb-2 tracking-wide mt-4">
+                <h3 className={`text-[20px] max-w-75 font-semibold text-[#FBFBFB] mb-2 tracking-wide mt-4 ${!isRemote ? 'text-levein-black' : 'text-white'} transition-colors duration-300`}>
                   {feature.title}
                 </h3>
-                <p className="text-gray-400 text-[16px] leading-relaxed pr-4">
+                <p className={`text-[16px] leading-relaxed pr-4 ${!isRemote ? 'text-levein-black' : 'text-white'} transition-colors duration-300`}>
                   {feature.description}
                 </p>
               </div>

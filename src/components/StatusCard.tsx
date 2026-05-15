@@ -3,7 +3,7 @@
 
 import { useState } from "react";
 import axios from "axios";
-import heroImage from "../assets/bg-hero.jpg";
+import heroImage from "../../public/application-levein.webp";
 
 interface Socials {
   facebook?: string;
@@ -184,7 +184,7 @@ export default function StatusCard({ socials = {} }: StatusCardProps) {
                     <button
                       type="submit"
                       disabled={isLoading}
-                      className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-6 py-3 font-semibold text-white shadow-lg shadow-primary/20 transition hover:-translate-y-0.5 hover:bg-[#2b5252] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/20 disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="inline-flex cursor-pointer items-center justify-center gap-2 rounded-full bg-primary px-6 py-3 font-semibold text-white shadow-lg shadow-primary/20 transition hover:-translate-y-0.5 hover:bg-[#2b5252] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/20 disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                       {isLoading ? "Checking..." : "Check"}
                       <svg
@@ -309,8 +309,8 @@ export default function StatusCard({ socials = {} }: StatusCardProps) {
             className="absolute inset-0 h-full w-full object-cover"
             loading="eager"
           />
-          <div className="absolute inset-0 bg-linear-to-tr from-white/5 via-sky-100/35 to-transparent" />
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(125,211,252,0.34),transparent_42%)]" />
+          {/* <div className="absolute inset-0 bg-linear-to-tr from-white/5 via-sky-100/35 to-transparent" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(125,211,252,0.34),transparent_42%)]" /> */}
 
           <div className="relative flex h-full min-h-105 flex-col justify-between p-6 sm:p-8 lg:p-10">
             <div className="ml-auto inline-flex rounded-full border border-white/60 bg-white/70 px-4 py-2 text-xs font-semibold uppercase tracking-[0.24em] text-slate-600 shadow-sm backdrop-blur-md">

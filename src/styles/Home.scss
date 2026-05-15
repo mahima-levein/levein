@@ -10,6 +10,13 @@ $card-bg: #419688;
 		min-height: 75dvh;
 	}
 }
+#tech-stack{
+	@include mobile {
+		background-image: url('/tech.png');
+		background-size: cover;
+		background-position: center;
+	}
+}
 .bg-dark-theme {
   background-image: url('/Hero-Gradient.webp');
   background-size: cover;
