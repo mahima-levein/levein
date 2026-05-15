@@ -38,14 +38,19 @@ const logos = [Logo1, Logo2, Logo3, Logo4, Logo5, Logo6, Logo7, Logo8, Logo9];
 <section class="bg-[#061414] px-6 py-16 text-[#FBFBFB] md:px-10 lg:px-16">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <!-- Heading -->
-    <div class="mb-12">
+    <div data-reveal-group
+        data-reveal-start="top 95%" class="mb-12">
       <h2
+        data-reveal-heading
         class="font-primary text-[48px] leading-tight tracking-tight md:text-5xl"
       >
         {title}
       </h2>
 
-      <p class="mt-3 max-w-4xl text-[16px] leading-relaxed text-[#FBFBFB]/80">
+      <p
+        data-reveal-body
+        class="mt-3 max-w-4xl text-[16px] leading-relaxed text-[#FBFBFB]/80"
+      >
         We Don't just find you a job; we place you in a role where your specific
         skills are valued on a global scale.
       </p>
@@ -160,3 +165,4 @@ const logos = [Logo1, Logo2, Logo3, Logo4, Logo5, Logo6, Logo7, Logo8, Logo9];
     },
   });
 </script>
+

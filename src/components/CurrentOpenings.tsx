@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import type { JobData } from 'src/types/jobs';
-
+import { initTextReveal } from '../scripts/text-reveal';
 type CurrentOpeningsProps = {
   title: string;
   description: string;
@@ -9,6 +9,12 @@ type CurrentOpeningsProps = {
 };
 
 export default function CurrentOpenings({ title, description, btnText, jobs }: CurrentOpeningsProps) {
+  const sectionRef = useRef<HTMLElement | null>(null);
+   useEffect(() => {
+    if (sectionRef.current) {
+      initTextReveal(sectionRef.current);
+    }
+  }, []);
   const [openJobId, setOpenJobId] = useState<number | null>(1);
 
   const count = jobs.length;
@@ -18,15 +24,16 @@ export default function CurrentOpenings({ title, description, btnText, jobs }: C
   };
 
   return (
-    <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 bg-white">
+    <section ref={sectionRef} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 bg-white">
       
       {/* Header Section */}
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-12">
-        <div className="max-w-2xl">
-          <h2 className="text-[48px] md:text-5xl font-primary font-normal text-levein-black mb-3 tracking-tight">
+        <div data-reveal-group
+        data-reveal-start="top 95%" className="max-w-2xl">
+          <h2 data-reveal-heading className="text-[48px] md:text-5xl font-primary font-normal text-levein-black mb-3 tracking-tight">
             {title}
           </h2>
-          <p className="text-levein-secondary text-[16px] md:text-base leading-relaxed">
+          <p data-reveal-body className="text-levein-secondary text-[16px] md:text-base leading-relaxed">
             {description}
           </p>
         </div>

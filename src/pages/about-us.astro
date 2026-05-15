@@ -218,8 +218,9 @@ const teamMembers = [
         class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-12 items-start"
       >
         <!-- Left Content -->
-        <div class="max-w-full flex flex-col gap-2">
+        <div data-reveal-group data-reveal-start="top 95%" class="max-w-full flex flex-col gap-2">
           <h2
+            data-reveal-heading
             class="font-primary text-[48px] font-normal text-white leading-[1.15] tracking-tight md:text-5xl lg:text-6xl"
           >
             9 Years of building <br />
@@ -228,6 +229,7 @@ const teamMembers = [
           </h2>
 
           <p
+            data-reveal-body
             class="mt-6 max-w-md text-[16px] leading-relaxed text-[#FBFBFB]/85 md:text-base"
           >
             We’ve spent the last nine years scaling businesses and empowering
@@ -368,14 +370,15 @@ const teamMembers = [
         <div class="hidden lg:block"></div>
 
         <!-- Right content -->
-        <div class="max-w-md lg:ml-12">
+        <div data-reveal-group data-reveal-start="top 95%" class="max-w-md lg:ml-12">
           <h2
+            data-reveal-heading
             class="font-primary text-[48px] font-normal leading-tight tracking-tight md:text-5xl"
           >
             Our Late Founder
           </h2>
 
-          <div
+          <div data-reveal-body
             class="mt-6 space-y-4 text-[16px] leading-relaxed text-[#FBFBFB]"
           >
             <p>
@@ -408,11 +411,11 @@ const teamMembers = [
   </section>
   <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 bg-white font-sans">
   
-  <div class="text-center max-w-4xl mx-auto mb-16">
-    <h2 class="text-4xl md:text-[48px] font-primary font-normal text-levein-black mb-2 tracking-tight">
+  <div data-reveal-group data-reveal-start="top 95%" class="text-center max-w-4xl mx-auto mb-16">
+    <h2 data-reveal-heading class="text-4xl md:text-[48px] font-primary font-normal text-levein-black mb-2 tracking-tight">
       Group of Companies
     </h2>
-    <p class="text-levein-secondary text-base md:text-[16px] leading-relaxed">
+    <p data-reveal-body class="text-levein-secondary text-base md:text-[16px] leading-relaxed">
       Through our specialized verticals, we build innovative products, connect world-class talent with global firms, and invest back into the communities that power our success.
     </p>
   </div>
@@ -503,11 +506,11 @@ const teamMembers = [
   <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 bg-white font-sans">
   
     <!-- Section Header -->
-    <div class="text-center max-w-3xl mx-auto mb-16">
-      <h2 class="text-4xl md:text-[48px] font-primary font-medium text-levein-black mb-2 tracking-tight">
+    <div data-reveal-group data-reveal-start="top 95%" class="text-center max-w-3xl mx-auto mb-16">
+      <h2 data-reveal-heading class="text-4xl md:text-[48px] font-primary font-medium text-levein-black mb-2 tracking-tight">
         Meet the team
       </h2>
-      <p class="text-levein-secondary text-[16px] md:text-base leading-relaxed">
+      <p data-reveal-body class="text-levein-secondary text-[16px] md:text-base leading-relaxed">
         Meet the dedicated team that powers global operations and delivers world-class results for our partners every day.
       </p>
     </div>
@@ -542,7 +545,6 @@ const teamMembers = [
               </h3>
             </div>
             
-            <!-- Position Title (Indented slightly to align with name, past the icon) -->
             <p class="text-white/80 text-xs sm:text-sm pl-6">
               {member.position}
             </p>

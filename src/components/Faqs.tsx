@@ -1,26 +1,37 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { faqDataHome } from '../data/careers';
 import type { FAQItem } from '../types/careers';
+import { initTextReveal } from '../scripts/text-reveal';
 
 export default function Faqs() {
+  const sectionRef = useRef<HTMLElement | null>(null);
   const [openId, setOpenId] = useState<number | null>(1);
+
+  useEffect(() => {
+    if (sectionRef.current) {
+      initTextReveal(sectionRef.current);
+    }
+  }, []);
 
   const toggleAccordion = (id: FAQItem['id']) => {
     setOpenId((prevId) => (prevId === id ? null : id));
   };
 
   return (
-    <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 bg-white">
+    <section ref={sectionRef} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 bg-white">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-start">
         
         {/* Left Column: Heading & Button */}
         <div className="lg:col-span-5 lg:sticky lg:top-24">
-          <h2 className="text-[28px] lg:text-[48px] font-primary font-normal text-levein-black mb-2 leading-tight tracking-tight">
+          <div data-reveal-group
+        data-reveal-start="top 95%">
+          <h2 data-reveal-heading className="text-[28px] lg:text-[48px] font-primary font-normal text-levein-black mb-2 leading-tight tracking-tight">
             Your questions,<br />answered.
           </h2>
-          <p className="text-levein-secondary text-base mb-8 max-w-md">
+          <p data-reveal-body className="text-levein-secondary text-base mb-8 max-w-md">
             We know the questions that come before you apply. Here are the answers.
           </p>
+          </div>
           <a type="button" className="bg-button text-[18px] border border-transparent hover:bg-white hover:border-[#1A1617] text-levein-black font-medium px-8 py-3 rounded-full items-center gap-2 transition-colors duration-300 inline-flex" href="mailto:careers@levein.com">
             Contact us
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">

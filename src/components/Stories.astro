@@ -12,7 +12,7 @@ import teamSliderEight from "@assets/team/slider/shalini.png";
 
 const rowOne = [
   {
-    name: "Chanaka Ayya",
+    name: "Chanaka Gunasekara",
     role: "Senior Backend Engineer",
     message:
       "Integrating Levein's analytics transformed our workflow, boosting efficiency by 25%.",
@@ -84,9 +84,11 @@ const rowTwoLoop = [...rowTwo, ...rowTwo];
     <div class="w-full">
       <!-- Top -->
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 w-full">
-        <div class="mb-10 grid gap-6 md:mb-12 md:grid-cols-2 md:items-start">
+        <div data-reveal-group
+        data-reveal-start="top 95%" class="mb-10 grid gap-6 md:mb-12 md:grid-cols-2 md:items-start">
           <div>
             <h2
+            data-reveal-heading
               class="font-primary font-normal text-[48px] leading-tight md:text-5xl"
             >
               Employee Stories
@@ -94,7 +96,7 @@ const rowTwoLoop = [...rowTwo, ...rowTwo];
           </div>
 
           <div class="md:pl-10">
-            <p class="max-w-xl text-[16px] leading-relaxed text-[#FBFBFB]/90">
+            <p data-reveal-body class="max-w-xl text-[16px] leading-relaxed text-[#FBFBFB]/90">
               Over 150 Sri Lankan professionals have built careers through
               Levein. Here is what some of them found on the other side of the
               application.
