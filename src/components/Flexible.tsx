@@ -154,7 +154,7 @@ export default function FlexibleApproachSection() {
               className="bg-[#E3F0E0] rounded-lg px-4 py-2 transition-all duration-300 ease-in-out space-y-2"
             >
               <h4 className="text-[14px] text-levein-black font-semibold mb-2">
-               Work from where you perform best
+              Work from where you perform best
               </h4>
               <p className="text-[#3B574F] text-[14px]">
                 Whether from your home office, coworking space, or our Porto HQ, you have the freedom to choose.

@@ -1,15 +1,20 @@
 import { useEffect, useRef, useState } from 'react';
-import { faqDataHome } from '../data/careers';
+import { faqDataHome, faqDataCareers } from '../data/careers';
 import type { FAQItem } from '../types/careers';
 import { initTextReveal } from '../scripts/text-reveal';
 
 export default function Faqs() {
   const sectionRef = useRef<HTMLElement | null>(null);
   const [openId, setOpenId] = useState<number | null>(1);
+  const [Dataset, setDataset] = useState<FAQItem[]>(faqDataHome);
 
   useEffect(() => {
     if (sectionRef.current) {
       initTextReveal(sectionRef.current);
+    }
+    const path = window.location.pathname;
+    if (path === "/careers") {
+      setDataset(faqDataCareers);
     }
   }, []);
 
@@ -44,7 +49,7 @@ export default function Faqs() {
 
         {/* Right Column: Accordion List */}
         <div className="lg:col-span-7 flex flex-col gap-4">
-          {faqDataHome.map((faq) => {
+          {Dataset.map((faq) => {
             const isOpen = openId === faq.id;
 
             return (
