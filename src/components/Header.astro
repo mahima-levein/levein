@@ -7,6 +7,14 @@ const navItems = [
   { label: "Life @ Levein", href: "/life-at-levein", active: pathname === "/life-at-levein" },
   { label: "Careers", href: "/careers", active: pathname === "/careers" },
 ];
+const navMobileItems = [
+  { label: "Home", href: "/", active: pathname === "/" },
+  { label: "About us", href: "/about-us", active: pathname === "/about-us" },
+  { label: "Life @ Levein", href: "/life-at-levein", active: pathname === "/life-at-levein" },
+  { label: "Careers", href: "/careers", active: pathname === "/careers" },
+  { label: "Contact", href: "/contact-us", active: pathname === "/contact-us" },
+
+];
 ---
 
 <header
@@ -68,7 +76,7 @@ const navItems = [
 
     <!-- CTA -->
     <a
-      href="/contact"
+      href="/contact-us"
       class="site-header__cta max-md:hidden inline-flex px-6 py-3 items-center justify-center justify-self-end rounded-[150px] border text-[18px] font-normal leading-none no-underline transition-all duration-300 hover:-translate-y-0.5 max-md:text-[18px]"
     >
       Apply Now
@@ -90,7 +98,7 @@ const navItems = [
   >
     <nav aria-label="Mobile Navigation" class="site-header__mobile-nav">
       {
-        navItems.map((item) => (
+        navMobileItems.map((item) => (
           <a
             href={item.href}
             class:list={[
@@ -103,7 +111,7 @@ const navItems = [
         ))
       }
 
-      <a href="/contact" class="site-header__mobile-cta">Apply Now</a>
+      <a href="/jobs" class="site-header__mobile-cta">Apply Now</a>
     </nav>
   </div>
 </header>

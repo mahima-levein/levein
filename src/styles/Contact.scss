@@ -11,5 +11,8 @@
 
     h2{
         line-height: 84px;
+        @include mobile {
+            line-height: normal;
+        }
     }
 }

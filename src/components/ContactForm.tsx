@@ -1,7 +1,37 @@
 import React from 'react';
-
+import { useIsMobile } from "../hooks/use-mobile";
 export default function ContactForm() {
+  const isMobile = useIsMobile();
+  const titleDesktop = (
+    <>
+      Have a question<br />
+      about working<br />
+      with us?
+    </>
+  );
+  const titleMobile = "Have a question about working with us?";
   return (
+    <>
+      {/* Left Column: Text Content */}
+        <div className="flex flex-col max-w-lg">
+          <h2 className="text-4xl lg:text-[64px] md:text-5xl font-primary text-levein-white mb-6 tracking-tight">
+            {isMobile ? titleMobile : titleDesktop}
+          </h2>
+          
+          <p className="text-levein-white text-base md:text-lg mb-12 leading-relaxed pr-8">
+            Whether you're applying, exploring roles, or just curious, we're here to help.
+          </p>
+
+          <hr className="border-t border-[#31423B] mb-6 w-full max-w-md" />
+
+          <p className="text-[16px] text-levein-white">
+            Are you looking for a job?{' '}
+            <a href="jobs" className="text-levein-white underline underline-offset-4 decoration-gray-400 hover:decoration-white transition-colors">
+              Join our team.
+            </a>
+          </p>
+        </div>
+        {/* Right Column */}
         <div className="w-full">
           <form className="flex flex-col gap-6" onSubmit={(e) => e.preventDefault()}>
             
@@ -68,5 +98,7 @@ export default function ContactForm() {
             </div>
           </form>
         </div>
+
+    </>
   );
 }

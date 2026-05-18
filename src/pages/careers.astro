@@ -21,12 +21,12 @@ const jobOpenings = Data as JobData[];
 
 <Layout title="Careers - Levein Group" description="Explore exciting career opportunities at Levein Group. Join our dynamic team and be part of a company that values innovation, growth, and making a positive impact in the tech and healthcare industries. Discover your potential with us!" >
     <!-- Career Hero Section -->
-    <section class="max-w-7xl mx-auto min-h-screen px-4 sm:px-6 lg:px-8 pt-20 bg-white">
+    <section class="max-w-7xl mx-auto min-h-screen px-4 sm:px-6 lg:px-8 pt-12 lg:pt-20 bg-white">
     <div class="grid grid-cols-1 lg:grid-cols-5 gap-16 lg:gap-12 items-center mt-16">
 
         <div class="max-w-lg lg:col-span-2">
             <div data-reveal-group data-reveal-start="top 95%">
-                <h2 data-reveal-heading class="text-5xl md:text-[54px] font-primary font-medium text-levein-black mb-6 tracking-tight">
+                <h2 data-reveal-heading class="text-4xl md:text-[54px] font-primary font-medium text-levein-black mb-6 tracking-tight">
                     Careers at Levein.
                 </h2>
                 <p data-reveal-body class="text-levein-secondary text-base md:text-[16px] mb-8 leading-relaxed pr-4">
@@ -86,7 +86,7 @@ const jobOpenings = Data as JobData[];
     <FlexibleApproachSection client:idle />
 
     <!-- Jobs Section -->
-     <div id="roles"></div>
+    <div id="roles"></div>
     <CurrentOpenings title="Current Openings" description="We are always hiring talented professionals. Browse what is open below and if you do not see your exact role listed, email us your cv!" btnText="Visit Our Job Platform" jobs={jobOpenings} client:visible />
 
     <!-- Employee Stories Section -->
