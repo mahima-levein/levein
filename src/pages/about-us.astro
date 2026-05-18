@@ -4,7 +4,7 @@ import Hero from "@components/HeroSection.astro";
 import "@styles/About.scss";
 import timelineImg_1 from "@assets/timeline-1.jpg";
 import timelineImg_2 from "@assets/timeline-2.jpg";
-import timelineImg_3 from "@assets/timeline-3.png";
+import timelineImg_3 from "@assets/timeline-3.jpg";
 import timelineImg_4 from "@assets/timeline-4.jpg";
 import Nirmani from "@assets/nirmani-full.jpg";
 import { Image } from "astro:assets";
@@ -41,73 +41,73 @@ const teamMembers = [
       name: "Nirmani De Alwis",
       position: "CEO",
       image: Member_1,
-      linkedin: "https://linkedin.com"
+      linkedin: "https://www.linkedin.com/in/nirmani-jayaweera-4172065b/"
     },
     {
-      name: "Kasun Perera",
-      position: "CTO",
+      name: "Trevon Mark",
+      position: "Head of HR & Operations",
       image: Member_2,
-      linkedin: "https://linkedin.com"
+      linkedin: "https://www.linkedin.com/in/trevon-mark-36451a172/"
     },
     {
-      name: "Saman Kumara",
-      position: "Head of Operations",
+      name: "Mewan Fernando",
+      position: "AGM – Account",
       image: Member_3,
-      linkedin: "https://linkedin.com"
+      linkedin: "https://www.linkedin.com/in/mewanfernando/"
     },
     {
-      name: "Amila Silva",
-      position: "Lead Designer",
+      name: "Usman Marikkar",
+      position: "Senior Finance Executive",
       image: Member_4,
-      linkedin: "https://linkedin.com"
+      linkedin: "https://www.linkedin.com/in/usman-marikkar-ab6381221/"
     },
     {
-      name: "Dilshan Fernando",
-      position: "Backend Lead",
+      name: "Harishman Somaskandarasa",
+      position: "Assistant Manager – HR",
       image: Member_5,
-      linkedin: "https://linkedin.com"
+      linkedin: "https://www.linkedin.com/in/harishman-somaskandarasa/"
     },
     {
-      name: "Natasha Perera",
-      position: "HR Manager",
+      name: "Salini Dias",
+      position: "Assistant Manager – L&D",
       image: Member_6,
-      linkedin: "https://linkedin.com"
+      linkedin: "https://www.linkedin.com/in/salini-dias-5b85631a1/"
     },
     {
-      name: "Kavindi Silva",
-      position: "Frontend Dev",
+      name: "Pasandi Viswani",
+      position: "Senior Executive – Talent Acquisition",
       image: Member_7,
-      linkedin: "https://linkedin.com"
+      linkedin: "https://www.linkedin.com/in/pasandi-viswani/"
     },
     {
-      name: "Ruwani Fernando",
-      position: "QA Engineer",
+      name: "Dilki Maniyangamage",
+      position: "HR Executive",
       image: Member_8,
-      linkedin: "https://linkedin.com"
+      linkedin: "https://www.linkedin.com/in/dilki-m001/"
     },
     {
-      name: "Hasini Bandara",
-      position: "Marketing Lead",
+      name: "Kanishka Ganesan",
+      position: "Junior HR Executive",
       image: Member_9,
-      linkedin: "https://linkedin.com"
+      linkedin: "https://www.linkedin.com/in/kanishka-ganesan-b51923316/"
     },
     {
-      name: "Chamara Rathnayake",
-      position: "Accountant",
+      name: "Salman Faiz",
+      position: "Marketing Manager",
       image: Member_10,
-      linkedin: "https://linkedin.com"
+      linkedin: "https://www.linkedin.com/in/salman-faiz-8b351897/"
     },
     {
-      name: "Nuwan Pradeep",
-      position: "Project Manager",
+      name: "Rushmika Perera",
+      position: "Creative Designer",
       image: Member_11,
-      linkedin: "https://linkedin.com"
+      linkedin: "https://www.linkedin.com/in/rushmika-perera-616b11164/"
     },
     {
-      name: "Asela Gunaratne",
-      position: "DevOps Engineer",
+      name: "Akash Perera",
+      position: "Operations Admin / IT Support",
       image: Member_12,
-      linkedin: "https://linkedin.com"
+      linkedin: "#"
     }
   ];
 
@@ -203,7 +203,7 @@ const teamMembers = [
           pauseOnMouseEnter: false,
         },
         breakpoints: {
-          0: { slidesPerView: 2, spaceBetween: 10 },
+          0: { slidesPerView: 4, spaceBetween: 30 },
           640: { slidesPerView: 4, spaceBetween: 30 },
           1024: { slidesPerView: 5 },
         },
@@ -221,7 +221,7 @@ const teamMembers = [
         <div data-reveal-group data-reveal-start="top 95%" class="max-w-full flex flex-col gap-2">
           <h2
             data-reveal-heading
-            class="font-primary text-[48px] font-normal text-white leading-[1.15] tracking-tight md:text-5xl lg:text-6xl"
+            class="font-primary font-normal text-white leading-[1.15] tracking-tight text-4xl md:text-5xl lg:text-[48px]"
           >
             9 Years of building <br />
             expertise and growing <br />
@@ -252,13 +252,8 @@ const teamMembers = [
               class="timeline-card relative z-10 ml-auto flex max-w-xl items-center gap-5 rounded-3xl border p-4 border-[#FBFBFB]/70 bg-[#061514] pr-6 transition duration-500 hover:-translate-y-1 hover:border-[#7fcfa8] hover:shadow-[0_0_35px_rgba(127,207,168,0.18)]"
             >
               <div
-                class="h-20 w-36 shrink-0 overflow-hidden rounded-lg bg-[#FBFBFB]/10"
+                class="timeline-img shrink-0 overflow-hidden rounded-lg bg-[url(/public/timeline-1.jpg)] bg-cover bg-center"
               >
-                <img
-                  src={timelineImg_1.src}
-                  alt="Levein team in 2014"
-                  class="h-full w-full object-cover"
-                />
               </div>
 
               <div>
@@ -278,13 +273,8 @@ const teamMembers = [
               class="timeline-card relative z-10 ml-auto flex max-w-xl items-center gap-5 rounded-3xl border p-4 border-[#FBFBFB]/70 bg-[#061514] pr-6 transition duration-500 hover:-translate-y-1 hover:border-[#7fcfa8] hover:shadow-[0_0_35px_rgba(127,207,168,0.18)]"
             >
               <div
-                class="h-20 w-36 shrink-0 overflow-hidden rounded-lg bg-[#FBFBFB]/10"
+                class="timeline-img shrink-0 overflow-hidden rounded-lg bg-[url(/public/timeline-2.jpg)] bg-cover bg-center"
               >
-                <img
-                  src={timelineImg_2.src}
-                  alt="Levein team in 2020"
-                  class="h-full w-full object-cover"
-                />
               </div>
 
               <div>
@@ -304,13 +294,9 @@ const teamMembers = [
               class="timeline-card relative z-10 ml-auto flex max-w-xl items-center gap-5 rounded-3xl border p-4 border-[#FBFBFB]/70 bg-[#061514] pr-6 transition duration-500 hover:-translate-y-1 hover:border-[#7fcfa8] hover:shadow-[0_0_35px_rgba(127,207,168,0.18)]"
             >
               <div
-                class="h-20 w-36 shrink-0 overflow-hidden rounded-lg bg-[#FBFBFB]/10"
+                class="timeline-img shrink-0 overflow-hidden rounded-lg bg-[url(/public/timeline-3.jpg)] bg-cover bg-center"
               >
-                <img
-                  src={timelineImg_3.src}
-                  alt="Levein workspace in 2022"
-                  class="h-full w-full object-cover"
-                />
+
               </div>
 
               <div>
@@ -330,13 +316,8 @@ const teamMembers = [
               class="timeline-card relative z-10 ml-auto flex max-w-xl items-center gap-5 rounded-3xl border p-4 border-[#FBFBFB]/70 bg-[#061514] pr-6 transition duration-500 hover:-translate-y-1 hover:border-[#7fcfa8] hover:shadow-[0_0_35px_rgba(127,207,168,0.18)]"
             >
               <div
-                class="h-20 w-36 shrink-0 overflow-hidden rounded-lg bg-[#FBFBFB]/10"
+                class="timeline-img shrink-0 overflow-hidden rounded-lg bg-[url(/public/timeline-4.jpg)] bg-cover bg-center"
               >
-                <img
-                  src={timelineImg_4.src}
-                  alt="Levein team today"
-                  class="h-full w-full object-cover"
-                />
               </div>
 
               <div>
@@ -373,7 +354,7 @@ const teamMembers = [
         <div data-reveal-group data-reveal-start="top 95%" class="max-w-md lg:ml-12">
           <h2
             data-reveal-heading
-            class="font-primary text-[48px] font-normal leading-tight tracking-tight md:text-5xl"
+            class="font-primary text-4xl md:text-5xl lg:text-[48px] font-normal leading-tight tracking-tight"
           >
             Our Late Founder
           </h2>
@@ -515,8 +496,8 @@ const teamMembers = [
       </p>
     </div>
 
-    <!-- The Grid Container (Empty, will be populated by the JS loop below) -->
-    <div id="team-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 md:gap-5">
+    <!-- The Grid Container Desktop Only -->
+    <div id="team-grid" class="hidden md:grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 md:gap-5">
       {teamMembers.slice(0, 6).map((member, index) => (
       <a href={member.linkedin} target="_blank" rel="noopener noreferrer" class="group relative overflow-hidden rounded-[20px] aspect-[4/5] block cursor-pointer">
       
@@ -591,6 +572,71 @@ const teamMembers = [
     </a>
       ))}
     </div>
+
+    <!-- The Grid Container Mobile Only -->
+    <div id="team-grid-mobile" class="grid md:hidden grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 md:gap-5">
+      {teamMembers.map((member, index) => (
+      <a href={member.linkedin} target="_blank" rel="noopener noreferrer" data-index={index} class={`group relative overflow-hidden rounded-[20px] aspect-[4/5] block cursor-pointer ${index >= 4 ? 'toggle-hidden hidden' : ''}`}>
+      
+        <div class={` ${index % 2 === 0 ? 'bg-[#326262]' : 'bg-[#36836F]'} p-0 flex flex-col justify-center items-center h-full w-full transition-transform duration-700 group-hover:scale-105`}>
+          <Image 
+            src={member.image} 
+            alt={member.name}
+            class="w-full h-full object-cover transition-transform duration-700 ease-in-out group-hover:scale-110" 
+          />
+        </div>
+
+
+        <div 
+          class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out flex flex-col justify-end p-4 sm:p-5"
+          style="background: linear-gradient(180deg, rgba(29, 99, 99, 0.00) 0%, rgba(29, 99, 99, 0.85) 100%); backdrop-filter: blur(1px);"
+        >
+          
+          <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">
+            
+            <div class="flex items-center gap-2 mb-1">
+              <svg class="w-4 h-4 text-white fill-current shrink-0" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+              </svg>
+              <h3 class="text-white font-medium text-sm sm:text-base leading-tight truncate">
+                {member.name}
+              </h3>
+            </div>
+            
+            <p class="text-white/80 text-xs sm:text-sm pl-6">
+              {member.position}
+            </p>
+            
+          </div>
+        </div>
+    </a>
+      ))}
+    </div>
+
+    <!-- Mobile toggle button -->
+    <div class="text-center md:hidden">
+      <button id="team-toggle" data-expanded="false" class="mt-6 mx-auto bg-button text-sm md:text-[18px] border border-transparent hover:bg-white hover:border-[#1A1617] text-levein-black font-semibold px-8 py-3 rounded-full items-center gap-2 transition-colors duration-300 inline-flex"">View more</button>
+    </div>
+
+    <script type="module">
+      document.addEventListener('DOMContentLoaded', () => {
+        const btn = document.getElementById('team-toggle');
+        if (!btn) return;
+        btn.addEventListener('click', () => {
+          const items = document.querySelectorAll('.toggle-hidden');
+          const expanded = btn.dataset.expanded === 'true';
+          items.forEach(el => {
+            if (expanded) {
+              el.classList.add('hidden');
+            } else {
+              el.classList.remove('hidden');
+            }
+          });
+          btn.dataset.expanded = (!expanded).toString();
+          btn.textContent = expanded ? 'View more' : 'View less';
+        });
+      });
+    </script>
   </section>
   <CareerCtaSection />
 </Layout>

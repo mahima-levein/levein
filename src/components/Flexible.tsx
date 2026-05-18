@@ -112,7 +112,7 @@ export default function FlexibleApproachSection() {
         
         <div className="lg:col-span-5 flex flex-col" data-reveal-group
         data-reveal-start="top 95%">
-          <h2 data-reveal-heading className={`text-4xl sm:text-5xl lg:text-[56px] font-primary ${isRemote ? 'text-white' : 'text-levein-black'} transition-colors duration-300 leading-[1.1] tracking-tight mb-8`}>
+          <h2 data-reveal-heading className={`text-4xl sm:text-5xl lg:text-[48px] font-primary ${isRemote ? 'text-white' : 'text-levein-black'} transition-colors duration-300 leading-[1.1] tracking-tight mb-8`}>
             A Flexible Approach<br />to Work
           </h2>
           
