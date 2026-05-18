@@ -23,7 +23,7 @@ export default function Faqs() {
   };
 
   return (
-    <section ref={sectionRef} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-0 lg:py-16 bg-white">
+    <section ref={sectionRef} data-reveal-local className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-0 lg:py-16 bg-white">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-start">
         
         {/* Left Column: Heading & Button */}

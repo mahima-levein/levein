@@ -1,65 +1,100 @@
 import React from 'react';
-
+interface ApplicationData {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  level: string;
+  specialty: string;
+  cvUrl: string;
+  linkedInUrl?: string;
+  status?: string;
+  consent: boolean;
+}
 export default function ApplicationForm() {
+  const [formData, setFormData] = React.useState<ApplicationData>({
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    level: '',
+    specialty: '',
+    cvUrl: '',
+    linkedInUrl: '',
+    status: '',
+    consent: false
+  });
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+  };
   return (
-    <div className="max-w-5xl mx-auto p-6 md:p-10 bg-[#E3F0E0] rounded-3xl font-sans">
-      <form onSubmit={(e) => e.preventDefault()} className="flex flex-col gap-6">
+    <div className="max-w-5xl mx-auto p-6 md:p-10 bg-[#7fcfa854] rounded-3xl font-sans">
+      <form onSubmit={handleSubmit} className="flex flex-col gap-6">
         
         {/* --- Top Grid (Inputs) --- */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-6">
           
           {/* First Name */}
           <div className="flex flex-col gap-2">
-            <label htmlFor="firstName" className="text-[16px] font-medium text-gray-800">First name</label>
+            <label htmlFor="firstName" className="text-[16px] font-medium text-levein-black">First name</label>
             <input 
               type="text" 
               id="firstName"
               placeholder="Enter your first name" 
               className="w-full px-4 py-3 rounded-lg border border-transparent focus:border-[#93D7B0] focus:ring-1 focus:ring-[#93D7B0] bg-levein-white outline-none text-gray-700 text-sm placeholder-gray-400"
+              value={formData.firstName}
+              onChange={(e) => setFormData({...formData, firstName: e.target.value})}
             />
           </div>
 
           {/* Last Name */}
           <div className="flex flex-col gap-2">
-            <label htmlFor="lastName" className="text-[16px] font-medium text-gray-800">Last name</label>
+            <label htmlFor="lastName" className="text-[16px] font-medium text-levein-black">Last name</label>
             <input 
               type="text" 
               id="lastName"
               placeholder="Enter your last name" 
               className="w-full px-4 py-3 rounded-lg border border-transparent focus:border-[#93D7B0] focus:ring-1 focus:ring-[#93D7B0] bg-levein-white outline-none text-gray-700 text-sm placeholder-gray-400"
+              value={formData.lastName}
+              onChange={(e) => setFormData({...formData, lastName: e.target.value})}
             />
           </div>
 
           {/* Email Address */}
           <div className="flex flex-col gap-2">
-            <label htmlFor="email" className="text-sm font-medium text-gray-800">Email Address</label>
+            <label htmlFor="email" className="text-[16px] font-medium text-levein-black">Email Address</label>
             <input 
               type="email" 
               id="email"
               placeholder="Enter your email address" 
               className="w-full px-4 py-3 rounded-lg border border-transparent focus:border-[#93D7B0] focus:ring-1 focus:ring-[#93D7B0] bg-levein-white outline-none text-gray-700 text-sm placeholder-gray-400"
+              value={formData.email}
+              onChange={(e) => setFormData({...formData, email: e.target.value})}
             />
           </div>
 
           {/* Phone Number */}
           <div className="flex flex-col gap-2">
-            <label htmlFor="phone" className="text-[16px] font-medium text-gray-800">Phone number</label>
+            <label htmlFor="phone" className="text-[16px] font-medium text-levein-black">Phone number</label>
             <input 
               type="tel" 
               id="phone"
               placeholder="Enter your phone number" 
               className="w-full px-4 py-3 rounded-lg border border-transparent focus:border-[#93D7B0] focus:ring-1 focus:ring-[#93D7B0] bg-levein-white outline-none text-gray-700 text-sm placeholder-gray-400"
+              value={formData.phone}
+              onChange={(e) => setFormData({...formData, phone: e.target.value})}
             />
           </div>
 
           {/* Country Dropdown */}
           <div className="flex flex-col gap-2 relative">
-            <label htmlFor="country" className="text-[16px] font-medium text-gray-800">Level</label>
+            <label htmlFor="country" className="text-[16px] font-medium text-levein-black">Level</label>
             <div className="relative">
               <select 
                 id="country"
                 className="w-full px-4 py-3 rounded-lg border border-transparent focus:border-[#93D7B0] focus:ring-1 focus:ring-[#93D7B0] outline-none text-gray-500 text-sm appearance-none bg-white cursor-pointer"
-                defaultValue=""
+                value={formData.level}
+                onChange={(e) => setFormData({...formData, level: e.target.value})}
               >
                 <option value="" disabled hidden>Select a level</option>
                 <option value="lk">Senior</option>
@@ -75,17 +110,30 @@ export default function ApplicationForm() {
 
           {/* Specialty Dropdown */}
           <div className="flex flex-col gap-2 relative">
-            <label htmlFor="specialty" className="text-[16px] font-medium text-gray-800">What is your specialty area?</label>
+            <label htmlFor="specialty" className="text-[16px] font-medium text-levein-black">What is your specialty area?</label>
             <div className="relative">
               <select 
                 id="specialty"
                 className="w-full px-4 py-3 rounded-lg border border-transparent focus:border-[#93D7B0] focus:ring-1 focus:ring-[#93D7B0] outline-none text-gray-500 text-sm appearance-none bg-white cursor-pointer"
-                defaultValue=""
+                value={formData.specialty}
+                onChange={(e) => setFormData({...formData, specialty: e.target.value})}
               >
                 <option value="" disabled hidden>Select your specialty area</option>
-                <option value="frontend">Frontend Development</option>
-                <option value="backend">Backend Development</option>
-                <option value="design">UI/UX Design</option>
+                <option>Software Engineering</option>
+                <option>Quality Engineering</option>
+                <option>UI/UX Design</option>
+                <option>Product Management</option>
+                <option>Project Management</option>
+                <option>Business Analysis</option>
+                <option>Data Engineering</option>
+                <option>Cybersecurity</option>
+                <option>UI/UX</option>
+                <option>Cloud Services</option>
+                <option>Accounting & Finance</option>
+                <option>Human Resources</option>
+                <option>Talent Acquisition</option>
+                <option>Legal</option>
+                <option>Travel & Mobility</option>
               </select>
               <div className="absolute inset-y-0 right-4 flex items-center pointer-events-none text-gray-500">
                 <svg width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L7 7L13 1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
@@ -95,14 +143,41 @@ export default function ApplicationForm() {
 
         </div>
           <div className="flex flex-col gap-2">
-            <label className="text-[16px] font-medium text-gray-800">Enter URL (Drive Link or Portfolio Website)</label>
+            <label className="text-[16px] font-medium text-levein-black">Enter CV URL (Drive Link or Portfolio Website)</label>
             <input 
               type="url" 
               id="cv-url"
               placeholder="Enter your CV/Portfolio URL" 
               className="w-full px-4 py-3 rounded-lg border border-transparent focus:border-[#93D7B0] focus:ring-1 focus:ring-[#93D7B0] bg-levein-white outline-none text-gray-700 text-sm placeholder-gray-400"
+              value={formData.cvUrl}
+              onChange={(e) => setFormData({...formData, cvUrl: e.target.value})}
             />
           </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-6">
+            <div className="flex flex-col gap-2">
+              <label className="text-[16px] font-medium text-levein-black">Link to your LinkedIn?</label>
+              <input 
+                type="url" 
+                id="linkedin-url"
+                placeholder="Enter your LinkedIn URL" 
+                className="w-full px-4 py-3 rounded-lg border border-transparent focus:border-[#93D7B0] focus:ring-1 focus:ring-[#93D7B0] bg-levein-white outline-none text-gray-700 text-sm placeholder-gray-400"
+                value={formData.linkedInUrl}
+                onChange={(e) => setFormData({...formData, linkedInUrl: e.target.value})}
+              />
+            </div>
+            <div className="flex flex-col gap-2">
+              <label className="text-[16px] font-medium text-levein-black">What is your current place of employment/studies?</label>
+              <input 
+                type="url" 
+                id="github-url"
+                placeholder="Enter your GitHub URL" 
+                className="w-full px-4 py-3 rounded-lg border border-transparent focus:border-[#93D7B0] focus:ring-1 focus:ring-[#93D7B0] bg-levein-white outline-none text-gray-700 text-sm placeholder-gray-400"
+                value={formData.githubUrl}
+                onChange={(e) => setFormData({...formData, githubUrl: e.target.value})}
+              />
+            </div>
+          </div>
+
         {/* <div className="flex flex-col gap-2 mt-2">
           <label className="text-[16px] font-medium text-gray-800">Upload your CV</label>
           <div className="w-full border border-dashed border-[#85A99C] rounded-xl bg-white/50 py-10 flex flex-col items-center justify-center cursor-pointer hover:bg-white/80 transition-colors">
@@ -123,6 +198,8 @@ export default function ApplicationForm() {
           <input 
             type="checkbox" 
             id="consent" 
+            checked={formData.consent}
+            onChange={(e) => setFormData({...formData, consent: e.target.checked})}
             className="mt-1 w-4 h-4 rounded border-gray-300 text-[#3B574F] focus:ring-[#93D7B0] cursor-pointer"
           />
           <label htmlFor="consent" className="text-[14px] text-gray-600 cursor-pointer select-none">

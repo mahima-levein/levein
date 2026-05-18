@@ -107,7 +107,7 @@ export default function FlexibleApproachSection() {
   };
 
   return (
-    <section ref={sectionRef} className={` ${isRemote ? 'bg-[#061414]' : 'bg-[#E3F0E0]'} transition-colors duration-300 py-24 px-4 sm:px-6 lg:px-8 font-sans overflow-hidden`}>
+    <section ref={sectionRef} data-reveal-local className={` ${isRemote ? 'bg-[#061414]' : 'bg-[#E3F0E0]'} transition-colors duration-300 py-24 px-4 sm:px-6 lg:px-8 font-sans overflow-hidden`}>
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-8 items-start">
         
         <div className="lg:col-span-5 flex flex-col" data-reveal-group
@@ -141,12 +141,12 @@ export default function FlexibleApproachSection() {
               <img 
                 src="https://images.unsplash.com/photo-1573164713988-8665fc963095?w=500&h=300&fit=crop" 
                 alt="Team working remotely" 
-                className="w-1/2 h-40 md:h-48 object-cover rounded-[16px]"
+                className="w-1/2 h-40 md:h-48 object-cover rounded-2xl"
               />
               <img 
                 src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=500&h=300&fit=crop" 
                 alt="Team event" 
-                className="w-1/2 h-40 md:h-48 object-cover rounded-[16px]"
+                className="w-1/2 h-40 md:h-48 object-cover rounded-2xl"
               />
             </div>
             

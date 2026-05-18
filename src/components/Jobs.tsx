@@ -259,10 +259,13 @@ export default function JobBoard() {
         <p className="text-[#696969] my-6 text-[18px] sm:text-base">
           Can't find the right role? Get notified about new openings.
         </p>
-        <button className="bg-[#EAF2EB] hover:bg-[#dbe7dd] text-[#111715] font-medium px-6 py-3 rounded-full flex items-center gap-2 transition-colors duration-300 text-[14px] lg:text-[18px]">
+        <a 
+          href="/vacancy-alerts"
+          className="bg-[#EAF2EB] hover:bg-[#dbe7dd] text-[#111715] font-medium px-6 py-3 rounded-full flex items-center gap-2 transition-colors duration-300 text-[14px] lg:text-[18px]"
+        >
           <BellIcon />
           Notify me
-        </button>
+        </a>
       </div>
 
     </section>
