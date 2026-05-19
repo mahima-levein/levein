@@ -37,36 +37,36 @@ const allJobs: Job[] = (jobsData as JobData[]).map((job, index) => {
 // --- Icons ---
 const MonitorIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-  <path d="M5.36699 1.66797H14.6253C17.592 1.66797 18.3337 2.40964 18.3337 5.36797V10.643C18.3337 13.6096 17.592 14.343 14.6337 14.343H5.36699C2.40866 14.3513 1.66699 13.6096 1.66699 10.6513V5.36797C1.66699 2.40964 2.40866 1.66797 5.36699 1.66797Z" stroke="#326262" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M10 14.3516V18.3349" stroke="#326262" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M1.66699 10.832H18.3337" stroke="#326262" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M6.25 18.332H13.75" stroke="#326262" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M5.36699 1.66797H14.6253C17.592 1.66797 18.3337 2.40964 18.3337 5.36797V10.643C18.3337 13.6096 17.592 14.343 14.6337 14.343H5.36699C2.40866 14.3513 1.66699 13.6096 1.66699 10.6513V5.36797C1.66699 2.40964 2.40866 1.66797 5.36699 1.66797Z" stroke="#326262" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+  <path d="M10 14.3516V18.3349" stroke="#326262" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+  <path d="M1.66699 10.832H18.3337" stroke="#326262" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+  <path d="M6.25 18.332H13.75" stroke="#326262" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
 </svg>
 );
 
 const BriefcaseIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-  <path d="M6.66636 18.3333H13.333C16.683 18.3333 17.283 16.9917 17.458 15.3583L18.083 8.69167C18.308 6.65833 17.7247 5 14.1664 5H5.83303C2.27469 5 1.69136 6.65833 1.91636 8.69167L2.54136 15.3583C2.71636 16.9917 3.31636 18.3333 6.66636 18.3333Z" stroke="#326262" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M6.66699 5.0013V4.33464C6.66699 2.85964 6.66699 1.66797 9.33366 1.66797H10.667C13.3337 1.66797 13.3337 2.85964 13.3337 4.33464V5.0013" stroke="#326262" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M11.6663 10.8333V11.6667C11.6663 11.675 11.6663 11.675 11.6663 11.6833C11.6663 12.5917 11.658 13.3333 9.99967 13.3333C8.34967 13.3333 8.33301 12.6 8.33301 11.6917V10.8333C8.33301 10 8.33301 10 9.16634 10H10.833C11.6663 10 11.6663 10 11.6663 10.8333Z" stroke="#326262" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M18.042 9.16797C16.117 10.568 13.917 11.4013 11.667 11.6846" stroke="#326262" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M2.18359 9.39062C4.05859 10.674 6.17526 11.449 8.33359 11.6906" stroke="#326262" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M6.66636 18.3333H13.333C16.683 18.3333 17.283 16.9917 17.458 15.3583L18.083 8.69167C18.308 6.65833 17.7247 5 14.1664 5H5.83303C2.27469 5 1.69136 6.65833 1.91636 8.69167L2.54136 15.3583C2.71636 16.9917 3.31636 18.3333 6.66636 18.3333Z" stroke="#326262" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
+  <path d="M6.66699 5.0013V4.33464C6.66699 2.85964 6.66699 1.66797 9.33366 1.66797H10.667C13.3337 1.66797 13.3337 2.85964 13.3337 4.33464V5.0013" stroke="#326262" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
+  <path d="M11.6663 10.8333V11.6667C11.6663 11.675 11.6663 11.675 11.6663 11.6833C11.6663 12.5917 11.658 13.3333 9.99967 13.3333C8.34967 13.3333 8.33301 12.6 8.33301 11.6917V10.8333C8.33301 10 8.33301 10 9.16634 10H10.833C11.6663 10 11.6663 10 11.6663 10.8333Z" stroke="#326262" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
+  <path d="M18.042 9.16797C16.117 10.568 13.917 11.4013 11.667 11.6846" stroke="#326262" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
+  <path d="M2.18359 9.39062C4.05859 10.674 6.17526 11.449 8.33359 11.6906" stroke="#326262" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
 </svg>
 );
 
 const ArrowCircleIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-  <path d="M10.0003 18.3346C14.6027 18.3346 18.3337 14.6037 18.3337 10.0013C18.3337 5.39893 14.6027 1.66797 10.0003 1.66797C5.39795 1.66797 1.66699 5.39893 1.66699 10.0013C1.66699 14.6037 5.39795 18.3346 10.0003 18.3346Z" stroke="#1A1617" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M7.08301 10H12.083" stroke="#1A1617" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M10.417 12.5L12.917 10L10.417 7.5" stroke="#1A1617" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M10.0003 18.3346C14.6027 18.3346 18.3337 14.6037 18.3337 10.0013C18.3337 5.39893 14.6027 1.66797 10.0003 1.66797C5.39795 1.66797 1.66699 5.39893 1.66699 10.0013C1.66699 14.6037 5.39795 18.3346 10.0003 18.3346Z" stroke="#1A1617" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+  <path d="M7.08301 10H12.083" stroke="#1A1617" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+  <path d="M10.417 12.5L12.917 10L10.417 7.5" stroke="#1A1617" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
 </svg>
 );
 
 const BellIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-  <path d="M12 6.44141V9.77141" stroke="#1A1617" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"/>
-  <path d="M12.0199 2C8.3399 2 5.3599 4.98 5.3599 8.66V10.76C5.3599 11.44 5.0799 12.46 4.7299 13.04L3.4599 15.16C2.6799 16.47 3.2199 17.93 4.6599 18.41C9.4399 20 14.6099 20 19.3899 18.41C20.7399 17.96 21.3199 16.38 20.5899 15.16L19.3199 13.04C18.9699 12.46 18.6899 11.43 18.6899 10.76V8.66C18.6799 5 15.6799 2 12.0199 2Z" stroke="#1A1617" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"/>
-  <path d="M15.3299 18.8203C15.3299 20.6503 13.8299 22.1503 11.9999 22.1503C11.0899 22.1503 10.2499 21.7703 9.64992 21.1703C9.04992 20.5703 8.66992 19.7303 8.66992 18.8203" stroke="#1A1617" stroke-width="1.5" stroke-miterlimit="10"/>
+  <path d="M12 6.44141V9.77141" stroke="#1A1617" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round"/>
+  <path d="M12.0199 2C8.3399 2 5.3599 4.98 5.3599 8.66V10.76C5.3599 11.44 5.0799 12.46 4.7299 13.04L3.4599 15.16C2.6799 16.47 3.2199 17.93 4.6599 18.41C9.4399 20 14.6099 20 19.3899 18.41C20.7399 17.96 21.3199 16.38 20.5899 15.16L19.3199 13.04C18.9699 12.46 18.6899 11.43 18.6899 10.76V8.66C18.6799 5 15.6799 2 12.0199 2Z" stroke="#1A1617" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round"/>
+  <path d="M15.3299 18.8203C15.3299 20.6503 13.8299 22.1503 11.9999 22.1503C11.0899 22.1503 10.2499 21.7703 9.64992 21.1703C9.04992 20.5703 8.66992 19.7303 8.66992 18.8203" stroke="#1A1617" strokeWidth="1.5" strokeMiterlimit="10"/>
 </svg>
 );
 
@@ -203,7 +203,7 @@ export default function JobBoard() {
             className="w-8 h-8 flex items-center justify-center rounded-md hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                <path d="M12.542 3.40156L7.10866 8.8349C6.46699 9.47656 6.46699 10.5266 7.10866 11.1682L12.542 16.6016" stroke="#061414" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M12.542 3.40156L7.10866 8.8349C6.46699 9.47656 6.46699 10.5266 7.10866 11.1682L12.542 16.6016" stroke="#061414" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
           </button>
 
@@ -233,7 +233,7 @@ export default function JobBoard() {
             className="w-8 h-8 flex items-center justify-center rounded-md hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-            <path d="M7.45801 3.40156L12.8913 8.8349C13.533 9.47656 13.533 10.5266 12.8913 11.1682L7.45801 16.6016" stroke="#061414" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M7.45801 3.40156L12.8913 8.8349C13.533 9.47656 13.533 10.5266 12.8913 11.1682L7.45801 16.6016" stroke="#061414" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
           </button>
         </div>

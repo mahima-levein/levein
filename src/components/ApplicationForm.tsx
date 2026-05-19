@@ -24,8 +24,50 @@ export default function ApplicationForm() {
     status: '',
     consent: false
   });
-  const handleSubmit = (e: React.FormEvent) => {
+  const [errors, setErrors] = React.useState<Record<string, string>>({});
+  const [isSubmitting, setIsSubmitting] = React.useState(false);
+
+  const validate = (data: ApplicationData) => {
+    const errs: Record<string, string> = {};
+    const emailRe = /^\S+@\S+\.\S+$/;
+    const phoneRe = /^[0-9+()\-\s]{7,20}$/;
+
+    if (!data.firstName.trim()) errs.firstName = 'First name is required';
+    if (!data.lastName.trim()) errs.lastName = 'Last name is required';
+    if (!data.email.trim()) errs.email = 'Email is required';
+    else if (!emailRe.test(data.email)) errs.email = 'Enter a valid email address';
+    if (!data.phone.trim()) errs.phone = 'Phone number is required';
+    else if (!phoneRe.test(data.phone)) errs.phone = 'Enter a valid phone number';
+    if (!data.level) errs.level = 'Please select your level';
+    if (!data.specialty) errs.specialty = 'Please select your specialty';
+    if (!data.cvUrl.trim()) errs.cvUrl = 'Please provide a CV or portfolio URL';
+    else {
+      try { new URL(data.cvUrl); } catch { errs.cvUrl = 'Enter a valid URL (include https://)'; }
+    }
+    if (!data.consent) errs.consent = 'You must agree to the privacy terms';
+
+    return errs;
+  };
+  const handleSubmit = async (e: React.SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setErrors({});
+    const validation = validate(formData);
+    if (Object.keys(validation).length) {
+      setErrors(validation);
+      return;
+    }
+
+    setIsSubmitting(true);
+    try {
+      // Draft: perform API integration here.
+      // Example: await fetch('/api/applications', { method: 'POST', body: JSON.stringify(formData) })
+      console.log('Draft submit (no network call yet):', formData);
+    } catch (err) {
+      console.error('Submit error:', err);
+      setErrors({ submit: 'Unable to submit. Try again later.' });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
   return (
     <div className="max-w-5xl mx-auto p-6 md:p-10 bg-[#7fcfa854] rounded-3xl font-sans">
@@ -45,6 +87,7 @@ export default function ApplicationForm() {
               value={formData.firstName}
               onChange={(e) => setFormData({...formData, firstName: e.target.value})}
             />
+            {errors.firstName && <p className="text-red-500 text-sm mt-1">{errors.firstName}</p>}
           </div>
 
           {/* Last Name */}
@@ -58,6 +101,7 @@ export default function ApplicationForm() {
               value={formData.lastName}
               onChange={(e) => setFormData({...formData, lastName: e.target.value})}
             />
+            {errors.lastName && <p className="text-red-500 text-sm mt-1">{errors.lastName}</p>}
           </div>
 
           {/* Email Address */}
@@ -71,6 +115,7 @@ export default function ApplicationForm() {
               value={formData.email}
               onChange={(e) => setFormData({...formData, email: e.target.value})}
             />
+            {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
           </div>
 
           {/* Phone Number */}
@@ -84,24 +129,26 @@ export default function ApplicationForm() {
               value={formData.phone}
               onChange={(e) => setFormData({...formData, phone: e.target.value})}
             />
+            {errors.phone && <p className="text-red-500 text-sm mt-1">{errors.phone}</p>}
           </div>
 
           {/* Country Dropdown */}
           <div className="flex flex-col gap-2 relative">
-            <label htmlFor="country" className="text-[16px] font-medium text-levein-black">Level</label>
+            <label htmlFor="country" className="text-[16px] font-medium text-levein-black">Your current level</label>
             <div className="relative">
               <select 
                 id="country"
-                className="w-full px-4 py-3 rounded-lg border border-transparent focus:border-[#93D7B0] focus:ring-1 focus:ring-[#93D7B0] outline-none text-gray-500 text-sm appearance-none bg-white cursor-pointer"
+                className="w-full px-4 py-3 rounded-lg border border-transparent focus:border-[#93D7B0] focus:ring-1 focus:ring-[#93D7B0] outline-none text-gray-700 text-sm appearance-none bg-white cursor-pointer"
                 value={formData.level}
                 onChange={(e) => setFormData({...formData, level: e.target.value})}
               >
                 <option value="" disabled hidden>Select a level</option>
-                <option value="lk">Senior</option>
-                <option value="us">Junior</option>
-                <option value="uk">Associate</option>
-                <option value="tech-leader">Tech Lead</option>
+                <option >Junior</option>
+                <option >Associate</option>
+                <option >Senior</option>
+                <option >Tech Lead</option>
               </select>
+              {errors.level && <p className="text-red-500 text-sm mt-1">{errors.level}</p>}
               <div className="absolute inset-y-0 right-4 flex items-center pointer-events-none text-gray-500">
                 <svg width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L7 7L13 1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
               </div>
@@ -114,7 +161,7 @@ export default function ApplicationForm() {
             <div className="relative">
               <select 
                 id="specialty"
-                className="w-full px-4 py-3 rounded-lg border border-transparent focus:border-[#93D7B0] focus:ring-1 focus:ring-[#93D7B0] outline-none text-gray-500 text-sm appearance-none bg-white cursor-pointer"
+                className="w-full px-4 py-3 rounded-lg border border-transparent focus:border-[#93D7B0] focus:ring-1 focus:ring-[#93D7B0] outline-none text-gray-700 text-sm appearance-none bg-white cursor-pointer"
                 value={formData.specialty}
                 onChange={(e) => setFormData({...formData, specialty: e.target.value})}
               >
@@ -135,6 +182,7 @@ export default function ApplicationForm() {
                 <option>Legal</option>
                 <option>Travel & Mobility</option>
               </select>
+              {errors.specialty && <p className="text-red-500 text-sm mt-1">{errors.specialty}</p>}
               <div className="absolute inset-y-0 right-4 flex items-center pointer-events-none text-gray-500">
                 <svg width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L7 7L13 1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
               </div>
@@ -152,6 +200,7 @@ export default function ApplicationForm() {
               value={formData.cvUrl}
               onChange={(e) => setFormData({...formData, cvUrl: e.target.value})}
             />
+            {errors.cvUrl && <p className="text-red-500 text-sm mt-1">{errors.cvUrl}</p>}
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-6">
             <div className="flex flex-col gap-2">
@@ -164,17 +213,19 @@ export default function ApplicationForm() {
                 value={formData.linkedInUrl}
                 onChange={(e) => setFormData({...formData, linkedInUrl: e.target.value})}
               />
+              {errors.linkedInUrl && <p className="text-red-500 text-sm mt-1">{errors.linkedInUrl}</p>}
             </div>
             <div className="flex flex-col gap-2">
               <label className="text-[16px] font-medium text-levein-black">What is your current place of employment/studies?</label>
               <input 
-                type="url" 
-                id="github-url"
-                placeholder="Enter your GitHub URL" 
+                type="text" 
+                id="status"
+                placeholder="Enter your current status" 
                 className="w-full px-4 py-3 rounded-lg border border-transparent focus:border-[#93D7B0] focus:ring-1 focus:ring-[#93D7B0] bg-levein-white outline-none text-gray-700 text-sm placeholder-gray-400"
-                value={formData.githubUrl}
-                onChange={(e) => setFormData({...formData, githubUrl: e.target.value})}
+                value={formData.status}
+                onChange={(e) => setFormData({...formData, status: e.target.value})}
               />
+              {errors.status && <p className="text-red-500 text-sm mt-1">{errors.status}</p>}
             </div>
           </div>
 
@@ -205,6 +256,7 @@ export default function ApplicationForm() {
           <label htmlFor="consent" className="text-[14px] text-gray-600 cursor-pointer select-none">
             Yes, I give Levein permission to use my personal data for recruitment purposes only.
           </label>
+          {errors.consent && <p className="text-red-500 text-sm mt-1">{errors.consent}</p>}
         </div>
 
         <hr className='w-full bg-[#D2E0E0] h-px' />
@@ -214,16 +266,17 @@ export default function ApplicationForm() {
           
           <div className="flex items-center gap-2 text-gray-700">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-              <path d="M10.517 17.3404C10.2337 17.4404 9.76699 17.4404 9.48366 17.3404C7.06699 16.5154 1.66699 13.0737 1.66699 7.24036C1.66699 4.66536 3.74199 2.58203 6.30033 2.58203C7.81699 2.58203 9.15866 3.31536 10.0003 4.4487C10.842 3.31536 12.192 2.58203 13.7003 2.58203C16.2587 2.58203 18.3337 4.66536 18.3337 7.24036C18.3337 13.0737 12.9337 16.5154 10.517 17.3404Z" stroke="#1A1617" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M10.517 17.3404C10.2337 17.4404 9.76699 17.4404 9.48366 17.3404C7.06699 16.5154 1.66699 13.0737 1.66699 7.24036C1.66699 4.66536 3.74199 2.58203 6.30033 2.58203C7.81699 2.58203 9.15866 3.31536 10.0003 4.4487C10.842 3.31536 12.192 2.58203 13.7003 2.58203C16.2587 2.58203 18.3337 4.66536 18.3337 7.24036C18.3337 13.0737 12.9337 16.5154 10.517 17.3404Z" stroke="#1A1617" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
             <span className="text-[16px] font-medium">Help us match your profile by telling us a bit more about yourself.</span>
           </div>
 
           <button 
             type="submit" 
-            className="w-full sm:w-auto bg-[#93D7B0] hover:bg-[#82C89F] text-[#111715] font-semibold px-8 py-3 rounded-full flex items-center justify-center gap-2 transition-colors duration-300 text-[16px]"
+            disabled={isSubmitting}
+            className={`w-full sm:w-auto ${isSubmitting ? 'opacity-60 cursor-not-allowed' : 'hover:bg-[#82C89F]'} bg-[#93D7B0] text-[#111715] font-semibold px-8 py-3 rounded-full flex items-center justify-center gap-2 transition-colors duration-300 text-[16px]`}
           >
-            Submit
+            {isSubmitting ? 'Submitting...' : 'Submit'}
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <line x1="5" y1="12" x2="19" y2="12"></line>
               <polyline points="12 5 19 12 12 19"></polyline>
