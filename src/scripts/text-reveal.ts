@@ -69,7 +69,13 @@ function setupRevealGroup(group: HTMLElement) {
 
 export function initTextReveal(root: ParentNode = document) {
   const groups = root.querySelectorAll<HTMLElement>("[data-reveal-group]");
-  groups.forEach((group) => setupRevealGroup(group));
+  groups.forEach((group) => {
+    if (group.closest("[data-reveal-local]") && root === document) {
+      return;
+    }
+
+    setupRevealGroup(group);
+  });
 }
 
 function setupDmRevealGroup(group: HTMLElement) {

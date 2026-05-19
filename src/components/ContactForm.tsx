@@ -1,19 +1,70 @@
-import React from 'react';
-
+import React, { useState } from 'react';
+import { useIsMobile } from "../hooks/use-mobile";
+import { callGetStaticPaths } from 'node_modules/astro/dist/core/render/route-cache';
+interface Contact {
+  fullName: string;
+  email: string;
+  engagementType: string;
+  message: string;
+}
 export default function ContactForm() {
+  const [formData, setformData] = useState<Contact>({
+    fullName: '',
+    email: '',
+    engagementType: '',
+    message: ''
+  });
+  const isMobile = useIsMobile();
+  const titleDesktop = (
+    <>
+      Have a question<br />
+      about working<br />
+      with us?
+    </>
+  );
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    console.log(formData);
+  };
+  const titleMobile = "Have a question about working with us?";
   return (
+    <>
+      {/* Left Column: Text Content */}
+        <div className="flex flex-col max-w-lg">
+          <h2 className="text-4xl lg:text-[64px] md:text-5xl font-primary text-levein-white mb-6">
+            {isMobile ? titleMobile : titleDesktop}
+          </h2>
+          
+          <p className="text-levein-white text-base md:text-lg mb-12 leading-relaxed pr-8">
+            Whether you're applying, exploring roles, or just curious, we're here to help.
+          </p>
+
+          <hr className="border-t border-[#31423B] mb-6 w-full max-w-md" />
+
+          <p className="text-[16px] text-levein-white">
+            Are you looking for a job?{' '}
+            <a href="jobs" className="text-levein-white underline underline-offset-4 decoration-gray-400 hover:decoration-white transition-colors">
+              Join our team.
+            </a>
+          </p>
+        </div>
+        {/* Right Column */}
         <div className="w-full">
-          <form className="flex flex-col gap-6" onSubmit={(e) => e.preventDefault()}>
+          <form className="flex flex-col gap-6" onSubmit={handleSubmit}>
             
             {/* Row 1: Name & Email */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <input 
-                type="text" 
+                type="text"
+                value={formData.fullName}
+                onChange={(e) => setformData({...formData, fullName: e.target.value})}
                 placeholder="Full name" 
                 className="w-full bg-[#364943] text-levein-white placeholder-[#FBFBFB] text-[16px] px-4 py-4 rounded-[10px] focus:outline-none focus:ring-1 focus:ring-[#93D7B0] transition-shadow border border-transparent"
               />
               <input 
                 type="email" 
+                value={formData.email}
+                onChange={(e) => setformData({...formData, email: e.target.value})}
                 placeholder="Email address" 
                 className="w-full bg-[#364943] text-levein-white placeholder-[#FBFBFB] text-[16px] px-4 py-4 rounded-[10px] focus:outline-none focus:ring-1 focus:ring-[#93D7B0] transition-shadow border border-transparent"
               />
@@ -21,8 +72,9 @@ export default function ContactForm() {
 
             <div className="relative w-full">
               <select 
+                value={formData.engagementType}
+                onChange={(e) => setformData({...formData, engagementType: e.target.value})}
                 className="w-full bg-[#364943] text-levein-white placeholder-[#FBFBFB] text-[16px] px-4 py-4 rounded-[10px] appearance-none focus:outline-none focus:ring-1 focus:ring-[#93D7B0] transition-shadow border border-transparent cursor-pointer"
-                defaultValue=""
               >
                 <option value="" disabled hidden>What type of engagement do you look for?</option>
                 <option value="full-time">Full-Time Role</option>
@@ -42,6 +94,8 @@ export default function ContactForm() {
               placeholder="Message" 
               rows={6}
               className="w-full bg-[#364943] text-levein-white placeholder-[#FBFBFB] text-[16px] px-4 py-4 rounded-[10px] resize-none focus:outline-none focus:ring-1 focus:ring-[#93D7B0] transition-shadow border border-transparent"
+              value={formData.message}
+              onChange={(e) => setformData({...formData, message: e.target.value})}
             ></textarea>
 
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mt-2 gap-6 sm:gap-0">
@@ -68,5 +122,7 @@ export default function ContactForm() {
             </div>
           </form>
         </div>
+
+    </>
   );
 }

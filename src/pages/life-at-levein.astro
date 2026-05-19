@@ -15,212 +15,550 @@ import G_10 from "@assets/gallery/g10.jpg";
 import G_11 from "@assets/gallery/g11.jpg";
 import G_12 from "@assets/gallery/g12.jpg";
 
+const tikTok = [
+  {
+    name: "Levein TikTok",
+    url: "https://cms.yourteaminasia.com/wp-content/uploads/2026/05/snaptik-levein.mp4",
+    thumb: "/tiktok-thum-3.webp",
+  },
+  {
+    name: "Levein TikTok",
+    url: "https://cms.yourteaminasia.com/wp-content/uploads/2026/05/snaptik_7619304297280326930_hd.mp4",
+    thumb: "/tiktok-thum-1.webp",
+  },
+  {
+    name: "Levein TikTok",
+    url: "https://cms.yourteaminasia.com/wp-content/uploads/2026/05/levein-titktok-3.mp4",
+    thumb: "/tiktok-thum-2.webp",
+  },
+  {
+    name: "Levein TikTok",
+    url: "https://cms.yourteaminasia.com/wp-content/uploads/2026/05/levein-tiktok-4.mp4",
+    thumb: "/tiktok-thum-4.webp",
+  }
+]
+
 import CareerCtaSection from "@components/CareerCtaSection.astro";
-
+import { url } from "astro:schema";
 ---
-<Layout title="Life at Levein - Levein Group" description="Discover what it's like to work at Levein Group. Explore our company culture, employee stories, and the vibrant work environment that makes us a great place to build your career. Join us and be part of a team that values innovation, growth, and making a positive impact in the tech and healthcare industries." >
 
-    <Hero 
-        title="A place to grow and pursue your passions." 
-        description="Flexibility is a strategic advantage. Adopting a remote-first mindset boosted productivity and expanded our global talent pool."
-    />
+<Layout
+  title="Life at Levein - Levein Group"
+  description="Discover what it's like to work at Levein Group. Explore our company culture, employee stories, and the vibrant work environment that makes us a great place to build your career. Join us and be part of a team that values innovation, growth, and making a positive impact in the tech and healthcare industries."
+>
+  <Hero
+    title="A place to grow and pursue your passions."
+    description="Flexibility is a strategic advantage. Adopting a remote-first mindset boosted productivity and expanded our global talent pool."
+  />
 
-<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 bg-white font-sans">
-  
-  <div class="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-6 mb-16">
-    <h2 class="text-4xl md:text-5xl font-primary font-medium text-gray-900 tracking-tight">
-      Life at Levein
-    </h2>
-    <p class="text-levein-black text-[16px] md:text-base max-w-md leading-relaxed lg:text-left">
-     
-        It’s not all work and no play – fun is an integral part of our culture. Both competitive and non-competitive events are organized by an in-house committee.
-    </p>
-  </div>
-
-  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-4 md:gap-6">
-
-    <div class="group relative overflow-hidden rounded-3xl h-[250px] sm:h-[300px] lg:col-span-5">
-      <img src={G_1.src} alt="Team dinner" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-      
-      <div class="absolute inset-0 bg-[#326262]/80 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-6 text-center">
-        <h3 class="text-white text-xl font-medium mb-1 font-primary translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">Levein Aurudu 2024</h3>
-        <p class="text-[#93D7B0] text-sm translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-75 ease-out">April 25, 2024</p>
-      </div>
+  <section
+    class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 bg-white font-sans"
+  >
+    <div
+      class="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-6 mb-16"
+    >
+      <h2
+        class="text-4xl md:text-5xl font-primary font-medium text-levein-black tracking-tight"
+      >
+        Life at Levein
+      </h2>
+      <p
+        class="text-levein-black text-[16px] md:text-base max-w-md leading-relaxed lg:text-left"
+      >
+        It’s not all work and no play – fun is an integral part of our culture.
+        Both competitive and non-competitive events are organized by an in-house
+        committee.
+      </p>
     </div>
 
-    <div class="group relative overflow-hidden rounded-3xl h-[250px] sm:h-[300px] lg:col-span-3">
-      <img src={G_2.src} alt="Office space" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-      
-      <div class="absolute inset-0 bg-[#326262]/80 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-6 text-center">
-        <h3 class="text-white text-xl font-medium mb-1 font-primary translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">New HQ Opening</h3>
-        <p class="text-[#93D7B0] text-sm translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-75 ease-out">January 10, 2026</p>
-      </div>
-    </div>
-
-    <div class="group relative overflow-hidden rounded-3xl h-[250px] sm:h-[300px] lg:col-span-4">
-      <img src={G_3.src} alt="Team games" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-      
-      <div class="absolute inset-0 bg-[#326262]/80 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-6 text-center">
-        <h3 class="text-white text-xl font-medium mb-1 font-primary translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">Outdoor Retreat</h3>
-        <p class="text-[#93D7B0] text-sm translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-75 ease-out">March 22, 2025</p>
-      </div>
-    </div>
-
-    <div class="group relative overflow-hidden rounded-3xl h-[300px] lg:h-[380px] lg:col-span-5">
-      <img src={G_12.src} alt="Team posing" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-      
-      <div class="absolute inset-0 bg-[#326262]/80 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-6 text-center">
-        <h3 class="text-white text-xl font-medium mb-1 font-primary translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">Marketing Team Meet</h3>
-        <p class="text-[#93D7B0] text-sm translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-75 ease-out">August 05, 2025</p>
-      </div>
-    </div>
-
-    <div class="group relative overflow-hidden rounded-3xl h-[300px] lg:h-[380px] lg:col-span-7">
-      <img src={G_11.src} alt="Taking a selfie" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-      
-      <div class="absolute inset-0 bg-[#326262]/80 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-6 text-center">
-        <h3 class="text-white text-2xl font-medium mb-1 font-primary translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">End of Year Celebration</h3>
-        <p class="text-[#93D7B0] text-base translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-75 ease-out">December 30, 2025</p>
-      </div>
-    </div>
-
-    <div class="group relative overflow-hidden rounded-3xl h-[250px] sm:h-[300px] lg:col-span-5">
-      <img src={G_6.src} alt="Office space" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-      
-      <div class="absolute inset-0 bg-[#326262]/80 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-6 text-center">
-        <h3 class="text-white text-xl font-medium mb-1 font-primary translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">Workspace Launch</h3>
-        <p class="text-[#93D7B0] text-sm translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-75 ease-out">October 12, 2025</p>
-      </div>
-    </div>
-
-    <div class="group relative overflow-hidden rounded-3xl h-[250px] sm:h-[300px] lg:col-span-3">
-      <img src={G_7.src} alt="Event" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-      
-      <div class="absolute inset-0 bg-[#326262]/80 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-6 text-center">
-        <h3 class="text-white text-xl font-medium mb-1 font-primary translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">Awards Night</h3>
-        <p class="text-[#93D7B0] text-sm translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-75 ease-out">November 20, 2025</p>
-      </div>
-    </div>
-
-    <div class="group relative overflow-hidden rounded-3xl h-[250px] sm:h-[300px] lg:col-span-4">
-      <img src={G_8.src} alt="Team meeting" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-      
-      <div class="absolute inset-0 bg-[#326262]/80 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-6 text-center">
-        <h3 class="text-white text-xl font-medium mb-1 font-primary translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">Townhall Q1</h3>
-        <p class="text-[#93D7B0] text-sm translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-75 ease-out">April 02, 2026</p>
-      </div>
-    </div>
-
-    <div class="group relative overflow-hidden rounded-3xl h-[250px] sm:h-[300px] lg:col-span-5">
-      <img src={G_10.src} alt="Office space" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-      
-      <div class="absolute inset-0 bg-[#326262]/80 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-6 text-center">
-        <h3 class="text-white text-xl font-medium mb-1 font-primary translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">Workspace Launch</h3>
-        <p class="text-[#93D7B0] text-sm translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-75 ease-out">October 12, 2025</p>
-      </div>
-    </div>
-
-    <div class="group relative overflow-hidden rounded-3xl h-[250px] sm:h-[300px] lg:col-span-4">
-      <img src={G_9.src} alt="Event" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-      
-      <div class="absolute inset-0 bg-[#326262]/80 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-6 text-center">
-        <h3 class="text-white text-xl font-medium mb-1 font-primary translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">Awards Night</h3>
-        <p class="text-[#93D7B0] text-sm translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-75 ease-out">November 20, 2025</p>
-      </div>
-    </div>
-
-    <div class="group relative overflow-hidden rounded-3xl h-[250px] sm:h-[300px] lg:col-span-3">
-      <img src={G_5.src} alt="Team meeting" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-      
-      <div class="absolute inset-0 bg-[#326262]/80 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-6 text-center">
-        <h3 class="text-white text-xl font-medium mb-1 font-primary translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">Townhall Q1</h3>
-        <p class="text-[#93D7B0] text-sm translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-75 ease-out">April 02, 2026</p>
-      </div>
-    </div>
-
-  </div>
-</section>
-<Flexible client:idle />
-<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 font-sans">
-  <div class="bg-[#EAF2EB] rounded-3xl p-8 sm:p-12 flex flex-col items-center">
-    
-    <div class="w-full flex items-center gap-4 mb-10 pl-2">
-      <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 60 60" fill="none">
-        <path d="M44.4668 21.6571C48.8446 24.4249 54.2078 26.0538 60 26.0538V16.1952C58.9038 16.1952 57.8103 16.0942 56.7378 15.8935V23.6536C50.9461 23.6536 45.5838 22.0247 41.2046 19.2569V39.3759C41.2046 49.4404 31.9807 57.5986 20.6027 57.5986C16.3575 57.5986 12.4114 56.4633 9.13379 54.5163C12.8745 57.8998 18.0922 59.9988 23.864 59.9988C35.2429 59.9988 44.4672 51.8406 44.4672 41.7761V21.6567L44.4668 21.6571ZM48.4911 11.7113C46.1894 9.49259 44.7754 6.66599 44.4668 3.66651V2.39844H41.3755C42.1535 6.3245 44.8076 9.67826 48.4911 11.7113ZM16.3303 46.7929C15.0803 45.3433 14.4047 43.5697 14.4079 41.7463C14.4079 37.1434 18.6267 33.4112 23.8321 33.4112C24.802 33.4112 25.7664 33.5423 26.6907 33.8017V23.7231C25.6104 23.592 24.5201 23.5364 23.4299 23.5566V31.4019C22.505 31.1424 21.5403 31.0107 20.57 31.0114C15.3645 31.0114 11.1457 34.7432 11.1457 39.3469C11.1457 42.6018 13.2544 45.4198 16.3303 46.7929Z" fill="#FF004F"/>
-        <path d="M41.2049 19.2569C45.5842 22.0247 50.9464 23.6532 56.7386 23.6532V15.8931C53.5647 15.2927 50.6816 13.8308 48.4914 11.7113C44.8079 9.67826 42.1538 6.3241 41.3758 2.39844H33.2563V41.7749C33.2381 46.3654 29.0257 50.0823 23.832 50.0823C20.7712 50.0823 18.0517 48.7917 16.3297 46.7929C13.2548 45.4198 11.1456 42.6018 11.1456 39.3469C11.1456 34.7436 15.3644 31.0114 20.5699 31.0114C21.567 31.0114 22.5286 31.1489 23.4298 31.4019V23.557C12.2518 23.7613 3.26196 31.8399 3.26196 41.7753C3.26196 46.735 5.50066 51.2309 9.13412 54.5163C12.5252 56.5312 16.5189 57.6044 20.6035 57.5982C31.9815 57.5982 41.2054 49.4396 41.2054 39.3755V19.2569H41.2049Z" fill="black"/>
-        <path d="M56.7379 15.8941V13.7959C53.8225 13.7999 50.9647 13.0778 48.4911 11.7122C50.6806 13.8325 53.5638 15.2946 56.7379 15.8945V15.8941ZM41.3755 2.4002C41.3013 2.02516 41.2443 1.64761 41.2047 1.26847V0H29.9934V39.3769C29.9753 43.9665 25.7642 47.6835 20.5696 47.6835C19.097 47.6855 17.6445 47.3811 16.3294 46.7946C18.0519 48.7935 20.7709 50.0837 23.8318 50.0837C29.025 50.0837 33.2379 46.3671 33.2561 41.7767V2.3998H41.3755V2.4002ZM23.43 23.5588V21.3251C22.4932 21.2118 21.5488 21.1551 20.6032 21.1554C9.22431 21.1546 0 29.3132 0 39.3769C0 45.6858 3.62528 51.2464 9.13433 54.5173C5.50086 51.2323 3.26216 46.7359 3.26216 41.7763C3.26216 31.8413 12.2515 23.7627 23.43 23.5584V23.5588Z" fill="#00F2EA"/>
-        </svg>
-      <div class="flex flex-col">
-        <h2 class="text-2xl font-bold text-gray-900 leading-tight">Life at Levein</h2>
-        <p class="text-gray-600 text-sm">@leveingroup</p>
-      </div>
-    </div>
-
-    <div class="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-      
-      <a href="#" class="group relative w-full aspect-[9/16] bg-black rounded-[20px] overflow-hidden shadow-sm block cursor-pointer">
-        <img 
-          src="https://images.unsplash.com/photo-1543269865-cbf427effbad?w=600&h=1066&fit=crop" 
-          alt="Team celebration" 
-          class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100"
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-4 md:gap-6">
+      <div
+        class="group relative overflow-hidden rounded-3xl h-[250px] sm:h-[300px] lg:col-span-5"
+      >
+        <img
+          src={G_1.src}
+          alt="Team dinner"
+          class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
         />
-        
-        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
 
-        <div class="absolute top-4 left-4 flex items-center gap-1.5 z-10">
-          <svg xmlns="http://www.w3.org/2000/svg" width="60" height="18" viewBox="0 0 60 18" fill="none">
-            <g clip-path="url(#clip0_894_4691)">
-                <path d="M11.4661 6.46116C12.595 7.287 13.9779 7.77301 15.4714 7.77301V4.83144C15.1888 4.83144 14.9068 4.80132 14.6303 4.74144V7.05685C13.1368 7.05685 11.7541 6.57084 10.6249 5.745V11.748C10.6249 14.751 8.24647 17.1852 5.31257 17.1852C4.21792 17.1852 3.20038 16.8464 2.35522 16.2655C3.31979 17.2751 4.66522 17.9014 6.15351 17.9014C9.08765 17.9014 11.4662 15.4672 11.4662 12.4642V6.46104L11.4661 6.46116ZM12.5038 3.49356C11.9103 2.83156 11.5457 1.98817 11.4661 1.0932V0.714844H10.669C10.8696 1.88628 11.554 2.88696 12.5038 3.49356ZM4.21089 13.961C3.88858 13.5285 3.71437 12.9993 3.71519 12.4553C3.71519 11.0819 4.80304 9.96829 6.1453 9.96829C6.39538 9.96829 6.64405 10.0074 6.88241 10.0848V7.07761C6.60385 7.03849 6.3227 7.02188 6.04159 7.02793V9.36876C5.80308 9.29134 5.55434 9.25203 5.30413 9.25224C3.96187 9.25224 2.87401 10.3657 2.87401 11.7394C2.87401 12.7105 3.41776 13.5514 4.21089 13.961Z" fill="#FF004F"/>
-                <path d="M10.6249 5.745C11.7541 6.57084 13.1368 7.05672 14.6304 7.05672V4.74132C13.812 4.56217 13.0686 4.12598 12.5038 3.49356C11.554 2.88696 10.8696 1.88616 10.669 0.714844H8.57532V12.4638C8.57063 13.8335 7.48442 14.9425 6.1452 14.9425C5.35595 14.9425 4.6547 14.5574 4.21067 13.961C3.41778 13.5514 2.87392 12.7105 2.87392 11.7394C2.87392 10.3658 3.96177 9.25224 5.30403 9.25224C5.56114 9.25224 5.80911 9.29328 6.04149 9.36876V7.02804C3.15915 7.089 0.841064 9.49944 0.841064 12.4639C0.841064 13.9438 1.41833 15.2852 2.35524 16.2655C3.22967 16.8667 4.25946 17.1869 5.3127 17.1851C8.24661 17.1851 10.625 14.7508 10.625 11.7479V5.745H10.6249Z" fill="white"/>
-                <path d="M14.6303 4.7424V4.11636C13.8785 4.11754 13.1416 3.90209 12.5038 3.49464C13.0684 4.12727 13.8118 4.56354 14.6303 4.74252V4.7424ZM10.669 0.71616C10.6498 0.604257 10.6351 0.491605 10.6249 0.37848V0H7.73402V11.7491C7.72934 13.1185 6.64348 14.2276 5.30402 14.2276C4.9243 14.2282 4.54977 14.1373 4.21066 13.9624C4.6548 14.5588 5.35594 14.9437 6.1452 14.9437C7.4843 14.9437 8.57063 13.8348 8.57531 12.4651V0.71604H10.669V0.71616ZM6.0416 7.02936V6.36288C5.80004 6.32906 5.55651 6.31214 5.3127 6.31224C2.37855 6.312 0 8.74632 0 11.7491C0 13.6315 0.934805 15.2906 2.35535 16.2666C1.41844 15.2864 0.841172 13.9448 0.841172 12.465C0.841172 9.50064 3.15914 7.0902 6.0416 7.02924V7.02936Z" fill="#00F2EA"/>
-                <path d="M48.1276 14.7259C50.2269 14.7259 51.9288 12.9973 51.9288 10.865C51.9288 8.73287 50.2269 7.00391 48.1276 7.00391H47.5547C49.6541 7.00391 51.356 8.73287 51.356 10.865C51.356 12.9973 49.6541 14.7259 47.5547 14.7259H48.1275H48.1276Z" fill="#FF004F"/>
-                <path d="M47.5029 7.00391H46.9302C44.8309 7.00391 43.1287 8.73287 43.1287 10.865C43.1287 12.9973 44.8309 14.7259 46.9302 14.7259H47.5029C45.4033 14.7259 43.7014 12.9973 43.7014 10.865C43.7014 8.73287 45.4033 7.00391 47.5029 7.00391Z" fill="#00F2EA"/>
-                <path d="M31.2567 5.25793V9.64717L33.4433 7.42597H36.0988L33.339 10.1764L36.4113 14.7249H34.0684L31.9337 11.6041L31.2567 12.2393V14.6721H29.0697V5.25793H31.2567ZM54.8447 5.25793V9.64717L57.0318 7.42597H59.6872L56.9275 10.1764L59.9999 14.7251H57.6566L55.5215 11.6044L54.8447 12.2395V14.6723H52.6573V5.25793H54.8447ZM47.5545 7.00297C49.6539 7.00297 51.356 8.73193 51.356 10.8641C51.356 12.9964 49.6539 14.725 47.5545 14.725H47.5027C45.4033 14.725 43.7013 12.9964 43.7013 10.8641C43.7013 8.73193 45.4033 7.00297 47.5027 7.00297H47.5545ZM25.5292 5.25793L24.9042 7.26781H23.082V14.6722H20.8424V7.21501H18.6038V5.25781H25.5291L25.5292 5.25793ZM43.8579 5.25793L43.2332 7.26781H41.4109V14.6722H39.1713V7.21501H36.9327V5.25781H43.8579V5.25793ZM28.1322 8.27269V14.6723H25.9459V8.27269H28.1322ZM47.529 8.98681C46.5081 8.98681 45.6801 9.82693 45.6801 10.8641C45.6801 11.9013 46.5081 12.7417 47.529 12.742C48.5494 12.742 49.3773 11.9013 49.3773 10.8641C49.3773 9.82693 48.5494 8.98681 47.529 8.98681ZM27.0386 5.25793C27.6429 5.25793 28.1322 5.75533 28.1322 6.36853C28.1322 6.98173 27.6433 7.47913 27.0386 7.47913C26.4347 7.47889 25.9459 6.98185 25.9459 6.36853C25.9459 5.75533 26.4347 5.25793 27.0386 5.25793Z" fill="white"/>
-            </g>
-            <defs>
-                <clipPath id="clip0_894_4691">
-                <rect width="60" height="18" fill="white"/>
-                </clipPath>
-            </defs>
-            </svg>
-          <!-- <span class="text-white text-xs font-bold tracking-wide">TikTok</span> -->
+        <div
+          class="absolute inset-0 bg-[#326262]/80 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-6 text-center"
+        >
+          <h3
+            class="text-white text-xl font-medium mb-1 font-primary translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out"
+          >
+            Levein Aurudu 2024
+          </h3>
+          <p
+            class="text-[#93D7B0] text-sm translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-75 ease-out"
+          >
+            April 25, 2024
+          </p>
         </div>
+      </div>
 
-        <div class="absolute bottom-6 right-4 flex flex-col items-center gap-5 z-10">
-          <div class="relative w-10 h-10 rounded-full bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center">
-             <span class="text-white font-bold text-xs">L</span>
-             <div class="absolute -bottom-1"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15" fill="none">
-  <path fill-rule="evenodd" clip-rule="evenodd" d="M7.5 0C3.35795 0 0 3.35795 0 7.5C0 11.642 3.35795 15 7.5 15C11.642 15 15 11.642 15 7.5C15 3.35795 11.642 0 7.5 0ZM8.18182 10.2273C8.18182 10.4081 8.10998 10.5815 7.98212 10.7094C7.85425 10.8373 7.68083 10.9091 7.5 10.9091C7.31917 10.9091 7.14575 10.8373 7.01788 10.7094C6.89002 10.5815 6.81818 10.4081 6.81818 10.2273V8.18182H4.77273C4.5919 8.18182 4.41847 8.10998 4.29061 7.98212C4.16274 7.85425 4.09091 7.68083 4.09091 7.5C4.09091 7.31917 4.16274 7.14575 4.29061 7.01788C4.41847 6.89002 4.5919 6.81818 4.77273 6.81818H6.81818V4.77273C6.81818 4.5919 6.89002 4.41847 7.01788 4.29061C7.14575 4.16274 7.31917 4.09091 7.5 4.09091C7.68083 4.09091 7.85425 4.16274 7.98212 4.29061C8.10998 4.41847 8.18182 4.5919 8.18182 4.77273V6.81818H10.2273C10.4081 6.81818 10.5815 6.89002 10.7094 7.01788C10.8373 7.14575 10.9091 7.31917 10.9091 7.5C10.9091 7.68083 10.8373 7.85425 10.7094 7.98212C10.5815 8.10998 10.4081 8.18182 10.2273 8.18182H8.18182V10.2273Z" fill="#FC2956"/>
-</svg></div>
-          </div>
-          <div class="flex flex-col items-center gap-1">
-            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="22" viewBox="0 0 25 22" fill="none">
-  <path d="M24.3952 4.50846C24.0073 3.62621 23.448 2.82672 22.7486 2.15475C22.0486 1.48077 21.2234 0.945175 20.3177 0.577078C19.3786 0.193869 18.3713 -0.0022792 17.3544 1.99806e-05C15.9277 1.99806e-05 14.5358 0.383778 13.3262 1.10865C13.0368 1.28206 12.7619 1.47251 12.5014 1.68003C12.241 1.47251 11.9661 1.28206 11.6767 1.10865C10.4671 0.383778 9.07511 1.99806e-05 7.64844 1.99806e-05C6.62113 1.99806e-05 5.62564 0.19332 4.68514 0.577078C3.77647 0.946623 2.95751 1.4782 2.25431 2.15475C1.55399 2.82596 0.994552 3.62564 0.607708 4.50846C0.205463 5.42664 0 6.40167 0 7.40512C0 8.35173 0.196782 9.33813 0.587452 10.3416C0.914457 11.1802 1.38326 12.05 1.98229 12.9284C2.93147 14.3184 4.2366 15.7682 5.85715 17.2379C8.54264 19.674 11.2021 21.3569 11.315 21.4251L12.0008 21.8572C12.3047 22.0476 12.6953 22.0476 12.9992 21.8572L13.685 21.4251C13.7979 21.354 16.4544 19.674 19.1428 17.2379C20.7634 15.7682 22.0685 14.3184 23.0177 12.9284C23.6167 12.05 24.0884 11.1802 24.4125 10.3416C24.8032 9.33813 25 8.35173 25 7.40512C25.0029 6.40167 24.7974 5.42664 24.3952 4.50846Z" fill="#FBFBFB"/>
-</svg></div>
-          <div class="flex flex-col items-center gap-1">
-            <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 23 23" fill="none">
-  <path d="M19.5642 3.38362C17.6863 1.49065 15.2078 0.313155 12.556 0.0541435C9.90414 -0.204868 7.24516 0.470834 5.03745 1.96476C2.82975 3.45868 1.21166 5.67721 0.46216 8.23786C-0.287343 10.7985 -0.121295 13.5408 0.931677 15.992C1.04142 16.2198 1.07743 16.4763 1.03468 16.7256L0.0275184 21.5741C-0.0112846 21.7599 -0.003361 21.9526 0.0505774 22.1346C0.104516 22.3167 0.202778 22.4825 0.336534 22.6171C0.446183 22.7261 0.576736 22.8118 0.720326 22.8689C0.863915 22.926 1.01757 22.9535 1.17202 22.9495H1.40092L6.2994 21.9638C6.54836 21.9338 6.80083 21.9693 7.03188 22.0669C9.47941 23.1215 12.2176 23.2878 14.7744 22.5371C17.3313 21.7865 19.5465 20.166 21.0382 17.955C22.5299 15.744 23.2046 13.0811 22.9459 10.4253C22.6873 7.76946 21.5116 5.28724 19.6214 3.40655L19.5642 3.38362ZM6.89454 12.6336C6.66818 12.6336 6.4469 12.5664 6.25869 12.4404C6.07048 12.3145 5.92378 12.1354 5.83716 11.926C5.75053 11.7166 5.72787 11.4861 5.77203 11.2637C5.81619 11.0414 5.92519 10.8372 6.08526 10.6769C6.24532 10.5166 6.44925 10.4074 6.67126 10.3632C6.89327 10.3189 7.1234 10.3416 7.33253 10.4284C7.54166 10.5152 7.7204 10.6621 7.84616 10.8506C7.97192 11.0391 8.03905 11.2607 8.03905 11.4874C8.03905 11.7914 7.91847 12.0829 7.70383 12.2979C7.48919 12.5128 7.19808 12.6336 6.89454 12.6336ZM11.4726 12.6336C11.2462 12.6336 11.0249 12.5664 10.8367 12.4404C10.6485 12.3145 10.5018 12.1354 10.4152 11.926C10.3286 11.7166 10.3059 11.4861 10.35 11.2637C10.3942 11.0414 10.5032 10.8372 10.6633 10.6769C10.8233 10.5166 11.0273 10.4074 11.2493 10.3632C11.4713 10.3189 11.7014 10.3416 11.9105 10.4284C12.1197 10.5152 12.2984 10.6621 12.4242 10.8506C12.5499 11.0391 12.6171 11.2607 12.6171 11.4874C12.6171 11.7914 12.4965 12.0829 12.2818 12.2979C12.0672 12.5128 11.7761 12.6336 11.4726 12.6336ZM16.0506 12.6336C15.8242 12.6336 15.6029 12.5664 15.4147 12.4404C15.2265 12.3145 15.0798 12.1354 14.9932 11.926C14.9066 11.7166 14.8839 11.4861 14.9281 11.2637C14.9722 11.0414 15.0812 10.8372 15.2413 10.6769C15.4014 10.5166 15.6053 10.4074 15.8273 10.3632C16.0493 10.3189 16.2794 10.3416 16.4886 10.4284C16.6977 10.5152 16.8764 10.6621 17.0022 10.8506C17.128 11.0391 17.1951 11.2607 17.1951 11.4874C17.1951 11.7914 17.0745 12.0829 16.8599 12.2979C16.6452 12.5128 16.3541 12.6336 16.0506 12.6336Z" fill="#FBFBFB"/>
-</svg></div>
-          <div class="flex flex-col items-center gap-1">
-            <svg xmlns="http://www.w3.org/2000/svg" width="23" height="21" viewBox="0 0 23 21" fill="none">
-  <path d="M12.4279 5.22662C12.7143 5.23141 12.9531 5.00426 12.9531 4.71786V0.500709C12.9531 0.033223 13.5375 -0.178571 13.837 0.180366L18.5103 5.78094L22.6731 10.7697C22.839 10.9684 22.8257 11.2609 22.6426 11.4438L18.4312 15.6497L13.8064 20.2688C13.4913 20.5835 12.9531 20.3604 12.9531 19.915V15.5859C12.9531 15.3272 12.7508 15.1101 12.4927 15.0929C6.36301 14.6832 2.86101 17.3707 1.19281 19.2365C0.841888 19.6289 -0.0193844 19.358 0.000329971 18.8319C0.13052 15.3576 0.708935 11.9144 2.97787 9.19647C5.91408 5.67638 10.0697 5.18717 12.4279 5.22662Z" fill="#FBFBFB"/>
-</svg></div>
+      <div
+        class="group relative overflow-hidden rounded-3xl h-[250px] sm:h-[300px] lg:col-span-3"
+      >
+        <img
+          src={G_2.src}
+          alt="Office space"
+          class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+        />
+
+        <div
+          class="absolute inset-0 bg-[#326262]/80 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-6 text-center"
+        >
+          <h3
+            class="text-white text-xl font-medium mb-1 font-primary translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out"
+          >
+            Awards Night 2025
+          </h3>
+          <p
+            class="text-[#93D7B0] text-sm translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-75 ease-out"
+          >
+            December 12, 2025
+          </p>
         </div>
+      </div>
 
-        <div class="absolute bottom-6 left-4 pr-16 z-10">
-          <p class="text-white font-semibold text-sm mb-1">@leveingroup</p>
-          <p class="text-white/80 text-xs truncate">#LeveinLife #RemoteWork #SriLanka</p>
+      <div
+        class="group relative overflow-hidden rounded-3xl h-[250px] sm:h-[300px] lg:col-span-4"
+      >
+        <img
+          src={G_3.src}
+          alt="Team games"
+          class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+        />
+
+        <div
+          class="absolute inset-0 bg-[#326262]/80 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-6 text-center"
+        >
+          <h3
+            class="text-white text-xl font-medium mb-1 font-primary translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out"
+          >
+            Levein Aurudu 2025
+          </h3>
+          <p
+            class="text-[#93D7B0] text-sm translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-75 ease-out"
+          >
+            April 28, 2025
+          </p>
         </div>
-      </a>
+      </div>
 
+      <div
+        class="group relative overflow-hidden rounded-3xl h-[300px] lg:h-[380px] lg:col-span-5"
+      >
+        <img
+          src={G_12.src}
+          alt="Team posing"
+          class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+        />
 
+        <div
+          class="absolute inset-0 bg-[#326262]/80 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-6 text-center"
+        >
+          <h3
+            class="text-white text-xl font-medium mb-1 font-primary translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out"
+          >
+            Levein Awards Night 2024
+          </h3>
+          <p
+            class="text-[#93D7B0] text-sm translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-75 ease-out"
+          >
+            December 18, 2024
+          </p>
+        </div>
+      </div>
+
+      <div
+        class="group relative overflow-hidden rounded-3xl h-[300px] lg:h-[380px] lg:col-span-7"
+      >
+        <img
+          src={G_11.src}
+          alt="Taking a selfie"
+          class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+        />
+
+        <div
+          class="absolute inset-0 bg-[#326262]/80 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-6 text-center"
+        >
+          <h3
+            class="text-white text-2xl font-medium mb-1 font-primary translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out"
+          >
+            Levein Awards Night 2024
+          </h3>
+          <p
+            class="text-[#93D7B0] text-base translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-75 ease-out"
+          >
+            December 18, 2024
+          </p>
+        </div>
+      </div>
+
+      <div
+        class="group relative overflow-hidden rounded-3xl h-[250px] sm:h-[300px] lg:col-span-5"
+      >
+        <img
+          src={G_6.src}
+          alt="Office space"
+          class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+        />
+
+        <div
+          class="absolute inset-0 bg-[#326262]/80 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-6 text-center"
+        >
+          <h3
+            class="text-white text-xl font-medium mb-1 font-primary translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out"
+          >
+            Levein Aurudu 2025
+          </h3>
+          <p
+            class="text-[#93D7B0] text-sm translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-75 ease-out"
+          >
+            April 28, 2025
+          </p>
+        </div>
+      </div>
+
+      <div
+        class="group relative overflow-hidden rounded-3xl h-[250px] sm:h-[300px] lg:col-span-3"
+      >
+        <img
+          src={G_7.src}
+          alt="Event"
+          class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+        />
+
+        <div
+          class="absolute inset-0 bg-[#326262]/80 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-6 text-center"
+        >
+          <h3
+            class="text-white text-xl font-medium mb-1 font-primary translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out"
+          >
+            Levein Cricket Tournament 2025
+          </h3>
+          <p
+            class="text-[#93D7B0] text-sm translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-75 ease-out"
+          >
+            March 20, 2025
+          </p>
+        </div>
+      </div>
+
+      <div
+        class="group relative overflow-hidden rounded-3xl h-[250px] sm:h-[300px] lg:col-span-4"
+      >
+        <img
+          src={G_8.src}
+          alt="Team meeting"
+          class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+        />
+
+        <div
+          class="absolute inset-0 bg-[#326262]/80 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-6 text-center"
+        >
+          <h3
+            class="text-white text-xl font-medium mb-1 font-primary translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out"
+          >
+            Levein Townhall Q1
+          </h3>
+          <p
+            class="text-[#93D7B0] text-sm translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-75 ease-out"
+          >
+            April 02, 2026
+          </p>
+        </div>
+      </div>
+
+      <div
+        class="group relative overflow-hidden rounded-3xl h-[250px] sm:h-[300px] lg:col-span-5"
+      >
+        <img
+          src={G_10.src}
+          alt="Office space"
+          class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+        />
+
+        <div
+          class="absolute inset-0 bg-[#326262]/80 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-6 text-center"
+        >
+          <h3
+            class="text-white text-xl font-medium mb-1 font-primary translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out"
+          >
+            Levein Workspace Ceremony
+          </h3>
+          <p
+            class="text-[#93D7B0] text-sm translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-75 ease-out"
+          >
+            December 18, 2025
+          </p>
+        </div>
+      </div>
+
+      <div
+        class="group relative overflow-hidden rounded-3xl h-[250px] sm:h-[300px] lg:col-span-4"
+      >
+        <img
+          src={G_9.src}
+          alt="Event"
+          class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+        />
+
+        <div
+          class="absolute inset-0 bg-[#326262]/80 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-6 text-center"
+        >
+          <h3
+            class="text-white text-xl font-medium mb-1 font-primary translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out"
+          >
+            Levein Women's Day 2025
+          </h3>
+          <p
+            class="text-[#93D7B0] text-sm translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-75 ease-out"
+          >
+            March 08, 2025
+          </p>
+        </div>
+      </div>
+
+      <div
+        class="group relative overflow-hidden rounded-3xl h-[250px] sm:h-[300px] lg:col-span-3"
+      >
+        <img
+          src={G_5.src}
+          alt="Team meeting"
+          class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+        />
+
+        <div
+          class="absolute inset-0 bg-[#326262]/80 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-6 text-center"
+        >
+          <h3
+            class="text-white text-xl font-medium mb-1 font-primary translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out"
+          >
+            Levein Aurudu 2026
+          </h3>
+          <p
+            class="text-[#93D7B0] text-sm translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-75 ease-out"
+          >
+            April 02, 2026
+          </p>
+        </div>
+      </div>
     </div>
+  </section>
+  <Flexible client:idle />
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 font-sans">
+    <div
+      class="bg-[#EAF2EB] rounded-3xl p-8 sm:p-12 flex flex-col items-center"
+    >
+      <div class="w-full flex items-center gap-4 mb-10 pl-2">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="60"
+          height="60"
+          viewBox="0 0 60 60"
+          fill="none"
+        >
+          <path
+            d="M44.4668 21.6571C48.8446 24.4249 54.2078 26.0538 60 26.0538V16.1952C58.9038 16.1952 57.8103 16.0942 56.7378 15.8935V23.6536C50.9461 23.6536 45.5838 22.0247 41.2046 19.2569V39.3759C41.2046 49.4404 31.9807 57.5986 20.6027 57.5986C16.3575 57.5986 12.4114 56.4633 9.13379 54.5163C12.8745 57.8998 18.0922 59.9988 23.864 59.9988C35.2429 59.9988 44.4672 51.8406 44.4672 41.7761V21.6567L44.4668 21.6571ZM48.4911 11.7113C46.1894 9.49259 44.7754 6.66599 44.4668 3.66651V2.39844H41.3755C42.1535 6.3245 44.8076 9.67826 48.4911 11.7113ZM16.3303 46.7929C15.0803 45.3433 14.4047 43.5697 14.4079 41.7463C14.4079 37.1434 18.6267 33.4112 23.8321 33.4112C24.802 33.4112 25.7664 33.5423 26.6907 33.8017V23.7231C25.6104 23.592 24.5201 23.5364 23.4299 23.5566V31.4019C22.505 31.1424 21.5403 31.0107 20.57 31.0114C15.3645 31.0114 11.1457 34.7432 11.1457 39.3469C11.1457 42.6018 13.2544 45.4198 16.3303 46.7929Z"
+            fill="#FF004F"></path>
+          <path
+            d="M41.2049 19.2569C45.5842 22.0247 50.9464 23.6532 56.7386 23.6532V15.8931C53.5647 15.2927 50.6816 13.8308 48.4914 11.7113C44.8079 9.67826 42.1538 6.3241 41.3758 2.39844H33.2563V41.7749C33.2381 46.3654 29.0257 50.0823 23.832 50.0823C20.7712 50.0823 18.0517 48.7917 16.3297 46.7929C13.2548 45.4198 11.1456 42.6018 11.1456 39.3469C11.1456 34.7436 15.3644 31.0114 20.5699 31.0114C21.567 31.0114 22.5286 31.1489 23.4298 31.4019V23.557C12.2518 23.7613 3.26196 31.8399 3.26196 41.7753C3.26196 46.735 5.50066 51.2309 9.13412 54.5163C12.5252 56.5312 16.5189 57.6044 20.6035 57.5982C31.9815 57.5982 41.2054 49.4396 41.2054 39.3755V19.2569H41.2049Z"
+            fill="black"></path>
+          <path
+            d="M56.7379 15.8941V13.7959C53.8225 13.7999 50.9647 13.0778 48.4911 11.7122C50.6806 13.8325 53.5638 15.2946 56.7379 15.8945V15.8941ZM41.3755 2.4002C41.3013 2.02516 41.2443 1.64761 41.2047 1.26847V0H29.9934V39.3769C29.9753 43.9665 25.7642 47.6835 20.5696 47.6835C19.097 47.6855 17.6445 47.3811 16.3294 46.7946C18.0519 48.7935 20.7709 50.0837 23.8318 50.0837C29.025 50.0837 33.2379 46.3671 33.2561 41.7767V2.3998H41.3755V2.4002ZM23.43 23.5588V21.3251C22.4932 21.2118 21.5488 21.1551 20.6032 21.1554C9.22431 21.1546 0 29.3132 0 39.3769C0 45.6858 3.62528 51.2464 9.13433 54.5173C5.50086 51.2323 3.26216 46.7359 3.26216 41.7763C3.26216 31.8413 12.2515 23.7627 23.43 23.5584V23.5588Z"
+            fill="#00F2EA"></path>
+        </svg>
+        <div class="flex flex-col">
+          <h2 class="text-2xl font-bold text-gray-900 leading-tight">
+            Life at Levein
+          </h2>
+          <p class="text-gray-600 text-sm">@leveingroup</p>
+        </div>
+      </div>
 
-    <a href="https://tiktok.com/@leveingroup" target="_blank" rel="noopener noreferrer" class="bg-[#7FCFA8] hover:bg-[#82C89F] text-[#111715] text-[18px] font-bold px-8 py-4 whitespace-nowrap rounded-full transition-colors duration-300">
-      View more videos
-    </a>
+      <div
+        class="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12"
+      >
+        <!-- Video -->
+         {tikTok.map((video) => (
+        <a
+          href="#"
+          class="group relative w-full aspect-9/16 bg-black rounded-[20px] overflow-hidden shadow-sm block cursor-pointer life-video-card"
+        >
+          <video
+            class="absolute inset-0 w-full h-full object-cover life-video"
+            poster={video.thumb}
+            playsinline
+            preload="metadata"
+          >
+            <source
+              src={video.url}
+              type="video/mp4"
+            />
+          </video>
 
-  </div>
-</section>
-<CareerCtaSection />
+          {/* <img
+            src={video.thumb.src}
+            alt="Team celebration"
+            class="absolute inset-0 w-full h-full object-cover transition-opacity duration-300 opacity-100 group-hover:opacity-0 pointer-events-none"
+          /> */}
+
+          <div
+            class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"
+          >
+          </div>
+
+          <div class="absolute top-4 left-4 flex items-center gap-1.5 z-10">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="60"
+              height="18"
+              viewBox="0 0 60 18"
+              fill="none"
+            >
+              <g clip-path="url(#clip0_894_4691)">
+                <path
+                  d="M11.4661 6.46116C12.595 7.287 13.9779 7.77301 15.4714 7.77301V4.83144C15.1888 4.83144 14.9068 4.80132 14.6303 4.74144V7.05685C13.1368 7.05685 11.7541 6.57084 10.6249 5.745V11.748C10.6249 14.751 8.24647 17.1852 5.31257 17.1852C4.21792 17.1852 3.20038 16.8464 2.35522 16.2655C3.31979 17.2751 4.66522 17.9014 6.15351 17.9014C9.08765 17.9014 11.4662 15.4672 11.4662 12.4642V6.46104L11.4661 6.46116ZM12.5038 3.49356C11.9103 2.83156 11.5457 1.98817 11.4661 1.0932V0.714844H10.669C10.8696 1.88628 11.554 2.88696 12.5038 3.49356ZM4.21089 13.961C3.88858 13.5285 3.71437 12.9993 3.71519 12.4553C3.71519 11.0819 4.80304 9.96829 6.1453 9.96829C6.39538 9.96829 6.64405 10.0074 6.88241 10.0848V7.07761C6.60385 7.03849 6.3227 7.02188 6.04159 7.02793V9.36876C5.80308 9.29134 5.55434 9.25203 5.30413 9.25224C3.96187 9.25224 2.87401 10.3657 2.87401 11.7394C2.87401 12.7105 3.41776 13.5514 4.21089 13.961Z"
+                  fill="#FF004F"></path>
+                <path
+                  d="M10.6249 5.745C11.7541 6.57084 13.1368 7.05672 14.6304 7.05672V4.74132C13.812 4.56217 13.0686 4.12598 12.5038 3.49356C11.554 2.88696 10.8696 1.88616 10.669 0.714844H8.57532V12.4638C8.57063 13.8335 7.48442 14.9425 6.1452 14.9425C5.35595 14.9425 4.6547 14.5574 4.21067 13.961C3.41778 13.5514 2.87392 12.7105 2.87392 11.7394C2.87392 10.3658 3.96177 9.25224 5.30403 9.25224C5.56114 9.25224 5.80911 9.29328 6.04149 9.36876V7.02804C3.15915 7.089 0.841064 9.49944 0.841064 12.4639C0.841064 13.9438 1.41833 15.2852 2.35524 16.2655C3.22967 16.8667 4.25946 17.1869 5.3127 17.1851C8.24661 17.1851 10.625 14.7508 10.625 11.7479V5.745H10.6249Z"
+                  fill="white"></path>
+                <path
+                  d="M14.6303 4.7424V4.11636C13.8785 4.11754 13.1416 3.90209 12.5038 3.49464C13.0684 4.12727 13.8118 4.56354 14.6303 4.74252V4.7424ZM10.669 0.71616C10.6498 0.604257 10.6351 0.491605 10.6249 0.37848V0H7.73402V11.7491C7.72934 13.1185 6.64348 14.2276 5.30402 14.2276C4.9243 14.2282 4.54977 14.1373 4.21066 13.9624C4.6548 14.5588 5.35594 14.9437 6.1452 14.9437C7.4843 14.9437 8.57063 13.8348 8.57531 12.4651V0.71604H10.669V0.71616ZM6.0416 7.02936V6.36288C5.80004 6.32906 5.55651 6.31214 5.3127 6.31224C2.37855 6.312 0 8.74632 0 11.7491C0 13.6315 0.934805 15.2906 2.35535 16.2666C1.41844 15.2864 0.841172 13.9448 0.841172 12.465C0.841172 9.50064 3.15914 7.0902 6.0416 7.02924V7.02936Z"
+                  fill="#00F2EA"></path>
+                <path
+                  d="M48.1276 14.7259C50.2269 14.7259 51.9288 12.9973 51.9288 10.865C51.9288 8.73287 50.2269 7.00391 48.1276 7.00391H47.5547C49.6541 7.00391 51.356 8.73287 51.356 10.865C51.356 12.9973 49.6541 14.7259 47.5547 14.7259H48.1275H48.1276Z"
+                  fill="#FF004F"></path>
+                <path
+                  d="M47.5029 7.00391H46.9302C44.8309 7.00391 43.1287 8.73287 43.1287 10.865C43.1287 12.9973 44.8309 14.7259 46.9302 14.7259H47.5029C45.4033 14.7259 43.7014 12.9973 43.7014 10.865C43.7014 8.73287 45.4033 7.00391 47.5029 7.00391Z"
+                  fill="#00F2EA"></path>
+                <path
+                  d="M31.2567 5.25793V9.64717L33.4433 7.42597H36.0988L33.339 10.1764L36.4113 14.7249H34.0684L31.9337 11.6041L31.2567 12.2393V14.6721H29.0697V5.25793H31.2567ZM54.8447 5.25793V9.64717L57.0318 7.42597H59.6872L56.9275 10.1764L59.9999 14.7251H57.6566L55.5215 11.6044L54.8447 12.2395V14.6723H52.6573V5.25793H54.8447ZM47.5545 7.00297C49.6539 7.00297 51.356 8.73193 51.356 10.8641C51.356 12.9964 49.6539 14.725 47.5545 14.725H47.5027C45.4033 14.725 43.7013 12.9964 43.7013 10.8641C43.7013 8.73193 45.4033 7.00297 47.5027 7.00297H47.5545ZM25.5292 5.25793L24.9042 7.26781H23.082V14.6722H20.8424V7.21501H18.6038V5.25781H25.5291L25.5292 5.25793ZM43.8579 5.25793L43.2332 7.26781H41.4109V14.6722H39.1713V7.21501H36.9327V5.25781H43.8579V5.25793ZM28.1322 8.27269V14.6723H25.9459V8.27269H28.1322ZM47.529 8.98681C46.5081 8.98681 45.6801 9.82693 45.6801 10.8641C45.6801 11.9013 46.5081 12.7417 47.529 12.742C48.5494 12.742 49.3773 11.9013 49.3773 10.8641C49.3773 9.82693 48.5494 8.98681 47.529 8.98681ZM27.0386 5.25793C27.6429 5.25793 28.1322 5.75533 28.1322 6.36853C28.1322 6.98173 27.6433 7.47913 27.0386 7.47913C26.4347 7.47889 25.9459 6.98185 25.9459 6.36853C25.9459 5.75533 26.4347 5.25793 27.0386 5.25793Z"
+                  fill="white"></path>
+              </g>
+              <defs>
+                <clipPath id="clip0_894_4691">
+                  <rect width="60" height="18" fill="white"></rect>
+                </clipPath>
+              </defs>
+            </svg>
+          </div>
+          <div
+            class="absolute bottom-6 right-4 flex flex-col items-center gap-5 z-10"
+          >
+            <div
+              class="relative w-10 h-10 rounded-full bg-white backdrop-blur-md border border-white/30 flex items-center justify-center font-secondary"
+            >
+              <span class="text-block font-bold text-xs">L</span>
+              <div class="absolute -bottom-1 left-3">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="15"
+                  height="15"
+                  viewBox="0 0 15 15"
+                  fill="none"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M7.5 0C3.35795 0 0 3.35795 0 7.5C0 11.642 3.35795 15 7.5 15C11.642 15 15 11.642 15 7.5C15 3.35795 11.642 0 7.5 0ZM8.18182 10.2273C8.18182 10.4081 8.10998 10.5815 7.98212 10.7094C7.85425 10.8373 7.68083 10.9091 7.5 10.9091C7.31917 10.9091 7.14575 10.8373 7.01788 10.7094C6.89002 10.5815 6.81818 10.4081 6.81818 10.2273V8.18182H4.77273C4.5919 8.18182 4.41847 8.10998 4.29061 7.98212C4.16274 7.85425 4.09091 7.68083 4.09091 7.5C4.09091 7.31917 4.16274 7.14575 4.29061 7.01788C4.41847 6.89002 4.5919 6.81818 4.77273 6.81818H6.81818V4.77273C6.81818 4.5919 6.89002 4.41847 7.01788 4.29061C7.14575 4.16274 7.31917 4.09091 7.5 4.09091C7.68083 4.09091 7.85425 4.16274 7.98212 4.29061C8.10998 4.41847 8.18182 4.5919 8.18182 4.77273V6.81818H10.2273C10.4081 6.81818 10.5815 6.89002 10.7094 7.01788C10.8373 7.14575 10.9091 7.31917 10.9091 7.5C10.9091 7.68083 10.8373 7.85425 10.7094 7.98212C10.5815 8.10998 10.4081 8.18182 10.2273 8.18182H8.18182V10.2273Z"
+                    fill="#FC2956"></path>
+                </svg>
+              </div>
+            </div>
+            <div class="flex flex-col items-center gap-1">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="25"
+                height="22"
+                viewBox="0 0 25 22"
+                fill="none"
+              >
+                <path
+                  d="M24.3952 4.50846C24.0073 3.62621 23.448 2.82672 22.7486 2.15475C22.0486 1.48077 21.2234 0.945175 20.3177 0.577078C19.3786 0.193869 18.3713 -0.0022792 17.3544 1.99806e-05C15.9277 1.99806e-05 14.5358 0.383778 13.3262 1.10865C13.0368 1.28206 12.7619 1.47251 12.5014 1.68003C12.241 1.47251 11.9661 1.28206 11.6767 1.10865C10.4671 0.383778 9.07511 1.99806e-05 7.64844 1.99806e-05C6.62113 1.99806e-05 5.62564 0.19332 4.68514 0.577078C3.77647 0.946623 2.95751 1.4782 2.25431 2.15475C1.55399 2.82596 0.994552 3.62564 0.607708 4.50846C0.205463 5.42664 0 6.40167 0 7.40512C0 8.35173 0.196782 9.33813 0.587452 10.3416C0.914457 11.1802 1.38326 12.05 1.98229 12.9284C2.93147 14.3184 4.2366 15.7682 5.85715 17.2379C8.54264 19.674 11.2021 21.3569 11.315 21.4251L12.0008 21.8572C12.3047 22.0476 12.6953 22.0476 12.9992 21.8572L13.685 21.4251C13.7979 21.354 16.4544 19.674 19.1428 17.2379C20.7634 15.7682 22.0685 14.3184 23.0177 12.9284C23.6167 12.05 24.0884 11.1802 24.4125 10.3416C24.8032 9.33813 25 8.35173 25 7.40512C25.0029 6.40167 24.7974 5.42664 24.3952 4.50846Z"
+                  fill="#FBFBFB"></path>
+              </svg>
+            </div>
+            <div class="flex flex-col items-center gap-1">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="23"
+                height="23"
+                viewBox="0 0 23 23"
+                fill="none"
+              >
+                <path
+                  d="M19.5642 3.38362C17.6863 1.49065 15.2078 0.313155 12.556 0.0541435C9.90414 -0.204868 7.24516 0.470834 5.03745 1.96476C2.82975 3.45868 1.21166 5.67721 0.46216 8.23786C-0.287343 10.7985 -0.121295 13.5408 0.931677 15.992C1.04142 16.2198 1.07743 16.4763 1.03468 16.7256L0.0275184 21.5741C-0.0112846 21.7599 -0.003361 21.9526 0.0505774 22.1346C0.104516 22.3167 0.202778 22.4825 0.336534 22.6171C0.446183 22.7261 0.576736 22.8118 0.720326 22.8689C0.863915 22.926 1.01757 22.9535 1.17202 22.9495H1.40092L6.2994 21.9638C6.54836 21.9338 6.80083 21.9693 7.03188 22.0669C9.47941 23.1215 12.2176 23.2878 14.7744 22.5371C17.3313 21.7865 19.5465 20.166 21.0382 17.955C22.5299 15.744 23.2046 13.0811 22.9459 10.4253C22.6873 7.76946 21.5116 5.28724 19.6214 3.40655L19.5642 3.38362ZM6.89454 12.6336C6.66818 12.6336 6.4469 12.5664 6.25869 12.4404C6.07048 12.3145 5.92378 12.1354 5.83716 11.926C5.75053 11.7166 5.72787 11.4861 5.77203 11.2637C5.81619 11.0414 5.92519 10.8372 6.08526 10.6769C6.24532 10.5166 6.44925 10.4074 6.67126 10.3632C6.89327 10.3189 7.1234 10.3416 7.33253 10.4284C7.54166 10.5152 7.7204 10.6621 7.84616 10.8506C7.97192 11.0391 8.03905 11.2607 8.03905 11.4874C8.03905 11.7914 7.91847 12.0829 7.70383 12.2979C7.48919 12.5128 7.19808 12.6336 6.89454 12.6336ZM11.4726 12.6336C11.2462 12.6336 11.0249 12.5664 10.8367 12.4404C10.6485 12.3145 10.5018 12.1354 10.4152 11.926C10.3286 11.7166 10.3059 11.4861 10.35 11.2637C10.3942 11.0414 10.5032 10.8372 10.6633 10.6769C10.8233 10.5166 11.0273 10.4074 11.2493 10.3632C11.4713 10.3189 11.7014 10.3416 11.9105 10.4284C12.1197 10.5152 12.2984 10.6621 12.4242 10.8506C12.5499 11.0391 12.6171 11.2607 12.6171 11.4874C12.6171 11.7914 12.4965 12.0829 12.2818 12.2979C12.0672 12.5128 11.7761 12.6336 11.4726 12.6336ZM16.0506 12.6336C15.8242 12.6336 15.6029 12.5664 15.4147 12.4404C15.2265 12.3145 15.0798 12.1354 14.9932 11.926C14.9066 11.7166 14.8839 11.4861 14.9281 11.2637C14.9722 11.0414 15.0812 10.8372 15.2413 10.6769C15.4014 10.5166 15.6053 10.4074 15.8273 10.3632C16.0493 10.3189 16.2794 10.3416 16.4886 10.4284C16.6977 10.5152 16.8764 10.6621 17.0022 10.8506C17.128 11.0391 17.1951 11.2607 17.1951 11.4874C17.1951 11.7914 17.0745 12.0829 16.8599 12.2979C16.6452 12.5128 16.3541 12.6336 16.0506 12.6336Z"
+                  fill="#FBFBFB"></path>
+              </svg>
+            </div>
+            <div class="flex flex-col items-center gap-1">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="23"
+                height="21"
+                viewBox="0 0 23 21"
+                fill="none"
+              >
+                <path
+                  d="M12.4279 5.22662C12.7143 5.23141 12.9531 5.00426 12.9531 4.71786V0.500709C12.9531 0.033223 13.5375 -0.178571 13.837 0.180366L18.5103 5.78094L22.6731 10.7697C22.839 10.9684 22.8257 11.2609 22.6426 11.4438L18.4312 15.6497L13.8064 20.2688C13.4913 20.5835 12.9531 20.3604 12.9531 19.915V15.5859C12.9531 15.3272 12.7508 15.1101 12.4927 15.0929C6.36301 14.6832 2.86101 17.3707 1.19281 19.2365C0.841888 19.6289 -0.0193844 19.358 0.000329971 18.8319C0.13052 15.3576 0.708935 11.9144 2.97787 9.19647C5.91408 5.67638 10.0697 5.18717 12.4279 5.22662Z"
+                  fill="#FBFBFB"></path>
+              </svg>
+            </div>
+          </div>
+
+          <div class="absolute bottom-6 left-4 pr-16 z-10">
+            <p class="text-white font-semibold text-sm mb-1">@leveingroup</p>
+            <p class="text-white/80 text-xs truncate">
+              #LeveinLife #RemoteWork #SriLanka
+            </p>
+          </div>
+        </a>
+        ))}
+      </div>
+
+      <a
+        href="https://tiktok.com/@leveingroup"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="bg-[#7FCFA8] hover:bg-[#82C89F] text-[#111715] text-[18px] font-bold px-8 py-4 whitespace-nowrap rounded-full transition-colors duration-300"
+      >
+        View more videos
+      </a>
+    </div>
+  </section>
+
+  <script type="module">
+    document.addEventListener("DOMContentLoaded", () => {
+      const cards = document.querySelectorAll(".life-video-card");
+      cards.forEach((card) => {
+            const video = card.querySelector(".life-video");
+            if (!video) return;
+
+            video.muted = false;
+            video.volume = 1;
+
+            const playVideo = async () => {
+              try {
+                await video.play();
+              } catch {
+                console.warn("Video playback failed, likely due to autoplay restrictions. Muting video and trying again.");
+              }
+            };
+
+            const resetVideo = () => {
+              video.pause();
+              video.currentTime = 0;
+            };
+
+            card.addEventListener("mouseenter", playVideo);
+            card.addEventListener("mouseleave", resetVideo);
+          });
+        });
+  </script>
+
+  <CareerCtaSection />
 </Layout>

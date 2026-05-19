@@ -1,3 +1,7 @@
+@use './mixins/_mixins' as *;
+@use './variables/_colors' as *;
+@use './variables/_typography' as *;
+
 .timeline-area .timeline-card {
   opacity: 0;
   transform: translateX(40px);
@@ -35,6 +39,20 @@
     opacity: 1;
     transform: translateX(0) scale(1);
   }
+}
+.timeline-area {
+  .timeline-card{
+    .timeline-img{
+      width: 144px;
+      height: 100px;
+      background-repeat: no-repeat;
+      @include mobile {
+        width: 130px;
+        height: 148px; 
+      }
+    }
+ 
+ }
 }
 #founder-levein{
     background-image: url("/founder.webp");

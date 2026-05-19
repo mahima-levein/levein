@@ -14,6 +14,7 @@ const resourceLinks = [
   { label: "Blogs", href: "/blogs" },
   { label: "Events", href: "/events" },
   { label: "My Application", href: "/my-application" },
+  { label: "Vacancy Alerts", href: "/vacancy-alerts" },
 ];
 
 const legalLinks = [
@@ -134,7 +135,7 @@ const legalLinks = [
 
       <!-- Company, Resources, Legal grouped as single column unit -->
       <div
-        class="lg:col-span-3 flex flex-col md:flex-row lg:flex-row gap-8 lg:gap-0"
+        class="lg:col-span-3 grid grid-cols-2 md:flex md:flex-row lg:flex-row gap-4 space-y-4 md:space-y-0 lg:gap-0"
       >
         <!-- Company -->
         <div class="flex-1">
@@ -207,17 +208,17 @@ const legalLinks = [
       >
         <a
           href="/contact"
-          class="inline-flex h-10 items-center justify-center rounded-full bg-[#326262] px-6 text-[16px] font-bold text-[#FBFBFB] no-underline transition-all duration-300 hover:bg-[#1a1617]"
+          class="hidden lg:inline-flex h-10 items-center justify-center rounded-full bg-[#326262] px-6 text-[16px] font-bold text-[#FBFBFB] no-underline transition-all duration-300 hover:bg-[#1a1617]"
         >
           Request a call
         </a>
 
         <div class="mt-4 space-y-4">
           <a
-            href="tel:3122551153"
+            href="tel:+94112515053"
             class="block text-[16px] font-medium leading-none text-[#061414] underline underline-offset-4"
           >
-            (312) 255-1153
+            (+94) 112 515 053
           </a>
 
           <a
@@ -290,14 +291,14 @@ const legalLinks = [
 
   <!-- Container 02: Copyright + large wordmark -->
   <div
-    class="mx-auto mt-14 w-[min(100%-48px,1044px)] border-t border-[#7FCFA8] pb-0 pt-6 max-md:w-[calc(100%-32px)]"
+    class="mx-auto mt-7 lg:mt-14 w-[min(100%-48px,1044px)] border-t border-[#7FCFA8] pb-0 pt-6 max-md:w-[calc(100%-32px)]"
   >
     <p class="text-center text-[16px] font-medium text-[#1A1617]">
       © 2026 LEVEIN. All rights reserved.
     </p>
   </div>
 
-  <div class="relative mt-12 h-[clamp(72px,14vw,355px)] w-full overflow-hidden">
+  <div class="relative mt-6 lg:mt-12 h-[clamp(72px,14vw,355px)] w-full overflow-hidden">
     <Image
       src={FooterImg}
       alt="Levein wordmark"

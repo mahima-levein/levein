@@ -35,13 +35,13 @@ const logos = [Logo1, Logo2, Logo3, Logo4, Logo5, Logo6, Logo7, Logo8, Logo9];
 ---
 
 <!-- Opportunity Section -->
-<section class="bg-[#061414] px-6 py-16 text-[#FBFBFB] md:px-10 lg:px-16">
+<section class="bg-[#061414] py-16 text-[#FBFBFB]">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <!-- Heading -->
     <div data-reveal-group data-reveal-start="top 95%" class="mb-12">
       <h2
         data-reveal-heading
-        class="font-primary text-[48px] leading-tight tracking-tight md:text-5xl"
+        class="font-primary text-4xl leading-tight tracking-tight md:text-5xl"
       >
         {title}
       </h2>
@@ -64,7 +64,7 @@ const logos = [Logo1, Logo2, Logo3, Logo4, Logo5, Logo6, Logo7, Logo8, Logo9];
             data-reveal-start="top 95%"
           >
             <div class="dm-heading5">
-              <h3 class="text-[32px] font-medium leading-tight tracking-wide md:text-3xl">
+              <h3 class="text-xl lg:text-[32px] font-medium leading-tight tracking-wide">
                 {item.title}
               </h3>
             </div>
@@ -78,11 +78,11 @@ const logos = [Logo1, Logo2, Logo3, Logo4, Logo5, Logo6, Logo7, Logo8, Logo9];
     </div>
 
     <!-- Bottom company slider area -->
-    <div class="mt-20 grid items-center gap-10 lg:grid-cols-[450px_1fr]">
+    <div class="mt-10 lg:mt-20 grid items-center gap-10 lg:grid-cols-[450px_1fr]">
       <!-- Left text -->
       <div>
         <p
-          class="max-w-3xl text-[16px] font-medium uppercase leading-relaxed tracking-[0.22em] text-[#FBFBFB]"
+          class="max-w-3xl text-[14px] lg:text-[16px] font-medium uppercase leading-relaxed tracking-[0.22em] text-[#FBFBFB]"
         >
           Thousands of companies worldwide rely on our services
         </p>
@@ -163,8 +163,8 @@ const logos = [Logo1, Logo2, Logo3, Logo4, Logo5, Logo6, Logo7, Logo8, Logo9];
       pauseOnMouseEnter: false,
     },
     breakpoints: {
-      0: { slidesPerView: 2, spaceBetween: 10 },
-      640: { slidesPerView: 4, spaceBetween: 30 },
+      0: { slidesPerView: 4, spaceBetween: 10 },
+      640: { slidesPerView: 3, spaceBetween: 30 },
       1024: { slidesPerView: 5 },
     },
   });
