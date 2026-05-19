@@ -1,0 +1,183 @@
+---
+import { Image } from "astro:assets";
+
+import teamSliderOne from "@assets/team/slider/chanaka.png";
+import teamSliderTwo from "@assets/team/slider/dilki.png";
+import teamSliderThree from "@assets/team/slider/hr-1.png";
+import teamSliderFour from "@assets/team/slider/kalpa.png";
+import teamSliderFive from "@assets/team/slider/pasandi.png";
+import teamSliderSix from "@assets/team/slider/peruka.png";
+import teamSliderSeven from "@assets/team/slider/proushth.png";
+import teamSliderEight from "@assets/team/slider/shalini.png";
+
+const rowOne = [
+  {
+    name: "Chanaka Gunasekara",
+    role: "Senior Software Engineer",
+    message:
+      "Integrating Levein's analytics transformed our workflow, boosting efficiency by 25%.",
+    image: teamSliderOne,
+  },
+  {
+    name: "Dilki Maniyangamage",
+    role: "HR Executive",
+    message:
+      "Integrating Levein's analytics transformed our workflow, boosting efficiency by 25%.",
+    image: teamSliderTwo,
+  },
+  {
+    name: "Isuri Dharmawardane",
+    role: "Personal Assistant",
+    message:
+      "Integrating Levein's analytics transformed our workflow, boosting efficiency by 25%.",
+    image: teamSliderThree,
+  },
+  {
+    name: "Proushoth Koushal",
+    role: "Quality Assurance Engineer",
+    message:
+      "Integrating Levein's analytics transformed our workflow, boosting efficiency by 25%.",
+    image: teamSliderSeven,
+  },
+];
+
+const rowOneLoop = [...rowOne, ...rowOne];
+
+const rowTwo = [
+  {
+    name: "Kalpa Chamod",
+    role: "Senior Software Engineer",
+    message:
+      "Integrating Levein's analytics transformed our workflow, boosting efficiency by 25%.",
+    image: teamSliderFour,
+  },
+  {
+    name: "Pasandi Karunathilake",
+    role: "Senior Executive – Talent Acquisition ",
+    message:
+      "Integrating Levein's analytics transformed our workflow, boosting efficiency by 25%.",
+    image: teamSliderFive,
+  },
+  {
+    name: "Peruka Gunawardana",
+    role: "Senior Project Manager",
+    message:
+      "Integrating Levein's analytics transformed our workflow, boosting efficiency by 25%.",
+    image: teamSliderSix,
+  },
+  {
+    name: "Shalini Dias",
+    role: "Assistant Manager – L&D",
+    message:
+      "Integrating Levein's analytics transformed our workflow, boosting efficiency by 25%.",
+    image: teamSliderEight,
+  },
+];
+
+const rowTwoLoop = [...rowTwo, ...rowTwo];
+
+---
+
+  <section
+    class="bg-[#326262] py-16 text-[#FBFBFB] md:py-20 employee-stories-fade"
+  >
+    <div class="w-full">
+      <!-- Top -->
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 w-full">
+        <div data-reveal-group
+        data-reveal-start="top 95%" class="mb-10 grid gap-6 md:mb-12 md:grid-cols-2 md:items-start">
+          <div>
+            <h2
+            data-reveal-heading
+              class="font-primary font-normal text-4xl leading-tight tracking-tight md:text-5xl"
+            >
+              Employee Stories
+            </h2>
+          </div>
+
+          <div class="md:pl-10">
+            <p data-reveal-body class="max-w-xl text-[16px] leading-relaxed text-[#FBFBFB]/90">
+              Over 150 Sri Lankan professionals have built careers through
+              Levein. Here is what some of them found on the other side of the
+              application.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cards / story slider area -->
+      <div class="lg:space-y-10">
+        <!-- Row 1 (marquee left) -->
+        <div class="story-marquee story-marquee-left">
+          <div class="story-marquee-track">
+            {
+              rowOneLoop.map((item, index) => (
+                <article
+                  class="story-card flex shrink-0 items-center gap-3 overflow-hidden rounded-3xl bg-[#F3F1EF] text-[#1A1617]"
+                  aria-hidden={index >= rowOne.length}
+                >
+                  <div class="flex shrink-0 items-end self-end">
+                    <Image
+                      src={item.image}
+                      alt={item.name}
+                      class="h-[160px] w-[150px] object-cover md:h-55 md:w-50"
+                    />
+                  </div>
+
+                  <div class="flex-1">
+                    <p class="mb-1 lg:mb-4 pr-7 text-sm lg:text-[16px] leading-relaxed text-[#1A1617]/85">
+                        {item.message}
+                    </p>
+
+                    <h3 class="text-base font-semibold text-[#326262] md:text-[18px]">
+                      {item.name}
+                    </h3>
+
+                    <p class="mt-1 text-xs text-[#3A3B33]/50 md:text-sm">
+                      {item.role}
+                    </p>
+                  </div>
+                </article>
+              ))
+            }
+          </div>
+        </div>
+
+        <!-- Row 2 (marquee right) -->
+        <div class="hidden lg:block story-marquee story-marquee-right md:pl-12">
+          <div class="story-marquee-track">
+            {
+              rowTwoLoop.map((item, index) => (
+                <article
+                  class="story-card flex shrink-0 items-center gap-5 overflow-hidden rounded-3xl bg-[#F3F1EF] text-[#1A1617]"
+                  aria-hidden={index >= rowTwo.length}
+                >
+                  <div class="flex shrink-0 items-end self-end">
+                    <Image
+                      src={item.image}
+                      alt={item.name}
+                      class="h-[160px] w-[150px] object-cover md:h-55 md:w-50"
+                    />
+                  </div>
+
+                  <div class="flex-1">
+                    <p class="mb-1 lg:mb-4 pr-7 text-sm lg:text-[16px] leading-relaxed text-[#1A1617]/85">
+                      {item.message}
+                    </p>
+
+                    <h3 class="text-base font-semibold text-[#326262] md:text-[18px]">
+                      {item.name}
+                    </h3>
+
+                    <p class="mt-1 text-xs text-[#3A3B33]/50 md:text-sm">
+                      {item.role}
+                    </p>
+                  </div>
+                </article>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+</section>

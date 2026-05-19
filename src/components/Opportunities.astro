@@ -1,0 +1,171 @@
+---
+import { Image } from "astro:assets";
+import "swiper/css";
+import Logo1 from "@assets/logos/Logo-1.png";
+import Logo2 from "@assets/logos/Logo-2.png";
+import Logo3 from "@assets/logos/Logo-3.png";
+import Logo4 from "@assets/logos/Logo-4.png";
+import Logo5 from "@assets/logos/Logo-5.png";
+import Logo6 from "@assets/logos/Logo-6.png";
+import Logo7 from "@assets/logos/Logo-7.png";
+import Logo8 from "@assets/logos/Logo-8.png";
+import Logo9 from "@assets/logos/Logo-9.png";
+
+const { title } = Astro.props;
+
+const opportunities = [
+  {
+    title: "Software Engineering & Tech",
+    description:
+      "Work on live products used by real customers across the world. Work with modern stacks (MERN, Python, Cloud) in high-trust environments.",
+  },
+  {
+    title: "Accounting, Finance & Operations",
+    description:
+      "Manage financial ecosystems for UK and US firms. A path for ACCA/CIMA/CFA professionals to practice at a global standard.",
+  },
+  {
+    title: "HR & Recruitment",
+    description:
+      "Shape teams and culture for fast-growing UK businesses. If you understand people and what makes them stay, there is a career here that grows with you.",
+  },
+];
+
+const logos = [Logo1, Logo2, Logo3, Logo4, Logo5, Logo6, Logo7, Logo8, Logo9];
+---
+
+<!-- Opportunity Section -->
+<section class="bg-[#061414] py-16 text-[#FBFBFB]">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <!-- Heading -->
+    <div data-reveal-group data-reveal-start="top 95%" class="mb-12">
+      <h2
+        data-reveal-heading
+        class="font-primary text-4xl leading-tight tracking-tight md:text-5xl"
+      >
+        {title}
+      </h2>
+
+      <p
+        data-reveal-body
+        class="mt-3 max-w-4xl text-[16px] leading-relaxed text-[#FBFBFB]/80"
+      >
+        We Don't just find you a job; we place you in a role where your specific
+        skills are valued on a global scale.
+      </p>
+    </div>
+
+    <!-- Opportunity rows -->
+    <div class="space-y-0">
+      {
+        opportunities.map((item) => (
+          <div
+            class="dm-reveal-group grid gap-5 border-b border-[#FBFBFB]/25 py-8 md:grid-cols-2 md:gap-10"
+            data-reveal-start="top 95%"
+          >
+            <div class="dm-heading5">
+              <h3 class="text-xl lg:text-[32px] font-medium leading-tight tracking-wide">
+                {item.title}
+              </h3>
+            </div>
+
+            <div class="dm-paragraph5 max-w-xl text-[16px] leading-relaxed font-normal text-[#FBFBFB]/85">
+              <p>{item.description}</p>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+
+    <!-- Bottom company slider area -->
+    <div class="mt-10 lg:mt-20 grid items-center gap-10 lg:grid-cols-[450px_1fr]">
+      <!-- Left text -->
+      <div>
+        <p
+          class="max-w-3xl text-[14px] lg:text-[16px] font-medium uppercase leading-relaxed tracking-[0.22em] text-[#FBFBFB]"
+        >
+          Thousands of companies worldwide rely on our services
+        </p>
+      </div>
+
+      <!-- Slider placeholder with corner SVG marks -->
+      <div class="relative px-0 py-6">
+        <!-- Corner SVG placeholders -->
+        <div class="pointer-events-none absolute left-0 top-0 h-4 w-4">
+          <!-- Replace with top-left corner SVG -->
+          <span
+            class="block h-full w-full border-l border-t border-[#FBFBFB]/70"
+          ></span>
+        </div>
+
+        <div class="pointer-events-none absolute right-0 top-0 h-4 w-4">
+          <!-- Replace with top-right corner SVG -->
+          <span
+            class="block h-full w-full border-r border-t border-[#FBFBFB]/70"
+          ></span>
+        </div>
+
+        <div class="pointer-events-none absolute bottom-0 left-0 h-4 w-4">
+          <!-- Replace with bottom-left corner SVG -->
+          <span
+            class="block h-full w-full border-b border-l border-[#FBFBFB]/70"
+          ></span>
+        </div>
+
+        <div class="pointer-events-none absolute bottom-0 right-0 h-4 w-4">
+          <!-- Replace with bottom-right corner SVG -->
+          <span
+            class="block h-full w-full border-b border-r border-[#FBFBFB]/70"
+          ></span>
+        </div>
+
+        <!-- Slider content placeholder -->
+        <div class="overflow-hidden">
+          <div class="swiper swiperLogo">
+            <div class="swiper-wrapper">
+              {
+                logos.map((logo, i) => (
+                  <div class="swiper-slide flex w-auto! items-center justify-center opacity-100 hover:opacity-100">
+                    <Image
+                      src={logo}
+                      alt={`Partner ${i}`}
+                      class="h-10 w-auto select-none object-contain"
+                    />
+                  </div>
+                ))
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+  import Swiper from "swiper";
+  import { Autoplay } from "swiper/modules";
+
+  const swiper = new Swiper(".swiperLogo", {
+    modules: [Autoplay],
+    loop: true,
+    slidesPerView: "auto",
+    spaceBetween: 60,
+    speed: 6000,
+    allowTouchMove: false,
+    freeMode: {
+      enabled: true,
+      momentum: false,
+      sticky: false,
+    },
+    autoplay: {
+      delay: 0,
+      disableOnInteraction: false,
+      pauseOnMouseEnter: false,
+    },
+    breakpoints: {
+      0: { slidesPerView: 4, spaceBetween: 10 },
+      640: { slidesPerView: 3, spaceBetween: 30 },
+      1024: { slidesPerView: 5 },
+    },
+  });
+</script>

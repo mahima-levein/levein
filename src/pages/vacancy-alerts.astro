@@ -1,0 +1,15 @@
+---
+import Layout from "@layouts/Layout.astro";
+import Hero from "@components/HeroSection.astro";
+import ApplicationForm from "@components/ApplicationForm.tsx";
+---
+<Layout title="Vacancy Alerts - Levein Group" description="Stay updated with the latest job openings at Levein Group. Sign up for our vacancy alerts and be the first to know about new career opportunities in the tech and healthcare industries. Don't miss out on your chance to join our dynamic team!" >
+    <Hero 
+        title="Stay Connected with Vacancy Alerts" 
+        description="We are always hiring talented professionals. Browse what is open below and if you do not see your exact role listed, email us your cv!"
+    />
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 mb-16 font-sans">
+            <!-- Application Form Section -->
+            <ApplicationForm client:idle />
+    </section>
+</Layout>

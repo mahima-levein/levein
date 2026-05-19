@@ -1,8 +1,10 @@
 ---
 import "@styles/Footer.scss";
+import { Image } from "astro:assets";
+import FooterImg from "@assets/footer-white.png";
 
 const companyLinks = [
-  { label: "Home", href: "/" },
+  { label: "Contact", href: "/contact-us" },
   { label: "Life at Levein", href: "/life-at-levein" },
   { label: "About us", href: "/about-us" },
   { label: "Careers", href: "/careers" },
@@ -11,6 +13,8 @@ const companyLinks = [
 const resourceLinks = [
   { label: "Blogs", href: "/blogs" },
   { label: "Events", href: "/events" },
+  { label: "My Application", href: "/my-application" },
+  { label: "Vacancy Alerts", href: "/vacancy-alerts" },
 ];
 
 const legalLinks = [
@@ -21,58 +25,131 @@ const legalLinks = [
 
 <footer class="relative overflow-hidden bg-[#E3F0E0] text-[#1A1617]">
   <!-- Container 01: Footer main content -->
-  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 w-full pt-12 max-md:pt-10">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 w-full pt-14 max-md:pt-10">
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-10 lg:gap-8">
-      
       <!-- Brand -->
-    <div class="sm:col-span-2 lg:col-span-2 pr-4">
-        <a href="/" class="block text-[42px] font-black italic leading-none tracking-[-1.5px] text-[#1A1617] no-underline">
+      <div class="sm:col-span-2 lg:col-span-2 pr-4">
+        <a
+          href="/"
+          class="block text-[38px] font-black italic leading-none tracking-[-1.5px] text-[#1A1617] no-underline"
+        >
           LEVEIN
         </a>
 
-        <p class="mt-4 max-w-full text-[13px] leading-[1.35] text-[#1A1617]/80">
-          We’re constantly seeking talented individuals who are passionate about working on innovative projects.
+        <p class="mt-4 max-w-2xl text-[16px] leading-relaxed text-primary">
+          We're constantly seeking talented individuals who are passionate about
+          working on innovative projects. If you have a knack for creativity and
+          a drive to make an impact, we’d love to collaborate with you.
         </p>
 
-        <p class="mt-2 max-w-full text-[13px] leading-[1.35] text-[#1A1617]/80">
-          If you have a knack for creativity and a drive to make an impact, we’d love to collaborate with you.
-        </p>
-
-        <div class="mt-5 inline-flex items-center gap-4 rounded-full border border-[#1A1617] px-5 py-2">
+        <div
+          class="mt-5 inline-flex items-center gap-4 rounded-full border border-[#326262] px-5 py-3"
+        >
           <a href="#" aria-label="TikTok" class="footer-social-link">
-            <span class="text-[12px] font-bold">♪</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 20 20"
+              fill="none"
+            >
+              <path
+                d="M14.0182 4.27997C13.4072 3.57958 13.04 2.66634 13.04 1.66797H12.2744C12.4716 2.75922 13.1212 3.69569 14.0182 4.27997Z"
+                fill="#1A1617"></path>
+              <path
+                d="M6.93483 9.92195C5.60865 9.92195 4.52993 11.0016 4.52993 12.3289C4.52993 13.2538 5.05575 14.0586 5.8213 14.4611C5.53519 14.0664 5.36507 13.5827 5.36507 13.0564C5.36507 11.7291 6.44379 10.6494 7.77 10.6494C8.01744 10.6494 8.25714 10.692 8.4814 10.7617V7.83624C8.24939 7.80525 8.01357 7.78588 7.77 7.78588C7.72745 7.78588 7.68878 7.78975 7.64625 7.78975V10.0342C7.41813 9.9645 7.18228 9.92195 6.93483 9.92195Z"
+                fill="#1A1617"></path>
+              <path
+                d="M16.1871 5.5647V7.78975C14.7024 7.78975 13.326 7.31381 12.2047 6.50889V12.3328C12.2047 15.2389 9.84233 17.6071 6.93476 17.6071C5.81351 17.6071 4.76958 17.2511 3.9151 16.6513C4.87784 17.6845 6.25041 18.3346 7.76994 18.3346C10.6736 18.3346 13.0398 15.9703 13.0398 13.0603V7.23639C14.1611 8.04131 15.5375 8.51725 17.0222 8.51725V5.65374C16.7322 5.65374 16.4539 5.62275 16.1871 5.5647Z"
+                fill="#1A1617"></path>
+              <path
+                d="M12.2047 12.3328V6.50889C13.326 7.31381 14.7024 7.78975 16.1871 7.78975V5.5647C15.3287 5.38287 14.5749 4.91849 14.0182 4.27997C13.1211 3.69569 12.4753 2.75922 12.2704 1.66797H10.1748L10.1709 13.1492C10.1246 14.434 9.06514 15.4672 7.76994 15.4672C6.9657 15.4672 6.25815 15.0686 5.81738 14.465C5.05183 14.0586 4.526 13.2576 4.526 12.3328C4.526 11.0055 5.60472 9.92582 6.9309 9.92582C7.17835 9.92582 7.41807 9.96837 7.64232 10.038V7.79362C4.79665 7.85554 2.5 10.1928 2.5 13.0603C2.5 14.4456 3.03743 15.7071 3.9151 16.6513C4.76958 17.2511 5.81351 17.6071 6.93476 17.6071C9.83845 17.6071 12.2047 15.2389 12.2047 12.3328Z"
+                fill="#1A1617"></path>
+            </svg>
           </a>
 
           <a href="#" aria-label="Instagram" class="footer-social-link">
-            <span class="text-[12px] font-bold">◎</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 20 20"
+              fill="none"
+            >
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M10.0003 1.66797C7.73699 1.66797 7.45366 1.67741 6.56477 1.71797C5.67755 1.75852 5.07144 1.89964 4.54144 2.10575C3.98588 2.31464 3.48199 2.64241 3.06533 3.06686C2.64156 3.48304 2.31358 3.98658 2.10421 4.54241C1.89921 5.07241 1.75755 5.67908 1.71699 6.5663C1.67699 7.45464 1.66699 7.73741 1.66699 10.0013C1.66699 12.2652 1.67644 12.548 1.71699 13.4369C1.75755 14.3241 1.89866 14.9302 2.10477 15.4602C2.31366 16.0157 2.64144 16.5196 3.06588 16.9363C3.48208 17.3601 3.98561 17.688 4.54144 17.8974C5.07144 18.103 5.67755 18.2441 6.56477 18.2846C7.45366 18.3252 7.73699 18.3346 10.0003 18.3346C12.2637 18.3346 12.547 18.3252 13.4359 18.2846C14.3231 18.2441 14.9292 18.103 15.4592 17.8969C16.0148 17.688 16.5187 17.3602 16.9353 16.9357C17.3591 16.5196 17.6871 16.016 17.8964 15.4602C18.102 14.9302 18.2431 14.3241 18.2837 13.4369C18.3242 12.548 18.3337 12.2646 18.3337 10.0013C18.3337 7.73797 18.3242 7.45464 18.2837 6.56575C18.2431 5.67852 18.102 5.07241 17.8959 4.54241C17.6867 3.98634 17.3587 3.48259 16.9348 3.0663C16.5186 2.64254 16.0151 2.31456 15.4592 2.10519C14.9292 1.90019 14.3225 1.75852 13.4353 1.71797C12.547 1.67797 12.2642 1.66797 10.0003 1.66797ZM10.0003 3.16964C12.2253 3.16964 12.4892 3.17797 13.3681 3.21797C14.1803 3.25519 14.6214 3.39019 14.9153 3.50519C15.3042 3.65575 15.582 3.83686 15.8737 4.12797C16.1653 4.41964 16.3459 4.69741 16.4964 5.0863C16.6109 5.38019 16.7464 5.8213 16.7837 6.63352C16.8237 7.51241 16.832 7.7763 16.832 10.0013C16.832 12.2263 16.8237 12.4902 16.7837 13.3691C16.7464 14.1813 16.6114 14.6224 16.4964 14.9163C16.3631 15.2783 16.1503 15.6057 15.8737 15.8746C15.6048 16.1513 15.2773 16.3641 14.9153 16.4974C14.6214 16.6119 14.1803 16.7474 13.3681 16.7846C12.4892 16.8246 12.2259 16.833 10.0003 16.833C7.77477 16.833 7.51144 16.8246 6.63255 16.7846C5.82033 16.7474 5.37921 16.6124 5.08533 16.4974C4.72336 16.364 4.39588 16.1512 4.12699 15.8746C3.85042 15.6057 3.63762 15.2783 3.50421 14.9163C3.38977 14.6224 3.25421 14.1813 3.21699 13.3691C3.17699 12.4902 3.16866 12.2263 3.16866 10.0013C3.16866 7.7763 3.17699 7.51241 3.21699 6.63352C3.25421 5.8213 3.38921 5.38019 3.50421 5.0863C3.65477 4.69741 3.83588 4.41964 4.12699 4.12797C4.39585 3.85133 4.72333 3.63851 5.08533 3.50519C5.37921 3.39075 5.82033 3.25519 6.63255 3.21797C7.51144 3.17797 7.77533 3.16964 10.0003 3.16964Z"
+                fill="#1A1617"></path>
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M10.0003 12.7819C9.63519 12.7819 9.27362 12.7099 8.93627 12.5702C8.59891 12.4305 8.29239 12.2257 8.03419 11.9675C7.77599 11.7093 7.57118 11.4027 7.43144 11.0654C7.2917 10.728 7.21978 10.3665 7.21978 10.0013C7.21978 9.63615 7.2917 9.27458 7.43144 8.93723C7.57118 8.59988 7.77599 8.29335 8.03419 8.03515C8.29239 7.77695 8.59891 7.57214 8.93627 7.4324C9.27362 7.29267 9.63519 7.22075 10.0003 7.22075C10.7378 7.22075 11.445 7.5137 11.9665 8.03515C12.4879 8.55661 12.7809 9.26385 12.7809 10.0013C12.7809 10.7388 12.4879 11.446 11.9665 11.9675C11.445 12.4889 10.7378 12.7819 10.0003 12.7819ZM10.0003 5.71797C8.86433 5.71797 7.77485 6.16925 6.97156 6.97253C6.16828 7.77581 5.71701 8.86529 5.71701 10.0013C5.71701 11.1373 6.16828 12.2268 6.97156 13.0301C7.77485 13.8334 8.86433 14.2846 10.0003 14.2846C11.1364 14.2846 12.2258 13.8334 13.0291 13.0301C13.8324 12.2268 14.2837 11.1373 14.2837 10.0013C14.2837 8.86529 13.8324 7.77581 13.0291 6.97253C12.2258 6.16925 11.1364 5.71797 10.0003 5.71797ZM15.5298 5.64019C15.5298 5.90872 15.4231 6.16626 15.2332 6.35614C15.0434 6.54602 14.7858 6.65269 14.5173 6.65269C14.2488 6.65269 13.9912 6.54602 13.8013 6.35614C13.6115 6.16626 13.5048 5.90872 13.5048 5.64019C13.5048 5.37166 13.6115 5.11413 13.8013 4.92425C13.9912 4.73436 14.2488 4.62769 14.5173 4.62769C14.7858 4.62769 15.0434 4.73436 15.2332 4.92425C15.4231 5.11413 15.5298 5.37166 15.5298 5.64019Z"
+                fill="#1A1617"></path>
+            </svg>
           </a>
 
           <a href="#" aria-label="LinkedIn" class="footer-social-link">
-            <span class="text-[12px] font-bold">in</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 20 20"
+              fill="none"
+            >
+              <path
+                d="M18.3337 2.89346V17.1091C18.3337 17.4342 18.2045 17.7459 17.9747 17.9757C17.7449 18.2055 17.4332 18.3346 17.1082 18.3346H2.89248C2.56746 18.3346 2.25575 18.2055 2.02593 17.9757C1.79611 17.7459 1.66699 17.4342 1.66699 17.1091V2.89346C1.66699 2.56844 1.79611 2.25673 2.02593 2.02691C2.25575 1.79708 2.56746 1.66797 2.89248 1.66797L17.1082 1.66797C17.4332 1.66797 17.7449 1.79708 17.9747 2.02691C18.2045 2.25673 18.3337 2.56844 18.3337 2.89346ZM6.56895 8.04052H4.11797V15.8837H6.56895V8.04052ZM6.78954 5.34444C6.79083 5.15904 6.75559 4.97521 6.68584 4.80343C6.61608 4.63165 6.51317 4.4753 6.38299 4.34329C6.2528 4.21128 6.09789 4.10621 5.9271 4.03408C5.75631 3.96194 5.57298 3.92415 5.38758 3.92287H5.34346C4.96644 3.92287 4.60486 4.07264 4.33826 4.33924C4.07167 4.60583 3.92189 4.96742 3.92189 5.34444C3.92189 5.72146 4.07167 6.08304 4.33826 6.34964C4.60486 6.61624 4.96644 6.76601 5.34346 6.76601C5.52887 6.77057 5.71336 6.73855 5.8864 6.67179C6.05943 6.60502 6.21761 6.50482 6.3519 6.3769C6.48619 6.24898 6.59396 6.09586 6.66906 5.92627C6.74415 5.75669 6.78509 5.57397 6.78954 5.38856V5.34444ZM15.8827 11.1189C15.8827 8.76111 14.3827 7.84444 12.8925 7.84444C12.4046 7.82001 11.9188 7.92393 11.4835 8.14584C11.0483 8.36775 10.6789 8.6999 10.4121 9.10915H10.3435V8.04052H8.03954V15.8837H10.4905V11.7121C10.4551 11.2848 10.5897 10.8609 10.865 10.5323C11.1404 10.2037 11.5343 9.99704 11.9611 9.95718H12.0542C12.8337 9.95718 13.4121 10.4474 13.4121 11.6827V15.8837H15.8631L15.8827 11.1189Z"
+                fill="#1A1617"></path>
+            </svg>
           </a>
 
           <a href="#" aria-label="Facebook" class="footer-social-link">
-            <span class="text-[12px] font-bold">f</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 20 20"
+              fill="none"
+            >
+              <path
+                d="M9.9998 0C4.47711 0 0 4.49365 0 10.0367C0 14.7436 3.22874 18.6932 7.58425 19.778V13.104H5.52229V10.0367H7.58425V8.7151C7.58425 5.29899 9.12462 3.7156 12.4662 3.7156C13.0997 3.7156 14.1929 3.84046 14.6401 3.96491V6.74509C14.4041 6.7202 13.9941 6.70775 13.4849 6.70775C11.8454 6.70775 11.2118 7.33123 11.2118 8.95196V10.0367H14.4781L13.9169 13.104H11.2118V20C16.1633 19.3998 20 15.1683 20 10.0367C19.9996 4.49365 15.5225 0 9.9998 0Z"
+                fill="#1A1617"></path>
+            </svg>
           </a>
 
           <a href="#" aria-label="X" class="footer-social-link">
-            <span class="text-[12px] font-bold">𝕏</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 20 20"
+              fill="none"
+            >
+              <path
+                d="M15.7512 0H18.818L12.1179 8.47179L20 20H13.8284L8.99458 13.0082L3.46359 20H0.394938L7.5613 10.9385L0 0H6.32828L10.6976 6.39077L15.7512 0ZM14.6748 17.9692H16.3742L5.4049 1.9241H3.58133L14.6748 17.9692Z"
+                fill="#1A1617"></path>
+            </svg>
           </a>
         </div>
       </div>
 
-        <div class="lg:col-span-1">
-          <h3 class="text-[13px] font-bold leading-none text-[#1A1617]">
+      <!-- Company, Resources, Legal grouped as single column unit -->
+      <div
+        class="lg:col-span-3 grid grid-cols-2 md:flex md:flex-row lg:flex-row gap-4 space-y-4 md:space-y-0 lg:gap-0"
+      >
+        <!-- Company -->
+        <div class="flex-1">
+          <h3 class="text-[20px] font-semibold leading-none text-[#061414]">
             Company
           </h3>
 
-          <ul class="mt-6 space-y-5">
+          <ul class="mt-6 space-y-6">
             {
               companyLinks.map((item) => (
                 <li>
                   <a
                     href={item.href}
-                    class="text-[12px] leading-none text-[#1A1617]/80 no-underline transition-colors duration-300 hover:text-[#326262]"
+                    class="text-[16px] leading-none text-[#326262] text-primary no-underline transition-colors duration-300 hover:text-[#326262]/80"
                   >
                     {item.label}
                   </a>
@@ -81,19 +158,19 @@ const legalLinks = [
             }
           </ul>
         </div>
-
-        <div class="lg:col-span-1">
-          <h3 class="text-[13px] font-bold leading-none text-[#1A1617]">
+        <!-- Resources -->
+        <div class="flex-1">
+          <h3 class="text-[20px] font-semibold leading-none text-[#061414]">
             Resources
           </h3>
 
-          <ul class="mt-6 space-y-5">
+          <ul class="mt-6 space-y-6">
             {
               resourceLinks.map((item) => (
                 <li>
                   <a
                     href={item.href}
-                    class="text-[12px] leading-none text-[#1A1617]/80 no-underline transition-colors duration-300 hover:text-[#326262]"
+                    class="text-[16px] leading-none text-[#326262] text-primary no-underline transition-colors duration-300 hover:text-[#326262]/80"
                   >
                     {item.label}
                   </a>
@@ -102,19 +179,19 @@ const legalLinks = [
             }
           </ul>
         </div>
-
-        <div class="lg:col-span-1">
-          <h3 class="text-[13px] font-bold leading-none text-[#1A1617]">
+        <!-- Legal -->
+        <div class="flex-1">
+          <h3 class="text-[20px] font-semibold leading-none text-[#061414]">
             Legal
           </h3>
 
-          <ul class="mt-6 space-y-5">
+          <ul class="mt-6 space-y-6">
             {
               legalLinks.map((item) => (
                 <li>
                   <a
                     href={item.href}
-                    class="text-[12px] leading-none text-[#1A1617]/80 no-underline transition-colors duration-300 hover:text-[#326262]"
+                    class="text-[16px] leading-none text-primary text-[#326262] no-underline transition-colors duration-300 hover:text-[#326262]/80"
                   >
                     {item.label}
                   </a>
@@ -123,37 +200,44 @@ const legalLinks = [
             }
           </ul>
         </div>
+      </div>
 
       <!-- Contact -->
-      <div class="lg:col-span-1 flex flex-col items-start lg:items-end text-left lg:text-right">
+      <div
+        class="lg:col-span-1 flex flex-col items-start lg:items-end text-left lg:text-right gap-2"
+      >
         <a
           href="/contact"
-          class="inline-flex h-10 items-center justify-center rounded-full bg-[#326262] px-7 text-[12px] font-bold text-[#FBFBFB] no-underline transition-all duration-300 hover:bg-[#1a1617]"
+          class="hidden lg:inline-flex h-10 items-center justify-center rounded-full bg-[#326262] px-6 text-[16px] font-bold text-[#FBFBFB] no-underline transition-all duration-300 hover:bg-[#1a1617]"
         >
           Request a call
         </a>
 
-        <div class="mt-4 space-y-2">
+        <div class="mt-4 space-y-4">
           <a
-            href="tel:3122551153"
-            class="block text-[16px] font-medium leading-none text-[#1A1617] underline underline-offset-4"
+            href="tel:+94112515053"
+            class="block text-[16px] font-medium leading-none text-[#061414] underline underline-offset-4"
           >
-            (312) 255-1153
+            (+94) 112 515 053
           </a>
 
           <a
-            href="mailto:hello@Levein.com"
-            class="block text-[16px] font-medium leading-none text-[#1A1617] underline underline-offset-4"
+            href="mailto:hello@leveingroup.com"
+            class="block text-[16px] font-medium leading-none text-[#061414] underline underline-offset-4"
           >
-            hello@Levein.com
+            hello@leveingroup.com
           </a>
         </div>
       </div>
     </div>
 
     <!-- Email row -->
-    <div class="mt-16 grid grid-cols-[1fr_400px] items-center gap-10 max-md:mt-12 max-md:grid-cols-1">
-      <h2 class="max-w-full text-[28px] font-normal leading-[1.1] tracking-[-0.5px] text-[#1A1617] max-md:text-[24px]">
+    <div
+      class="mt-16 grid grid-cols-[1fr_400px] items-center gap-10 max-md:mt-12 max-md:grid-cols-1"
+    >
+      <h2
+        class="max-w-xl text-[28px] font-medium leading-[1.1] tracking-[-0.5px] text-[#1A1617] max-md:text-[24px]"
+      >
         Just send us your contact email and we will contact you.
       </h2>
 
@@ -164,7 +248,7 @@ const legalLinks = [
           id="footer-email"
           type="email"
           placeholder="Email address"
-          class="h-9 w-full rounded-full border-0 bg-[#FBFBFB] px-5 pr-12 text-[12px] text-[#1A1617] outline-none placeholder:text-[#1A1617]/45 focus:ring-2 focus:ring-[#326262]/30"
+          class="h-10 w-full rounded-full border-0 bg-[#FBFBFB] px-4 pr-12 py-3 text-[16px] text-[#1A1617] outline-none placeholder:text-[#646464] focus:ring-2 focus:ring-[#326262]/30 border-[#000000]/10 transition-colors duration-300 focus:border-[#326262] focus:ring-offset-0 max-md:mb-4"
         />
 
         <button
@@ -172,23 +256,53 @@ const legalLinks = [
           aria-label="Submit email"
           class="absolute right-2 top-1/2 flex size-5 -translate-y-1/2 items-center justify-center rounded-full text-[#1A1617] transition-colors duration-300 hover:bg-[#e3f0e0]"
         >
-          <span class="text-[15px] leading-none">⊙</span>
+          <span class="leading-none"
+            ><svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 20 20"
+              fill="none"
+            >
+              <path
+                d="M10.0003 18.3346C14.6027 18.3346 18.3337 14.6037 18.3337 10.0013C18.3337 5.39893 14.6027 1.66797 10.0003 1.66797C5.39795 1.66797 1.66699 5.39893 1.66699 10.0013C1.66699 14.6037 5.39795 18.3346 10.0003 18.3346Z"
+                stroke="#1A1617"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"></path>
+              <path
+                d="M7.08301 10H12.083"
+                stroke="#1A1617"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"></path>
+              <path
+                d="M10.417 12.5L12.917 10L10.417 7.5"
+                stroke="#1A1617"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"></path>
+            </svg></span
+          >
         </button>
       </form>
     </div>
-
   </div>
 
   <!-- Container 02: Copyright + large wordmark -->
-  <div class="mx-auto mt-14 w-[min(100%-48px,1044px)] border-t border-[#1A1617]/10 pb-0 pt-6 max-md:w-[calc(100%-32px)]">
-    <p class="text-center text-[11px] font-medium text-[#1A1617]">
+  <div
+    class="mx-auto mt-7 lg:mt-14 w-[min(100%-48px,1044px)] border-t border-[#7FCFA8] pb-0 pt-6 max-md:w-[calc(100%-32px)]"
+  >
+    <p class="text-center text-[16px] font-medium text-[#1A1617]">
       © 2026 LEVEIN. All rights reserved.
     </p>
+  </div>
 
-    <div class="relative mt-8 h-[160px] overflow-hidden max-md:h-[100px] max-sm:h-[70px]">
-      <span class="footer-large-wordmark absolute left-1/2 top-0 -translate-x-1/2 select-none whitespace-nowrap text-[#FBFBFB]">
-        LEVEIN
-      </span>
-    </div>
+  <div class="relative mt-6 lg:mt-12 h-[clamp(72px,14vw,355px)] w-full overflow-hidden">
+    <Image
+      src={FooterImg}
+      alt="Levein wordmark"
+      class="absolute bottom-0 left-1/2 w-full h-auto -translate-x-1/2 object-cover sm:w-[88vw] lg:w-screen"
+    />
   </div>
 </footer>

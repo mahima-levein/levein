@@ -1,0 +1,91 @@
+---
+import Layout from "@layouts/Layout.astro";
+---
+
+<Layout>
+  <section class="relative overflow-hidden min-h-dvh flex items-center">
+    <div
+      class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(146,227,169,0.18),transparent_42%),radial-gradient(circle_at_bottom_right,rgba(38,50,56,0.08),transparent_36%)]"
+    >
+    </div>
+    <div
+      class="pointer-events-none absolute -left-24 top-8 h-72 w-72 rounded-full bg-[#92E3A9]/20 blur-3xl"
+    >
+    </div>
+    <div
+      class="pointer-events-none absolute -right-24 bottom-0 h-72 w-72 rounded-full bg-[#263238]/10 blur-3xl"
+    >
+    </div>
+
+    <div
+      class="relative mx-auto w-full max-w-6xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20"
+    >
+      <div class="grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr]">
+        <div class="space-y-6">
+          <span
+            class="inline-flex items-center rounded-full border border-[#263238]/10 bg-white/70 px-4 py-2 text-[16px] font-medium tracking-[0.24em] text-[#263238]"
+          >
+            404 PAGE NOT FOUND
+          </span>
+
+          <div class="space-y-4" data-reveal-group data-reveal-start="top 95%">
+            <h1
+              data-reveal-heading
+              class="max-w-xl text-5xl font-semibold leading-tight text-levein-black sm:text-6xl lg:text-7xl font-primary"
+            >
+              We can't find that page.
+            </h1>
+            <p data-reveal-body class="max-w-2xl text-lg leading-8 text-slate-600 sm:text-xl">
+              The page may have moved, been renamed, or never existed. Use the
+              link below to return to the homepage and keep moving.
+            </p>
+          </div>
+
+          <div class="flex flex-col gap-3 sm:flex-row">
+            <a
+              href="/"
+              class="inline-flex items-center justify-center rounded-[150px] bg-[#326262] px-6 py-3 text-base font-medium text-white transition hover:-translate-y-0.5 hover:bg-[#1e282d] hover:shadow-lg"
+            >
+              Back to home
+            </a>
+            <a
+              href="/careers"
+              class="inline-flex items-center justify-center rounded-[150px] border border-[#263238]/15 bg-white/80 px-6 py-3 text-base font-medium text-[#263238] transition hover:-translate-y-0.5 hover:border-[#263238]/30 hover:bg-white hover:shadow-lg backdrop-blur"
+            >
+              View careers
+            </a>
+          </div>
+        </div>
+
+        <div class="relative mx-auto w-full max-w-md">
+          <div
+            class="absolute inset-x-8 bottom-3 h-10 rounded-full bg-[#263238]/10 blur-2xl"
+          >
+          </div>
+          <div
+            class="relative rounded-4xl"
+          >
+            <img
+              src="/404.svg"
+              alt="Lost page illustration"
+              class="mx-auto block h-auto w-full object-cover"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <style is:global>
+    #site-header {
+        background-color: hsl(0, 0%, 100%);
+        color: #000;
+    }
+    #site-header .site-header__link {
+        color: #000;
+    }
+    #site-header .site-header__cta {
+        border-color: #000;
+        color: #000;
+    }
+</style>
+</Layout>

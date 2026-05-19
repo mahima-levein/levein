@@ -9,8 +9,9 @@
     --clr-text-black: #1a1617;
     --clr-text-white: #fbfbfb;
     --clr-accent: #e3f0e0;
-    --clr-dark: #1a1617;
+    --clr-dark: #4c4b4b;
     --clr-white: #ffffff;
+    --clr-text-secondary: #3A3B33;
 }
 
 @layer utilities {
@@ -25,7 +26,8 @@
     .bg-button { background-color: var(--clr-button); }
     .border-button { border-color: var(--clr-button); }
 
-    .text-text-black { color: var(--clr-text-black); }
+    .text-levein-black { color: var(--clr-text-black); }
+    .text-levein-secondary { color: var(--clr-text-secondary); }
     .bg-text-black { background-color: var(--clr-text-black); }
     .border-text-black { border-color: var(--clr-text-black); }
 
@@ -48,4 +50,143 @@
 
 body{
     font-family: var(--font-secondary);
+}
+#site-header{
+    top: unset;
+}
+
+.levein-cta-card{
+    background: url('/Gradient.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top center;
+}
+
+/* Client Stories Marquee Styles */
+.story-marquee {
+	overflow: hidden;
+	width: 100%;
+}
+
+.story-marquee-track {
+	display: flex;
+	width: max-content;
+	gap: 1.5rem;
+	will-change: transform;
+	animation: story-marquee-left 44s linear infinite;
+}
+
+.story-marquee-right .story-marquee-track {
+	animation-name: story-marquee-right;
+}
+
+.story-card {
+	width: min(100vw - 2rem, 34rem);
+	flex: 0 0 auto;
+    @media screen and (max-width: 767px) {
+        width: min(88vw, 32rem);
+    }
+}
+
+@keyframes story-marquee-left {
+	from {
+		transform: translateX(0);
+	}
+	to {
+		transform: translateX(-50%);
+	}
+}
+
+@keyframes story-marquee-right {
+	from {
+		transform: translateX(-50%);
+	}
+	to {
+		transform: translateX(0);
+	}
+}
+
+@media (max-width: 767px) {
+	.story-card {
+		width: min(88vw, 32rem);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.story-marquee-track {
+		animation: none;
+		transform: none;
+	}
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 767px) {
+.animate-marquee {
+    animation: marquee 20s linear infinite;
+    }
+}
+
+.dm-heading5 .line,
+.dm-paragraph5 .line {
+    overflow: hidden;
+    position: relative;
+    clip-path: inset(0 100% 0 0);
+    transition: none !important;
+    will-change: clip-path;
+    width: fit-content !important;
+}
+
+.dm-heading5 .line.animate,
+.dm-paragraph5 .line.animate {
+    animation: dm-clip-text-hp 1s forwards;
+}
+
+.dmRevealAnim1hp {
+    position: relative;
+}
+
+.dmRevealAnim1hp::after {
+    transition: none !important;
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 5;
+    background-color: var(--clr-button);
+    pointer-events: none;
+    animation: dm-bg-reveal-hp 1s forwards;
+}
+
+@keyframes dm-bg-reveal-hp {
+    0% {
+        clip-path: inset(0 100% 0 0);
+    }
+
+    50% {
+        clip-path: inset(0 0% 0 0);
+    }
+
+    100% {
+        clip-path: inset(0 0% 0 100%);
+    }
+}
+
+@keyframes dm-clip-text-hp {
+    from {
+        clip-path: inset(0 100% 0 0);
+    }
+
+    to {
+        clip-path: inset(0 0 0 0);
+    }
 }

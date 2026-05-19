@@ -1,0 +1,18 @@
+@use './mixins/_mixins' as *;
+@use './variables/_colors' as *;
+@use './variables/_typography' as *;
+
+#contact{
+    background: transparent;
+    background-image: url('/Gradient.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    h2{
+        line-height: 84px;
+        @include mobile {
+            line-height: normal;
+        }
+    }
+}

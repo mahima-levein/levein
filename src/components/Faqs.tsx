@@ -1,61 +1,55 @@
-import React, { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { faqDataHome, faqDataCareers } from '../data/careers';
+import type { FAQItem } from '../types/careers';
+import { initTextReveal } from '../scripts/text-reveal';
 
-// You can expand this array with the real answers later
-const faqData = [
-  {
-    id: 1,
-    question: "1. Who is my actual employer, Levein or the UK company I work with?",
-    answer: "Levein employs you directly. We manage your contract, salary, EPF and ETF contributions, and equipment. You work closely with our partner companies, but Levein is your employer on record, always."
-  },
-  {
-    id: 2,
-    question: "2. What are the working hours?",
-    answer: "Our standard working hours are aligned with UK business hours, typically 1:30 PM to 10:00 PM Sri Lankan Time, ensuring smooth collaboration with our international partners."
-  },
-  {
-    id: 3,
-    question: "3. What does Levein provide to employees?",
-    answer: "We provide competitive salaries pegged to the GBP, comprehensive health insurance, top-tier work equipment (MacBooks/high-end PCs), and allowances for internet and continuous learning."
-  },
-  {
-    id: 4,
-    question: "4. What does the application process look like?",
-    answer: "Our process involves an initial screening, a technical or role-specific assessment, a cultural fit interview with our team, and a final alignment call with the partner company."
-  }
-];
+export default function Faqs() {
+  const sectionRef = useRef<HTMLElement | null>(null);
+  const [openId, setOpenId] = useState<number | null>(1);
+  const [Dataset, setDataset] = useState<FAQItem[]>(faqDataHome);
 
-export default function FAQSection() {
-  // Set the first item (id: 1) to be open by default
-  const [openId, setOpenId] = useState(1);
+  useEffect(() => {
+    if (sectionRef.current) {
+      initTextReveal(sectionRef.current);
+    }
+    const path = window.location.pathname;
+    if (path === "/careers") {
+      setDataset(faqDataCareers);
+    }
+  }, []);
 
-  const toggleAccordion = (id) => {
-    // If clicking the already open one, close it. Otherwise, open the new one.
+  const toggleAccordion = (id: FAQItem['id']) => {
     setOpenId((prevId) => (prevId === id ? null : id));
   };
 
   return (
-    <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 bg-white">
+    <section ref={sectionRef} data-reveal-local className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-0 lg:py-16 bg-white">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-start">
         
         {/* Left Column: Heading & Button */}
         <div className="lg:col-span-5 lg:sticky lg:top-24">
-          <h2 className="text-4xl md:text-5xl lg:text-[56px] font-serif font-medium text-gray-900 mb-6 leading-tight tracking-tight">
+          <div data-reveal-group
+        data-reveal-start="top 95%">
+          <h2 data-reveal-heading className="text-4xl md:text-5xl font-primary font-normal text-levein-black mb-2 leading-tight tracking-tight">
             Your questions,<br />answered.
           </h2>
-          <p className="text-gray-600 text-base mb-8 max-w-md">
+          <p data-reveal-body className="text-levein-secondary text-base mb-8 max-w-md">
             We know the questions that come before you apply. Here are the answers.
           </p>
-          <button className="bg-[#93D7B0] hover:bg-[#82C89F] text-gray-900 font-medium px-8 py-3 rounded-full flex items-center gap-2 transition-colors duration-300">
+          </div>
+          <a type="button" className="bg-button text-sm md:text-[18px] border border-transparent hover:bg-white hover:border-[#1A1617] text-levein-black font-semibold px-8 py-3 rounded-full items-center gap-2 transition-colors duration-300 inline-flex" href="mailto:careers@levein.com">
             Contact us
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M13 9l3 3m0 0l-3 3m3-3H8m13 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M10.0003 18.3346C14.6027 18.3346 18.3337 14.6037 18.3337 10.0013C18.3337 5.39893 14.6027 1.66797 10.0003 1.66797C5.39795 1.66797 1.66699 5.39893 1.66699 10.0013C1.66699 14.6037 5.39795 18.3346 10.0003 18.3346Z" stroke="#1A1617" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              <path d="M7.08301 10H12.083" stroke="#1A1617" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              <path d="M10.417 12.5L12.917 10L10.417 7.5" stroke="#1A1617" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
-          </button>
+          </a>
         </div>
 
         {/* Right Column: Accordion List */}
         <div className="lg:col-span-7 flex flex-col gap-4">
-          {faqData.map((faq) => {
+          {Dataset.map((faq) => {
             const isOpen = openId === faq.id;
 
             return (
@@ -66,7 +60,7 @@ export default function FAQSection() {
               >
                 {/* Accordion Header */}
                 <div className="flex items-center justify-between gap-4 select-none">
-                  <h3 className="text-gray-900 font-medium text-base md:text-lg pr-4">
+                  <h3 className="text-levein-black font-medium text-base md:text-[20px] pr-4">
                     {faq.question}
                   </h3>
                   
@@ -92,11 +86,11 @@ export default function FAQSection() {
                 */}
                 <div 
                   className={`grid transition-all duration-300 ease-in-out ${
-                    isOpen ? "grid-rows-[1fr] opacity-100 mt-4" : "grid-rows-[0fr] opacity-0 mt-0"
+                    isOpen ? "grid-rows-[1fr] opacity-100 mt-2" : "grid-rows-[0fr] opacity-0 mt-0"
                   }`}
                 >
                   <div className="overflow-hidden">
-                    <p className="text-[#5B7B72] text-sm md:text-base leading-relaxed pr-8 pb-1">
+                    <p className="text-[#326262] text-[16px] md:text-base leading-relaxed pr-8 pb-1">
                       {faq.answer}
                     </p>
                   </div>

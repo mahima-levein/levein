@@ -1,16 +1,25 @@
 ---
 import "@styles/Header.scss";
-
+const pathname = Astro.url.pathname;
 const navItems = [
-  { label: "Home", href: "/", active: true },
-  { label: "About us", href: "/about-us", active: false },
-  { label: "Life @ Levein", href: "/life-at-levein", active: false },
-  { label: "Careers", href: "/careers", active: false },
+  { label: "Home", href: "/", active: pathname === "/" },
+  { label: "About us", href: "/about-us", active: pathname === "/about-us" },
+  { label: "Life @ Levein", href: "/life-at-levein", active: pathname === "/life-at-levein" },
+  { label: "Careers", href: "/careers", active: pathname === "/careers" },
+];
+const navMobileItems = [
+  { label: "Home", href: "/", active: pathname === "/" },
+  { label: "About us", href: "/about-us", active: pathname === "/about-us" },
+  { label: "Life @ Levein", href: "/life-at-levein", active: pathname === "/life-at-levein" },
+  { label: "Careers", href: "/careers", active: pathname === "/careers" },
+  { label: "Contact", href: "/contact-us", active: pathname === "/contact-us" },
+
 ];
 ---
 
 <header
-  class="site-header levein-header-bg fixed left-0 top-3 z-100 w-full py-7 transition-[top] duration-300"
+  id="site-header"
+  class="site-header levein-header-bg fixed left-0 z-100 w-full py-7 transition-[top] duration-300"
 >
   <div
     class="site-header__inner grid grid-cols-[1fr_auto_1fr] items-center gap-8 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 w-full max-md:grid-cols-[1fr_auto] max-md:gap-5"
@@ -19,13 +28,30 @@ const navItems = [
     <a
       href="/"
       aria-label="Levein Group Home"
-      class="site-header__brand justify-self-start text-[42px] font-black italic leading-none tracking-[-1.5px] no-underline max-md:text-[28px] max-sm:text-[25px]"
+      class="site-header__brand justify-self-start text-[38px] font-black italic leading-none tracking-[-1.5px] no-underline max-md:text-[28px] max-sm:text-[25px]"
     >
       LEVEIN
     </a>
 
+    <!-- Mobile Toggle -->
+    <button
+      type="button"
+      id="mobile-nav-toggle"
+      class="site-header__mobile-toggle md:hidden inline-flex justify-self-end items-center justify-center"
+      aria-label="Toggle mobile menu"
+      aria-expanded="false"
+      aria-controls="mobile-nav-panel"
+    >
+      <span
+        class="site-header__mobile-toggle-line site-header__mobile-toggle-line--1"
+      ></span>
+      <span
+        class="site-header__mobile-toggle-line site-header__mobile-toggle-line--2"
+      ></span>
+    </button>
+
     <!-- Navigation -->
-    <div class="flex items-end justify-end">
+    <div class="max-md:hidden flex items-end justify-end">
       <nav
         aria-label="Main Navigation"
         class="site-header__nav flex items-center justify-center gap-8 max-md:order-3 max-md:col-span-2 max-md:w-full max-md:justify-start max-md:gap-5.5 max-md:overflow-x-auto max-md:pt-2 max-sm:gap-4.5"
@@ -50,16 +76,54 @@ const navItems = [
 
     <!-- CTA -->
     <a
-      href="/contact"
-      class="site-header__cta inline-flex px-6 py-3 items-center justify-center justify-self-end rounded-[150px] border text-[18px] font-normal leading-none no-underline transition-all duration-300 hover:-translate-y-0.5 max-md:text-[18px]"
+      href="/jobs"
+      class="site-header__cta max-md:hidden inline-flex px-6 py-3 items-center justify-center justify-self-end rounded-[150px] border text-[18px] font-normal leading-none no-underline transition-all duration-300 hover:-translate-y-0.5 max-md:text-[18px]"
     >
       Apply Now
     </a>
+  </div>
+
+  <!-- Mobile Backdrop -->
+  <button
+    type="button"
+    id="mobile-nav-backdrop"
+    class="site-header__mobile-backdrop md:hidden"
+    aria-label="Close mobile menu"></button>
+
+  <!-- Mobile Panel -->
+  <div
+    id="mobile-nav-panel"
+    class="site-header__mobile-panel md:hidden"
+    aria-hidden="true"
+  >
+    <nav aria-label="Mobile Navigation" class="site-header__mobile-nav">
+      {
+        navMobileItems.map((item) => (
+          <a
+            href={item.href}
+            class:list={[
+              "site-header__mobile-link",
+              item.active ? "is-active" : "",
+            ]}
+          >
+            {item.label}
+          </a>
+        ))
+      }
+
+      <a href="/jobs" class="site-header__mobile-cta">Apply Now</a>
+    </nav>
   </div>
 </header>
 
 <script is:inline>
   const header = document.querySelector(".site-header");
+  const mobileToggle = document.getElementById("mobile-nav-toggle");
+  const mobilePanel = document.getElementById("mobile-nav-panel");
+  const mobileBackdrop = document.getElementById("mobile-nav-backdrop");
+  const mobileLinks = document.querySelectorAll(
+    ".site-header__mobile-link, .site-header__mobile-cta",
+  );
 
   if (header) {
     const threshold = 24;
@@ -74,5 +138,42 @@ const navItems = [
 
     updateHeaderState();
     window.addEventListener("scroll", updateHeaderState, { passive: true });
+
+    if (mobileToggle && mobilePanel && mobileBackdrop) {
+      const setMobileMenu = (isOpen) => {
+        header.classList.toggle("is-mobile-open", isOpen);
+        mobileToggle.setAttribute("aria-expanded", String(isOpen));
+        mobilePanel.setAttribute("aria-hidden", String(!isOpen));
+        document.body.style.overflow = isOpen ? "hidden" : "";
+      };
+
+      const isOpen = () => header.classList.contains("is-mobile-open");
+
+      mobileToggle.addEventListener("click", () => {
+        setMobileMenu(!isOpen());
+      });
+
+      mobileBackdrop.addEventListener("click", () => {
+        setMobileMenu(false);
+      });
+
+      mobileLinks.forEach((link) => {
+        link.addEventListener("click", () => {
+          setMobileMenu(false);
+        });
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && isOpen()) {
+          setMobileMenu(false);
+        }
+      });
+
+      window.addEventListener("resize", () => {
+        if (window.innerWidth >= 768 && isOpen()) {
+          setMobileMenu(false);
+        }
+      });
+    }
   }
 </script>
