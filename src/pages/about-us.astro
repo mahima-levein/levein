@@ -2,7 +2,7 @@
 import Layout from "@layouts/Layout.astro";
 import Hero from "@components/HeroSection.astro";
 import "@styles/About.scss";
-import timelineImg_1 from "@assets/timeline-1.jpg";
+import Late_Founder from "@assets/Late-Founder.webp";
 import timelineImg_2 from "@assets/timeline-2.jpg";
 import timelineImg_3 from "@assets/timeline-3.jpg";
 import timelineImg_4 from "@assets/timeline-4.jpg";
@@ -338,7 +338,7 @@ const teamMembers = [
   </section>
   <section
     id="founder-levein"
-    class="relative overflow-hidden px-6 py-16 text-[#FBFBFB] md:px-10 lg:px-16"
+    class="relative overflow-hidden px-6 py-16 text-[#FBFBFB] md:px-10 lg:px-16 hidden md:block"
   >
     <!-- Background image placeholder -->
     <div class="absolute inset-0">
@@ -387,6 +387,42 @@ const teamMembers = [
             <p class="mt-1 text-[16px] text-[#FBFBFB]">Our Late Founder</p>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+  <section class="block md:hidden relative overflow-hidden">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-20">
+      <!-- Header -->
+      <header data-reveal-group class="text-center mb-6">
+        <h2 data-reveal-heading class="text-4xl font-primary font-normal text-levein-black">
+          Our Late Founder
+        </h2>
+        <p data-reveal-body class="ldr-sub mt-2 text-base text-[#111827]/75">
+          Meet our founder, the visionary behind YTA’s journey and success</p>
+      </header>
+
+      <!-- Quote + Image -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div class="flex order-2 lg:order-2 flex-col gap-4">
+          <p>With over a decade of experience bridging UK businesses and South Asian talent, he founded Levein Group in 2017 with a simple yet powerful belief, that world-class work should never be limited by geography. His strategic insight and hands-on leadership have helped scale Levein from a small development partner into a trusted offshore staffing provider serving leading organisations across social care, healthcare, technology, and finance. 
+          </p>
+          <p> Passionate about tech, innovation, culture, and people development, Tharaka lead Levein’s mission to help Sri Lankan professionals grow their careers globally.</p>
+              <div class="mt-7">
+                <h3 class="text-[20px] font-bold text-[#061414]">
+                  Tharaka De Alwis
+                </h3>
+
+              <p class="mt-1 text-[16px] text-[#437D7D]">Our Late Founder</p>
+            </div>
+        </div>
+
+        <figure class="ldr-media order-1 lg:order-1">
+          <Image
+            src={Late_Founder}
+            alt="Tharaka De Alwis, YTA's late founder"
+            class="ldr-img w-full h-auto object-cover rounded-xl"
+          />
+        </figure>
       </div>
     </div>
   </section>
@@ -478,7 +514,7 @@ const teamMembers = [
         <p>We focus on building real careers, not short-term roles, with structured employment, global exposure, and an environment where talent can grow and be recognised at an international standard. Our vision is to enable 1,000 Sri Lankan professionals to build meaningful global careers from home, and to position Sri Lanka as a trusted hub for high-quality talent. The future of work is borderless and Levein is here to make sure Sri Lanka is part of it. </p>
         <p>As the nature of work evolves, we are also actively integrating AI into how our teams operate, from working alongside AI tools to building AI agents and supporting global companies in embedding AI into their day-to-day operations ”</p>
         <div>
-          <h3 class="text-[20px] font-semibold text-[#061414]">Nirmani De Alwis</h3>
+          <h3 class="text-[20px] font-semibold text-[#061414]">Nirmani Jayaweera</h3>
           <p class="text-[16px] text-[#437D7D]">CEO, Levein Group</p>
         </div>
       </div>
