@@ -179,7 +179,7 @@ export default function CurrentOpenings({ title, description, btnText, jobs }: C
         <div className='flex justify-center '>
           <a
             href="/jobs"
-            className="mt-10 bg-button text-sm lg:text-[18px] border border-transparent hover:bg-white hover:border-[#1A1617] text-levein-black font-semibold px-8 py-3 rounded-full items-center gap-2 transition-colors duration-300 inline-flex"
+            className="capitalize mt-10 bg-button text-sm lg:text-[18px] border border-transparent hover:bg-white hover:border-[#1A1617] text-levein-black font-semibold px-8 py-3 rounded-full items-center gap-2 transition-colors duration-300 inline-flex"
           >
           view more roles
           <span className="flex items-center justify-center">
