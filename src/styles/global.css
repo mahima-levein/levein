@@ -73,7 +73,7 @@ body{
 	width: max-content;
 	gap: 1.5rem;
 	will-change: transform;
-	animation: story-marquee-left 44s linear infinite;
+	animation: story-marquee-left 64s linear infinite;
 }
 
 .story-marquee-right .story-marquee-track {

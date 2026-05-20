@@ -62,6 +62,8 @@ export default function ApplicationModal({
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [success, setSuccess] = useState<boolean>(false);
   const [haveCVInStorage, setHaveCVInStorage] = useState<boolean>(false);
+  const [resumeID, setResumeID] = useState<string | null>(null);
+  const [copied, setCopied] = useState(false);
   const closeModal = () => {
     if (transitionTimeoutRef.current !== null) {
       window.clearTimeout(transitionTimeoutRef.current);
@@ -196,7 +198,7 @@ export default function ApplicationModal({
       else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.candidate_email)) nextErrors.candidate_email = 'Enter a valid email.';
       if (!formData.resume_age) nextErrors.resume_age = 'Age range is required.';
       if (!formData.resume_gender) nextErrors.resume_gender = 'Gender is required.';
-      if (!cvFile) nextErrors.cv_file = 'Please upload your CV.';
+      if (!cvFile && !formData.cv_file) nextErrors.cv_file = 'Please upload your CV.';
     }
     if (currentStep === 2) {
       if (!formData.resume_current_salary) nextErrors.resume_current_salary = 'Current salary is required.';
@@ -214,31 +216,31 @@ export default function ApplicationModal({
     return Object.keys(nextErrors).length === 0;
   };
 
-  const airtableDataStructure = (resumeData:any) => {
-    return {
-      records: [
-            {
-        fields: {
-          "candidate_name": formData.candidate_name,
-          "candidate_email": formData.candidate_email,
-          "resume_age": formData.resume_age,
-          "resume_gender": formData.resume_gender,
-          "cv_file": formData.cv_file,
-          "resume_current_salary[]": formData.resume_current_salary,
-          "resume_expected_salary": formData.resume_expected_salary,
-          "resume_experience[]": formData.resume_experience,
-          "candidate_location": formData.candidate_location,
-          "resume_education_level[]": formData.resume_education_level,
-          "candidate_notice_period": formData.candidate_notice_period,
-          "candidate_employment_status": formData.candidate_employment_status,
-          "candidate_job_find": formData.candidate_job_find,
-          "referred_by": formData.referred_by,
-          "candidate_job_title": formData.candidate_job_title,
-          "candidate_reason": formData.candidate_reason,
-      }
-    }
-    ],
+  const airtableDataStructure = (resumeData: any) => {
+    const fields: Record<string, any> = {
+      candidate_email: formData.candidate_email || '',
+      candidate_employment_status: formData.candidate_employment_status || '',
+      candidate_job_find: formData.candidate_job_find || '',
+      candidate_job_title: formData.candidate_job_title ? [formData.candidate_job_title] : [],
+      candidate_location: formData.candidate_location || '',
+      candidate_name: formData.candidate_name || '',
+      candidate_notice_period: formData.candidate_notice_period || '',
+      candidate_reason: formData.candidate_reason || '',
+      cv_file: formData.cv_file || '',
+      referred_by: formData.referred_by || '',
+      resume_age: formData.resume_age || '',
+      "resume_current_salary[]": formData.resume_current_salary || '',
+      "resume_education_level[]": formData.resume_education_level || '',
+      resume_expected_salary: formData.resume_expected_salary !== undefined && formData.resume_expected_salary !== null
+        ? String(formData.resume_expected_salary).replace(/,/g, '')
+        : '',
+      "resume_experience[]": formData.resume_experience || '',
+      resume_gender: formData.resume_gender || '',
+      candidate_availability: "Full time",
+      "Application Status": "Pending Review",
     };
+
+    return { records: [{ fields }] };
   };
 
   const saveToAirtable = async (data: any, baseName: string) => {
@@ -296,7 +298,8 @@ export default function ApplicationModal({
 
     // If on step 2, submit the application
     if (step === 2) {
-      console.log('Final form data to submit:', airtableDataStructure(formData));
+      //console.log('Final form data to submit:', airtableDataStructure(formData));
+      console.dir(airtableDataStructure(formData), { depth: null });
       goToStep(3, 'forward');
 
       try {
@@ -307,8 +310,9 @@ export default function ApplicationModal({
           setSuccess(true);
           localStorage.removeItem('resume_url');
           setHaveCVInStorage(false);
-          setFormData({ ...formData, candidate_job_title: '' });
           goToStep(3, 'forward');
+          setResumeID(airtableCandidateId);
+          localStorage.setItem('latest_candidate_id', airtableCandidateId);
         }
       } catch (e) {
         console.error('Submit error:', e);
@@ -616,25 +620,48 @@ export default function ApplicationModal({
                 </div>
                   <div className="flex flex-col justify-center items-center gap-3 -mt-2">
                     <h3 className="text-2xl font-semibold font-primary text-levein-black">Your application has been submitted!</h3>
-                    <p className="text-gray-600 test-[16px]">Thank you for applying. You can check application status using your Submission ID.</p>
+                    <p className="text-gray-600 test-[16px] text-center">Keep this Submission ID safe as you can use it to check your application status. Please note that it may take some time for your application to be reviewed.</p>
                   </div>
                    <div className="flex flex-col items-center rounded-lg p-4">
                       <dt className="text-[16px] uppercase tracking-wide mb-2 font-bold">Your Submission ID</dt>
                       <dd className="mt-1 flex items-center gap-2">
-                        <code id="200" className="rounded-md px-2 py-1 text-[16px] text-[#3B574F] bg-[#EAF2EB] font-mono">
-                          "sdf23r23-sdf23-23r23-sdf2323-sdf2323"
+                        <code id="submission-id" className="rounded-md px-2 py-1 text-[16px] text-[#3B574F] bg-[#EAF2EB] font-mono">
+                          {resumeID ?? '—'}
                         </code>
                         <button
                           className="cs-btn inline-flex items-center gap-1 rounded-md px-2 py-1 text-xs transition hover:scale-105 focus-visible:outline-none"
-                          data-copy-target={"cid-" + "200"}
                           type="button"
                           aria-label="Copy Submission ID"
+                          onClick={async () => {
+                            const idToCopy = resumeID;
+                            if (!idToCopy) return;
+                            try {
+                              await navigator.clipboard.writeText(idToCopy);
+                              setCopied(true);
+                              setTimeout(() => setCopied(false), 2000);
+                            } catch (err) {
+                              // fallback copy
+                              const ta = document.createElement('textarea');
+                              ta.value = idToCopy;
+                              document.body.appendChild(ta);
+                              ta.select();
+                              try {
+                                document.execCommand('copy');
+                                setCopied(true);
+                                setTimeout(() => setCopied(false), 2000);
+                              } catch (e) {
+                                console.warn('Copy failed', e);
+                              }
+                              document.body.removeChild(ta);
+                            }
+                          }}
+                          disabled={!resumeID}
                         >
                           <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                             <path d="M8 7a3 3 0 0 1 3-3h6a3 3 0 0 1 3 3v6a3 3 0 0 1-3 3h-6a3 3 0 0 1-3-3V7Z"/>
                             <path d="M3 10a3 3 0 0 1 3-3h1v2H6a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h7a1 1 0 0 0 1-1v-1h2v1a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3v-7Z"/>
                           </svg>
-                          <span data-copy-label className='text-[16px] cursor-pointer'>Copy</span>
+                          <span data-copy-label className='text-[16px] cursor-pointer'>{copied ? 'Copied' : 'Copy'}</span>
                         </button>
                       </dd>
                     </div>
