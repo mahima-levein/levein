@@ -87,9 +87,16 @@ export default function FlexibleApproachSection() {
   const [isAnimating, setIsAnimating] = useState(false);
   const [displayedFeatures, setDisplayedFeatures] = useState(remoteFeatures);
 
+  const [pathName, setPathName] = useState<string>('');
+  const [mounted, setMounted] = useState(false);
+
   useEffect(() => {
     if (sectionRef.current) {
       initTextReveal(sectionRef.current);
+    }
+    if (typeof window !== 'undefined') {
+      setPathName(window.location.pathname || '');
+      setMounted(true);
     }
   }, []);
 
@@ -157,7 +164,11 @@ export default function FlexibleApproachSection() {
               Work from where you perform best
               </h4>
               <p className="text-[#3B574F] text-[14px]">
-                Whether from your home office, coworking space, or our Porto HQ, you have the freedom to choose.
+                {mounted
+                  ? (pathName === '/life-at-levein'
+                      ? 'Whether from your home office, coworking space, or our Colombo office, you have the freedom to choose.'
+                      : 'Whether from your home office, coworking space, or our Porto HQ, you have the freedom to choose.')
+                  : 'Whether from your home office, coworking space, or our Porto HQ, you have the freedom to choose.'}
               </p>
             </div>
           </div>

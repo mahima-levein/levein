@@ -1,6 +1,6 @@
+
 import React, { useState } from 'react';
 import { useIsMobile } from "../hooks/use-mobile";
-import { callGetStaticPaths } from 'node_modules/astro/dist/core/render/route-cache';
 interface Contact {
   fullName: string;
   email: string;
@@ -14,6 +14,7 @@ export default function ContactForm() {
     engagementType: '',
     message: ''
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const isMobile = useIsMobile();
   const titleDesktop = (
     <>
@@ -22,10 +23,41 @@ export default function ContactForm() {
       with us?
     </>
   );
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log(formData);
+    // client-side validation
+    if (!formData.fullName.trim() || !formData.email.trim() || !formData.engagementType.trim() || !formData.message.trim()) {
+      alert('Please fill in all fields.');
+      return;
+    }
+    const isValidEmail = (email: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    if (!isValidEmail(formData.email)) {
+      alert('Please enter a valid email address.');
+      return;
+    }
+
+    setIsSubmitting(true);
+    const response = await fetch("/api/contact", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    });
+    const result = await response.json();
+    setIsSubmitting(false);
+
+    if (result.success) {
+      alert("Thank you. Your message has been sent successfully.");
+      setFormClear();
+    } else {
+      alert(result.message || "Something went wrong. Please try again.");
+    }
   };
+
+  function setFormClear() {
+    setformData({ fullName: '', email: '', engagementType: '', message: '' });
+  }
   const titleMobile = "Have a question about working with us?";
   return (
     <>
@@ -110,8 +142,9 @@ export default function ContactForm() {
               <button 
                 type="submit" 
                 className="bg-[#93D7B0] cursor-pointer hover:bg-[#FBFBFB] text-levein-primary text-[18px] font-bold px-6 py-3 rounded-full flex items-center justify-center gap-2 transition-colors duration-300 w-full sm:w-auto"
+                disabled={isSubmitting}
               >
-                Submit
+                {isSubmitting ? 'Submitting...' : 'Submit'}
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg">
                   <circle cx="12" cy="12" r="10" strokeWidth="1.5" />
                   <path d="M12 16L16 12L12 8" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>

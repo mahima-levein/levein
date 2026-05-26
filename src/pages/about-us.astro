@@ -2,7 +2,7 @@
 import Layout from "@layouts/Layout.astro";
 import Hero from "@components/HeroSection.astro";
 import "@styles/About.scss";
-import timelineImg_1 from "@assets/timeline-1.jpg";
+import Late_Founder from "@assets/Late-Founder.webp";
 import timelineImg_2 from "@assets/timeline-2.jpg";
 import timelineImg_3 from "@assets/timeline-3.jpg";
 import timelineImg_4 from "@assets/timeline-4.jpg";
@@ -118,8 +118,8 @@ const teamMembers = [
   description="Learn more about Levein Group, our mission, values, and the team behind our success. Discover how we are making a positive impact in the tech and healthcare industries and why we're a great place to work."
 >
   <Hero
-    title="A place to grow and pursue your passions."
-    description="Flexibility is a strategic advantage. Adopting a remote-first mindset boosted productivity and expanded our global talent pool."
+    title="Who are we?"
+    description="We help Sri Lankan professionals build global careers by connecting them with UK, US, UAE & Australian companies, while staying rooted at home."
   />
 
   <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 bg-white">
@@ -252,7 +252,7 @@ const teamMembers = [
               class="timeline-card relative z-10 ml-auto flex max-w-xl items-center gap-5 rounded-3xl border p-4 border-[#FBFBFB]/70 bg-[#061514] pr-6 transition duration-500 hover:-translate-y-1 hover:border-[#7fcfa8] hover:shadow-[0_0_35px_rgba(127,207,168,0.18)]"
             >
               <div
-                class="timeline-img shrink-0 overflow-hidden rounded-lg bg-[url(/public/timeline-1.jpg)] bg-cover bg-center"
+                class="timeline-img shrink-0 overflow-hidden rounded-lg bg-[url(/timeline-1.jpg)] bg-cover bg-center"
               >
               </div>
 
@@ -273,7 +273,7 @@ const teamMembers = [
               class="timeline-card relative z-10 ml-auto flex max-w-xl items-center gap-5 rounded-3xl border p-4 border-[#FBFBFB]/70 bg-[#061514] pr-6 transition duration-500 hover:-translate-y-1 hover:border-[#7fcfa8] hover:shadow-[0_0_35px_rgba(127,207,168,0.18)]"
             >
               <div
-                class="timeline-img shrink-0 overflow-hidden rounded-lg bg-[url(/public/timeline-2.jpg)] bg-cover bg-center"
+                class="timeline-img shrink-0 overflow-hidden rounded-lg bg-[url(/timeline-2.jpg)] bg-cover bg-center"
               >
               </div>
 
@@ -294,7 +294,7 @@ const teamMembers = [
               class="timeline-card relative z-10 ml-auto flex max-w-xl items-center gap-5 rounded-3xl border p-4 border-[#FBFBFB]/70 bg-[#061514] pr-6 transition duration-500 hover:-translate-y-1 hover:border-[#7fcfa8] hover:shadow-[0_0_35px_rgba(127,207,168,0.18)]"
             >
               <div
-                class="timeline-img shrink-0 overflow-hidden rounded-lg bg-[url(/public/timeline-3.jpg)] bg-cover bg-center"
+                class="timeline-img shrink-0 overflow-hidden rounded-lg bg-[url(/timeline-3.jpg)] bg-cover bg-center"
               >
 
               </div>
@@ -316,7 +316,7 @@ const teamMembers = [
               class="timeline-card relative z-10 ml-auto flex max-w-xl items-center gap-5 rounded-3xl border p-4 border-[#FBFBFB]/70 bg-[#061514] pr-6 transition duration-500 hover:-translate-y-1 hover:border-[#7fcfa8] hover:shadow-[0_0_35px_rgba(127,207,168,0.18)]"
             >
               <div
-                class="timeline-img shrink-0 overflow-hidden rounded-lg bg-[url(/public/timeline-4.jpg)] bg-cover bg-center"
+                class="timeline-img shrink-0 overflow-hidden rounded-lg bg-[url(/timeline-4.jpg)] bg-cover bg-center"
               >
               </div>
 
@@ -338,7 +338,7 @@ const teamMembers = [
   </section>
   <section
     id="founder-levein"
-    class="relative overflow-hidden px-6 py-16 text-[#FBFBFB] md:px-10 lg:px-16"
+    class="relative overflow-hidden px-6 py-16 text-[#FBFBFB] md:px-10 lg:px-16 hidden md:block"
   >
     <!-- Background image placeholder -->
     <div class="absolute inset-0">
@@ -387,6 +387,42 @@ const teamMembers = [
             <p class="mt-1 text-[16px] text-[#FBFBFB]">Our Late Founder</p>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+  <section class="block md:hidden relative overflow-hidden">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-20">
+      <!-- Header -->
+      <header data-reveal-group class="text-center mb-6">
+        <h2 data-reveal-heading class="text-4xl font-primary font-normal text-levein-black">
+          Our Late Founder
+        </h2>
+        <p data-reveal-body class="ldr-sub mt-2 text-base text-[#111827]/75">
+          Meet our founder, the visionary behind YTA’s journey and success</p>
+      </header>
+
+      <!-- Quote + Image -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div class="flex order-2 lg:order-2 flex-col gap-4">
+          <p>With over a decade of experience bridging UK businesses and South Asian talent, he founded Levein Group in 2017 with a simple yet powerful belief, that world-class work should never be limited by geography. His strategic insight and hands-on leadership have helped scale Levein from a small development partner into a trusted offshore staffing provider serving leading organisations across social care, healthcare, technology, and finance. 
+          </p>
+          <p> Passionate about tech, innovation, culture, and people development, Tharaka lead Levein’s mission to help Sri Lankan professionals grow their careers globally.</p>
+              <div class="mt-7">
+                <h3 class="text-[20px] font-bold text-[#061414]">
+                  Tharaka De Alwis
+                </h3>
+
+              <p class="mt-1 text-[16px] text-[#437D7D]">Our Late Founder</p>
+            </div>
+        </div>
+
+        <figure class="ldr-media order-1 lg:order-1">
+          <Image
+            src={Late_Founder}
+            alt="Tharaka De Alwis, YTA's late founder"
+            class="ldr-img w-full h-auto object-cover rounded-xl"
+          />
+        </figure>
       </div>
     </div>
   </section>
@@ -478,7 +514,7 @@ const teamMembers = [
         <p>We focus on building real careers, not short-term roles, with structured employment, global exposure, and an environment where talent can grow and be recognised at an international standard. Our vision is to enable 1,000 Sri Lankan professionals to build meaningful global careers from home, and to position Sri Lanka as a trusted hub for high-quality talent. The future of work is borderless and Levein is here to make sure Sri Lanka is part of it. </p>
         <p>As the nature of work evolves, we are also actively integrating AI into how our teams operate, from working alongside AI tools to building AI agents and supporting global companies in embedding AI into their day-to-day operations ”</p>
         <div>
-          <h3 class="text-[20px] font-semibold text-[#061414]">Nirmani De Alwis</h3>
+          <h3 class="text-[20px] font-semibold text-[#061414]">Nirmani Jayaweera</h3>
           <p class="text-[16px] text-[#437D7D]">CEO, Levein Group</p>
         </div>
       </div>
@@ -518,15 +554,13 @@ const teamMembers = [
           <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">
             
             <div class="flex items-center gap-2 mb-1">
-              <svg class="w-4 h-4 text-white fill-current shrink-0" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-              </svg>
+            
               <h3 class="text-white font-medium text-sm sm:text-base leading-tight truncate">
                 {member.name}
               </h3>
             </div>
             
-            <p class="text-white/80 text-xs sm:text-sm pl-6">
+            <p class="text-white/80 text-xs sm:text-sm">
               {member.position}
             </p>
             
@@ -554,16 +588,13 @@ const teamMembers = [
           <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">
             
             <div class="flex items-center gap-2 mb-1">
-              <svg class="w-4 h-4 text-white fill-current shrink-0" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-              </svg>
               <h3 class="text-white font-medium text-sm sm:text-base leading-tight truncate">
                 {member.name}
               </h3>
             </div>
             
             <!-- Position Title (Indented slightly to align with name, past the icon) -->
-            <p class="text-white/80 text-xs sm:text-sm pl-6">
+            <p class="text-white/80 text-xs sm:text-sm">
               {member.position}
             </p>
             
@@ -595,15 +626,12 @@ const teamMembers = [
           <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">
             
             <div class="flex items-center gap-2 mb-1">
-              <svg class="w-4 h-4 text-white fill-current shrink-0" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-              </svg>
               <h3 class="text-white font-medium text-sm sm:text-base leading-tight truncate">
                 {member.name}
               </h3>
             </div>
             
-            <p class="text-white/80 text-xs sm:text-sm pl-6">
+            <p class="text-white/80 text-xs sm:text-sm">
               {member.position}
             </p>
             

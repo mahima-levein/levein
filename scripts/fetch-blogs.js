@@ -22,9 +22,9 @@ async function loadEnvFile() {
 
 await loadEnvFile();
 
-const WP_URL = process.env.WP_BASE;
+const WP_URL = process.env.WP_BASE_BLOGS;
 if (!WP_URL) {
-  console.error("Missing env var: WP_BASE");
+  console.error("Missing env var: WP_BASE_BLOGS");
   process.exit(1);
 }
 
@@ -32,7 +32,7 @@ const outFile = path.resolve("src/data/posts.json");
 
 async function fetchAllBlogs() {
   const all = [];
-  let url = "https://cms.yourteaminasia.com/wp-json/yta/v2/ytablog?category=levein&per_page=100";
+  let url = `${WP_URL}wp-json/yta/v2/ytablog?category=levein&per_page=100`;
 
   while (url) {
     const res = await fetch(url);
