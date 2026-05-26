@@ -12,7 +12,6 @@ const companyLinks = [
 
 const resourceLinks = [
   { label: "Blogs", href: "/blogs" },
-  { label: "Events", href: "/events" },
   { label: "My Application", href: "/my-application" },
   { label: "Vacancy Alerts", href: "/vacancy-alerts" },
 ];
@@ -45,7 +44,11 @@ const legalLinks = [
         <div
           class="mt-5 inline-flex items-center gap-4 rounded-full border border-[#326262] px-5 py-3"
         >
-          <a href="https://lk.linkedin.com/company/levein-group" aria-label="LinkedIn" class="footer-social-link">
+          <a
+            href="https://lk.linkedin.com/company/levein-group"
+            aria-label="LinkedIn"
+            class="footer-social-link"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="20"
@@ -58,7 +61,11 @@ const legalLinks = [
                 fill="#1A1617"></path>
             </svg>
           </a>
-          <a href="https://www.tiktok.com/@leveingroup" aria-label="TikTok" class="footer-social-link">
+          <a
+            href="https://www.tiktok.com/@leveingroup"
+            aria-label="TikTok"
+            class="footer-social-link"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="20"
@@ -81,7 +88,11 @@ const legalLinks = [
             </svg>
           </a>
 
-          <a href="https://www.instagram.com/lifeatlevein/?hl=en" aria-label="Instagram" class="footer-social-link">
+          <a
+            href="https://www.instagram.com/lifeatlevein/?hl=en"
+            aria-label="Instagram"
+            class="footer-social-link"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="20"
@@ -102,7 +113,11 @@ const legalLinks = [
             </svg>
           </a>
 
-          <a href="https://www.facebook.com/lifeatlevein/" aria-label="Facebook" class="footer-social-link">
+          <a
+            href="https://www.facebook.com/lifeatlevein/"
+            aria-label="Facebook"
+            class="footer-social-link"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="20"
@@ -116,7 +131,11 @@ const legalLinks = [
             </svg>
           </a>
 
-          <a href="https://x.com/leveingroup" aria-label="X" class="footer-social-link">
+          <a
+            href="https://x.com/leveingroup"
+            aria-label="X"
+            class="hidden"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="20"
@@ -206,7 +225,7 @@ const legalLinks = [
         class="lg:col-span-1 flex flex-col items-start lg:items-end text-left lg:text-right gap-2"
       >
         <a
-          href="/contact"
+          href="/contact-us"
           class="hidden lg:inline-flex h-10 items-center justify-center rounded-full bg-[#326262] px-6 text-[16px] font-bold text-[#FBFBFB] no-underline transition-all duration-300 hover:bg-[#1a1617]"
         >
           Request a call
@@ -226,6 +245,14 @@ const legalLinks = [
           >
             hello@leveingroup.com
           </a>
+          <a
+            href="https://maps.app.goo.gl/7BoEWQn5KD3WEh217"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="block text-[16px] font-medium leading-none text-[#061414] underline underline-offset-4"
+          >
+            View Our Location
+          </a>
         </div>
       </div>
     </div>
@@ -240,51 +267,67 @@ const legalLinks = [
         Just send us your contact email and we will contact you.
       </h2>
 
-      <form class="relative w-full">
-        <label for="footer-email" class="sr-only">Email address</label>
-
-        <input
-          id="footer-email"
-          type="email"
-          placeholder="Email address"
-          class="h-10 w-full rounded-full border-0 bg-[#FBFBFB] px-4 pr-12 py-3 text-[16px] text-[#1A1617] outline-none placeholder:text-[#646464] focus:ring-2 focus:ring-[#326262]/30 border-[#000000]/10 transition-colors duration-300 focus:border-[#326262] focus:ring-offset-0 max-md:mb-4"
-        />
-
-        <button
-          type="submit"
-          aria-label="Submit email"
-          class="absolute right-2 top-1/2 flex size-5 -translate-y-4 md:-translate-y-1/2 items-center justify-center rounded-full text-[#1A1617] transition-colors duration-300 hover:bg-[#e3f0e0]"
+      <div class="flex w-full flex-col items-start">
+        <form
+          class="relative w-full"
+          data-newsletter-form
+          onsubmit="return false;"
         >
-          <span class="leading-none"
-            ><svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="20"
-              height="20"
-              viewBox="0 0 20 20"
-              fill="none"
-            >
-              <path
-                d="M10.0003 18.3346C14.6027 18.3346 18.3337 14.6037 18.3337 10.0013C18.3337 5.39893 14.6027 1.66797 10.0003 1.66797C5.39795 1.66797 1.66699 5.39893 1.66699 10.0013C1.66699 14.6037 5.39795 18.3346 10.0003 18.3346Z"
-                stroke="#1A1617"
-                stroke-width="1.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"></path>
-              <path
-                d="M7.08301 10H12.083"
-                stroke="#1A1617"
-                stroke-width="1.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"></path>
-              <path
-                d="M10.417 12.5L12.917 10L10.417 7.5"
-                stroke="#1A1617"
-                stroke-width="1.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"></path>
-            </svg></span
+          <label for="footer-email" class="sr-only">Email address</label>
+
+          <input
+            id="footer-email"
+            type="email"
+            placeholder="Email address"
+            class="h-10 w-full rounded-full border-0 bg-[#FBFBFB] px-4 pr-12 py-3 text-[16px] text-[#1A1617] outline-none placeholder:text-[#646464] focus:ring-2 focus:ring-[#326262]/30 border-[#000000]/10 transition-colors duration-300 focus:border-[#326262] focus:ring-offset-0 max-md:mb-4"
+          />
+
+          <button
+            type="button"
+            aria-label="Submit email"
+            data-newsletter-submit
+            class="absolute right-2 top-1/2 flex size-5 -translate-y-4 md:-translate-y-1/2 items-center justify-center rounded-full text-[#1A1617] transition-colors duration-300 hover:bg-[#e3f0e0]"
           >
-        </button>
-      </form>
+            <span class="leading-none"
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+              >
+                <path
+                  d="M10.0003 18.3346C14.6027 18.3346 18.3337 14.6037 18.3337 10.0013C18.3337 5.39893 14.6027 1.66797 10.0003 1.66797C5.39795 1.66797 1.66699 5.39893 1.66699 10.0013C1.66699 14.6037 5.39795 18.3346 10.0003 18.3346Z"
+                  stroke="#1A1617"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"></path>
+                <path
+                  d="M7.08301 10H12.083"
+                  stroke="#1A1617"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"></path>
+                <path
+                  d="M10.417 12.5L12.917 10L10.417 7.5"
+                  stroke="#1A1617"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"></path>
+              </svg></span
+            >
+          </button>
+        </form>
+
+        <p
+          data-newsletter-message
+          class="mt-3 hidden text-sm font-medium text-[#326262]"
+          role="status"
+          aria-live="polite"
+        >
+          Thank you for subscribing to our newsletter.
+        </p>
+      </div>
     </div>
   </div>
 
@@ -293,11 +336,13 @@ const legalLinks = [
     class="mx-auto mt-7 lg:mt-14 max-w-7xl border-t border-[#7FCFA8] pb-0 pt-6 max-md:w-[calc(100%-32px)]"
   >
     <p class="text-center text-[16px] font-medium text-[#1A1617]">
-      © 2026 LEVEIN. All rights reserved.
+      © {new Date().getFullYear()} LEVEIN. All rights reserved.
     </p>
   </div>
 
-  <div class="relative mt-6 lg:mt-12 h-[clamp(72px,14vw,355px)] w-full overflow-hidden">
+  <div
+    class="relative mt-6 lg:mt-12 h-[clamp(72px,14vw,355px)] w-full overflow-hidden"
+  >
     <Image
       src={FooterImg}
       alt="Levein wordmark"
@@ -305,3 +350,43 @@ const legalLinks = [
     />
   </div>
 </footer>
+
+<script is:inline>
+  const newsletterForm = document.querySelector("[data-newsletter-form]");
+  const newsletterMessage = document.querySelector("[data-newsletter-message]");
+  const newsletterInput = document.querySelector("#footer-email");
+  const newsletterSubmit = document.querySelector("[data-newsletter-submit]");
+
+  let newsletterTimeoutId;
+
+  const showNewsletterMessage = (event) => {
+    event?.preventDefault?.();
+
+    if (!newsletterMessage) {
+      return;
+    }
+
+    newsletterMessage.textContent =
+      "Thank you for subscribing to our newsletter.";
+    newsletterMessage.classList.remove("hidden");
+
+    if (newsletterTimeoutId) {
+      window.clearTimeout(newsletterTimeoutId);
+    }
+
+    newsletterTimeoutId = window.setTimeout(() => {
+      newsletterMessage.classList.add("hidden");
+    }, 3000);
+
+    if (newsletterInput instanceof HTMLInputElement) {
+      newsletterInput.value = "";
+    }
+  };
+
+  newsletterForm?.addEventListener("submit", (event) => {
+    event.preventDefault();
+    showNewsletterMessage(event);
+  });
+
+  newsletterSubmit?.addEventListener("click", showNewsletterMessage);
+</script>
