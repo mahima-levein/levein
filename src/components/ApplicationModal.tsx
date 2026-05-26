@@ -61,6 +61,9 @@ export default function ApplicationModal({
   const [cvFile, setCvFile] = useState<File | null>(null);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [success, setSuccess] = useState<boolean>(false);
+  const [haveCVInStorage, setHaveCVInStorage] = useState<boolean>(false);
+  const [resumeID, setResumeID] = useState<string | null>(null);
+  const [copied, setCopied] = useState(false);
   const closeModal = () => {
     if (transitionTimeoutRef.current !== null) {
       window.clearTimeout(transitionTimeoutRef.current);
@@ -100,7 +103,7 @@ export default function ApplicationModal({
 
   useEffect(() => {
     if (!isOpen) return;
-    
+
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
         closeModal();
@@ -126,9 +129,13 @@ export default function ApplicationModal({
     if (isOpen) {
       try {
         const saved = sessionStorage.getItem('candidateData');
+        const resumeUrl = localStorage.getItem('resume_url');
         if (saved) {
           const parsed = JSON.parse(saved);
           setFormData((prev) => ({ ...prev, ...parsed }));
+        }
+        if (resumeUrl) {
+          setHaveCVInStorage(true);
         }
       } catch (e) {
         console.warn('Could not read sessionStorage:', e);
@@ -191,7 +198,7 @@ export default function ApplicationModal({
       else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.candidate_email)) nextErrors.candidate_email = 'Enter a valid email.';
       if (!formData.resume_age) nextErrors.resume_age = 'Age range is required.';
       if (!formData.resume_gender) nextErrors.resume_gender = 'Gender is required.';
-      if (!cvFile) nextErrors.cv_file = 'Please upload your CV.';
+      if (!cvFile && !formData.cv_file) nextErrors.cv_file = 'Please upload your CV.';
     }
     if (currentStep === 2) {
       if (!formData.resume_current_salary) nextErrors.resume_current_salary = 'Current salary is required.';
@@ -209,31 +216,31 @@ export default function ApplicationModal({
     return Object.keys(nextErrors).length === 0;
   };
 
-  const airtableDataStructure = (resumeData:any) => {
-    return {
-      records: [
-            {
-        fields: {
-          "candidate_name": formData.candidate_name,
-          "candidate_email": formData.candidate_email,
-          "resume_age": formData.resume_age,
-          "resume_gender": formData.resume_gender,
-          "cv_file": formData.cv_file,
-          "resume_current_salary[]": formData.resume_current_salary,
-          "resume_expected_salary": formData.resume_expected_salary,
-          "resume_experience[]": formData.resume_experience,
-          "candidate_location": formData.candidate_location,
-          "resume_education_level[]": formData.resume_education_level,
-          "candidate_notice_period": formData.candidate_notice_period,
-          "candidate_employment_status": formData.candidate_employment_status,
-          "candidate_job_find": formData.candidate_job_find,
-          "referred_by": formData.referred_by,
-          "candidate_job_title": formData.candidate_job_title,
-          "candidate_reason": formData.candidate_reason,
-      }
-    }
-    ],
+  const airtableDataStructure = (resumeData: any) => {
+    const fields: Record<string, any> = {
+      candidate_email: formData.candidate_email || '',
+      candidate_employment_status: formData.candidate_employment_status || '',
+      candidate_job_find: formData.candidate_job_find || '',
+      candidate_job_title: formData.candidate_job_title ? [formData.candidate_job_title] : [],
+      candidate_location: formData.candidate_location || '',
+      candidate_name: formData.candidate_name || '',
+      candidate_notice_period: formData.candidate_notice_period || '',
+      candidate_reason: formData.candidate_reason || '',
+      cv_file: formData.cv_file || '',
+      referred_by: formData.referred_by || '',
+      resume_age: formData.resume_age || '',
+      "resume_current_salary[]": formData.resume_current_salary || '',
+      "resume_education_level[]": formData.resume_education_level || '',
+      resume_expected_salary: formData.resume_expected_salary !== undefined && formData.resume_expected_salary !== null
+        ? String(formData.resume_expected_salary).replace(/,/g, '')
+        : '',
+      "resume_experience[]": formData.resume_experience || '',
+      resume_gender: formData.resume_gender || '',
+      candidate_availability: "Full time",
+      "Application Status": "Pending Review",
     };
+
+    return { records: [{ fields }] };
   };
 
   const saveToAirtable = async (data: any, baseName: string) => {
@@ -247,22 +254,65 @@ export default function ApplicationModal({
       return result.id || null;
   };
 
+  const resumeSubmissionToWordPress = async (file: any) => {
+      try {
+        const fd = new FormData();
+        fd.append('resume', file, file.name);
+
+        const response = await fetch("https://cms.yourteaminasia.com/wp-json/levein/v1/upload-resume", {
+          method: "POST",
+          body: fd,
+        });
+
+        if (!response.ok) {
+          const text = await response.text();
+          throw new Error(`Upload failed: ${response.status} ${text}`);
+        }
+
+        const result = await response.json();
+
+        if (result.success && result.resume_url) {
+          setHaveCVInStorage(true);
+          try { localStorage.setItem('resume_url', result.resume_url); } catch (e) { /* noop */ }
+          setFormData((prev) => ({ ...prev, cv_file: result.resume_url }));
+          return result.resume_url;
+        }
+
+        throw new Error(result.message || 'Unknown upload error');
+      } catch (err: any) {
+        console.error('Resume upload error:', err);
+        setErrors((s) => ({ ...s, cv_file: err?.message || 'Upload failed' }));
+        return null;
+      }
+    }
+
   const handleSubmit = async () => {
     if (!validateStep(step)) return;
 
+    if(step === 1 && cvFile) {
+      const resumeUrl = await resumeSubmissionToWordPress(cvFile);
+      if (!resumeUrl) {
+        return;
+      }
+    }
+
     // If on step 2, submit the application
     if (step === 2) {
-      console.log('Final form data to submit:', airtableDataStructure(formData));
+      //console.log('Final form data to submit:', airtableDataStructure(formData));
+      console.dir(airtableDataStructure(formData), { depth: null });
       goToStep(3, 'forward');
-      return;
+
       try {
         const airtableCandidateId = await saveToAirtable(airtableDataStructure(formData), 'Applications');
         if (!airtableCandidateId) {
           alert('There was an error submitting your application. Please try again later.');
         } else {
           setSuccess(true);
-          setFormData({ ...formData, candidate_job_title: '' });
+          localStorage.removeItem('resume_url');
+          setHaveCVInStorage(false);
           goToStep(3, 'forward');
+          setResumeID(airtableCandidateId);
+          localStorage.setItem('latest_candidate_id', airtableCandidateId);
         }
       } catch (e) {
         console.error('Submit error:', e);
@@ -339,21 +389,21 @@ export default function ApplicationModal({
               <div className="step-container">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-5">
                   <div className="flex flex-col gap-2">
-                    <label htmlFor="firstName" className="test-[16px] font-normal text-levein-black">Your Name</label>
+                    <label htmlFor="firstName" className="test-[16px] font-normal text-levein-black font-secondary">Your Name</label>
                     <input type="text" value={formData.candidate_name} onChange={(e) => setFormData({ ...formData, candidate_name: e.target.value })} id="firstName" placeholder="Enter your first name" className="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:border-[#93D7B0] focus:ring-1 focus:ring-[#93D7B0] outline-none text-gray-700 test-[16px] placeholder-gray-400 transition-shadow" />
                     {errors.candidate_name && <p className="text-red-600 text-sm mt-1">{errors.candidate_name}</p>}
                   </div>
 
                   <div className="flex flex-col gap-2">
-                    <label htmlFor="email" className="test-[16px] font-normal text-levein-black">Email Address</label>
+                    <label htmlFor="email" className="test-[16px] font-normal text-levein-black font-secondary">Email Address</label>
                     <input type="email" value={formData.candidate_email} onChange={(e) => setFormData({ ...formData, candidate_email: e.target.value })} id="email" placeholder="Enter your email address" className="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:border-[#93D7B0] focus:ring-1 focus:ring-[#93D7B0] outline-none text-gray-700 test-[16px] placeholder-gray-400 transition-shadow" />
                     {errors.candidate_email && <p className="text-red-600 text-sm mt-1">{errors.candidate_email}</p>}
                   </div>
 
                   <div className="flex flex-col gap-2">
-                    <label htmlFor="ageRange" className="test-[16px] font-normal text-levein-black">Candidate Age</label>
+                    <label htmlFor="ageRange" className="test-[16px] font-normal text-levein-black font-secondary">Candidate Age</label>
                     <div className="relative">
-                      <select id="ageRange" value={formData.resume_age} onChange={(e) => setFormData({ ...formData, resume_age: e.target.value })} className="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:border-[#93D7B0] focus:ring-1 focus:ring-[#93D7B0] outline-none text-gray-500 test-[16px] appearance-none bg-white cursor-pointer transition-shadow">
+                      <select id="ageRange" value={formData.resume_age} onChange={(e) => setFormData({ ...formData, resume_age: e.target.value })} className="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:border-[#93D7B0] focus:ring-1 focus:ring-[#93D7B0] outline-none text-gray-700 test-[16px] appearance-none bg-white cursor-pointer transition-shadow">
                         <option value="" disabled hidden>Select your age</option>
                         <option>18-22 Years</option>
                         <option>23-28 Years</option>
@@ -371,9 +421,9 @@ export default function ApplicationModal({
                   </div>
 
                   <div className="flex flex-col gap-2">
-                    <label htmlFor="gender" className="test-[16px] font-normal text-levein-black">Candidate Gender</label>
+                    <label htmlFor="gender" className="test-[16px] font-normal text-levein-black font-secondary">Candidate Gender</label>
                     <div className="relative">
-                      <select id="gender" value={formData.resume_gender} onChange={(e) => setFormData({ ...formData, resume_gender: e.target.value })} className="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:border-[#93D7B0] focus:ring-1 focus:ring-[#93D7B0] outline-none text-gray-500 test-[16px] appearance-none bg-white cursor-pointer transition-shadow">
+                      <select id="gender" value={formData.resume_gender} onChange={(e) => setFormData({ ...formData, resume_gender: e.target.value })} className="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:border-[#93D7B0] focus:ring-1 focus:ring-[#93D7B0] outline-none text-gray-700 test-[16px] appearance-none bg-white cursor-pointer transition-shadow">
                         <option value="" disabled hidden>Select your gender</option>
                         <option value="Male">Male</option>
                         <option value="Female">Female</option>
@@ -387,14 +437,14 @@ export default function ApplicationModal({
                 </div>
 
                 <div className="flex flex-col gap-2 mt-6">
-                  <label className="test-[16px] font-normal text-levein-black">Upload your CV</label>
+                  <label className="test-[16px] font-normal text-levein-black font-secondary">Upload your CV {haveCVInStorage && <span className="text-green-600">(Already Uploaded)</span>}</label>
                   <div
                     className="w-full border border-dashed border-[#85A99C] bg-[#EAF2EB] rounded-xl py-8 flex flex-col items-center justify-center cursor-pointer hover:bg-[#dbe7dd] transition-colors"
                     onClick={() => fileInputRef.current?.click()}
                     onDragOver={(e) => e.preventDefault()}
                     onDrop={handleDrop}
                   >
-                    <input ref={fileInputRef} type="file" accept=".pdf,.doc,.docx" onChange={handleFileInputChange} className="hidden" />
+                    <input ref={fileInputRef} type="file" accept=".pdf,.doc,.docx" onChange={handleFileInputChange} className="hidden" disabled={haveCVInStorage} />
                     {cvFile ? (
                       <p className="text-gray-700 font-medium">{cvFile.name}</p>
                     ) : (
@@ -418,9 +468,9 @@ export default function ApplicationModal({
                 <div className="step-container">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-5">
                     <div className="flex flex-col gap-2">
-                      <label htmlFor="currentSalary" className="test-[16px] font-normal text-levein-black">Candidate Current Salary</label>
+                      <label htmlFor="currentSalary" className="test-[16px] font-normal text-levein-black font-secondary">Candidate Current Salary</label>
                       <div className="relative">
-                        <select id="currentSalary" value={formData.resume_current_salary} onChange={(e) => setFormData({ ...formData, resume_current_salary: e.target.value })} className="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:border-[#93D7B0] focus:ring-1 focus:ring-[#93D7B0] outline-none text-gray-500 test-[16px] appearance-none bg-white cursor-pointer transition-shadow">
+                        <select id="currentSalary" value={formData.resume_current_salary} onChange={(e) => setFormData({ ...formData, resume_current_salary: e.target.value })} className="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:border-[#93D7B0] focus:ring-1 focus:ring-[#93D7B0] outline-none text-gray-700 test-[16px] appearance-none bg-white cursor-pointer transition-shadow">
                           <option value="" disabled hidden>Select current salary</option>
                           <option value="0 - 100,000 LKR">0 - 100,000 LKR</option>
                           <option value="100,000 LKR to 300,000 LKR">
@@ -439,13 +489,13 @@ export default function ApplicationModal({
                     </div>
 
                     <div className="flex flex-col gap-2">
-                      <label htmlFor="expectedSalary" className="test-[16px] font-normal text-levein-black">Candidate Expected Salary</label>
+                      <label htmlFor="expectedSalary" className="test-[16px] font-normal text-levein-black font-secondary">Candidate Expected Salary</label>
                       <input type="number" value={formData.resume_expected_salary} onChange={(e) => setFormData({ ...formData, resume_expected_salary: Number(e.target.value) })} id="expectedSalary" placeholder="Enter your expected salary" className="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:border-[#93D7B0] focus:ring-1 focus:ring-[#93D7B0] outline-none text-gray-700 test-[16px] placeholder-gray-400 transition-shadow" />
                       {errors.resume_expected_salary && <p className="text-red-600 text-sm mt-1">{errors.resume_expected_salary}</p>}
                     </div>
 
                     <div className="flex flex-col gap-2">
-                      <label htmlFor="experience" className="test-[16px] font-normal text-levein-black">Candidate Experience</label>
+                      <label htmlFor="experience" className="test-[16px] font-normal text-levein-black font-secondary">Candidate Experience</label>
                       <div className="relative">
                       <select id="experience" value={formData.resume_experience} onChange={(e) => setFormData({ ...formData, resume_experience: e.target.value })} className="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:border-[#93D7B0] focus:ring-1 focus:ring-[#93D7B0] outline-none text-gray-500 test-[16px] appearance-none bg-white cursor-pointer transition-shadow">
                         <option value="" disabled hidden>Select experience level</option>
@@ -463,9 +513,9 @@ export default function ApplicationModal({
                     </div>
 
                     <div className="flex-col gap-2 sm:col-span-1">
-                      <label htmlFor="country" className="test-[16px] font-normal text-levein-black">Location</label>
+                      <label htmlFor="country" className="test-[16px] font-normal text-levein-black font-secondary">Location</label>
                       <div className="relative mt-2">
-                        <select id="country" value={formData.candidate_location} onChange={(e) => setFormData({ ...formData, candidate_location: e.target.value })} className="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:border-[#93D7B0] focus:ring-1 focus:ring-[#93D7B0] outline-none text-gray-500 test-[16px] appearance-none bg-white cursor-pointer transition-shadow">
+                        <select id="country" value={formData.candidate_location} onChange={(e) => setFormData({ ...formData, candidate_location: e.target.value })} className="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:border-[#93D7B0] focus:ring-1 focus:ring-[#93D7B0] outline-none text-gray-700 test-[16px] appearance-none bg-white cursor-pointer transition-shadow">
                           <option value="">Select a location...</option>
                             <option value="Colombo">Colombo</option>
                             <option value="Gampaha">Gampaha</option>
@@ -500,9 +550,9 @@ export default function ApplicationModal({
                       </div>
                     </div>
                     <div className="flex-col gap-2 sm:col-span-1">
-                      <label htmlFor="country" className="test-[16px] font-normal text-levein-black">Candidate Current Education Level</label>
+                      <label htmlFor="country" className="test-[16px] font-normal text-levein-black font-secondary">Candidate Current Education Level</label>
                       <div className="relative mt-2">
-                        <select id="country" value={formData.resume_education_level} onChange={(e) => setFormData({ ...formData, resume_education_level: e.target.value })} className="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:border-[#93D7B0] focus:ring-1 focus:ring-[#93D7B0] outline-none text-gray-500 test-[16px] appearance-none bg-white cursor-pointer transition-shadow">
+                        <select id="country" value={formData.resume_education_level} onChange={(e) => setFormData({ ...formData, resume_education_level: e.target.value })} className="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:border-[#93D7B0] focus:ring-1 focus:ring-[#93D7B0] outline-none text-gray-700 test-[16px] appearance-none bg-white cursor-pointer transition-shadow">
                           <option value="" disabled hidden>Select your education level</option>
                           <option value="Advanced Level">Advanced Level</option>
                           <option value="Pursuing a Degree">Pursuing a Degree</option>
@@ -517,9 +567,9 @@ export default function ApplicationModal({
                       </div>
                     </div>
                     <div className="flex flex-col gap-2">
-                      <label htmlFor="noticePeriod" className="test-[16px] font-normal text-levein-black">Notice Period</label>
+                      <label htmlFor="noticePeriod" className="test-[16px] font-normal text-levein-black font-secondary">Notice Period</label>
                        <div className="relative">
-                        <select id="noticePeriod" value={formData.candidate_notice_period} onChange={(e) => setFormData({ ...formData, candidate_notice_period: e.target.value })} className="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:border-[#93D7B0] focus:ring-1 focus:ring-[#93D7B0] outline-none text-gray-500 test-[16px] appearance-none bg-white cursor-pointer transition-shadow">
+                        <select id="noticePeriod" value={formData.candidate_notice_period} onChange={(e) => setFormData({ ...formData, candidate_notice_period: e.target.value })} className="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:border-[#93D7B0] focus:ring-1 focus:ring-[#93D7B0] outline-none text-gray-700 test-[16px] appearance-none bg-white cursor-pointer transition-shadow">
                           <option value="" disabled hidden>Select your notice period</option>
                           <option value="Less than 1 week">Less than 1 Week</option>
                           <option value="Less than 1 month">Less than 1 Month</option>
@@ -533,9 +583,9 @@ export default function ApplicationModal({
                       </div>
                     </div>
                      <div className="flex flex-col gap-2">
-                      <label htmlFor="candidate_employment_status" className="test-[16px] font-normal text-levein-black">Are you employed at present?</label>
+                      <label htmlFor="candidate_employment_status" className="test-[16px] font-normal text-levein-black font-secondary">Are you employed at present?</label>
                       <div className="relative">
-                        <select id="candidate_employment_status" value={formData.candidate_employment_status} onChange={(e) => setFormData({ ...formData, candidate_employment_status: e.target.value })} className="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:border-[#93D7B0] focus:ring-1 focus:ring-[#93D7B0] outline-none text-gray-500 test-[16px] appearance-none bg-white cursor-pointer transition-shadow">
+                        <select id="candidate_employment_status" value={formData.candidate_employment_status} onChange={(e) => setFormData({ ...formData, candidate_employment_status: e.target.value })} className="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:border-[#93D7B0] focus:ring-1 focus:ring-[#93D7B0] outline-none text-gray-700 test-[16px] appearance-none bg-white cursor-pointer transition-shadow">
                           <option value="" disabled hidden>Select your employment status</option>
                           <option value="Yes">Yes</option>
                           <option value="No">No</option>
@@ -547,14 +597,14 @@ export default function ApplicationModal({
                       </div>
                       </div>
                     <div className="flex flex-col gap-2">
-                      <label htmlFor="referred_by" className="test-[16px] font-normal text-levein-black">Referred By? (optional)</label>
+                      <label htmlFor="referred_by" className="test-[16px] font-normal text-levein-black font-secondary">Referred By? (optional)</label>
                       <input type="text" value={formData.referred_by} onChange={(e) => setFormData({ ...formData, referred_by: e.target.value })} id="referred_by" placeholder="Enter the name of the person who referred you" className="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:border-[#93D7B0] focus:ring-1 focus:ring-[#93D7B0] outline-none text-gray-700 test-[16px] placeholder-gray-400 transition-shadow" />
                     </div>
                 </div>
                   <div className="flex flex-col gap-3 mt-4">
                     <div className="flex items-start gap-3">
                       <input type="checkbox" id="dataConsent" checked={!!formData.data_consent} onChange={(e) => setFormData((p) => ({ ...p, data_consent: e.target.checked }))} className="mt-1 w-4 h-4 rounded border-gray-300 text-[#3B574F] focus:ring-[#93D7B0] cursor-pointer" />
-                      <label htmlFor="dataConsent" className="test-[16px] text-gray-600 cursor-pointer select-none leading-relaxed">
+                      <label htmlFor="dataConsent" className="test-[16px] text-gray-600 cursor-pointer select-none leading-relaxed font-secondary">
                         Yes, I give Levein permission to use my personal data for recruitment purposes only.
                       </label>
                     </div>
@@ -570,25 +620,48 @@ export default function ApplicationModal({
                 </div>
                   <div className="flex flex-col justify-center items-center gap-3 -mt-2">
                     <h3 className="text-2xl font-semibold font-primary text-levein-black">Your application has been submitted!</h3>
-                    <p className="text-gray-600 test-[16px]">Thank you for applying. You can check application status using your Submission ID.</p>
+                    <p className="text-gray-600 test-[16px] text-center">Keep this Submission ID safe as you can use it to check your application status. Please note that it may take some time for your application to be reviewed.</p>
                   </div>
                    <div className="flex flex-col items-center rounded-lg p-4">
                       <dt className="text-[16px] uppercase tracking-wide mb-2 font-bold">Your Submission ID</dt>
                       <dd className="mt-1 flex items-center gap-2">
-                        <code id="200" className="rounded-md px-2 py-1 text-[16px] text-[#3B574F] bg-[#EAF2EB] font-mono">
-                          "sdf23r23-sdf23-23r23-sdf2323-sdf2323"
+                        <code id="submission-id" className="rounded-md px-2 py-1 text-[16px] text-[#3B574F] bg-[#EAF2EB] font-mono">
+                          {resumeID ?? '—'}
                         </code>
                         <button
                           className="cs-btn inline-flex items-center gap-1 rounded-md px-2 py-1 text-xs transition hover:scale-105 focus-visible:outline-none"
-                          data-copy-target={"cid-" + "200"}
                           type="button"
                           aria-label="Copy Submission ID"
+                          onClick={async () => {
+                            const idToCopy = resumeID;
+                            if (!idToCopy) return;
+                            try {
+                              await navigator.clipboard.writeText(idToCopy);
+                              setCopied(true);
+                              setTimeout(() => setCopied(false), 2000);
+                            } catch (err) {
+                              // fallback copy
+                              const ta = document.createElement('textarea');
+                              ta.value = idToCopy;
+                              document.body.appendChild(ta);
+                              ta.select();
+                              try {
+                                document.execCommand('copy');
+                                setCopied(true);
+                                setTimeout(() => setCopied(false), 2000);
+                              } catch (e) {
+                                console.warn('Copy failed', e);
+                              }
+                              document.body.removeChild(ta);
+                            }
+                          }}
+                          disabled={!resumeID}
                         >
                           <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                             <path d="M8 7a3 3 0 0 1 3-3h6a3 3 0 0 1 3 3v6a3 3 0 0 1-3 3h-6a3 3 0 0 1-3-3V7Z"/>
                             <path d="M3 10a3 3 0 0 1 3-3h1v2H6a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h7a1 1 0 0 0 1-1v-1h2v1a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3v-7Z"/>
                           </svg>
-                          <span data-copy-label className='text-[16px] cursor-pointer'>Copy</span>
+                          <span data-copy-label className='text-[16px] cursor-pointer'>{copied ? 'Copied' : 'Copy'}</span>
                         </button>
                       </dd>
                     </div>

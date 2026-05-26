@@ -20,21 +20,25 @@ const tikTok = [
     name: "Levein TikTok",
     url: "https://cms.yourteaminasia.com/wp-content/uploads/2026/05/snaptik-levein.mp4",
     thumb: "/tiktok-thum-3.webp",
+    videoLink: "https://www.tiktok.com/@leveingroup/video/7519849371236732178?lang=en",
   },
   {
     name: "Levein TikTok",
     url: "https://cms.yourteaminasia.com/wp-content/uploads/2026/05/snaptik_7619304297280326930_hd.mp4",
     thumb: "/tiktok-thum-1.webp",
+    videoLink: "https://www.tiktok.com/@leveingroup/video/7619304297280326930?lang=en",
   },
   {
     name: "Levein TikTok",
     url: "https://cms.yourteaminasia.com/wp-content/uploads/2026/05/levein-titktok-3.mp4",
     thumb: "/tiktok-thum-2.webp",
+    videoLink: "https://www.tiktok.com/@leveingroup/video/7627020965712514312?lang=en",
   },
   {
     name: "Levein TikTok",
     url: "https://cms.yourteaminasia.com/wp-content/uploads/2026/05/levein-tiktok-4.mp4",
     thumb: "/tiktok-thum-4.webp",
+    videoLink: "https://www.tiktok.com/@leveingroup/video/7611130241951468807?lang=en",
   }
 ]
 
@@ -55,7 +59,7 @@ import { url } from "astro:schema";
     class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 bg-white font-sans"
   >
     <div
-      class="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-6 mb-16"
+      class="flex flex-col lg:flex-row justify-between items-start gap-6 mb-16"
     >
       <h2
         class="text-4xl md:text-5xl font-primary font-medium text-levein-black tracking-tight"
@@ -162,12 +166,12 @@ import { url } from "astro:schema";
           <h3
             class="text-white text-xl font-medium mb-1 font-primary translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out"
           >
-            Levein Awards Night 2024
+            Levein Halloween 2024
           </h3>
           <p
             class="text-[#93D7B0] text-sm translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-75 ease-out"
           >
-            December 18, 2024
+            October 31, 2024
           </p>
         </div>
       </div>
@@ -262,12 +266,12 @@ import { url } from "astro:schema";
           <h3
             class="text-white text-xl font-medium mb-1 font-primary translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out"
           >
-            Levein Townhall Q1
+            Levein Christmas Night 2025
           </h3>
           <p
             class="text-[#93D7B0] text-sm translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-75 ease-out"
           >
-            April 02, 2026
+            December 20, 2025
           </p>
         </div>
       </div>
@@ -385,7 +389,8 @@ import { url } from "astro:schema";
         <!-- Video -->
          {tikTok.map((video) => (
         <a
-          href="#"
+          href={video.videoLink}
+          target="_blank"
           class="group relative w-full aspect-9/16 bg-black rounded-[20px] overflow-hidden shadow-sm block cursor-pointer life-video-card"
         >
           <video
